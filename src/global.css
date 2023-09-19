@@ -2176,11 +2176,6 @@ body {
   background-position: top;
 }
 .main {
-  position: absolute;
-  top: 4.54rem;
-  left: 0rem;
-  width: 38.95rem;
-  height: 527.82rem;
   text-align: left;
   font-size: 0.8rem;
   color: var(--color-steelblue);
@@ -2191,14 +2186,6 @@ body {
   top: -3.24rem;
   left: 0rem;
   letter-spacing: 0.1em;
-}
-.headerChild {
-  position: absolute;
-  top: 0rem;
-  left: 0rem;
-  background-color: var(--color-skyblue);
-  width: 100%;
-  height: 7.6rem;
 }
 .menuIcon {
   position: absolute;
@@ -2242,14 +2229,6 @@ body {
     rgba(0, 0, 0, 0.25);
   width: 6.4rem;
   height: 1.72rem;
-}
-.header {
-  position: absolute;
-  top: 0.02rem;
-  left: 0rem;
-  width: 100%;
-  height: 7.3rem;
-  overflow: hidden;
 }
 .h31 {
   margin: 0;

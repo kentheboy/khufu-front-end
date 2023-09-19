@@ -1,18 +1,19 @@
 <template>
     <header class="header" header>
-        <div class="headerChild" />
-        <div class="hamburgerMenu">
-          <a href="#">menu 1</a>
-          <a href="#">menu 2</a>
-          <a href="#">menu 3</a>
+        <div class="headerChild">
+            <div class="hamburgerMenu">
+            <a href="#">menu 1</a>
+            <a href="#">menu 2</a>
+            <a href="#">menu 3</a>
+            </div>
+            <img
+            class="logo"
+            alt=""
+            src="/images/class-logo-main@2x.png"
+            :onClick="onCLASSLogo311Click"
+            />
+            <button class="button">予約する</button>
         </div>
-        <img
-          class="logo"
-          alt=""
-          src="/images/class-logo-main@2x.png"
-          :onClick="onCLASSLogo311Click"
-        />
-        <button class="button">予約する</button>
       </header>
 </template>
 <script>
@@ -22,6 +23,10 @@ export default {
 </script>
 <style lang="scss">
   .header {
+    height: 7.6rem;
+    background-color: var(--color-skyblue);
+    overflow: hidden;
+    
     .hamburgerMenu {
         content: "";
         position: absolute;
@@ -59,6 +64,7 @@ export default {
       left: initial;
       width: 6.4rem;
       height: 1.72rem;
+      box-shadow: 0.9974358677864075px 1.994871735572815px 1.99px rgba(0, 0, 0, 0.25);
       font-size: 0.59rem;
       letter-spacing: 0.1em;
       font-family: var(--font-istok-web);
