@@ -1,18 +1,21 @@
 <template>
     <div class="topLp">
+      <header class="header" header>
+        <div class="headerChild" />
+        <div class="hamburgerMenu">
+          <a href="#">menu 1</a>
+          <a href="#">menu 2</a>
+          <a href="#">menu 3</a>
+        </div>
+        <img
+          class="logo"
+          alt=""
+          src="/images/class-logo-main@2x.png"
+          :onClick="onCLASSLogo311Click"
+        />
+        <button class="button">予約する</button>
+      </header>
       <main class="main">
-        <footer class="footer">
-          <div class="div">〒901-0203　沖縄県豊見城市長堂67</div>
-          <div class="div1">営業時間　8:00-18:00</div>
-          <div class="div2">問合せ　080-0000-0000</div>
-          <img
-            class="classLogo31"
-            alt=""
-            src="/images/images/class-logo3-1@2x.png"
-            :onClick="onCLASSLogo31Click"
-          />
-          <img class="footerChild" alt="" src="/images/images/images/group-2@2x.png" />
-        </footer>
         <div class="div3">
           <button class="button">
             <div class="child" />
@@ -498,21 +501,19 @@
           data-scroll-to="cLASSLogo"
         />
       </main>
-      <div class="div192">お客様画面</div>
-      <header class="header" header>
-        <div class="headerChild" />
-        <img class="menuIcon" alt="" src="/images/humburger-menu.svg" />
+      <footer class="footer">
+        <div class="div">〒901-0203　沖縄県豊見城市長堂67</div>
+        <div class="div1">営業時間　8:00-18:00</div>
+        <div class="div2">問合せ　080-0000-0000</div>
         <img
-          class="classLogo311"
+          class="classLogo31"
           alt=""
-          src="/images/class-logo-main@2x.png"
-          :onClick="onCLASSLogo311Click"
+          src="/images/images/class-logo3-1@2x.png"
+          :onClick="onCLASSLogo31Click"
         />
-        <button class="button4" autoFocus="false">
-          <div class="child31" />
-          <b class="b">予約する</b>
-        </button>
-      </header>
+        <img class="footerChild" alt="" src="/images/images/images/group-2@2x.png" />
+      </footer>
+      <div class="div192">お客様画面</div>
       <h3 class="h31">
         <p class="p">※空港近辺では使用インターが</p>
         <p class="p">重なり、度々渋滞になります。</p>
@@ -534,5 +535,50 @@
   
   <!-- Add "scoped" attribute to limit CSS to this component only -->
   <style lang="scss" scoped>
+  .hamburgerMenu {
+    content: "";
+    position: absolute;
+    right: 3.9rem;
+    display: block;
+    width: 1.5rem;
+    top: 2.35rem;
+    height: 0;
+    box-shadow: 0 14.5px 0 0.1rem #fff, 0 24.5px 0 0.1rem #fff, 0 34.9px 0 0.1rem #fff;
+    
+    a {
+      display: none;
+    }
+
+  }
+  .header {
+    .logo{
+      position: absolute;
+      top: 2.8rem;
+      left: 2.4rem;
+      width: 7.7rem;
+      height: 1.9rem;
+      -o-object-fit: cover;
+      object-fit: cover;
+      cursor: pointer;
+    }
+    .button {
+      cursor: pointer;
+      border: none;
+      padding: 0;
+      border-radius: 9.33px;
+      background-color: var(--color-white);
+      position: absolute;
+      top: 3.01rem;
+      right: 7.4rem;
+      left: initial;
+      width: 6.4rem;
+      height: 1.72rem;
+      font-size: 0.59rem;
+      letter-spacing: 0.1em;
+      font-family: var(--font-istok-web);
+      color: var(--color-skyblue);
+      font-weight: bold;
+    }
+  }
   </style>
   
