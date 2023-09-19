@@ -2,71 +2,150 @@
     <div class="topLp">
       <Header></Header>
       <main class="main">
-        <div class="div3">
-          <button class="button">
+        <section class="section" hero-image-area />
+        <section
+          class="classLogo"
+          logo-white
+          data-scroll-to="cLASSLogo"
+        />
+        <section class="feture" features>
+          <div class="div186">
+            <h1 class="h1">
+              <p class="p">
+                広々過ごせるアルファードでゆとりのある快適なご旅行を
+              </p>
+              <p class="p">サポートいたします。</p>
+            </h1>
+            <div class="ellipseDiv" />
+            <div class="div187">03</div>
+            <h1 class="h11">
+              <p class="p">全車ゆとりのある</p>
+              <p class="p">アルファード</p>
+            </h1>
+          </div>
+          <div class="div188">
+            <h1 class="h12">
+              <p class="p">混みにくいインターチェンジへ</p>
+              <p class="p">最短アクセスが可能です。</p>
+            </h1>
+            <div class="ellipseDiv" />
+            <div class="div187">02</div>
+            <h1 class="h13">
+              <p class="p">混みにくい高速道路の</p>
+              <p class="p">近くだからスイスイ</p>
+            </h1>
+          </div>
+          <div class="div190">
+            <h1 class="h14">
+              <p class="p">必要書類はメールにて送信。</p>
+              <p class="p">かんたんに手続きが済みます。</p>
+            </h1>
+            <div class="ellipseDiv" />
+            <div class="div187">01</div>
+            <h1 class="h15">
+              <p class="p">難しい手続きなしで</p>
+              <p class="p">すぐご出発</p>
+            </h1>
+          </div>
+          <h1 class="feture1">FETURE</h1>
+          <h3 class="h3">特徴</h3>
+        </section>
+        <section class="schedule" schedule-search-form>
+          <div class="scheduleChild" />
+          <div class="div153">
+            <div class="div154">乗車定員　7人</div>
+            <img
+              class="maskGroupIcon1"
+              alt=""
+              src="/images/images/mask-group1@2x.png"
+            />
+          </div>
+          <div class="h">¥25,000~/24h</div>
+          <div class="alphard">ALPHARD</div>
+          <main class="main6" />
+          <div class="div155">
             <div class="child" />
-            <div class="div4">　 現金決済</div>
-          </button>
-          <button class="button1">
+            <div class="div156">選択する</div>
+          </div>
+          <div class="div157">
             <div class="child" />
-            <div class="div4">オンライン決済</div>
+            <div class="div158">
+              <p class="p">会員の方</p>
+              <p class="p1">　　 (選択する)</p>
+            </div>
+          </div>
+          <div class="div159">
+            <div class="child" />
+            <div class="div158">
+              <p class="p">初めての方</p>
+              <p class="p1">(選択する)</p>
+            </div>
+          </div>
+          <div class="div161">会員の方</div>
+          <div class="div162">(選択する)</div>
+          <div class="div163">(選択する)</div>
+          <div class="div164">はじめての方</div>
+          <img class="scheduleItem" alt="" src="/images/images/vector-2.svg" />
+          <div class="div165">
+            <img class="icon1" alt="" src="/images/images/1.svg" />
+            <div class="div166">日付未定</div>
+          </div>
+          <div class="div167">
+            <div class="div168">
+              <div class="div169">2023/01/01</div>
+              <img class="vectorIcon25" alt="" src="/images/images/vector25.svg" />
+            </div>
+            <div class="div170">
+              <div class="child26" />
+              <div class="div171">8:00</div>
+              <img class="vectorIcon26" alt="" src="/images/images/vector26.svg" />
+            </div>
+            <div class="div172">
+              <div class="div66">8:00</div>
+              <img
+                class="keyboardArrowDown8"
+                alt=""
+                src="/images/images/keyboard-arrow-down7.svg"
+              />
+            </div>
+            <div class="div174">返却日時</div>
+          </div>
+          <div class="div175">
+            <div class="div176">出発日時</div>
+            <div class="div177">
+              <div class="div169">2023/01/01</div>
+              <img class="vectorIcon25" alt="" src="/images/images/vector27.svg" />
+            </div>
+            <div class="calendarOverlayButton">
+              <img class="vectorIcon28" alt="" src="/images/images/vector28.svg" />
+            </div>
+            <div class="calendarOverlayButton1">
+              <img class="vectorIcon28" alt="" src="/images/images/vector28.svg" />
+            </div>
+            <div class="div170">
+              <div class="child26" />
+              <div class="div171">8:00</div>
+              <img class="vectorIcon26" alt="" src="/images/images/vector29.svg" />
+            </div>
+            <div class="div172">
+              <div class="div66">8:00</div>
+              <img
+                class="keyboardArrowDown8"
+                alt=""
+                src="/images/images/keyboard-arrow-down7.svg"
+              />
+            </div>
+          </div>
+          <div class="div183">
+            <div class="schedule1">SCHEDULE</div>
+            <div class="div184">旅行日程で探す</div>
+            <img class="scheduleIcon3" alt="" src="/images/images/schedule2.svg" />
+          </div>
+          <button class="button3">
+            <div class="child" />
+            <div class="div4">空き状況を検索</div>
           </button>
-          <div class="div6">
-            <div class="div7">■お客様情報</div>
-            <div class="div8">お名前</div>
-            <div class="div9">メールアドレス</div>
-            <div class="div10">電話番号</div>
-            <div class="div11">080-0000-0000</div>
-            <div class="div12">空港お出迎え</div>
-            <div class="div13">空港お見送り</div>
-            <div class="div14">18:00</div>
-            <div class="div15">なし</div>
-            <div class="exampleclassokinawa">example@class.okinawa</div>
-            <div class="div16">山田太郎　様</div>
-          </div>
-          <div class="div17">
-            <img class="inner" alt="" src="/images/images/vector-1.svg" />
-            <div class="div18">
-              <img class="icon" alt="" src="/images/images/@2x.png" />
-              <div class="div19">補償制度を詳しく</div>
-            </div>
-            <div class="exampleclassokinawa">基本料金</div>
-            <div class="div21">¥20,000</div>
-            <div class="div22">補償制度</div>
-            <div class="div23">¥3,000</div>
-            <div class="div24">¥30,000</div>
-            <div class="div25">2023/1/1 10:00 ~ 20231/2 18:00</div>
-            <div class="div26">■料金</div>
-            <div class="div27">■貸出日程</div>
-          </div>
-          <div class="div28">
-            <div class="at">
-              <div class="at1">AT</div>
-            </div>
-            <div class="div29">
-              <img class="vectorIcon" alt="" src="/images/images/vector.svg" />
-              <img class="vectorIcon1" alt="" src="/images/images/vector1.svg" />
-              <img class="vectorIcon2" alt="" src="/images/images/vector2.svg" />
-              <img class="vectorIcon3" alt="" src="/images/images/vector3.svg" />
-              <div class="div30">7人</div>
-            </div>
-            <img class="maskGroupIcon" alt="" src="/images/images/mask-group@2x.png" />
-          </div>
-          <div class="div31">
-            <main class="main1" />
-            <main class="main2" />
-            <main class="main3" />
-            <main class="main4" />
-          </div>
-          <main class="main5" />
-          <div class="div32">■車両情報</div>
-          <div class="toyota">TOYOTA　アルファード</div>
-          <div class="div33">
-            <div class="bookingInformation">BOOKING INFORMATION</div>
-            <div class="div34">ご予約内容</div>
-            <img class="scheduleIcon" alt="" src="/images/images/schedule.svg" />
-          </div>
-        </div>
+        </section>
         <div class="div35">
           <button class="button2">
             <div class="child" />
@@ -342,150 +421,71 @@
           </div>
           <img class="scheduleIcon2" alt="" src="/images/images/schedule2.svg" />
         </div>
-        <section class="schedule" schedule-search-form>
-          <div class="scheduleChild" />
-          <div class="div153">
-            <div class="div154">乗車定員　7人</div>
-            <img
-              class="maskGroupIcon1"
-              alt=""
-              src="/images/images/mask-group1@2x.png"
-            />
-          </div>
-          <div class="h">¥25,000~/24h</div>
-          <div class="alphard">ALPHARD</div>
-          <main class="main6" />
-          <div class="div155">
+        <div class="div3">
+          <button class="button">
             <div class="child" />
-            <div class="div156">選択する</div>
-          </div>
-          <div class="div157">
-            <div class="child" />
-            <div class="div158">
-              <p class="p">会員の方</p>
-              <p class="p1">　　 (選択する)</p>
-            </div>
-          </div>
-          <div class="div159">
-            <div class="child" />
-            <div class="div158">
-              <p class="p">初めての方</p>
-              <p class="p1">(選択する)</p>
-            </div>
-          </div>
-          <div class="div161">会員の方</div>
-          <div class="div162">(選択する)</div>
-          <div class="div163">(選択する)</div>
-          <div class="div164">はじめての方</div>
-          <img class="scheduleItem" alt="" src="/images/images/vector-2.svg" />
-          <div class="div165">
-            <img class="icon1" alt="" src="/images/images/1.svg" />
-            <div class="div166">日付未定</div>
-          </div>
-          <div class="div167">
-            <div class="div168">
-              <div class="div169">2023/01/01</div>
-              <img class="vectorIcon25" alt="" src="/images/images/vector25.svg" />
-            </div>
-            <div class="div170">
-              <div class="child26" />
-              <div class="div171">8:00</div>
-              <img class="vectorIcon26" alt="" src="/images/images/vector26.svg" />
-            </div>
-            <div class="div172">
-              <div class="div66">8:00</div>
-              <img
-                class="keyboardArrowDown8"
-                alt=""
-                src="/images/images/keyboard-arrow-down7.svg"
-              />
-            </div>
-            <div class="div174">返却日時</div>
-          </div>
-          <div class="div175">
-            <div class="div176">出発日時</div>
-            <div class="div177">
-              <div class="div169">2023/01/01</div>
-              <img class="vectorIcon25" alt="" src="/images/images/vector27.svg" />
-            </div>
-            <div class="calendarOverlayButton">
-              <img class="vectorIcon28" alt="" src="/images/images/vector28.svg" />
-            </div>
-            <div class="calendarOverlayButton1">
-              <img class="vectorIcon28" alt="" src="/images/images/vector28.svg" />
-            </div>
-            <div class="div170">
-              <div class="child26" />
-              <div class="div171">8:00</div>
-              <img class="vectorIcon26" alt="" src="/images/images/vector29.svg" />
-            </div>
-            <div class="div172">
-              <div class="div66">8:00</div>
-              <img
-                class="keyboardArrowDown8"
-                alt=""
-                src="/images/images/keyboard-arrow-down7.svg"
-              />
-            </div>
-          </div>
-          <div class="div183">
-            <div class="schedule1">SCHEDULE</div>
-            <div class="div184">旅行日程で探す</div>
-            <img class="scheduleIcon3" alt="" src="/images/images/schedule2.svg" />
-          </div>
-          <button class="button3">
-            <div class="child" />
-            <div class="div4">空き状況を検索</div>
+            <div class="div4">　 現金決済</div>
           </button>
-        </section>
-        <section class="feture" features>
-          <div class="div186">
-            <h1 class="h1">
-              <p class="p">
-                広々過ごせるアルファードでゆとりのある快適なご旅行を
-              </p>
-              <p class="p">サポートいたします。</p>
-            </h1>
-            <div class="ellipseDiv" />
-            <div class="div187">03</div>
-            <h1 class="h11">
-              <p class="p">全車ゆとりのある</p>
-              <p class="p">アルファード</p>
-            </h1>
+          <button class="button1">
+            <div class="child" />
+            <div class="div4">オンライン決済</div>
+          </button>
+          <div class="div6">
+            <div class="div7">■お客様情報</div>
+            <div class="div8">お名前</div>
+            <div class="div9">メールアドレス</div>
+            <div class="div10">電話番号</div>
+            <div class="div11">080-0000-0000</div>
+            <div class="div12">空港お出迎え</div>
+            <div class="div13">空港お見送り</div>
+            <div class="div14">18:00</div>
+            <div class="div15">なし</div>
+            <div class="exampleclassokinawa">example@class.okinawa</div>
+            <div class="div16">山田太郎　様</div>
           </div>
-          <div class="div188">
-            <h1 class="h12">
-              <p class="p">混みにくいインターチェンジへ</p>
-              <p class="p">最短アクセスが可能です。</p>
-            </h1>
-            <div class="ellipseDiv" />
-            <div class="div187">02</div>
-            <h1 class="h13">
-              <p class="p">混みにくい高速道路の</p>
-              <p class="p">近くだからスイスイ</p>
-            </h1>
+          <div class="div17">
+            <img class="inner" alt="" src="/images/images/vector-1.svg" />
+            <div class="div18">
+              <img class="icon" alt="" src="/images/images/@2x.png" />
+              <div class="div19">補償制度を詳しく</div>
+            </div>
+            <div class="exampleclassokinawa">基本料金</div>
+            <div class="div21">¥20,000</div>
+            <div class="div22">補償制度</div>
+            <div class="div23">¥3,000</div>
+            <div class="div24">¥30,000</div>
+            <div class="div25">2023/1/1 10:00 ~ 20231/2 18:00</div>
+            <div class="div26">■料金</div>
+            <div class="div27">■貸出日程</div>
           </div>
-          <div class="div190">
-            <h1 class="h14">
-              <p class="p">必要書類はメールにて送信。</p>
-              <p class="p">かんたんに手続きが済みます。</p>
-            </h1>
-            <div class="ellipseDiv" />
-            <div class="div187">01</div>
-            <h1 class="h15">
-              <p class="p">難しい手続きなしで</p>
-              <p class="p">すぐご出発</p>
-            </h1>
+          <div class="div28">
+            <div class="at">
+              <div class="at1">AT</div>
+            </div>
+            <div class="div29">
+              <img class="vectorIcon" alt="" src="/images/images/vector.svg" />
+              <img class="vectorIcon1" alt="" src="/images/images/vector1.svg" />
+              <img class="vectorIcon2" alt="" src="/images/images/vector2.svg" />
+              <img class="vectorIcon3" alt="" src="/images/images/vector3.svg" />
+              <div class="div30">7人</div>
+            </div>
+            <img class="maskGroupIcon" alt="" src="/images/images/mask-group@2x.png" />
           </div>
-          <h1 class="feture1">FETURE</h1>
-          <h3 class="h3">特徴</h3>
-        </section>
-        <section class="section" hero-image-area />
-        <section
-          class="classLogo"
-          logo-white
-          data-scroll-to="cLASSLogo"
-        />
+          <div class="div31">
+            <main class="main1" />
+            <main class="main2" />
+            <main class="main3" />
+            <main class="main4" />
+          </div>
+          <main class="main5" />
+          <div class="div32">■車両情報</div>
+          <div class="toyota">TOYOTA　アルファード</div>
+          <div class="div33">
+            <div class="bookingInformation">BOOKING INFORMATION</div>
+            <div class="div34">ご予約内容</div>
+            <img class="scheduleIcon" alt="" src="/images/images/schedule.svg" />
+          </div>
+        </div>
       </main>
       <footer class="footer">
         <div class="div">〒901-0203　沖縄県豊見城市長堂67</div>
