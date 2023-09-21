@@ -46,7 +46,7 @@ export default {
       position: absolute;
       top: 2.8rem;
       left: 2.4rem;
-      width: 18%;
+      width: 11rem;
       height: 1.9rem;
       -o-object-fit: cover;
       object-fit: cover;
