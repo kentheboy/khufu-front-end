@@ -1,18 +1,18 @@
 <template>
     <header class="header" header>
         <div class="headerChild">
-            <div class="hamburgerMenu">
-            <a href="#">menu 1</a>
-            <a href="#">menu 2</a>
-            <a href="#">menu 3</a>
-            </div>
-            <img
+          <img
             class="logo"
             alt=""
             src="/images/class-logo-main@2x.png"
             :onClick="onCLASSLogo311Click"
-            />
-            <button class="button">予約する</button>
+          />
+          <div class="hamburgerMenu">
+            <a href="#">menu 1</a>
+            <a href="#">menu 2</a>
+            <a href="#">menu 3</a>
+          </div>
+          <button class="button">予約する</button>
         </div>
       </header>
 </template>
@@ -33,7 +33,7 @@ export default {
         right: 3.9rem;
         display: block;
         width: 1.5rem;
-        top: 2.35rem;
+        top: 2rem;
         height: 0;
         box-shadow: 0 14.5px 0 0.1rem #fff, 0 24.5px 0 0.1rem #fff, 0 34.9px 0 0.1rem #fff;
         
@@ -46,7 +46,7 @@ export default {
       position: absolute;
       top: 2.8rem;
       left: 2.4rem;
-      width: 7.7rem;
+      width: 18%;
       height: 1.9rem;
       -o-object-fit: cover;
       object-fit: cover;
