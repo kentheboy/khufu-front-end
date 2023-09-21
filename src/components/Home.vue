@@ -2,51 +2,55 @@
     <div class="topLp">
       <Header></Header>
       <main class="main">
-        <section class="heroImageArea">
+        <section class="section__heroImageArea">
           <ImageSlider
             :images="heroImages"
           ></ImageSlider>
         </section>
-        <section class="features">
-          <h1 class="feture1">FETURE</h1>
-          <h3 class="h3">特徴</h3>
-          <div class="div190">
-            <h1 class="h14">
-              <p class="p">必要書類はメールにて送信。</p>
-              <p class="p">かんたんに手続きが済みます。</p>
-            </h1>
-            <div class="ellipseDiv" />
-            <div class="div187">01</div>
-            <h1 class="h15">
-              <p class="p">難しい手続きなしで</p>
-              <p class="p">すぐご出発</p>
-            </h1>
+        <section class="section__features">
+          <div class="section__features--title">
+            <h3>特徴</h3>
+            <h1>FETURE</h1>
           </div>
-          <div class="div188">
-            <h1 class="h12">
-              <p class="p">混みにくいインターチェンジへ</p>
-              <p class="p">最短アクセスが可能です。</p>
-            </h1>
-            <div class="ellipseDiv" />
-            <div class="div187">02</div>
-            <h1 class="h13">
-              <p class="p">混みにくい高速道路の</p>
-              <p class="p">近くだからスイスイ</p>
-            </h1>
-          </div>
-          <div class="div186">
-            <h1 class="h1">
-              <p class="p">
-                広々過ごせるアルファードでゆとりのある快適なご旅行を
-              </p>
-              <p class="p">サポートいたします。</p>
-            </h1>
-            <div class="ellipseDiv" />
-            <div class="div187">03</div>
-            <h1 class="h11">
-              <p class="p">全車ゆとりのある</p>
-              <p class="p">アルファード</p>
-            </h1>
+          <div class="section__features--contents">
+            <div class="div190">
+              <div class="ellipseDiv" />
+              <div class="div187">01</div>
+              <h1 class="h15">
+                <p class="p">難しい手続きなしで</p>
+                <p class="p">すぐご出発</p>
+              </h1>
+              <h1 class="h14">
+                <p class="p">必要書類はメールにて送信。</p>
+                <p class="p">かんたんに手続きが済みます。</p>
+              </h1>
+            </div>
+            <div class="div188">
+              <div class="ellipseDiv" />
+              <div class="div187">02</div>
+              <h1 class="h13">
+                <p class="p">混みにくい高速道路の</p>
+                <p class="p">近くだからスイスイ</p>
+              </h1>
+              <h1 class="h12">
+                <p class="p">混みにくいインターチェンジへ</p>
+                <p class="p">最短アクセスが可能です。</p>
+              </h1>
+            </div>
+            <div class="div186">
+              <div class="ellipseDiv" />
+              <div class="div187">03</div>
+              <h1 class="h11">
+                <p class="p">全車ゆとりのある</p>
+                <p class="p">アルファード</p>
+              </h1>
+              <h1 class="h1">
+                <p class="p">
+                  広々過ごせるアルファードでゆとりのある快適なご旅行を
+                </p>
+                <p class="p">サポートいたします。</p>
+              </h1>
+            </div>
           </div>
         </section>
         <section class="schedule" schedule-search-form>
@@ -536,15 +540,50 @@
   <!-- Add "scoped" attribute to limit CSS to this component only -->
   <style lang="scss" scoped>
   section {
-    &.heroImageArea {
-      margin-bottom: 1.2rem;
+    margin: 0 2.4rem;
+  }
+  .section {
+    &__heroImageArea {
+      margin: 0 0 1.2rem 0;
     }
 
-    &.features {
+    &__features {
       text-align: center;
       font-size: var(--font-size-base);
       color: var(--color-white);
       font-family: var(--font-istok-web);
+      margin: 0 6%;
+
+      &--title {
+        position: relative;
+        h3 {
+          margin: 0;
+          position: absolute;
+          top: 0rem;
+          left: 0.1rem;
+          font-size: var(--font-size-xs);
+          letter-spacing: 0.2em;
+          font-weight: 400;
+          font-family: inherit;
+          color: var(--color-steelblue);
+          text-align: left;
+        }
+        h1 {
+          margin: 0;
+          position: absolute;
+          top: 1.1rem;
+          left: 0rem;
+          font-size: 3.2rem;
+          letter-spacing: 0.2em;
+          font-weight: 400;
+          font-family: inherit;
+          color: var(--color-steelblue);
+          text-align: left;
+        }
+      }
+      &--contents{
+        position: relative;
+      }
     }
   }
   </style>
