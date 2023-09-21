@@ -7,19 +7,19 @@
             :images="heroImages"
           ></ImageSlider>
         </section>
-        <section class="feture" features>
-          <div class="div186">
-            <h1 class="h1">
-              <p class="p">
-                広々過ごせるアルファードでゆとりのある快適なご旅行を
-              </p>
-              <p class="p">サポートいたします。</p>
+        <section class="features">
+          <h1 class="feture1">FETURE</h1>
+          <h3 class="h3">特徴</h3>
+          <div class="div190">
+            <h1 class="h14">
+              <p class="p">必要書類はメールにて送信。</p>
+              <p class="p">かんたんに手続きが済みます。</p>
             </h1>
             <div class="ellipseDiv" />
-            <div class="div187">03</div>
-            <h1 class="h11">
-              <p class="p">全車ゆとりのある</p>
-              <p class="p">アルファード</p>
+            <div class="div187">01</div>
+            <h1 class="h15">
+              <p class="p">難しい手続きなしで</p>
+              <p class="p">すぐご出発</p>
             </h1>
           </div>
           <div class="div188">
@@ -34,20 +34,20 @@
               <p class="p">近くだからスイスイ</p>
             </h1>
           </div>
-          <div class="div190">
-            <h1 class="h14">
-              <p class="p">必要書類はメールにて送信。</p>
-              <p class="p">かんたんに手続きが済みます。</p>
+          <div class="div186">
+            <h1 class="h1">
+              <p class="p">
+                広々過ごせるアルファードでゆとりのある快適なご旅行を
+              </p>
+              <p class="p">サポートいたします。</p>
             </h1>
             <div class="ellipseDiv" />
-            <div class="div187">01</div>
-            <h1 class="h15">
-              <p class="p">難しい手続きなしで</p>
-              <p class="p">すぐご出発</p>
+            <div class="div187">03</div>
+            <h1 class="h11">
+              <p class="p">全車ゆとりのある</p>
+              <p class="p">アルファード</p>
             </h1>
           </div>
-          <h1 class="feture1">FETURE</h1>
-          <h3 class="h3">特徴</h3>
         </section>
         <section class="schedule" schedule-search-form>
           <div class="scheduleChild" />
@@ -538,6 +538,13 @@
   section {
     &.heroImageArea {
       margin-bottom: 1.2rem;
+    }
+
+    &.features {
+      text-align: center;
+      font-size: var(--font-size-base);
+      color: var(--color-white);
+      font-family: var(--font-istok-web);
     }
   }
   </style>
