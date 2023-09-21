@@ -2153,17 +2153,6 @@ body {
   color: var(--color-white);
   font-family: var(--font-istok-web);
 }
-.section {
-  position: absolute;
-  top: 1.05rem;
-  left: 0rem;
-  width: 38.95rem;
-  height: 44.87rem;
-  background-image: url("/public/images/2@3x.png");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: top;
-}
 .classLogo {
   position: absolute;
   top: 0rem;

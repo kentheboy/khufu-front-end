@@ -2,12 +2,11 @@
     <div class="topLp">
       <Header></Header>
       <main class="main">
-        <section class="section" hero-image-area />
-        <section
-          class="classLogo"
-          logo-white
-          data-scroll-to="cLASSLogo"
-        />
+        <section class="heroImageArea">
+          <ImageSlider
+            :images="heroImages"
+          ></ImageSlider>
+        </section>
         <section class="feture" features>
           <div class="div186">
             <h1 class="h1">
@@ -57,7 +56,7 @@
             <img
               class="maskGroupIcon1"
               alt=""
-              src="/images/images/mask-group1@2x.png"
+              src="/images/mask-group1@2x.png"
             />
           </div>
           <div class="h">¥25,000~/24h</div>
@@ -85,27 +84,27 @@
           <div class="div162">(選択する)</div>
           <div class="div163">(選択する)</div>
           <div class="div164">はじめての方</div>
-          <img class="scheduleItem" alt="" src="/images/images/vector-2.svg" />
+          <img class="scheduleItem" alt="" src="/images/vector-2.svg" />
           <div class="div165">
-            <img class="icon1" alt="" src="/images/images/1.svg" />
+            <img class="icon1" alt="" src="/images/1.svg" />
             <div class="div166">日付未定</div>
           </div>
           <div class="div167">
             <div class="div168">
               <div class="div169">2023/01/01</div>
-              <img class="vectorIcon25" alt="" src="/images/images/vector25.svg" />
+              <img class="vectorIcon25" alt="" src="/images/vector25.svg" />
             </div>
             <div class="div170">
               <div class="child26" />
               <div class="div171">8:00</div>
-              <img class="vectorIcon26" alt="" src="/images/images/vector26.svg" />
+              <img class="vectorIcon26" alt="" src="/images/vector26.svg" />
             </div>
             <div class="div172">
               <div class="div66">8:00</div>
               <img
                 class="keyboardArrowDown8"
                 alt=""
-                src="/images/images/keyboard-arrow-down7.svg"
+                src="/images/keyboard-arrow-down7.svg"
               />
             </div>
             <div class="div174">返却日時</div>
@@ -114,32 +113,32 @@
             <div class="div176">出発日時</div>
             <div class="div177">
               <div class="div169">2023/01/01</div>
-              <img class="vectorIcon25" alt="" src="/images/images/vector27.svg" />
+              <img class="vectorIcon25" alt="" src="/images/vector27.svg" />
             </div>
             <div class="calendarOverlayButton">
-              <img class="vectorIcon28" alt="" src="/images/images/vector28.svg" />
+              <img class="vectorIcon28" alt="" src="/images/vector28.svg" />
             </div>
             <div class="calendarOverlayButton1">
-              <img class="vectorIcon28" alt="" src="/images/images/vector28.svg" />
+              <img class="vectorIcon28" alt="" src="/images/vector28.svg" />
             </div>
             <div class="div170">
               <div class="child26" />
               <div class="div171">8:00</div>
-              <img class="vectorIcon26" alt="" src="/images/images/vector29.svg" />
+              <img class="vectorIcon26" alt="" src="/images/vector29.svg" />
             </div>
             <div class="div172">
               <div class="div66">8:00</div>
               <img
                 class="keyboardArrowDown8"
                 alt=""
-                src="/images/images/keyboard-arrow-down7.svg"
+                src="/images/keyboard-arrow-down7.svg"
               />
             </div>
           </div>
           <div class="div183">
             <div class="schedule1">SCHEDULE</div>
             <div class="div184">旅行日程で探す</div>
-            <img class="scheduleIcon3" alt="" src="/images/images/schedule2.svg" />
+            <img class="scheduleIcon3" alt="" src="/images/schedule2.svg" />
           </div>
           <button class="button3">
             <div class="child" />
@@ -155,11 +154,11 @@
             <div class="div38">会員登録</div>
             <div class="div39">
               <div class="div40">希望する</div>
-              <img class="vectorIcon4" alt="" src="/images/images/vector4.svg" />
+              <img class="vectorIcon4" alt="" src="/images/vector4.svg" />
             </div>
             <div class="div41">
               <div class="div42">希望しない</div>
-              <img class="vectorIcon4" alt="" src="/images/images/vector5.svg" />
+              <img class="vectorIcon4" alt="" src="/images/vector5.svg" />
             </div>
           </div>
           <div class="div43">
@@ -178,11 +177,11 @@
             <div class="div48">追加運転者</div>
             <div class="div49">
               <div class="div50">あり</div>
-              <img class="vectorIcon4" alt="" src="/images/images/vector6.svg" />
+              <img class="vectorIcon4" alt="" src="/images/vector6.svg" />
             </div>
             <div class="div51">
               <div class="div52">なし</div>
-              <img class="vectorIcon4" alt="" src="/images/images/vector7.svg" />
+              <img class="vectorIcon4" alt="" src="/images/vector7.svg" />
             </div>
           </div>
           <div class="div53">
@@ -203,19 +202,19 @@
               <div class="div61">
                 <div class="child3" />
                 <div class="div62">01</div>
-                <img class="vectorIcon8" alt="" src="/images/images/vector8.svg" />
+                <img class="vectorIcon8" alt="" src="/images/vector8.svg" />
               </div>
               <div class="div63">
                 <div class="child4" />
                 <div class="div62">2023</div>
-                <img class="vectorIcon9" alt="" src="/images/images/vector9.svg" />
+                <img class="vectorIcon9" alt="" src="/images/vector9.svg" />
               </div>
               <div class="div65">
                 <div class="div66">01</div>
                 <img
                   class="keyboardArrowDown"
                   alt=""
-                  src="/images/images/keyboard-arrow-down2.svg"
+                  src="/images/keyboard-arrow-down2.svg"
                 />
               </div>
               <div class="div67">
@@ -223,13 +222,13 @@
                 <img
                   class="keyboardArrowDown"
                   alt=""
-                  src="/images/images/keyboard-arrow-down3.svg"
+                  src="/images/keyboard-arrow-down3.svg"
                 />
               </div>
               <div class="div69">
                 <div class="child3" />
                 <div class="div62">01</div>
-                <img class="vectorIcon8" alt="" src="/images/images/vector10.svg" />
+                <img class="vectorIcon8" alt="" src="/images/vector10.svg" />
               </div>
               <div class="div71">/</div>
             </div>
@@ -241,21 +240,21 @@
             <div class="div75">空港お見送り</div>
             <div class="div76">
               <div class="div50">あり</div>
-              <img class="vectorIcon4" alt="" src="/images/images/vector11.svg" />
+              <img class="vectorIcon4" alt="" src="/images/vector11.svg" />
             </div>
             <div class="div78">
               <div class="div52">なし</div>
-              <img class="vectorIcon4" alt="" src="/images/images/vector12.svg" />
+              <img class="vectorIcon4" alt="" src="/images/vector12.svg" />
             </div>
             <div class="div80">
               <div class="child3" />
               <div class="div62">17</div>
-              <img class="vectorIcon8" alt="" src="/images/images/vector13.svg" />
+              <img class="vectorIcon8" alt="" src="/images/vector13.svg" />
             </div>
             <div class="div82">
               <div class="child3" />
               <div class="div62">00</div>
-              <img class="vectorIcon8" alt="" src="/images/images/vector14.svg" />
+              <img class="vectorIcon8" alt="" src="/images/vector14.svg" />
             </div>
             <input class="input8" type="text" />
             <input class="input9" type="text" />
@@ -266,28 +265,28 @@
             <div class="div75">空港お出迎え</div>
             <div class="div76">
               <div class="div50">あり</div>
-              <img class="vectorIcon4" alt="" src="/images/images/vector15.svg" />
+              <img class="vectorIcon4" alt="" src="/images/vector15.svg" />
             </div>
             <div class="div78">
               <div class="div52">なし</div>
-              <img class="vectorIcon4" alt="" src="/images/images/vector16.svg" />
+              <img class="vectorIcon4" alt="" src="/images/vector16.svg" />
             </div>
             <div class="div92">
               <div class="child9" />
               <div class="div62">09</div>
-              <img class="vectorIcon8" alt="" src="/images/images/vector17.svg" />
+              <img class="vectorIcon8" alt="" src="/images/vector17.svg" />
             </div>
             <div class="div94">
               <div class="child9" />
               <div class="div62">00</div>
-              <img class="vectorIcon8" alt="" src="/images/images/vector18.svg" />
+              <img class="vectorIcon8" alt="" src="/images/vector18.svg" />
             </div>
             <div class="div96">
               <div class="div66">00</div>
               <img
                 class="keyboardArrowDown"
                 alt=""
-                src="/images/images/keyboard-arrow-down4.svg"
+                src="/images/keyboard-arrow-down4.svg"
               />
             </div>
             <div class="div98">
@@ -295,7 +294,7 @@
               <img
                 class="keyboardArrowDown"
                 alt=""
-                src="/images/images/keyboard-arrow-down4.svg"
+                src="/images/keyboard-arrow-down4.svg"
               />
             </div>
             <div class="div84">時</div>
@@ -308,7 +307,7 @@
               <div class="rectangleParent">
                 <div class="frameChild" />
                 <div class="div105">都道府県</div>
-                <img class="vectorIcon19" alt="" src="/images/images/vector19.svg" />
+                <img class="vectorIcon19" alt="" src="/images/vector19.svg" />
               </div>
               <select class="select" />
               <input class="child11" type="text" />
@@ -320,19 +319,19 @@
               <div class="div109">
                 <div class="child3" />
                 <div class="div62">01</div>
-                <img class="vectorIcon8" alt="" src="/images/images/vector20.svg" />
+                <img class="vectorIcon8" alt="" src="/images/vector20.svg" />
               </div>
               <div class="div111">
                 <div class="div66">1920</div>
                 <img
                   class="keyboardArrowDown"
                   alt=""
-                  src="/images/images/keyboard-arrow-down5.svg"
+                  src="/images/keyboard-arrow-down5.svg"
                 />
               </div>
               <div class="div113">
                 <div class="div62">01</div>
-                <img class="vectorIcon8" alt="" src="/images/images/vector21.svg" />
+                <img class="vectorIcon8" alt="" src="/images/vector21.svg" />
               </div>
               <div class="div115">/</div>
               <div class="div116">/</div>
@@ -346,24 +345,24 @@
               <div class="div121">
                 <div class="child4" />
                 <div class="div62">2023</div>
-                <img class="vectorIcon9" alt="" src="/images/images/vector22.svg" />
+                <img class="vectorIcon9" alt="" src="/images/vector22.svg" />
               </div>
               <div class="div123">
                 <div class="child3" />
                 <div class="div62">01</div>
-                <img class="vectorIcon8" alt="" src="/images/images/vector23.svg" />
+                <img class="vectorIcon8" alt="" src="/images/vector23.svg" />
               </div>
               <div class="div125">
                 <div class="child3" />
                 <div class="div62">01</div>
-                <img class="vectorIcon8" alt="" src="/images/images/vector24.svg" />
+                <img class="vectorIcon8" alt="" src="/images/vector24.svg" />
               </div>
               <div class="div111">
                 <div class="div66">2023</div>
                 <img
                   class="keyboardArrowDown"
                   alt=""
-                  src="/images/images/keyboard-arrow-down6.svg"
+                  src="/images/keyboard-arrow-down6.svg"
                 />
               </div>
               <div class="div129">
@@ -371,7 +370,7 @@
                 <img
                   class="keyboardArrowDown"
                   alt=""
-                  src="/images/images/keyboard-arrow-down6.svg"
+                  src="/images/keyboard-arrow-down6.svg"
                 />
               </div>
               <div class="div131">
@@ -379,7 +378,7 @@
                 <img
                   class="keyboardArrowDown"
                   alt=""
-                  src="/images/images/keyboard-arrow-down6.svg"
+                  src="/images/keyboard-arrow-down6.svg"
                 />
               </div>
               <div class="div133">/</div>
@@ -417,9 +416,9 @@
           <div class="div151">
             <div class="yourInformation">YOUR INFORMATION</div>
             <div class="div152">お客様情報入力</div>
-            <img class="scheduleIcon1" alt="" src="/images/images/schedule1.svg" />
+            <img class="scheduleIcon1" alt="" src="/images/schedule1.svg" />
           </div>
-          <img class="scheduleIcon2" alt="" src="/images/images/schedule2.svg" />
+          <img class="scheduleIcon2" alt="" src="/images/schedule2.svg" />
         </div>
         <div class="div3">
           <button class="button">
@@ -444,9 +443,9 @@
             <div class="div16">山田太郎　様</div>
           </div>
           <div class="div17">
-            <img class="inner" alt="" src="/images/images/vector-1.svg" />
+            <img class="inner" alt="" src="/images/vector-1.svg" />
             <div class="div18">
-              <img class="icon" alt="" src="/images/images/@2x.png" />
+              <img class="icon" alt="" src="/images/@2x.png" />
               <div class="div19">補償制度を詳しく</div>
             </div>
             <div class="exampleclassokinawa">基本料金</div>
@@ -463,13 +462,13 @@
               <div class="at1">AT</div>
             </div>
             <div class="div29">
-              <img class="vectorIcon" alt="" src="/images/images/vector.svg" />
-              <img class="vectorIcon1" alt="" src="/images/images/vector1.svg" />
-              <img class="vectorIcon2" alt="" src="/images/images/vector2.svg" />
-              <img class="vectorIcon3" alt="" src="/images/images/vector3.svg" />
+              <img class="vectorIcon" alt="" src="/images/vector.svg" />
+              <img class="vectorIcon1" alt="" src="/images/vector1.svg" />
+              <img class="vectorIcon2" alt="" src="/images/vector2.svg" />
+              <img class="vectorIcon3" alt="" src="/images/vector3.svg" />
               <div class="div30">7人</div>
             </div>
-            <img class="maskGroupIcon" alt="" src="/images/images/mask-group@2x.png" />
+            <img class="maskGroupIcon" alt="" src="/images/mask-group@2x.png" />
           </div>
           <div class="div31">
             <main class="main1" />
@@ -483,7 +482,7 @@
           <div class="div33">
             <div class="bookingInformation">BOOKING INFORMATION</div>
             <div class="div34">ご予約内容</div>
-            <img class="scheduleIcon" alt="" src="/images/images/schedule.svg" />
+            <img class="scheduleIcon" alt="" src="/images/schedule.svg" />
           </div>
         </div>
       </main>
@@ -494,10 +493,10 @@
         <img
           class="classLogo31"
           alt=""
-          src="/images/images/class-logo3-1@2x.png"
+          src="/images/class-logo3-1@2x.png"
           :onClick="onCLASSLogo31Click"
         />
-        <img class="footerChild" alt="" src="/images/images/images/group-2@2x.png" />
+        <img class="footerChild" alt="" src="/images/images/group-2@2x.png" />
       </footer>
       <div class="div192">お客様画面</div>
       <h3 class="h31">
@@ -509,22 +508,37 @@
   
   <script>
   import Header from "/src/components/common/Header";
+  import ImageSlider from "/src/components/common/ImageSlider";
   export default {
     name: 'Home',
     components: {
-      Header
+      Header,
+      ImageSlider
     },
     props: {
       msg:  {
         type   : String,
         default: "Hello world",
         }
+    },
+    data() {
+      return {
+        heroImages: [
+          "/images/hero-image1-v2.jpg",
+          "https://cdn.pixabay.com/photo/2015/12/12/15/24/amsterdam-1089646_1280.jpg",
+          "https://cdn.pixabay.com/photo/2016/12/04/19/30/berlin-cathedral-1882397_1280.jpg"
+        ]
+      }
     }
   }
   </script>
   
   <!-- Add "scoped" attribute to limit CSS to this component only -->
   <style lang="scss" scoped>
-
+  section {
+    &.heroImageArea {
+      margin-bottom: 1.2rem;
+    }
+  }
   </style>
   
