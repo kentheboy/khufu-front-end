@@ -1,0 +1,26 @@
+name: Deploy
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v2
+      - name: Install dependencies
+        run: npm install
+      - name: Build Website
+        run: npm run build
+      - name: Set AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+          with:
+            aws-access-key-id: ${{ secrets.AWS_DEV_ACCESS_KEY_ID }}
+            aws-secret-access-key: ${{ secrets.AWS_DEV_SECRET_ACCESS_KEY }}
+            aws-region: ap-northeast-1
+      - name: S3 sync
+        working-directory: dist
+        run: |
+          aws s3 sync . s3://class-rental-car-dev --delete --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
