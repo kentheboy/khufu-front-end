@@ -25,8 +25,7 @@
               </div>
               <div class="subtext">
                 <h1>
-                  <p class="p">必要書類はメールにて送信。</p>
-                  <p class="p">かんたんに手続きが済みます。</p>
+                  <p class="p">必要書類はメールにて送信。かんたんに手続きが済みます。</p>
                 </h1>
               </div>
             </div>
@@ -45,8 +44,7 @@
                   <p class="p">混みにくいインターチェンジへ最短アクセスが可能です。</p>
                 </h1>
                 <h3>
-                  <p class="p">※空港近辺では使用インターが</p>
-                  <p class="p">重なり、度々渋滞になります。</p>
+                  <p class="p">※空港近辺では使用インターが重なり、度々渋滞になります。</p>
                 </h3>
               </div>
             </div>
@@ -589,6 +587,9 @@
       &--content{
         position: relative;
         margin: 4rem;
+        @media screen and (max-width: 390px) {
+          margin: 4rem 1rem;
+        }
         .ellipse-parent {
           display: flex;
           justify-content: space-around;
@@ -598,6 +599,9 @@
             background-color: var(--color-skyblue);
             width: 27.48rem;
             height: 27.48rem;
+            @media screen and (max-width: 390px) {
+              height: 22.48rem;
+            }
             .ellipseInside{
               &-number {
                 position: absolute;
@@ -607,7 +611,9 @@
                 letter-spacing: 0.1em;
                 text-align: left;
                 text-shadow: 4.46875px 8.9375px 8.94px rgba(0, 0, 0, 0.5);
-            
+                @media screen and (max-width: 390px) {
+                  bottom:-1.9rem;
+                }
               }
               &-text{
                 position: absolute;
@@ -617,6 +623,10 @@
                 letter-spacing: 0.2em;
                 font-weight: 700;
                 font-family: inherit;
+                @media screen and (max-width: 390px) {
+                  font-size: 1.6rem;
+                  top: 8.4rem
+                }
               }
             }
           }
@@ -629,6 +639,9 @@
             font-weight: 400;
             font-family: inherit;
             color: var(--color-steelblue);
+            @media screen and (max-width: 390px) {
+              font-size: 1.3rem;
+            }
           }
           h3 {
             font-size: var(--font-size-xs);
@@ -636,6 +649,9 @@
             font-weight: 400;
             font-family: inherit;
             color: var(--color-steelblue);
+            @media screen and (max-width: 390px) {
+              font-size: 1rem;
+            }
           }
         }
       }
