@@ -13,43 +13,58 @@
             <h1>FETURE</h1>
           </div>
           <div class="section__features--contents">
-            <div class="div190">
-              <div class="ellipseDiv" />
-              <div class="div187">01</div>
-              <h1 class="h15">
-                <p class="p">難しい手続きなしで</p>
-                <p class="p">すぐご出発</p>
-              </h1>
-              <h1 class="h14">
-                <p class="p">必要書類はメールにて送信。</p>
-                <p class="p">かんたんに手続きが済みます。</p>
-              </h1>
+            <div class="section__features--content">
+              <div class="ellipse-parent">
+                <div class="ellipseDiv">
+                  <div class="ellipseInside-number" data-v-8dc7cce2="">01</div>
+                  <h1 class="ellipseInside-text">
+                    <p class="p">難しい手続きなしで</p>
+                    <p class="p">すぐご出発</p>
+                  </h1>
+                </div>
+              </div>
+              <div class="subtext">
+                <h1>
+                  <p class="p">必要書類はメールにて送信。</p>
+                  <p class="p">かんたんに手続きが済みます。</p>
+                </h1>
+              </div>
             </div>
-            <div class="div188">
-              <div class="ellipseDiv" />
-              <div class="div187">02</div>
-              <h1 class="h13">
-                <p class="p">混みにくい高速道路の</p>
-                <p class="p">近くだからスイスイ</p>
-              </h1>
-              <h1 class="h12">
-                <p class="p">混みにくいインターチェンジへ</p>
-                <p class="p">最短アクセスが可能です。</p>
-              </h1>
+            <div class="section__features--content">
+              <div class="ellipse-parent">
+                <div class="ellipseDiv">
+                  <div class="ellipseInside-number" data-v-8dc7cce2="">02</div>
+                  <h1 class="ellipseInside-text">
+                    <p class="p">混みにくい高速道路の</p>
+                    <p class="p">近くだからスイスイ</p>
+                  </h1>
+                </div>
+              </div>
+              <div class="subtext">
+                <h1>
+                  <p class="p">混みにくいインターチェンジへ最短アクセスが可能です。</p>
+                </h1>
+                <h3>
+                  <p class="p">※空港近辺では使用インターが</p>
+                  <p class="p">重なり、度々渋滞になります。</p>
+                </h3>
+              </div>
             </div>
-            <div class="div186">
-              <div class="ellipseDiv" />
-              <div class="div187">03</div>
-              <h1 class="h11">
-                <p class="p">全車ゆとりのある</p>
-                <p class="p">アルファード</p>
-              </h1>
-              <h1 class="h1">
-                <p class="p">
-                  広々過ごせるアルファードでゆとりのある快適なご旅行を
-                </p>
-                <p class="p">サポートいたします。</p>
-              </h1>
+            <div class="section__features--content">
+              <div class="ellipse-parent">
+                <div class="ellipseDiv">
+                  <div class="ellipseInside-number" data-v-8dc7cce2="">03</div>
+                  <h1 class="ellipseInside-text">
+                    <p class="p">全車ゆとりのある</p>
+                    <p class="p">アルファード</p>
+                  </h1>
+                </div>
+              </div>
+              <div class="subtext">
+                <h1>
+                  <p class="p">広々過ごせるアルファードでゆとりのある快適なご旅行をサポートいたします。</p>
+                </h1>
+              </div>
             </div>
           </div>
         </section>
@@ -503,10 +518,6 @@
         <img class="footerChild" alt="" src="/images/images/group-2@2x.png" />
       </footer>
       <div class="div192">お客様画面</div>
-      <h3 class="h31">
-        <p class="p">※空港近辺では使用インターが</p>
-        <p class="p">重なり、度々渋滞になります。</p>
-      </h3>
     </div>
   </template>
   
@@ -555,12 +566,8 @@
       margin: 0 6%;
 
       &--title {
-        position: relative;
         h3 {
           margin: 0;
-          position: absolute;
-          top: 0rem;
-          left: 0.1rem;
           font-size: var(--font-size-xs);
           letter-spacing: 0.2em;
           font-weight: 400;
@@ -570,19 +577,67 @@
         }
         h1 {
           margin: 0;
-          position: absolute;
-          top: 1.1rem;
-          left: 0rem;
           font-size: 3.2rem;
           letter-spacing: 0.2em;
           font-weight: 400;
           font-family: inherit;
           color: var(--color-steelblue);
           text-align: left;
+          line-height: 3rem;
         }
       }
-      &--contents{
+      &--content{
         position: relative;
+        margin: 4rem;
+        .ellipse-parent {
+          display: flex;
+          justify-content: space-around;
+          .ellipseDiv {
+            position: relative;
+            border-radius: 50%;
+            background-color: var(--color-skyblue);
+            width: 27.48rem;
+            height: 27.48rem;
+            .ellipseInside{
+              &-number {
+                position: absolute;
+                right: 0;
+                bottom: -1.1rem;
+                font-size: var(--font-size-52xl-5);
+                letter-spacing: 0.1em;
+                text-align: left;
+                text-shadow: 4.46875px 8.9375px 8.94px rgba(0, 0, 0, 0.5);
+            
+              }
+              &-text{
+                position: absolute;
+                left: 3.1rem;
+                top: 9.5rem;
+                font-size: var(--font-size-xl);
+                letter-spacing: 0.2em;
+                font-weight: 700;
+                font-family: inherit;
+              }
+            }
+          }
+        }
+        .subtext {
+          margin: 4rem;
+          h1 {
+            font-size: inherit;
+            letter-spacing: 0.2em;
+            font-weight: 400;
+            font-family: inherit;
+            color: var(--color-steelblue);
+          }
+          h3 {
+            font-size: var(--font-size-xs);
+            letter-spacing: 0.2em;
+            font-weight: 400;
+            font-family: inherit;
+            color: var(--color-steelblue);
+          }
+        }
       }
     }
   }
