@@ -616,16 +616,15 @@
                 }
               }
               &-text{
-                position: absolute;
-                left: 3.1rem;
-                top: 9.5rem;
+                margin: 11rem 0;
                 font-size: var(--font-size-xl);
                 letter-spacing: 0.2em;
                 font-weight: 700;
                 font-family: inherit;
                 @media screen and (max-width: 390px) {
                   font-size: 1.6rem;
-                  top: 8.4rem
+                  top: 8.4rem;
+                  margin: 9rem 0;
                 }
               }
             }
