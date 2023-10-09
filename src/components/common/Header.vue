@@ -21,7 +21,7 @@ export default {
     name: 'Header',
 }
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
   .header {
     height: 7.6rem;
     background-color: var(--color-skyblue);

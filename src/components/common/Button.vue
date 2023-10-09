@@ -14,7 +14,7 @@ export default {
     }
 }
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 button {
     font-size: 1rem;
     margin-bottom: 1.5rem;
