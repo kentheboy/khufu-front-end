@@ -79,10 +79,7 @@
           <h3>お客様情報入力</h3>
         </div>
         <div class="section__form--content">
-          <div class="text-input">
-            <label>お名前</label>
-            <input type="text" name="name">
-          </div>
+          <Input type="text" label="お名前" name="name" placeholder="山田太郎"></Input>
         </div>
       </section>
       <div class="div35">
@@ -403,6 +400,7 @@
 import Header from "/src/components/common/Header";
 import ImageSlider from "/src/components/common/ImageSlider";
 import DateTimePicker from "/src/components/common/form/DateTimePicker";
+import Input from "/src/components/common/form/Input";
 import Button from "/src/components/common/Button";
 import Products from "/src/components/common/Products";
 export default {
@@ -411,6 +409,7 @@ export default {
     Header,
     ImageSlider,
     DateTimePicker,
+    Input,
     Button,
     Products
   },
@@ -585,24 +584,6 @@ section {
       margin-right: auto;
       width: fit-content;
     }
-  }
-}
-.text-input {
-  width: 24.4rem;
-  text-align: start;
-  label {
-    display: block;
-    margin-bottom: 0.3rem;
-  }
-  input {
-    border: none;
-    background-color: var(--color-aliceblue);
-    border-radius: 24.94px;
-    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
-    width: 21.69rem;
-    height: 2.09rem;
-    padding-left: 1.25rem;
-    padding-right: 1.25rem;
   }
 }
 </style>
