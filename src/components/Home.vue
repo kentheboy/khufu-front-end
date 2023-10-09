@@ -85,6 +85,7 @@
           <Input type="tel" label="電話番号" name="phonenumber" placeholder="080-0000-0000"></Input>
           <Input type="number" label="免許番号" name="license-number" placeholder="1234567890"></Input>
           <Input type="date" label="生年月日" name="dob"></Input>
+          <Input type="address"></Input>
         </div>
       </section>
       <div class="div35">
