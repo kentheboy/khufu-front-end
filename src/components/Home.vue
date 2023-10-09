@@ -80,6 +80,11 @@
         </div>
         <div class="section__form--content">
           <Input type="text" label="お名前" name="name" placeholder="山田太郎"></Input>
+          <Input type="text" label="お名前(かな)" name="kana-name" placeholder="やまだたろう"></Input>
+          <Input type="email" label="メールアドレス" name="email" placeholder="example@class.okinawa"></Input>
+          <Input type="tel" label="電話番号" name="phonenumber" placeholder="080-0000-0000"></Input>
+          <Input type="number" label="免許番号" name="license-number" placeholder="1234567890"></Input>
+          <Input type="date" label="生年月日" name="dob"></Input>
         </div>
       </section>
       <div class="div35">
@@ -253,9 +258,6 @@
             <div class="div115">/</div>
             <div class="div116">/</div>
           </div>
-          <div class="div117">生年月日</div>
-          <input class="child13" type="text" />
-          <div class="div118">19750101</div>
         </div>
         <div class="div119">
           <div class="div120">
@@ -289,34 +291,6 @@
             <div class="div133">/</div>
             <div class="div134">/</div>
           </div>
-          <div class="div135">免許証有効期限</div>
-          <input class="child17" type="text" />
-          <div class="div136">20230101</div>
-        </div>
-        <div class="div137">
-          <input class="rectangleInput" type="text" />
-          <div class="div138">免許証番号</div>
-          <div class="div139">123456789012</div>
-        </div>
-        <div class="div140">
-          <input class="rectangleInput" type="text" />
-          <div class="div44">電話番号</div>
-          <div class="div139">080-0000-0000</div>
-        </div>
-        <div class="div143">
-          <input class="rectangleInput" type="text" />
-          <div class="div44">メールアドレス</div>
-          <div class="div139">example@class.okinawa</div>
-        </div>
-        <div class="div145">
-          <input class="rectangleInput" type="text" />
-          <div class="div44">お名前 (かな)</div>
-          <div class="div147">やまだたろう</div>
-        </div>
-        <div class="div148">
-          <input class="rectangleInput" type="text" />
-          <div class="div149">お名前</div>
-          <div class="div147">山田太郎</div>
         </div>
       </div>
       <div class="div3">
