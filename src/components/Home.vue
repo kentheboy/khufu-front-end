@@ -68,23 +68,9 @@
         <div class="section__schedule-form--title">
           <h1>SCHEDULE</h1>
           <h3>旅行日程で探す</h3>
-        </div><!-- <DurationPicker></DurationPicker> -->
-        <div class="datetimepicker">
-          <div class="datetimepicker-selector">
-            <label>出発日時</label>
-            <input type="date" name="startDate">
-            <input type="time" name="startTime">
-          </div>
-          <div class="datetimepicker-selector">
-            <label>返却日時</label>
-            <input type="date" name="endDate">
-            <input type="time" name="endTime">
-          </div>
-          <div class="datetimepicker-deselector">
-            <input type="checkbox" value="1">
-            <label>日付未定</label>
-          </div>
         </div>
+        <DateTimePicker></DateTimePicker>
+        <Button text="空き状況を検索"></Button>
       </section>
       <section class="schedule" schedule-search-form>
         <div class="scheduleChild" />
@@ -118,53 +104,6 @@
         <div class="div163">(選択する)</div>
         <div class="div164">はじめての方</div>
         <img class="scheduleItem" alt="" src="/images/vector-2.svg" />
-        <div class="div165">
-          <img class="icon1" alt="" src="/images/1.svg" />
-          <div class="div166">日付未定</div>
-        </div>
-        <div class="div167">
-          <div class="div168">
-            <div class="div169">2023/01/01</div>
-            <img class="vectorIcon25" alt="" src="/images/vector25.svg" />
-          </div>
-          <div class="div170">
-            <div class="child26" />
-            <div class="div171">8:00</div>
-            <img class="vectorIcon26" alt="" src="/images/vector26.svg" />
-          </div>
-          <div class="div172">
-            <div class="div66">8:00</div>
-            <img class="keyboardArrowDown8" alt="" src="/images/keyboard-arrow-down7.svg" />
-          </div>
-          <div class="div174">返却日時</div>
-        </div>
-        <div class="div175">
-          <div class="div176">出発日時</div>
-          <div class="div177">
-            <div class="div169">2023/01/01</div>
-            <img class="vectorIcon25" alt="" src="/images/vector27.svg" />
-          </div>
-          <div class="calendarOverlayButton">
-            <img class="vectorIcon28" alt="" src="/images/vector28.svg" />
-          </div>
-          <div class="calendarOverlayButton1">
-            <img class="vectorIcon28" alt="" src="/images/vector28.svg" />
-          </div>
-          <div class="div170">
-            <div class="child26" />
-            <div class="div171">8:00</div>
-            <img class="vectorIcon26" alt="" src="/images/vector29.svg" />
-          </div>
-          <div class="div172">
-            <div class="div66">8:00</div>
-            <img class="keyboardArrowDown8" alt="" src="/images/keyboard-arrow-down7.svg" />
-          </div>
-        </div>
-        <div class="div183">
-          <div class="schedule1">SCHEDULE</div>
-          <div class="div184">旅行日程で探す</div>
-          <img class="scheduleIcon3" alt="" src="/images/schedule2.svg" />
-        </div>
         <button class="button3">
           <div class="child" />
           <div class="div4">空き状況を検索</div>
@@ -493,11 +432,15 @@
 <script>
 import Header from "/src/components/common/Header";
 import ImageSlider from "/src/components/common/ImageSlider";
+import DateTimePicker from "/src/components/common/form/DateTimePicker";
+import Button from "/src/components/common/Button";
 export default {
   name: 'Home',
   components: {
     Header,
-    ImageSlider
+    ImageSlider,
+    DateTimePicker,
+    Button
   },
   props: {
     msg: {
@@ -516,8 +459,6 @@ export default {
   }
 }
 </script>
-  
-  <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
 section {
   margin: 0 2.4rem;
@@ -644,6 +585,8 @@ section {
   }
 
   &__schedule-form {
+    text-align: center;
+
     &--title {
       text-align: center;
       margin: 2.3rem;
@@ -664,50 +607,8 @@ section {
         margin: unset;
       }
     }
-    
   }
 
-}
-.datetimepicker {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  &-selector {
-    font-size: 1rem;
-    display: inline-flex;
-    width: 21.5rem;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 0.6rem;
-    flex-direction: initial;
-
-    input[type=date] {
-      border-radius: 24.94px;
-      background-color: var(--color-aliceblue);
-      box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
-      width: 8.73rem;
-      height: 2rem;
-      border: none;
-      padding: 0 0.7rem;
-    }
-
-    input[type=time] {
-      border-radius: 24.94px;
-      background-color: var(--color-aliceblue);
-      box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
-      width: 5rem;
-      height: 2rem;
-      border: none;
-      padding: 0 0.7rem;
-    }
-  }
-
-  &-deselector {
-    display: flex;
-    align-items: flex-start;
-    color: var(--color-steelblue);
-  }
 }
 </style>
   
