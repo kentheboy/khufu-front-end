@@ -71,54 +71,7 @@
         </div>
         <DateTimePicker></DateTimePicker>
         <Button text="空き状況を検索"></Button>
-        <div class="products">
-          <div class="product__card">
-            <img src="/img/main5@3x.fb64a8f0.png">
-            <div class="product__card--description">
-              <div class="product__card--description-title">ALPHARD</div>
-              <div class="product__card--description-passenger">乗車定員　7人</div>
-              <hr>
-              <div class="product__card--description-price">¥25,000~/24h</div>
-              <div class="product__card--description-select-buttons">
-                <Button text="会員の方"></Button>
-                <Button text="はじめての方"></Button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section class="schedule" schedule-search-form>
-        <div class="scheduleChild" />
-        <div class="div153">
-          <div class="div154">乗車定員　7人</div>
-          <img class="maskGroupIcon1" alt="" src="/images/mask-group1@2x.png" />
-        </div>
-        <div class="h">¥25,000~/24h</div>
-        <div class="alphard">ALPHARD</div>
-        <main class="main6" />
-        <div class="div155">
-          <div class="child" />
-          <div class="div156">選択する</div>
-        </div>
-        <div class="div157">
-          <div class="child" />
-          <div class="div158">
-            <p class="p">会員の方</p>
-            <p class="p1">　　 (選択する)</p>
-          </div>
-        </div>
-        <div class="div159">
-          <div class="child" />
-          <div class="div158">
-            <p class="p">初めての方</p>
-            <p class="p1">(選択する)</p>
-          </div>
-        </div>
-        <div class="div161">会員の方</div>
-        <div class="div162">(選択する)</div>
-        <div class="div163">(選択する)</div>
-        <div class="div164">はじめての方</div>
-        <img class="scheduleItem" alt="" src="/images/vector-2.svg" />
+        <Products></Products>
       </section>
       <div class="div35">
         <button class="button2">
@@ -445,13 +398,15 @@ import Header from "/src/components/common/Header";
 import ImageSlider from "/src/components/common/ImageSlider";
 import DateTimePicker from "/src/components/common/form/DateTimePicker";
 import Button from "/src/components/common/Button";
+import Products from "/src/components/common/Products";
 export default {
   name: 'Home',
   components: {
     Header,
     ImageSlider,
     DateTimePicker,
-    Button
+    Button,
+    Products
   },
   props: {
     msg: {
@@ -619,74 +574,6 @@ section {
     }
   }
 
-}
-.products{
-  display: flex;
-  justify-content: center;
-  .product__card {
-    border-radius: 3.49px;
-    background-color: var(--color-lightblue);
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.25);
-    width: 18.15rem;
-    height: 23.39rem;
-    display: inline-block;
-    img {
-      width: 18.15rem;
-      height: 14.06rem;
-    }
-    &--description {
-      position: relative;
-      height: 8rem;
-      &-title {
-        position: absolute;
-        top: 0;
-        left: 1rem;
-        font-size: var(--font-size-base);
-        letter-spacing: 0.1em;
-        color: var(--color-black);
-      }
-      &-passenger {
-        position: absolute;
-        top: 0.71rem;
-        right: 1rem;
-        letter-spacing: 0.15em;
-        display: inline-block;
-        width: 6.3rem;
-        height: 1.1rem;
-        color: var(--color-black);
-      }
-      hr {
-        position: absolute;
-        top: 1.7rem;
-        left: 6.5rem;
-        width: 30%;
-        border: solid 0.1px #c4cfd5;
-      }
-      &-price {
-        font-size: 1.2rem;
-        letter-spacing: 0.15em;
-        position: absolute;
-        top: 2.8rem;
-        right: 1rem;
-        color: var(--color-black);
-      }
-      &-select-buttons {
-        display: flex;
-        padding: 0 1.5rem;
-        justify-content: space-around;
-        position: relative;
-        top: 5.5rem;
-        &::v-deep button {
-          width: 7rem;
-          font-size: var(--font-size-5xs);
-          letter-spacing: 0.1em;
-          margin: 0;
-          box-shadow: 0.9974358678px 1.9948717356px 1.99px rgba(0, 0, 0, 0.25);
-          cursor: pointer;
-        }
-      }
-    }
-  }
 }
 </style>
   
