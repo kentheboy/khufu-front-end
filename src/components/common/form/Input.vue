@@ -1,5 +1,5 @@
 <template>
-    <div v-if="type==='address'" class="input-area">
+    <div v-if="type==='address'" :class="`input-area ${classes}`">
         <label>住所</label>
         <span>〒</span>
         <input type="text" name="postalcode">
@@ -20,7 +20,7 @@
         </div>
         <input type="time" :name="name" :placeholder="placeholder">
     </div>
-    <div v-else class="input-area">
+    <div v-else :class="`input-area ${classes}`">
         <label v-if="label">{{ label }}</label>
         <input :type="type" :name="name" :placeholder="placeholder">
     </div>
@@ -43,6 +43,10 @@ export default {
             type: String
         },
         placeholder: {
+            type: String,
+            default: null
+        },
+        classes: {
             type: String,
             default: null
         }

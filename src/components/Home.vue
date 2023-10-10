@@ -88,6 +88,7 @@
           <Input type="address"></Input>
           <Input type="airport-timpicker" label="空港お出迎え" name="airport-pickup"></Input>
           <Input type="airport-timpicker" label="空港お見送り" name="airport-dropoff"></Input>
+          <CreditCardInfo></CreditCardInfo>
         </div>
       </section>
       <div class="div35">
@@ -135,43 +136,6 @@
           <input class="input6" type="file" />
           <input class="input7" type="text" />
           <div class="div54">本人確認書類アップロード</div>
-        </div>
-        <div class="div55">
-          <div class="div56">
-            <div class="child2" />
-            <div class="div57">セキュリティコード</div>
-            <div class="div58">123</div>
-          </div>
-          <div class="div59">
-            <div class="div60">カード有効期限</div>
-            <div class="div61">
-              <div class="child3" />
-              <div class="div62">01</div>
-              <img class="vectorIcon8" alt="" src="/images/vector8.svg" />
-            </div>
-            <div class="div63">
-              <div class="child4" />
-              <div class="div62">2023</div>
-              <img class="vectorIcon9" alt="" src="/images/vector9.svg" />
-            </div>
-            <div class="div65">
-              <div class="div66">01</div>
-              <img class="keyboardArrowDown" alt="" src="/images/keyboard-arrow-down2.svg" />
-            </div>
-            <div class="div67">
-              <div class="div66">2023</div>
-              <img class="keyboardArrowDown" alt="" src="/images/keyboard-arrow-down3.svg" />
-            </div>
-            <div class="div69">
-              <div class="child3" />
-              <div class="div62">01</div>
-              <img class="vectorIcon8" alt="" src="/images/vector10.svg" />
-            </div>
-            <div class="div71">/</div>
-          </div>
-          <input class="child6" type="text" />
-          <div class="div72">クレジットカード番号</div>
-          <div class="div73">123456789012</div>
         </div>
         <div class="div107">
           <div class="div108">
@@ -307,6 +271,7 @@
 import Header from "/src/components/common/Header";
 import ImageSlider from "/src/components/common/ImageSlider";
 import DateTimePicker from "/src/components/common/form/DateTimePicker";
+import CreditCardInfo from "/src/components/common/form/CreditCardInfo";
 import Input from "/src/components/common/form/Input";
 import Button from "/src/components/common/Button";
 import Products from "/src/components/common/Products";
@@ -316,6 +281,7 @@ export default {
     Header,
     ImageSlider,
     DateTimePicker,
+    CreditCardInfo,
     Input,
     Button,
     Products
