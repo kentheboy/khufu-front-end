@@ -10,6 +10,16 @@
         </select>
         <input type="text" name="addressline">
     </div>
+    <div v-else-if="type==='airport-timpicker'" class="input-area airport-timpicker">
+        <div class="airport-timpicker__headline">
+            <label v-if="label">{{ label }}</label>
+            <div class="airport-timpicker__headline--pickup">
+                <input type="radio" name="airport-pickup" value="yes">あり
+                <input type="radio" name="airport-pickup" value="no">なし
+            </div>
+        </div>
+        <input type="time" :name="name" :placeholder="placeholder">
+    </div>
     <div v-else class="input-area">
         <label v-if="label">{{ label }}</label>
         <input :type="type" :name="name" :placeholder="placeholder">
@@ -85,6 +95,24 @@ export default {
         padding-left: 1.25rem;
         padding-right: 1.25rem;
         margin-top: .3rem;
+    }
+}
+.airport-timpicker {
+    &__headline {
+        display: flex;
+        justify-content: space-between;
+        width: 12.5rem;
+        &--pickup {
+            input[type=radio] {
+                width: auto;
+                box-shadow: initial;
+                margin: 0.1rem 0.3rem;
+                height: 0.9rem;
+            }
+        }
+    }
+    input[type=time] {
+        width: 7.8rem;
     }
 }
 </style>

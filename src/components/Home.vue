@@ -86,6 +86,8 @@
           <Input type="number" label="免許番号" name="license-number" placeholder="1234567890"></Input>
           <Input type="date" label="生年月日" name="dob"></Input>
           <Input type="address"></Input>
+          <Input type="airport-timpicker" label="空港お出迎え" name="airport-pickup"></Input>
+          <Input type="airport-timpicker" label="空港お見送り" name="airport-dropoff"></Input>
         </div>
       </section>
       <div class="div35">
@@ -170,76 +172,6 @@
           <input class="child6" type="text" />
           <div class="div72">クレジットカード番号</div>
           <div class="div73">123456789012</div>
-        </div>
-        <div class="div74">
-          <div class="div75">空港お見送り</div>
-          <div class="div76">
-            <div class="div50">あり</div>
-            <img class="vectorIcon4" alt="" src="/images/vector11.svg" />
-          </div>
-          <div class="div78">
-            <div class="div52">なし</div>
-            <img class="vectorIcon4" alt="" src="/images/vector12.svg" />
-          </div>
-          <div class="div80">
-            <div class="child3" />
-            <div class="div62">17</div>
-            <img class="vectorIcon8" alt="" src="/images/vector13.svg" />
-          </div>
-          <div class="div82">
-            <div class="child3" />
-            <div class="div62">00</div>
-            <img class="vectorIcon8" alt="" src="/images/vector14.svg" />
-          </div>
-          <input class="input8" type="text" />
-          <input class="input9" type="text" />
-          <div class="div84">時</div>
-          <div class="div85">分</div>
-        </div>
-        <div class="div86">
-          <div class="div75">空港お出迎え</div>
-          <div class="div76">
-            <div class="div50">あり</div>
-            <img class="vectorIcon4" alt="" src="/images/vector15.svg" />
-          </div>
-          <div class="div78">
-            <div class="div52">なし</div>
-            <img class="vectorIcon4" alt="" src="/images/vector16.svg" />
-          </div>
-          <div class="div92">
-            <div class="child9" />
-            <div class="div62">09</div>
-            <img class="vectorIcon8" alt="" src="/images/vector17.svg" />
-          </div>
-          <div class="div94">
-            <div class="child9" />
-            <div class="div62">00</div>
-            <img class="vectorIcon8" alt="" src="/images/vector18.svg" />
-          </div>
-          <div class="div96">
-            <div class="div66">00</div>
-            <img class="keyboardArrowDown" alt="" src="/images/keyboard-arrow-down4.svg" />
-          </div>
-          <div class="div98">
-            <div class="div66">09</div>
-            <img class="keyboardArrowDown" alt="" src="/images/keyboard-arrow-down4.svg" />
-          </div>
-          <div class="div84">時</div>
-          <div class="div85">分</div>
-        </div>
-        <div class="div102">
-          <div class="div103">住所</div>
-          <div class="div104">
-            <input class="input10" type="text" />
-            <div class="rectangleParent">
-              <div class="frameChild" />
-              <div class="div105">都道府県</div>
-              <img class="vectorIcon19" alt="" src="/images/vector19.svg" />
-            </div>
-            <select class="select" />
-            <input class="child11" type="text" />
-          </div>
-          <div class="div106">〒</div>
         </div>
         <div class="div107">
           <div class="div108">
