@@ -20,9 +20,29 @@
         </div>
         <input type="time" :name="name" :placeholder="placeholder">
     </div>
+    <div v-else-if="type==='file'" :class="`input-area ${classes}`">
+        <input 
+            @change="onImageSelector($event)"
+            :type="type"
+            :name="name"
+            :placeholder="placeholder"
+            :multiple="false" 
+            ref="fileInput"
+            accept="image/png, image/jpeg"
+        >
+        <div class="file-input" @click="openImageSelector()">
+            <img v-if="dataURL" :src="dataURL" alt="">
+            <span v-if="dataURL" class="file-delete" @click="deleteImage"><img src="/images/icons/cross.png"></span>
+            <p v-else>クリックして画像を選択</p>
+        </div>
+    </div>
     <div v-else :class="`input-area ${classes}`">
         <label v-if="label">{{ label }}</label>
-        <input :type="type" :name="name" :placeholder="placeholder">
+        <input
+            :type="type"
+            :name="name"
+            :placeholder="placeholder"
+        >
     </div>
 </template>
 <script>
@@ -49,6 +69,39 @@ export default {
         classes: {
             type: String,
             default: null
+        },
+        value : { 
+            type: [String, Number],
+            default: ""
+        },
+    },
+    data() {
+        return {
+            dataURL: null
+        }
+    },
+    methods: {
+        openImageSelector() {
+            console.log(this.$refs.fileInput);
+            let fileInput = this.$refs.fileInput;
+            fileInput.click();
+        },
+        async onImageSelector($event) {
+            if ($event.target.files[0]) {
+                this.dataURL = await this.convertToBase64($event.target.files[0]);
+            }
+        },
+        convertToBase64(file) {
+            // convert to binary image src
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader()
+                reader.readAsDataURL(file)
+                reader.onload = () => resolve(reader.result)
+                reader.onerror = error => reject(error)
+            });
+        },
+        deleteImage() {
+            this.dataURL = null;
         }
     }
 }
@@ -85,6 +138,10 @@ export default {
             margin-left: .5rem;
             display: inline-block;
         }
+
+        &[type=file] {
+            display: none;
+        }
     }
 
     select {
@@ -117,6 +174,39 @@ export default {
     }
     input[type=time] {
         width: 7.8rem;
+    }
+}
+.file-input {
+    border: none;
+    background-color: var(--color-aliceblue);
+    border-radius: 7px;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
+    width: 100%;
+    box-sizing: border-box;
+    height: 12rem;
+    text-align: center;
+    color: #757575;
+    font-size: 1rem;
+    padding: 1rem;
+    position: relative;
+    p {
+        position: absolute;
+        left: 27%;
+        top: 30%;
+    }
+    img {
+        max-width: 21rem;
+        max-height: 10rem;
+    }
+    .file-delete {
+        width: fit-content;
+        position: absolute;
+        top: .25rem;
+        right: .25rem;
+        cursor: pointer;;
+        img {
+            width: 1.5rem;
+        }
     }
 }
 </style>

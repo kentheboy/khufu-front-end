@@ -89,6 +89,8 @@
           <Input type="airport-timpicker" label="空港お出迎え" name="airport-pickup"></Input>
           <Input type="airport-timpicker" label="空港お見送り" name="airport-dropoff"></Input>
           <CreditCardInfo></CreditCardInfo>
+          <p class="label">本人確認書類アップロード</p>
+          <Input type="file" label="画像１" name="image1"></Input>
         </div>
       </section>
       <div class="div35">
