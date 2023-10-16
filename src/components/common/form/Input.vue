@@ -21,6 +21,7 @@
         <input type="time" :name="name" :placeholder="placeholder">
     </div>
     <div v-else-if="type==='file'" :class="`input-area ${classes}`">
+        <label v-if="label">{{ label }}</label>
         <input 
             @change="onImageSelector($event)"
             :type="type"
@@ -34,6 +35,14 @@
             <img v-if="dataURL" :src="dataURL" alt="">
             <span v-if="dataURL" class="file-delete" @click="deleteImage"><img src="/images/icons/cross.png"></span>
             <p v-else>クリックして画像を選択</p>
+        </div>
+    </div>
+    <div v-else-if="type==='radio'" :class="`input-area radio-input ${classes}`">
+        <label v-if="label">{{ label }}</label>
+        <div class="radio-input__options">
+            <div v-for="option in options" :key="option" class="radio-input__options--input">
+                <input type="radio" :name="option.name" :value="option.value"> {{ option.label }}
+            </div>
         </div>
     </div>
     <div v-else :class="`input-area ${classes}`">
@@ -70,10 +79,14 @@ export default {
             type: String,
             default: null
         },
-        value : { 
+        value: { 
             type: [String, Number],
             default: ""
         },
+        options: {
+            type: Array,
+            default: null
+        }
     },
     data() {
         return {
@@ -206,6 +219,22 @@ export default {
         cursor: pointer;;
         img {
             width: 1.5rem;
+        }
+    }
+}
+.radio-input {
+    display: flex;
+    justify-content: space-between;
+    width: 12.5rem;
+    &__options {
+        display: flex;
+        &--input {
+            input[type=radio] {
+                width: auto;
+                box-shadow: initial;
+                margin: 0.1rem 0.3rem;
+                height: 0.9rem;
+            }
         }
     }
 }
