@@ -41,9 +41,14 @@
         <label v-if="label">{{ label }}</label>
         <div class="radio-input__options">
             <div v-for="option in options" :key="option" class="radio-input__options--input">
-                <input type="radio" :name="option.name" :value="option.value"> {{ option.label }}
+                <input type="radio" :name="option.name" :value="option.value">
+                <label :for="option.name">{{ option.label }}</label>
             </div>
         </div>
+    </div>
+    <div v-else-if="type==='textarea'" :class="`input-area ${classes}`">
+        <label v-if="label">{{ label }}</label>
+        <textarea></textarea>
     </div>
     <div v-else :class="`input-area ${classes}`">
         <label v-if="label">{{ label }}</label>
@@ -128,6 +133,7 @@ export default {
     label {
         display: block;
         margin-bottom: 0.3rem;
+        margin-right: 1rem;
     }
 
     input {
@@ -169,6 +175,16 @@ export default {
         padding-left: 1.25rem;
         padding-right: 1.25rem;
         margin-top: .3rem;
+    }
+
+    textarea {
+        border-radius: 2.49px;
+        background-color: var(--color-aliceblue);
+        box-shadow: rgba(0, 0, 0, 0.25) 2px 2px 2px;
+        width: 308px;
+        height: 168px;
+        border: none;
+        padding: 1.25rem;
     }
 }
 .airport-timpicker {
@@ -225,7 +241,7 @@ export default {
 .radio-input {
     display: flex;
     justify-content: space-between;
-    width: 12.5rem;
+    width: fit-content;
     &__options {
         display: flex;
         &--input {
@@ -234,6 +250,9 @@ export default {
                 box-shadow: initial;
                 margin: 0.1rem 0.3rem;
                 height: 0.9rem;
+            }
+            label {
+                display: inline;
             }
         }
     }

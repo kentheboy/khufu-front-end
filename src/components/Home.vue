@@ -99,107 +99,15 @@
           <Input type="file" label="画像2" name="additionalDriverImage2"></Input>
           <Input type="file" label="画像3" name="additionalDriverImage3"></Input>
           <Input type="file" label="画像4" name="additionalDriverImage4"></Input>
+          <Input type="textarea" label="備考" name="memos"></Input>
+          <Input type="password" label="パスワード" name="newPassword"></Input>
+          <Input type="password" label="パスワード（確認）" name="newPasswordConfirmation"></Input>
+          <Input type="radio" label="会員登録" :options="signUp"></Input>
+          <div class="section__form--submit">
+            <Button text="予約確認"></Button>
+          </div>
         </div>
       </section>
-      <div class="div35">
-        <button class="button2">
-          <div class="child" />
-          <div class="div4">　 予約確認</div>
-        </button>
-        <div class="div37">
-          <div class="div38">会員登録</div>
-          <div class="div39">
-            <div class="div40">希望する</div>
-            <img class="vectorIcon4" alt="" src="/images/vector4.svg" />
-          </div>
-          <div class="div41">
-            <div class="div42">希望しない</div>
-            <img class="vectorIcon4" alt="" src="/images/vector5.svg" />
-          </div>
-        </div>
-        <div class="div43">
-          <input class="rectangleInput" type="text" />
-          <div class="div44">パスワード</div>
-        </div>
-        <div class="div45">
-          <div class="child1" />
-          <div class="div46">備考</div>
-        </div>
-        <div class="div47">
-          <input class="input" type="text" />
-          <input class="input1" type="text" />
-          <input class="input2" type="file" />
-          <input class="input3" type="file" />
-          <div class="div48">追加運転者</div>
-          <div class="div49">
-            <div class="div50">あり</div>
-            <img class="vectorIcon4" alt="" src="/images/vector6.svg" />
-          </div>
-          <div class="div51">
-            <div class="div52">なし</div>
-            <img class="vectorIcon4" alt="" src="/images/vector7.svg" />
-          </div>
-        </div>
-        <div class="div53">
-          <input class="input4" type="text" />
-          <input class="input5" type="text" />
-          <input class="input6" type="file" />
-          <input class="input7" type="text" />
-          <div class="div54">本人確認書類アップロード</div>
-        </div>
-        <div class="div107">
-          <div class="div108">
-            <div class="div109">
-              <div class="child3" />
-              <div class="div62">01</div>
-              <img class="vectorIcon8" alt="" src="/images/vector20.svg" />
-            </div>
-            <div class="div111">
-              <div class="div66">1920</div>
-              <img class="keyboardArrowDown" alt="" src="/images/keyboard-arrow-down5.svg" />
-            </div>
-            <div class="div113">
-              <div class="div62">01</div>
-              <img class="vectorIcon8" alt="" src="/images/vector21.svg" />
-            </div>
-            <div class="div115">/</div>
-            <div class="div116">/</div>
-          </div>
-        </div>
-        <div class="div119">
-          <div class="div120">
-            <div class="div121">
-              <div class="child4" />
-              <div class="div62">2023</div>
-              <img class="vectorIcon9" alt="" src="/images/vector22.svg" />
-            </div>
-            <div class="div123">
-              <div class="child3" />
-              <div class="div62">01</div>
-              <img class="vectorIcon8" alt="" src="/images/vector23.svg" />
-            </div>
-            <div class="div125">
-              <div class="child3" />
-              <div class="div62">01</div>
-              <img class="vectorIcon8" alt="" src="/images/vector24.svg" />
-            </div>
-            <div class="div111">
-              <div class="div66">2023</div>
-              <img class="keyboardArrowDown" alt="" src="/images/keyboard-arrow-down6.svg" />
-            </div>
-            <div class="div129">
-              <div class="div66">01</div>
-              <img class="keyboardArrowDown" alt="" src="/images/keyboard-arrow-down6.svg" />
-            </div>
-            <div class="div131">
-              <div class="div66">01</div>
-              <img class="keyboardArrowDown" alt="" src="/images/keyboard-arrow-down6.svg" />
-            </div>
-            <div class="div133">/</div>
-            <div class="div134">/</div>
-          </div>
-        </div>
-      </div>
       <div class="div3">
         <button class="button">
           <div class="child" />
@@ -312,6 +220,10 @@ export default {
       additionalDriverRadio: [
         { name: "additional-driver-radio", value: "yes", label: "あり"},
         { name: "additional-driver-radio", value: "no", label: "なし"},
+      ],
+      signUp: [
+        { name: "sign-up", value: "yes", label: "希望する"},
+        { name: "sign-up", value: "no", label: "希望しない"},
       ]
     }
   }
@@ -471,6 +383,10 @@ section {
       margin-right: auto;
       width: fit-content;
       text-align: left;
+    }
+
+    &--submit {
+      text-align: center;
     }
   }
 }
