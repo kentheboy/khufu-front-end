@@ -108,28 +108,41 @@
           </div>
         </div>
       </section>
-      <div class="div3">
-        <button class="button">
-          <div class="child" />
-          <div class="div4">　 現金決済</div>
-        </button>
-        <button class="button1">
-          <div class="child" />
-          <div class="div4">オンライン決済</div>
-        </button>
-        <div class="div6">
-          <div class="div7">■お客様情報</div>
-          <div class="div8">お名前</div>
-          <div class="div9">メールアドレス</div>
-          <div class="div10">電話番号</div>
-          <div class="div11">080-0000-0000</div>
-          <div class="div12">空港お出迎え</div>
-          <div class="div13">空港お見送り</div>
-          <div class="div14">18:00</div>
-          <div class="div15">なし</div>
-          <div class="exampleclassokinawa">example@class.okinawa</div>
-          <div class="div16">山田太郎　様</div>
+      <section class="section__information">
+        <div class="section__information--title">
+          <h1>BOOKING INFORMATION</h1>
+          <h3>ご予約内容</h3>
         </div>
+        <div class="section__information--car-info">
+          <h4>■車両情報</h4>
+          <h5>TOYOTA　アルファード</h5>
+          <div class="section__information--car-images">
+            <div class="main-image">
+              <img src="/images/car-images/main4.png" alt="">
+              <div class="info-logos">
+                <div class="div29 passenger-info">
+                  <img class="vectorIcon1" alt="" src="/images/vector.svg" />
+                  <img class="vectorIcon2" alt="" src="/images/vector1.svg" />
+                  <img class="vectorIcon3" alt="" src="/images/vector2.svg" />
+                  <img class="vectorIcon4" alt="" src="/images/vector3.svg" />
+                  <div class="passenger-number">7人</div>
+                </div>
+                <div class="mode">
+                  <div class="at">AT</div>
+                </div>
+                <img class="no-smoking" alt="" src="/images/mask-group@2x.png" />
+              </div>
+            </div>
+            <div class="sub-images">
+              <img src="/images/car-images/main1.png" alt="404">
+              <img src="/images/car-images/main2.png" alt="404">
+              <img src="/images/car-images/main3.png" alt="404">
+              <img src="/images/car-images/main3.png" alt="404">
+            </div>
+          </div>
+        </div>
+      </section>
+      <div class="div3">
         <div class="div17">
           <img class="inner" alt="" src="/images/vector-1.svg" />
           <div class="div18">
@@ -145,33 +158,27 @@
           <div class="div26">■料金</div>
           <div class="div27">■貸出日程</div>
         </div>
-        <div class="div28">
-          <div class="at">
-            <div class="at1">AT</div>
-          </div>
-          <div class="div29">
-            <img class="vectorIcon" alt="" src="/images/vector.svg" />
-            <img class="vectorIcon1" alt="" src="/images/vector1.svg" />
-            <img class="vectorIcon2" alt="" src="/images/vector2.svg" />
-            <img class="vectorIcon3" alt="" src="/images/vector3.svg" />
-            <div class="div30">7人</div>
-          </div>
-          <img class="maskGroupIcon" alt="" src="/images/mask-group@2x.png" />
+        <div class="div6">
+          <div class="div7">■お客様情報</div>
+          <div class="div8">お名前</div>
+          <div class="div9">メールアドレス</div>
+          <div class="div10">電話番号</div>
+          <div class="div11">080-0000-0000</div>
+          <div class="div12">空港お出迎え</div>
+          <div class="div13">空港お見送り</div>
+          <div class="div14">18:00</div>
+          <div class="div15">なし</div>
+          <div class="exampleclassokinawa">example@class.okinawa</div>
+          <div class="div16">山田太郎　様</div>
         </div>
-        <div class="div31">
-          <main class="main1" />
-          <main class="main2" />
-          <main class="main3" />
-          <main class="main4" />
-        </div>
-        <main class="main5" />
-        <div class="div32">■車両情報</div>
-        <div class="toyota">TOYOTA　アルファード</div>
-        <div class="div33">
-          <div class="bookingInformation">BOOKING INFORMATION</div>
-          <div class="div34">ご予約内容</div>
-          <img class="scheduleIcon" alt="" src="/images/schedule.svg" />
-        </div>
+        <button class="button1">
+          <div class="child" />
+          <div class="div4">オンライン決済</div>
+        </button>
+        <button class="button">
+          <div class="child" />
+          <div class="div4">　 現金決済</div>
+        </button>
       </div>
     </main>
     <footer class="footer">
@@ -387,6 +394,151 @@ section {
 
     &--submit {
       text-align: center;
+    }
+  }
+
+  &__information {
+    text-align: center;
+    margin-bottom: 5rem;
+
+    &--title {
+      text-align: center;
+      margin: 2.3rem;
+      border-bottom: 1.5px solid var(--color-steelblue);
+
+      h1 {
+        letter-spacing: 0.15em;
+        font-size: 2rem;
+        font-family: var(--font-istok-web);
+        font-weight: normal;
+        margin: unset;
+      }
+
+      h3 {
+        letter-spacing: 0.15em;
+        font-family: var(--font-istok-web);
+        font-weight: normal;
+        margin: unset;
+      }
+    }
+
+    &--car-info {
+      margin-left: auto;
+      margin-right: auto;
+      width: 34.97rem;
+      text-align: left;
+    }
+
+    &--car-images {
+      display: flex;
+      justify-content: space-between;
+      .main-image {
+        width: 15.16rem;
+        display: flex;
+        flex-direction: column;
+        img {
+          width: 100%;
+        }
+        .info-logos {
+          position: relative;
+          .passenger-info {
+            position: absolute;
+            top: 0.7rem;
+            left: 0rem;
+            width: 3.16rem;
+            height: 1.1rem;
+            color: var(--color-steelblue);
+            .vectorIcon1 {
+              position: absolute;
+              top: 0.5rem;
+              left: 0.79rem;
+              width: 0.32rem;
+              height: 0.35rem;
+            }
+            .vectorIcon2 {
+              position: absolute;
+              top: 0.04rem;
+              left: 0.2rem;
+              width: 0.41rem;
+              height: 0.41rem;
+            }
+            .vectorIcon3 {
+              position: absolute;
+              top: 0.04rem;
+              left: 0.64rem;
+              width: 0.27rem;
+              height: 0.41rem;
+            }
+            .vectorIcon4 {
+              position: absolute;
+              top: 0.49rem;
+              left: 0rem;
+              width: 0.81rem;
+              height: 0.35rem;
+            }
+            .passenger-number {
+              position: absolute;
+              top: 0rem;
+              left: 1.36rem;
+              letter-spacing: 0.15em;
+              display: inline-block;
+              width: 1.8rem;
+              height: 1.1rem;
+            }
+          }
+          .mode {
+            position: absolute;
+            top: 0.7rem;
+            left: 3.25rem;
+            border-radius: 2.49px;
+            background-color: var(--color-steelblue);
+            width: 1.46rem;
+            height: 0.89rem;
+            .at, .mn {
+              position: absolute;
+              top: -0.1rem;
+              left: 0.21rem;
+              letter-spacing: 0.15em;
+              display: inline-block;
+              width: 1.2rem;
+              height: 1rem;
+              color: #fff;
+              background: none;
+            }
+          }
+          .no-smoking {
+            position: absolute;
+            top: 0.7rem;
+            left: 5.63rem;
+            width: 1.07rem;
+            height: 1.07rem;
+            -o-object-fit: cover;
+            object-fit: cover;
+          }
+        }
+      }
+      .sub-images {
+        display: flex;
+        flex-wrap: wrap;
+        width: 15.16rem;
+        img {
+          width: 7.58rem;
+          height: 6.86rem;
+        }
+      }
+    }
+
+    h4 {
+      font-size: 1rem;
+      letter-spacing: 0.15em;
+      font-weight: initial;   
+      margin: 0rem;
+    }
+    h5 {
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      font-weight: initial;
+      margin: 0rem;  
     }
   }
 }
