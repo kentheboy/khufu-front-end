@@ -116,30 +116,7 @@
         <div class="section__information--car-info">
           <h4>■車両情報</h4>
           <h5>TOYOTA　アルファード</h5>
-          <div class="section__information--car-images">
-            <div class="main-image">
-              <img src="/images/car-images/main4.png" alt="">
-              <div class="info-logos">
-                <div class="div29 passenger-info">
-                  <img class="vectorIcon1" alt="" src="/images/vector.svg" />
-                  <img class="vectorIcon2" alt="" src="/images/vector1.svg" />
-                  <img class="vectorIcon3" alt="" src="/images/vector2.svg" />
-                  <img class="vectorIcon4" alt="" src="/images/vector3.svg" />
-                  <div class="passenger-number">7人</div>
-                </div>
-                <div class="mode">
-                  <div class="at">AT</div>
-                </div>
-                <img class="no-smoking" alt="" src="/images/mask-group@2x.png" />
-              </div>
-            </div>
-            <div class="sub-images">
-              <img src="/images/car-images/main1.png" alt="404">
-              <img src="/images/car-images/main2.png" alt="404">
-              <img src="/images/car-images/main3.png" alt="404">
-              <img src="/images/car-images/main3.png" alt="404">
-            </div>
-          </div>
+          <CarInfo></CarInfo>
         </div>
       </section>
       <div class="div3">
@@ -200,6 +177,7 @@ import CreditCardInfo from "/src/components/common/form/CreditCardInfo";
 import Input from "/src/components/common/form/Input";
 import Button from "/src/components/common/Button";
 import Products from "/src/components/common/Products";
+import CarInfo from "/src/components/common/CarInfo";
 export default {
   name: 'Home',
   components: {
@@ -209,7 +187,8 @@ export default {
     CreditCardInfo,
     Input,
     Button,
-    Products
+    Products,
+    CarInfo
   },
   props: {
     msg: {
@@ -427,105 +406,6 @@ section {
       margin-right: auto;
       width: 34.97rem;
       text-align: left;
-    }
-
-    &--car-images {
-      display: flex;
-      justify-content: space-between;
-      .main-image {
-        width: 15.16rem;
-        display: flex;
-        flex-direction: column;
-        img {
-          width: 100%;
-        }
-        .info-logos {
-          position: relative;
-          .passenger-info {
-            position: absolute;
-            top: 0.7rem;
-            left: 0rem;
-            width: 3.16rem;
-            height: 1.1rem;
-            color: var(--color-steelblue);
-            .vectorIcon1 {
-              position: absolute;
-              top: 0.5rem;
-              left: 0.79rem;
-              width: 0.32rem;
-              height: 0.35rem;
-            }
-            .vectorIcon2 {
-              position: absolute;
-              top: 0.04rem;
-              left: 0.2rem;
-              width: 0.41rem;
-              height: 0.41rem;
-            }
-            .vectorIcon3 {
-              position: absolute;
-              top: 0.04rem;
-              left: 0.64rem;
-              width: 0.27rem;
-              height: 0.41rem;
-            }
-            .vectorIcon4 {
-              position: absolute;
-              top: 0.49rem;
-              left: 0rem;
-              width: 0.81rem;
-              height: 0.35rem;
-            }
-            .passenger-number {
-              position: absolute;
-              top: 0rem;
-              left: 1.36rem;
-              letter-spacing: 0.15em;
-              display: inline-block;
-              width: 1.8rem;
-              height: 1.1rem;
-            }
-          }
-          .mode {
-            position: absolute;
-            top: 0.7rem;
-            left: 3.25rem;
-            border-radius: 2.49px;
-            background-color: var(--color-steelblue);
-            width: 1.46rem;
-            height: 0.89rem;
-            .at, .mn {
-              position: absolute;
-              top: -0.1rem;
-              left: 0.21rem;
-              letter-spacing: 0.15em;
-              display: inline-block;
-              width: 1.2rem;
-              height: 1rem;
-              color: #fff;
-              background: none;
-            }
-          }
-          .no-smoking {
-            position: absolute;
-            top: 0.7rem;
-            left: 5.63rem;
-            width: 1.07rem;
-            height: 1.07rem;
-            -o-object-fit: cover;
-            object-fit: cover;
-          }
-        }
-      }
-      .sub-images {
-        display: flex;
-        flex-wrap: wrap;
-        width: 15.16rem;
-        img {
-          width: 7.58rem;
-          height: 6.86rem;
-        }
-      }
     }
 
     h4 {
