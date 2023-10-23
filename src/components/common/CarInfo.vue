@@ -34,6 +34,7 @@ export default {
     &--car-images {
         display: flex;
         justify-content: space-between;
+        margin-bottom: 3rem;
 
         .main-image {
             width: 15.16rem;

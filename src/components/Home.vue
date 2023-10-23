@@ -117,6 +117,31 @@
           <h4>■車両情報</h4>
           <h5>TOYOTA　アルファード</h5>
           <CarInfo></CarInfo>
+          <div class="info-detail-area">
+            <div class="row-content">
+              <div class="title">■貸出日程</div>
+              <div class="detail">
+                <p>2023/1/1 10:00 ~ 20231/2 18:00</p>
+              </div>
+            </div>
+            <div class="row-content">
+              <div class="title">■料金</div>
+              <div class="detail">
+                <p>¥30,000</p>
+                <hr>
+                <div class="price-detail">
+                  <div class="exampleclassokinawa" data-v-8dc7cce2="">基本料金</div>
+                  <div class="div21" data-v-8dc7cce2="">¥20,000</div>
+                  <div class="div22" data-v-8dc7cce2="">補償制度</div>
+                  <div class="div23" data-v-8dc7cce2="">¥3,000</div>
+                  <div class="div18" data-v-8dc7cce2="">
+                    <img class="icon" alt="" src="/images/@2x.png" data-v-8dc7cce2="">
+                    <div class="div19" data-v-8dc7cce2="">補償制度を詳しく</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
       <div class="div3">
@@ -406,6 +431,30 @@ section {
       margin-right: auto;
       width: 34.97rem;
       text-align: left;
+    }
+
+    .info-detail-area {
+      border-radius: 2.99px;
+      background-color: var(--color-aliceblue);
+      min-height: 7.63rem;
+      font-size: 0.65rem;
+      padding: 1.25rem;
+      .row-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        font-size: 0.8rem;
+        letter-spacing: 0.15em;
+        .title {
+          width: 11rem;
+        }
+        .detail {
+          width: 19rem;
+          price-detail {
+            position: relative;
+          }
+        }
+      }
     }
 
     h4 {
