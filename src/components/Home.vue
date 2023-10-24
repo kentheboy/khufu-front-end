@@ -130,13 +130,13 @@
                 <p>¥30,000</p>
                 <hr>
                 <div class="price-detail">
-                  <div class="exampleclassokinawa" data-v-8dc7cce2="">基本料金</div>
-                  <div class="div21" data-v-8dc7cce2="">¥20,000</div>
-                  <div class="div22" data-v-8dc7cce2="">補償制度</div>
-                  <div class="div23" data-v-8dc7cce2="">¥3,000</div>
-                  <div class="div18" data-v-8dc7cce2="">
-                    <img class="icon" alt="" src="/images/@2x.png" data-v-8dc7cce2="">
-                    <div class="div19" data-v-8dc7cce2="">補償制度を詳しく</div>
+                  <div class="basic-price-title">基本料金</div>
+                  <div class="basic-price">¥20,000</div>
+                  <div class="insurance-price-title">補償制度</div>
+                  <div class="insurance-price">¥3,000</div>
+                  <div class="insurance-price-help">
+                    <img class="insurance-price-help-icon" alt="" src="/images/@2x.png" >
+                    <div class="" >補償制度を詳しく</div>
                   </div>
                 </div>
               </div>
@@ -144,7 +144,7 @@
           </div>
         </div>
       </section>
-      <div class="div3">
+      <div class="div3" style="display:none">
         <div class="div17">
           <img class="inner" alt="" src="/images/vector-1.svg" />
           <div class="div18">
@@ -183,7 +183,7 @@
         </button>
       </div>
     </main>
-    <footer class="footer">
+    <footer class="footer" style="display:none">
       <div class="div">〒901-0203　沖縄県豊見城市長堂67</div>
       <div class="div1">営業時間　8:00-18:00</div>
       <div class="div2">問合せ　080-0000-0000</div>
@@ -450,8 +450,42 @@ section {
         }
         .detail {
           width: 19rem;
-          price-detail {
+          .price-detail {
             position: relative;
+            width: 100%;
+            height: 3rem;
+            .basic-price-title {
+              position: absolute;
+              top: 0;
+              left: 0;
+            }
+            .basic-price {
+              position: absolute;
+              top: 0;
+              left: 5rem;
+            }
+            .insurance-price-title {
+              position: absolute;
+              top: 1.2rem;
+              left: 0rem;
+            }
+            .insurance-price {
+              position: absolute;
+              top: 1.2rem;
+              left: 5rem;
+            }
+            .insurance-price-help {
+              position: absolute;
+              cursor: pointer;
+              display: flex;
+              top: 1.5rem;
+              left: 12rem;
+              height: 0.7rem;
+              font-size: 0.6rem;
+              .insurance-price-help-icon {
+                height: 0.9rem
+              }
+            }
           }
         }
       }
