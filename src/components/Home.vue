@@ -1,5 +1,5 @@
 <template>
-  <div class="topLp">
+  <div class="home">
     <Header></Header>
     <main class="main">
       <section class="section__heroImageArea">
@@ -99,181 +99,18 @@
           <Input type="file" label="画像2" name="additionalDriverImage2"></Input>
           <Input type="file" label="画像3" name="additionalDriverImage3"></Input>
           <Input type="file" label="画像4" name="additionalDriverImage4"></Input>
+          <Input type="textarea" label="備考" name="memos"></Input>
+          <Input type="password" label="パスワード" name="newPassword"></Input>
+          <Input type="password" label="パスワード（確認）" name="newPasswordConfirmation"></Input>
+          <Input type="radio" label="会員登録" :options="signUp"></Input>
+          <div class="section__form--submit">
+            <Button text="予約確認"></Button>
+          </div>
         </div>
       </section>
-      <div class="div35">
-        <button class="button2">
-          <div class="child" />
-          <div class="div4">　 予約確認</div>
-        </button>
-        <div class="div37">
-          <div class="div38">会員登録</div>
-          <div class="div39">
-            <div class="div40">希望する</div>
-            <img class="vectorIcon4" alt="" src="/images/vector4.svg" />
-          </div>
-          <div class="div41">
-            <div class="div42">希望しない</div>
-            <img class="vectorIcon4" alt="" src="/images/vector5.svg" />
-          </div>
-        </div>
-        <div class="div43">
-          <input class="rectangleInput" type="text" />
-          <div class="div44">パスワード</div>
-        </div>
-        <div class="div45">
-          <div class="child1" />
-          <div class="div46">備考</div>
-        </div>
-        <div class="div47">
-          <input class="input" type="text" />
-          <input class="input1" type="text" />
-          <input class="input2" type="file" />
-          <input class="input3" type="file" />
-          <div class="div48">追加運転者</div>
-          <div class="div49">
-            <div class="div50">あり</div>
-            <img class="vectorIcon4" alt="" src="/images/vector6.svg" />
-          </div>
-          <div class="div51">
-            <div class="div52">なし</div>
-            <img class="vectorIcon4" alt="" src="/images/vector7.svg" />
-          </div>
-        </div>
-        <div class="div53">
-          <input class="input4" type="text" />
-          <input class="input5" type="text" />
-          <input class="input6" type="file" />
-          <input class="input7" type="text" />
-          <div class="div54">本人確認書類アップロード</div>
-        </div>
-        <div class="div107">
-          <div class="div108">
-            <div class="div109">
-              <div class="child3" />
-              <div class="div62">01</div>
-              <img class="vectorIcon8" alt="" src="/images/vector20.svg" />
-            </div>
-            <div class="div111">
-              <div class="div66">1920</div>
-              <img class="keyboardArrowDown" alt="" src="/images/keyboard-arrow-down5.svg" />
-            </div>
-            <div class="div113">
-              <div class="div62">01</div>
-              <img class="vectorIcon8" alt="" src="/images/vector21.svg" />
-            </div>
-            <div class="div115">/</div>
-            <div class="div116">/</div>
-          </div>
-        </div>
-        <div class="div119">
-          <div class="div120">
-            <div class="div121">
-              <div class="child4" />
-              <div class="div62">2023</div>
-              <img class="vectorIcon9" alt="" src="/images/vector22.svg" />
-            </div>
-            <div class="div123">
-              <div class="child3" />
-              <div class="div62">01</div>
-              <img class="vectorIcon8" alt="" src="/images/vector23.svg" />
-            </div>
-            <div class="div125">
-              <div class="child3" />
-              <div class="div62">01</div>
-              <img class="vectorIcon8" alt="" src="/images/vector24.svg" />
-            </div>
-            <div class="div111">
-              <div class="div66">2023</div>
-              <img class="keyboardArrowDown" alt="" src="/images/keyboard-arrow-down6.svg" />
-            </div>
-            <div class="div129">
-              <div class="div66">01</div>
-              <img class="keyboardArrowDown" alt="" src="/images/keyboard-arrow-down6.svg" />
-            </div>
-            <div class="div131">
-              <div class="div66">01</div>
-              <img class="keyboardArrowDown" alt="" src="/images/keyboard-arrow-down6.svg" />
-            </div>
-            <div class="div133">/</div>
-            <div class="div134">/</div>
-          </div>
-        </div>
-      </div>
-      <div class="div3">
-        <button class="button">
-          <div class="child" />
-          <div class="div4">　 現金決済</div>
-        </button>
-        <button class="button1">
-          <div class="child" />
-          <div class="div4">オンライン決済</div>
-        </button>
-        <div class="div6">
-          <div class="div7">■お客様情報</div>
-          <div class="div8">お名前</div>
-          <div class="div9">メールアドレス</div>
-          <div class="div10">電話番号</div>
-          <div class="div11">080-0000-0000</div>
-          <div class="div12">空港お出迎え</div>
-          <div class="div13">空港お見送り</div>
-          <div class="div14">18:00</div>
-          <div class="div15">なし</div>
-          <div class="exampleclassokinawa">example@class.okinawa</div>
-          <div class="div16">山田太郎　様</div>
-        </div>
-        <div class="div17">
-          <img class="inner" alt="" src="/images/vector-1.svg" />
-          <div class="div18">
-            <img class="icon" alt="" src="/images/@2x.png" />
-            <div class="div19">補償制度を詳しく</div>
-          </div>
-          <div class="exampleclassokinawa">基本料金</div>
-          <div class="div21">¥20,000</div>
-          <div class="div22">補償制度</div>
-          <div class="div23">¥3,000</div>
-          <div class="div24">¥30,000</div>
-          <div class="div25">2023/1/1 10:00 ~ 20231/2 18:00</div>
-          <div class="div26">■料金</div>
-          <div class="div27">■貸出日程</div>
-        </div>
-        <div class="div28">
-          <div class="at">
-            <div class="at1">AT</div>
-          </div>
-          <div class="div29">
-            <img class="vectorIcon" alt="" src="/images/vector.svg" />
-            <img class="vectorIcon1" alt="" src="/images/vector1.svg" />
-            <img class="vectorIcon2" alt="" src="/images/vector2.svg" />
-            <img class="vectorIcon3" alt="" src="/images/vector3.svg" />
-            <div class="div30">7人</div>
-          </div>
-          <img class="maskGroupIcon" alt="" src="/images/mask-group@2x.png" />
-        </div>
-        <div class="div31">
-          <main class="main1" />
-          <main class="main2" />
-          <main class="main3" />
-          <main class="main4" />
-        </div>
-        <main class="main5" />
-        <div class="div32">■車両情報</div>
-        <div class="toyota">TOYOTA　アルファード</div>
-        <div class="div33">
-          <div class="bookingInformation">BOOKING INFORMATION</div>
-          <div class="div34">ご予約内容</div>
-          <img class="scheduleIcon" alt="" src="/images/schedule.svg" />
-        </div>
-      </div>
+      <Information></Information>
     </main>
-    <footer class="footer">
-      <div class="div">〒901-0203　沖縄県豊見城市長堂67</div>
-      <div class="div1">営業時間　8:00-18:00</div>
-      <div class="div2">問合せ　080-0000-0000</div>
-      <img class="classLogo31" alt="" src="/images/class-logo3-1@2x.png" :onClick="onCLASSLogo31Click" />
-      <img class="footerChild" alt="" src="/images/images/group-2@2x.png" />
-    </footer>
-    <div class="div192">お客様画面</div>
+    <Footer></Footer>
   </div>
 </template>
   
@@ -285,6 +122,8 @@ import CreditCardInfo from "/src/components/common/form/CreditCardInfo";
 import Input from "/src/components/common/form/Input";
 import Button from "/src/components/common/Button";
 import Products from "/src/components/common/Products";
+import Information from "/src/components/common/Information";
+import Footer from "/src/components/common/Footer";
 export default {
   name: 'Home',
   components: {
@@ -294,7 +133,9 @@ export default {
     CreditCardInfo,
     Input,
     Button,
-    Products
+    Products,
+    Information,
+    Footer
   },
   props: {
     msg: {
@@ -312,12 +153,22 @@ export default {
       additionalDriverRadio: [
         { name: "additional-driver-radio", value: "yes", label: "あり"},
         { name: "additional-driver-radio", value: "no", label: "なし"},
+      ],
+      signUp: [
+        { name: "sign-up", value: "yes", label: "希望する"},
+        { name: "sign-up", value: "no", label: "希望しない"},
       ]
     }
   }
 }
 </script>
 <style lang="scss" scoped>
+.home {
+  text-align: left;
+  font-size: 1rem;
+  color: var(--color-black);
+  font-family: var(--font-istok-web);
+}
 section {
   margin: 0 2.4rem;
 }
@@ -471,6 +322,10 @@ section {
       margin-right: auto;
       width: fit-content;
       text-align: left;
+    }
+
+    &--submit {
+      text-align: center;
     }
   }
 }
