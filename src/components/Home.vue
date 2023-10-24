@@ -110,14 +110,7 @@
       </section>
       <Information></Information>
     </main>
-    <footer class="footer" style="display:none">
-      <div class="div">〒901-0203　沖縄県豊見城市長堂67</div>
-      <div class="div1">営業時間　8:00-18:00</div>
-      <div class="div2">問合せ　080-0000-0000</div>
-      <img class="classLogo31" alt="" src="/images/class-logo3-1@2x.png" :onClick="onCLASSLogo31Click" />
-      <img class="footerChild" alt="" src="/images/images/group-2@2x.png" />
-    </footer>
-    <div class="div192">お客様画面</div>
+    <Footer></Footer>
   </div>
 </template>
   
@@ -130,6 +123,7 @@ import Input from "/src/components/common/form/Input";
 import Button from "/src/components/common/Button";
 import Products from "/src/components/common/Products";
 import Information from "/src/components/common/Information";
+import Footer from "/src/components/common/Footer";
 export default {
   name: 'Home',
   components: {
@@ -140,7 +134,8 @@ export default {
     Input,
     Button,
     Products,
-    Information
+    Information,
+    Footer
   },
   props: {
     msg: {
