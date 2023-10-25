@@ -45,7 +45,9 @@ export default {
         }
     }
     ::v-deep .input-area.credit-card-cvv{
-        width: 5.2rem;
+        input {
+            width: 5.2rem;
+        }
     }
 }
 </style>
