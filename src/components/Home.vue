@@ -64,51 +64,55 @@
           </div>
         </div>
       </section>
-      <section class="section__form">
-        <div class="section__form--title">
-          <h1>SCHEDULE</h1>
-          <h3>旅行日程で探す</h3>
-        </div>
-        <DateTimePicker></DateTimePicker>
-        <Button text="空き状況を検索"></Button>
-        <Products></Products>
-      </section>
-      <section class="section__form">
-        <div class="section__form--title">
-          <h1>YOUR INFORMATION</h1>
-          <h3>お客様情報入力</h3>
-        </div>
-        <div class="section__form--content">
-          <Input type="text" label="お名前" name="name" placeholder="山田太郎"></Input>
-          <Input type="text" label="お名前(かな)" name="kana-name" placeholder="やまだたろう"></Input>
-          <Input type="email" label="メールアドレス" name="email" placeholder="example@class.okinawa"></Input>
-          <Input type="tel" label="電話番号" name="phonenumber" placeholder="080-0000-0000"></Input>
-          <Input type="number" label="免許番号" name="license-number" placeholder="1234567890"></Input>
-          <Input type="date" label="生年月日" name="dob"></Input>
-          <Input type="address"></Input>
-          <Input type="airport-timpicker" label="空港お出迎え" name="airport-pickup"></Input>
-          <Input type="airport-timpicker" label="空港お見送り" name="airport-dropoff"></Input>
-          <CreditCardInfo></CreditCardInfo>
-          <p class="label">本人確認書類アップロード</p>
-          <Input type="file" label="画像1" name="image1"></Input>
-          <Input type="file" label="画像2" name="image2"></Input>
-          <Input type="file" label="画像3" name="image3"></Input>
-          <Input type="file" label="画像4" name="image4"></Input>
-          <Input type="radio" label="追加運転者" :options="additionalDriverRadio"></Input>
-          <Input type="file" label="画像1" name="additionalDriverImage1"></Input>
-          <Input type="file" label="画像2" name="additionalDriverImage2"></Input>
-          <Input type="file" label="画像3" name="additionalDriverImage3"></Input>
-          <Input type="file" label="画像4" name="additionalDriverImage4"></Input>
-          <Input type="textarea" label="備考" name="memos"></Input>
-          <Input type="password" label="パスワード" name="newPassword"></Input>
-          <Input type="password" label="パスワード（確認）" name="newPasswordConfirmation"></Input>
-          <Input type="radio" label="会員登録" :options="signUp"></Input>
-          <div class="section__form--submit">
-            <Button text="予約確認"></Button>
-          </div>
-        </div>
-      </section>
       <Information></Information>
+      <div class="comingSoon">
+        <h1>Coming Soon...</h1>
+        <h1 style="top: 39rem;">Coming Soon...</h1>
+      </div>
+      <section class="section__form">
+          <div class="section__form--title">
+            <h1>SCHEDULE</h1>
+            <h3>旅行日程で探す</h3>
+          </div>
+          <DateTimePicker></DateTimePicker>
+          <Button text="空き状況を検索"></Button>
+          <Products></Products>
+      </section>
+      <section class="section__form">
+          <div class="section__form--title">
+            <h1>YOUR INFORMATION</h1>
+            <h3>お客様情報入力</h3>
+          </div>
+          <div class="section__form--content">
+            <Input type="text" label="お名前" name="name" placeholder="山田太郎"></Input>
+            <Input type="text" label="お名前(かな)" name="kana-name" placeholder="やまだたろう"></Input>
+            <Input type="email" label="メールアドレス" name="email" placeholder="example@class.okinawa"></Input>
+            <Input type="tel" label="電話番号" name="phonenumber" placeholder="080-0000-0000"></Input>
+            <Input type="number" label="免許番号" name="license-number" placeholder="1234567890"></Input>
+            <Input type="date" label="生年月日" name="dob"></Input>
+            <Input type="address"></Input>
+            <Input type="airport-timpicker" label="空港お出迎え" name="airport-pickup"></Input>
+            <Input type="airport-timpicker" label="空港お見送り" name="airport-dropoff"></Input>
+            <CreditCardInfo></CreditCardInfo>
+            <p class="label">本人確認書類アップロード</p>
+            <Input type="file" label="画像1" name="image1"></Input>
+            <Input type="file" label="画像2" name="image2"></Input>
+            <Input type="file" label="画像3" name="image3"></Input>
+            <Input type="file" label="画像4" name="image4"></Input>
+            <Input type="radio" label="追加運転者" :options="additionalDriverRadio"></Input>
+            <Input type="file" label="画像1" name="additionalDriverImage1"></Input>
+            <Input type="file" label="画像2" name="additionalDriverImage2"></Input>
+            <Input type="file" label="画像3" name="additionalDriverImage3"></Input>
+            <Input type="file" label="画像4" name="additionalDriverImage4"></Input>
+            <Input type="textarea" label="備考" name="memos"></Input>
+            <Input type="password" label="パスワード" name="newPassword"></Input>
+            <Input type="password" label="パスワード（確認）" name="newPasswordConfirmation"></Input>
+            <Input type="radio" label="会員登録" :options="signUp"></Input>
+            <div class="section__form--submit">
+              <Button text="予約確認"></Button>
+            </div>
+          </div>
+      </section>
     </main>
     <Footer></Footer>
   </div>
@@ -330,6 +334,22 @@ section {
     &--submit {
       text-align: center;
     }
+  }
+}
+.comingSoon {
+  z-index: 1;
+  position: absolute;
+  width: 100%;
+  height: 296rem;
+  background: rgba(0, 0, 0, .4);
+  text-align: center;
+  @media screen and (max-width: 390px) {
+    height: 300rem;
+  }
+  h1 {
+    color: #fff;
+    font-size: 4rem;
+    position: relative;
   }
 }
 </style>
