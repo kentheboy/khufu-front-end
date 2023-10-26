@@ -40,6 +40,9 @@ export default {
             width: 15.16rem;
             display: flex;
             flex-direction: column;
+            @media screen and (max-width: 390px) {
+                width: 10.16rem;
+            }
 
             img {
                 width: 100%;
@@ -138,10 +141,17 @@ export default {
             display: flex;
             flex-wrap: wrap;
             width: 15.16rem;
+            @media screen and (max-width: 390px) {
+                width: 10.16rem;
+            }
 
             img {
                 width: 7.58rem;
                 height: 6.86rem;
+                @media screen and (max-width: 390px) {
+                    width: 4.58rem;
+                    height: auto;
+                }
             }
         }
     }

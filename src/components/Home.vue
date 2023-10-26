@@ -322,6 +322,9 @@ section {
       margin-right: auto;
       width: fit-content;
       text-align: left;
+      @media screen and (max-width: 390px) {
+        width: 100%;
+      }
     }
 
     &--submit {

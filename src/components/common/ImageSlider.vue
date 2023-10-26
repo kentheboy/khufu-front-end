@@ -59,6 +59,7 @@ export default {
   &__image-parent {
     display: flex;
     justify-content: space-around;
+    overflow: hidden;
 
     img {
       height:600px;
