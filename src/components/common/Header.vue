@@ -12,7 +12,7 @@
             <a href="#">menu 2</a>
             <a href="#">menu 3</a>
           </div>
-          <button class="button">予約する</button>
+          <!-- <button class="button">予約する</button> -->
         </div>
       </header>
 </template>

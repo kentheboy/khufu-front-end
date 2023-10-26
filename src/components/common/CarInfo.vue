@@ -142,14 +142,14 @@ export default {
             flex-wrap: wrap;
             width: 15.16rem;
             @media screen and (max-width: 390px) {
-                width: 10.16rem;
+                width: 9.16rem;
             }
 
             img {
                 width: 7.58rem;
                 height: 6.86rem;
                 @media screen and (max-width: 390px) {
-                    width: 4.58rem;
+                    width: 4.28rem;
                     height: auto;
                 }
             }
