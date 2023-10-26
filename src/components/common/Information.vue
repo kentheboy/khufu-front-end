@@ -5,7 +5,7 @@
             <h3>ご予約内容</h3>
         </div>
         <div class="section__information--car-info">
-            <h4>■車両情報</h4>
+            <h4>■車両情報 （例）</h4>
             <h5>TOYOTA　アルファード</h5>
             <CarInfo></CarInfo>
             <div class="info-detail-area">
@@ -54,7 +54,7 @@
                     </div>
                 </div>
             </div>
-
+            <p>※これは予約例です</p>
         </div>
     </section>
 </template>
