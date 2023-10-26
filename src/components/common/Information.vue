@@ -12,7 +12,7 @@
                 <div class="row-content">
                     <div class="title">■貸出日程</div>
                     <div class="detail">
-                        <p>2023/1/1 10:00 ~ 20231/2 18:00</p>
+                        <p>2023/1/1 10:00 ~ 2023/1/2 18:00</p>
                     </div>
                 </div>
                 <div class="row-content">
@@ -98,6 +98,9 @@ export default {
         margin-right: auto;
         width: 34.97rem;
         text-align: left;
+        @media screen and (max-width: 390px) {
+            width: 20.97rem;
+        }
     }
     
     .info-detail-area {
@@ -115,13 +118,22 @@ export default {
             letter-spacing: 0.15em;
             .title {
               width: 11rem;
+                @media screen and (max-width: 390px) {
+                    width: 6rem;
+                }
             }
             .detail {
               width: 19rem;
+                @media screen and (max-width: 390px) {
+                    width: 14rem;
+                }
                 .price-detail {
                     position: relative;
                     width: 100%;
                     height: 3rem;
+                    @media screen and (max-width: 390px) {
+                        height: 4rem
+                    }
                     .basic-price-title {
                         position: absolute;
                         top: 0;
@@ -150,6 +162,10 @@ export default {
                         left: 12rem;
                         height: 0.7rem;
                         font-size: 0.6rem;
+                        @media screen and (max-width: 390px) {
+                            top: 2.7rem;
+                            left: 0rem;
+                        }
                         .insurance-price-help-icon {
                             height: 0.9rem
                         }
@@ -161,9 +177,14 @@ export default {
                 dl {
                     display: flex;
                     flex-wrap: wrap;
+                    overflow-wrap: break-word;
+                    text-decoration: none;
                     dt, dd {
                         width: 33%;
                         margin-top: 0.1rem;
+                        @media screen and (max-width: 390px) {
+                            width: 42%;
+                        }
                     }
                 }
             }

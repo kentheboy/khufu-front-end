@@ -82,7 +82,7 @@ export default {
         },
         classes: {
             type: String,
-            default: null
+            default: ""
         },
         value: { 
             type: [String, Number],
@@ -129,6 +129,9 @@ export default {
     width: 24.4rem;
     text-align: start;
     margin-bottom: 2rem;
+    @media screen and (max-width: 390px) {
+        width: 100%;
+    }
 
     label {
         display: block;
@@ -156,6 +159,10 @@ export default {
             width: 16.6rem;
             margin-left: .5rem;
             display: inline-block;
+            @media screen and (max-width: 390px) {
+                margin-left: 0;
+                margin-top: 0.3rem;
+            }
         }
 
         &[type=file] {
@@ -185,6 +192,9 @@ export default {
         height: 168px;
         border: none;
         padding: 1.25rem;
+        @media screen and (max-width: 390px) {
+            width: 89%;
+        }
     }
 }
 .airport-timpicker {
