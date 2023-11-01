@@ -8,7 +8,7 @@
       <section class="section__features">
         <div class="section__features--title">
           <h3>特徴</h3>
-          <h1>FETURE</h1>
+          <h1>FEATURE</h1>
         </div>
         <div class="section__features--contents">
           <div class="section__features--content">
@@ -23,7 +23,7 @@
             </div>
             <div class="subtext">
               <h1>
-                <p class="p">必要書類はメールにて送信。かんたんに手続きが済みます。</p>
+                <p class="p">必要書類はメールにて送信。<br class="sp">かんたんに手続きが済みます。</p>
               </h1>
             </div>
           </div>
@@ -39,10 +39,10 @@
             </div>
             <div class="subtext">
               <h1>
-                <p class="p">混みにくいインターチェンジへ最短アクセスが可能です。</p>
+                <p class="p">混みにくいインターチェンジへ<br class="sp">最短アクセスが可能です。</p>
               </h1>
               <h3>
-                <p class="p">※空港近辺では使用インターが重なり、度々渋滞になります。</p>
+                <p class="p">※空港近辺では使用インターが重なり、<br class="sp">度々渋滞になります。</p>
               </h3>
             </div>
           </div>
@@ -58,7 +58,7 @@
             </div>
             <div class="subtext">
               <h1>
-                <p class="p">広々過ごせるアルファードでゆとりのある快適なご旅行をサポートいたします。</p>
+                <p class="p">広々過ごせるアルファードで<br class="sp">ゆとりのある快適なご旅行を<br class="sp">サポートいたします。</p>
               </h1>
             </div>
           </div>
@@ -268,6 +268,9 @@ section {
 
       .subtext {
         margin: 4rem;
+        @media screen and (max-width: 390px) {
+          margin: 4rem 0;
+        }
 
         h1 {
           font-size: inherit;
@@ -350,6 +353,12 @@ section {
     color: #fff;
     font-size: 4rem;
     position: relative;
+  }
+}
+.sp {
+  display: none;
+  @media screen and (max-width: 390px) {
+    display: initial;
   }
 }
 </style>
