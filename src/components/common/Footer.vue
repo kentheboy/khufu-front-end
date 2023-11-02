@@ -17,9 +17,7 @@ export default {
 </script>
 <style lang="scss">
 .footer {
-    position: initial;
     width: 100%;
-    height: 11.3rem;
     text-align: left;
     background-color: var(--color-skyblue);
     font-size: var(--font-size-5xs);

@@ -99,14 +99,8 @@
               <CreditCardInfo></CreditCardInfo>
               <p class="label">本人確認書類アップロード</p>
               <Input type="file" label="画像1" name="image1"></Input>
-              <Input type="file" label="画像2" name="image2"></Input>
-              <Input type="file" label="画像3" name="image3"></Input>
-              <Input type="file" label="画像4" name="image4"></Input>
               <Input type="radio" label="追加運転者" :options="additionalDriverRadio"></Input>
               <Input type="file" label="画像1" name="additionalDriverImage1"></Input>
-              <Input type="file" label="画像2" name="additionalDriverImage2"></Input>
-              <Input type="file" label="画像3" name="additionalDriverImage3"></Input>
-              <Input type="file" label="画像4" name="additionalDriverImage4"></Input>
               <Input type="textarea" label="備考" name="memos"></Input>
               <Input type="password" label="パスワード" name="newPassword"></Input>
               <Input type="password" label="パスワード（確認）" name="newPasswordConfirmation"></Input>
