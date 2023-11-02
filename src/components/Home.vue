@@ -65,11 +65,8 @@
         </div>
       </section>
       <Information></Information>
-      <div class="comingSoon">
-        <h1>Coming Soon...</h1>
-        <h1 style="top: 39rem;">Coming Soon...</h1>
-      </div>
-      <section class="section__form">
+      <div class="comingSoon" ref="comingSoon" :style="cssVars">
+        <section class="section__form">
           <div class="section__form--title">
             <h1>SCHEDULE</h1>
             <h3>旅行日程で探す</h3>
@@ -77,42 +74,43 @@
           <DateTimePicker></DateTimePicker>
           <Button label="空き状況を検索"></Button>
           <Products></Products>
-      </section>
-      <section class="section__form">
-          <div class="section__form--title">
-            <h1>YOUR INFORMATION</h1>
-            <h3>お客様情報入力</h3>
-          </div>
-          <div class="section__form--content">
-            <Input type="text" label="お名前" name="name" placeholder="山田太郎"></Input>
-            <Input type="text" label="お名前(かな)" name="kana-name" placeholder="やまだたろう"></Input>
-            <Input type="email" label="メールアドレス" name="email" placeholder="example@class.okinawa"></Input>
-            <Input type="tel" label="電話番号" name="phonenumber" placeholder="080-0000-0000"></Input>
-            <Input type="number" label="免許番号" name="license-number" placeholder="1234567890"></Input>
-            <Input type="date" label="生年月日" name="dob"></Input>
-            <Input type="address"></Input>
-            <Input type="airport-timpicker" label="空港お出迎え" name="airport-pickup"></Input>
-            <Input type="airport-timpicker" label="空港お見送り" name="airport-dropoff"></Input>
-            <CreditCardInfo></CreditCardInfo>
-            <p class="label">本人確認書類アップロード</p>
-            <Input type="file" label="画像1" name="image1"></Input>
-            <Input type="file" label="画像2" name="image2"></Input>
-            <Input type="file" label="画像3" name="image3"></Input>
-            <Input type="file" label="画像4" name="image4"></Input>
-            <Input type="radio" label="追加運転者" :options="additionalDriverRadio"></Input>
-            <Input type="file" label="画像1" name="additionalDriverImage1"></Input>
-            <Input type="file" label="画像2" name="additionalDriverImage2"></Input>
-            <Input type="file" label="画像3" name="additionalDriverImage3"></Input>
-            <Input type="file" label="画像4" name="additionalDriverImage4"></Input>
-            <Input type="textarea" label="備考" name="memos"></Input>
-            <Input type="password" label="パスワード" name="newPassword"></Input>
-            <Input type="password" label="パスワード（確認）" name="newPasswordConfirmation"></Input>
-            <Input type="radio" label="会員登録" :options="signUp"></Input>
-            <div class="section__form--submit">
-              <Button label="予約確認"></Button>
+        </section>
+        <section class="section__form">
+            <div class="section__form--title">
+              <h1>YOUR INFORMATION</h1>
+              <h3>お客様情報入力</h3>
             </div>
-          </div>
-      </section>
+            <div class="section__form--content">
+              <Input type="text" label="お名前" name="name" placeholder="山田太郎"></Input>
+              <Input type="text" label="お名前(かな)" name="kana-name" placeholder="やまだたろう"></Input>
+              <Input type="email" label="メールアドレス" name="email" placeholder="example@class.okinawa"></Input>
+              <Input type="tel" label="電話番号" name="phonenumber" placeholder="080-0000-0000"></Input>
+              <Input type="number" label="免許番号" name="license-number" placeholder="1234567890"></Input>
+              <Input type="date" label="生年月日" name="dob"></Input>
+              <Input type="address"></Input>
+              <Input type="airport-timpicker" label="空港お出迎え" name="airport-pickup"></Input>
+              <Input type="airport-timpicker" label="空港お見送り" name="airport-dropoff"></Input>
+              <CreditCardInfo></CreditCardInfo>
+              <p class="label">本人確認書類アップロード</p>
+              <Input type="file" label="画像1" name="image1"></Input>
+              <Input type="file" label="画像2" name="image2"></Input>
+              <Input type="file" label="画像3" name="image3"></Input>
+              <Input type="file" label="画像4" name="image4"></Input>
+              <Input type="radio" label="追加運転者" :options="additionalDriverRadio"></Input>
+              <Input type="file" label="画像1" name="additionalDriverImage1"></Input>
+              <Input type="file" label="画像2" name="additionalDriverImage2"></Input>
+              <Input type="file" label="画像3" name="additionalDriverImage3"></Input>
+              <Input type="file" label="画像4" name="additionalDriverImage4"></Input>
+              <Input type="textarea" label="備考" name="memos"></Input>
+              <Input type="password" label="パスワード" name="newPassword"></Input>
+              <Input type="password" label="パスワード（確認）" name="newPasswordConfirmation"></Input>
+              <Input type="radio" label="会員登録" :options="signUp"></Input>
+              <div class="section__form--submit">
+                <Button label="予約確認"></Button>
+              </div>
+            </div>
+        </section>
+      </div>
     </main>
     <Footer></Footer>
   </div>
@@ -161,7 +159,20 @@ export default {
       signUp: [
         { name: "sign-up", value: "yes", label: "希望する"},
         { name: "sign-up", value: "no", label: "希望しない"},
-      ]
+      ],
+      comingSoonHeight: null
+    }
+  },
+  mounted() {
+    const comingSoonElement = this.$refs.comingSoon;
+    this.comingSoonHeight = `${comingSoonElement.offsetHeight}px`;
+  },
+  methods: {},
+  computed: {
+    cssVars() {
+      return {
+        '--comingSoon-height': this.comingSoonHeight
+      }
     }
   }
 }
@@ -340,25 +351,39 @@ section {
   }
 }
 .comingSoon {
-  z-index: 1;
-  position: absolute;
-  width: 100%;
-  height: 296rem;
-  background: rgba(0, 0, 0, .4);
-  text-align: center;
-  @media screen and (max-width: 390px) {
-    height: 300rem;
-  }
-  h1 {
-    color: #fff;
-    font-size: 4rem;
-    position: relative;
+  &:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: var(--comingSoon-height);
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 1;
   }
 }
 .sp {
   display: none;
   @media screen and (max-width: 390px) {
     display: initial;
+  }
+}
+
+.tmpModal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
   }
 }
 </style>
