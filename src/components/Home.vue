@@ -75,7 +75,7 @@
             <h3>旅行日程で探す</h3>
           </div>
           <DateTimePicker></DateTimePicker>
-          <Button text="空き状況を検索"></Button>
+          <Button label="空き状況を検索"></Button>
           <Products></Products>
       </section>
       <section class="section__form">
@@ -109,7 +109,7 @@
             <Input type="password" label="パスワード（確認）" name="newPasswordConfirmation"></Input>
             <Input type="radio" label="会員登録" :options="signUp"></Input>
             <div class="section__form--submit">
-              <Button text="予約確認"></Button>
+              <Button label="予約確認"></Button>
             </div>
           </div>
       </section>
@@ -124,10 +124,10 @@ import ImageSlider from "/src/components/common/ImageSlider";
 import DateTimePicker from "/src/components/common/form/DateTimePicker";
 import CreditCardInfo from "/src/components/common/form/CreditCardInfo";
 import Input from "/src/components/common/form/Input";
-import Button from "/src/components/common/Button";
 import Products from "/src/components/common/Products";
 import Information from "/src/components/common/Information";
 import Footer from "/src/components/common/Footer";
+import Button from "primevue/button";
 export default {
   name: 'Home',
   components: {
@@ -136,10 +136,10 @@ export default {
     DateTimePicker,
     CreditCardInfo,
     Input,
-    Button,
     Products,
     Information,
-    Footer
+    Footer,
+    Button
   },
   props: {
     msg: {
