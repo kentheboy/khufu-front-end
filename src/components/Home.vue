@@ -50,9 +50,8 @@
             <div class="ellipse-parent">
               <div class="ellipseDiv">
                 <div class="ellipseInside-number">03</div>
-                <h1 class="ellipseInside-text">
-                  <p class="p">全車ゆとりのある</p>
-                  <p class="p">アルファード</p>
+                <h1 class="ellipseInside-text singleLine">
+                  <p class="p">支払いもスマートに</p>
                 </h1>
               </div>
             </div>
@@ -260,6 +259,13 @@ section {
                 font-size: 1.6rem;
                 top: 8.4rem;
                 margin: 9rem 0;
+              }
+
+              &.singleLine {
+                margin-top: 12rem;
+                @media screen and (max-width: 390px) {
+                  margin-top: 10rem;
+                }
               }
             }
           }
