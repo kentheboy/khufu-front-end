@@ -48,7 +48,7 @@
     </div>
     <div v-else-if="type==='textarea'" :class="`input-area ${classes}`">
         <label v-if="label">{{ label }}</label>
-        <textarea></textarea>
+        <textarea :value="value"></textarea>
     </div>
     <div v-else :class="`input-area ${classes}`">
         <label v-if="label">{{ label }}</label>
@@ -56,6 +56,7 @@
             :type="type"
             :name="name"
             :placeholder="placeholder"
+            :value="value"
         >
     </div>
 </template>

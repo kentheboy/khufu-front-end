@@ -103,7 +103,7 @@
               <Input type="file" label="画像1" name="image1"></Input>
               <Input type="radio" label="追加運転者" :options="additionalDriverRadio"></Input>
               <Input type="file" label="画像1" name="additionalDriverImage1"></Input>
-              <Input type="textarea" label="備考" name="memos"></Input>
+              <Input type="textarea" label="備考" name="memos"  :value="comingSoonHeight"></Input>
               <Input type="password" label="パスワード" name="newPassword"></Input>
               <Input type="password" label="パスワード（確認）" name="newPasswordConfirmation"></Input>
               <Input type="radio" label="会員登録" :options="signUp"></Input>
