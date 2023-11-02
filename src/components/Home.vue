@@ -166,8 +166,8 @@ export default {
     }
   },
   mounted() {
-    const comingSoonElement = document.getElementsByClassName('comingSoon');
-    this.comingSoonHeight = `${comingSoonElement[0].clientHeight}px`;
+    const comingSoonElement = this.$refs.comingSoon;
+    this.comingSoonHeight = `${comingSoonElement.offsetHeight}px`;
   },
   methods: {},
   computed: {
