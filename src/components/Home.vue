@@ -65,7 +65,7 @@
         </div>
       </section>
       <Information></Information>
-      <div class="comingSoon" ref="comingSoon" :style="cssVars">
+      <div class="comingSoon" ref="comingSoon">
         <div id="myModal" class="comingSoon__notice custom-modal">
           <div class="modal-content">
               <p>現在、下記の電話にて<br>予約を承っております。</p>
@@ -162,19 +162,6 @@ export default {
         { name: "sign-up", value: "yes", label: "希望する"},
         { name: "sign-up", value: "no", label: "希望しない"},
       ],
-      comingSoonHeight: null
-    }
-  },
-  mounted() {
-    const comingSoonElement = this.$refs.comingSoon;
-    this.comingSoonHeight = `${comingSoonElement.offsetHeight}px`;
-  },
-  methods: {},
-  computed: {
-    cssVars() {
-      return {
-        '--comingSoon-height': this.comingSoonHeight
-      }
     }
   }
 }
@@ -359,9 +346,12 @@ section {
     position: absolute;
     left: 0;
     width: 100%;
-    height: var(--comingSoon-height);
+    height: 2751px;
     background-color: rgba(0, 0, 0, 0.4);
     z-index: 1;
+    @media screen and (max-width: 390px) {
+      height: 2860px;
+    }
   }
   &__notice {
     position: absolute;
