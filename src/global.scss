@@ -105,19 +105,6 @@ body {
   text-align: left;
   display: inline-block;
 }
-.button {
-  cursor: pointer;
-  border: none;
-  padding: 0;
-  background-color: transparent;
-  position: absolute;
-  top: 50.82rem;
-  left: 6.08rem;
-  box-shadow: 0.9974358677864075px 1.994871735572815px 1.99px
-    rgba(0, 0, 0, 0.25);
-  width: 10.91rem;
-  height: 2.5rem;
-}
 .button1 {
   cursor: pointer;
   border: none;
@@ -2194,4 +2181,8 @@ body {
   font-size: 1rem;
   color: var(--color-black);
   font-family: var(--font-istok-web);
+}
+a {
+  text-decoration: none;
+  color: var(--color-steelblue);
 }

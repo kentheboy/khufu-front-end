@@ -66,6 +66,12 @@
       </section>
       <Information></Information>
       <div class="comingSoon" ref="comingSoon" :style="cssVars">
+        <div id="myModal" class="comingSoon__notice custom-modal">
+          <div class="modal-content">
+              <p>現在、下記の電話にて<br>予約を承っております。</p>
+              <a class="button" href="tel:098-9967266">098-9967266</a>
+          </div>
+        </div>
         <section class="section__form">
           <div class="section__form--title">
             <h1>SCHEDULE</h1>
@@ -75,7 +81,7 @@
           <Button label="空き状況を検索"></Button>
           <Products></Products>
         </section>
-        <section class="section__form">
+        <section class="section__form" style="margin-bottom: 0;">
             <div class="section__form--title">
               <h1>YOUR INFORMATION</h1>
               <h3>お客様情報入力</h3>
@@ -351,39 +357,45 @@ section {
   }
 }
 .comingSoon {
+  position: relative;
   &:before {
     content: "";
     position: absolute;
     left: 0;
     width: 100%;
     height: var(--comingSoon-height);
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.4);
     z-index: 1;
+  }
+  &__notice {
+    position: absolute;
+  }
+  .custom-modal {
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    .modal-content {
+      background-color: #fefefe;
+      margin: 15% auto;
+      padding: 20px;
+      width: 25rem;
+      border-radius: 3.49px;
+      border: none;
+      text-align: center;
+      font-size: 1rem;
+      .button {
+        display: inline-block;
+      }
+    }
   }
 }
 .sp {
   display: none;
   @media screen and (max-width: 390px) {
     display: initial;
-  }
-}
-
-.tmpModal {
-  display: none;
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.4);
-  .modal-content {
-    background-color: #fefefe;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
   }
 }
 </style>
