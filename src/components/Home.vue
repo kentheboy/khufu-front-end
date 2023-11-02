@@ -57,7 +57,7 @@
             </div>
             <div class="subtext">
               <h1>
-                <p class="p">広々過ごせるアルファードで<br class="sp">ゆとりのある快適なご旅行を<br class="sp">サポートいたします。</p>
+                <p class="p">免責補償込みで予約可能。<br class="sp">余計なオプションも、<br class="sp">追加保険料も必要なし。</p>
               </h1>
             </div>
           </div>
@@ -173,7 +173,7 @@ export default {
   font-family: var(--font-istok-web);
 }
 section {
-  margin: 0 2.4rem;
+  margin: 8rem 2.4rem;
 }
 .section {
   &__heroImageArea {
@@ -352,11 +352,11 @@ section {
     position: absolute;
     left: 0;
     width: 100%;
-    height: 2751px;
+    height: 2793px;
     background-color: rgba(0, 0, 0, 0.4);
     z-index: 1;
     @media screen and (max-width: 390px) {
-      height: 2860px;
+      height: 2902px;
     }
   }
   &__notice {

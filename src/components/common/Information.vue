@@ -70,7 +70,6 @@ export default {
 <style lang="scss" scoped>
 .section__information {
     text-align: center;
-    margin-bottom: 5rem;
     
     &--title {
         text-align: center;
