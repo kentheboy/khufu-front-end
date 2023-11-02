@@ -72,6 +72,8 @@
               <a class="button" href="tel:098-9967266">098-9967266</a>
           </div>
         </div>
+        <h1 class="comingSoon__notice bigText" id="comingSoon1">Coming Soon...</h1>
+        <h1 class="comingSoon__notice bigText" id="comingSoon2">Coming Soon...</h1>
         <section class="section__form">
           <div class="section__form--title">
             <h1>SCHEDULE</h1>
@@ -383,6 +385,27 @@ section {
       .button {
         display: inline-block;
       }
+    }
+  }
+
+  .bigText {
+    font-size: 5rem;
+    color: var(--color-white);
+    display: block;
+    width: 100%;
+    text-align: center;
+    z-index: 2;
+  }
+  #comingSoon1 {
+    margin: 28% auto;
+    @media screen and (max-width: 390px) {
+      margin: 68% auto;
+    }
+  }
+  #comingSoon2 {
+    margin: 50% auto;
+    @media screen and (max-width: 390px) {
+      margin: 185% auto;
     }
   }
 }
