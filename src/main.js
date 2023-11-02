@@ -2,8 +2,13 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './routers';
 import globalCss from "./global.scss";
-import { PrimeVue } from 'primevue/config';
+
+import PrimeVue from 'primevue/config';
+import "primevue/resources/themes/saga-blue/theme.css"; //theme
+import "primevue/resources/primevue.min.css"; //core CSS
+import "primeicons/primeicons.css"; //icons
 
 createApp(App)
-    .use(router, globalCss, PrimeVue)
+    .use(router, globalCss)
+    .use(PrimeVue)
     .mount('#app')
