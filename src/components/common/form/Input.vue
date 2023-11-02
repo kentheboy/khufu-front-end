@@ -188,13 +188,10 @@ export default {
         border-radius: 2.49px;
         background-color: var(--color-aliceblue);
         box-shadow: rgba(0, 0, 0, 0.25) 2px 2px 2px;
-        width: 308px;
+        width: 100%;
         height: 168px;
         border: none;
         padding: 1.25rem;
-        @media screen and (max-width: 390px) {
-            width: 89%;
-        }
     }
 }
 .airport-timpicker {
