@@ -60,7 +60,7 @@ export default {
   position: relative;
 
   .logo {
-    position: fixed;
+    position: absolute;
     margin: 7rem auto;
     width: 100%;
     text-align: center;
