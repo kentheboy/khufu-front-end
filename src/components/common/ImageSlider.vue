@@ -61,10 +61,13 @@ export default {
 
   .logo {
     position: absolute;
-    margin: 7rem auto;
+    margin: 3rem auto;
     width: 100%;
     text-align: center;
     z-index: 2;
+    img {
+      max-width: 25rem;
+    }
   }
 
   &__image-parent {
@@ -75,11 +78,15 @@ export default {
     img {
       height:600px;
     }
+
+    &:nth-child(2) {
+      z-index: -1;
+    }
   }
-  
+
   .fade-enter-active,
   .fade-leave-active {
-    transition: all 0.9s ease;
+    transition: all 1s ease;
     overflow: hidden;
     visibility: visible;
     position: absolute;
