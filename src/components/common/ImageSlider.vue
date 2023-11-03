@@ -1,5 +1,8 @@
 <template>
     <div class="image-slider">
+      <div class="logo">
+        <img src="/images/hero-mage-logo.png"/>
+      </div>
       <transition-group name="fade" tag="div">
         <div v-for="i in [currentIndex]" :key="i" class="image-slider__image-parent">
           <img :src="currentImg" />
@@ -55,6 +58,14 @@ export default {
 .image-slider {
   height: 45rem;
   position: relative;
+
+  .logo {
+    position: fixed;
+    margin: 7rem auto;
+    width: 100%;
+    text-align: center;
+    z-index: 2;
+  }
 
   &__image-parent {
     display: flex;
