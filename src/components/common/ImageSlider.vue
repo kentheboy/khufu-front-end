@@ -1,7 +1,7 @@
 <template>
     <div class="image-slider">
       <div class="logo">
-        <img src="/images/class-logo-main@2x.png"/>
+        <img src="/images/hero-mage-logo.png"/>
       </div>
       <transition-group name="fade" tag="div">
         <div v-for="i in [currentIndex]" :key="i" class="image-slider__image-parent">
