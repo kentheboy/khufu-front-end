@@ -159,9 +159,9 @@ export default {
   data() {
     return {
       heroImages: [
-        "/images/hero-image1-v2.jpg",
-        "https://cdn.pixabay.com/photo/2015/12/12/15/24/amsterdam-1089646_1280.jpg",
-        "https://cdn.pixabay.com/photo/2016/12/04/19/30/berlin-cathedral-1882397_1280.jpg"
+        "/images/car-images/hero-image1.jpg",
+        "/images/car-images/hero-image2.png",
+        "/images/car-images/hero-image3.png"
       ],
       additionalDriverRadio: [
         { name: "additional-driver-radio", value: "yes", label: "あり"},
