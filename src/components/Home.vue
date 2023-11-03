@@ -50,15 +50,14 @@
             <div class="ellipse-parent">
               <div class="ellipseDiv">
                 <div class="ellipseInside-number">03</div>
-                <h1 class="ellipseInside-text">
-                  <p class="p">全車ゆとりのある</p>
-                  <p class="p">アルファード</p>
+                <h1 class="ellipseInside-text singleLine">
+                  <p class="p">支払いもスマートに</p>
                 </h1>
               </div>
             </div>
             <div class="subtext">
               <h1>
-                <p class="p">広々過ごせるアルファードで<br class="sp">ゆとりのある快適なご旅行を<br class="sp">サポートいたします。</p>
+                <p class="p">免責補償込みで予約可能。<br class="sp">余計なオプションも、<br class="sp">追加保険料も必要なし。</p>
               </h1>
             </div>
           </div>
@@ -72,8 +71,18 @@
               <a class="button" href="tel:098-9967266">098-9967266</a>
           </div>
         </div>
-        <h1 class="comingSoon__notice bigText" id="comingSoon1">Coming Soon...</h1>
-        <h1 class="comingSoon__notice bigText" id="comingSoon2">Coming Soon...</h1>
+        <div class="comingSoon__notice bigText" id="comingSoon1">
+          <div class="bigText-content">
+            <span>Coming</span>
+            <span>Soon...</span>
+          </div>
+        </div>
+        <div class="comingSoon__notice bigText" id="comingSoon2">
+          <div class="bigText-content">
+            <span>Coming</span>
+            <span>Soon...</span>
+          </div>
+        </div>
         <section class="section__form">
           <div class="section__form--title">
             <h1>SCHEDULE</h1>
@@ -174,7 +183,7 @@ export default {
   font-family: var(--font-istok-web);
 }
 section {
-  margin: 0 2.4rem;
+  margin: 8rem 2.4rem;
 }
 .section {
   &__heroImageArea {
@@ -261,6 +270,13 @@ section {
                 top: 8.4rem;
                 margin: 9rem 0;
               }
+
+              &.singleLine {
+                margin-top: 12rem;
+                @media screen and (max-width: 390px) {
+                  margin-top: 10rem;
+                }
+              }
             }
           }
         }
@@ -346,11 +362,11 @@ section {
     position: absolute;
     left: 0;
     width: 100%;
-    height: 2751px;
+    height: 2793px;
     background-color: rgba(0, 0, 0, 0.4);
     z-index: 1;
     @media screen and (max-width: 390px) {
-      height: 2860px;
+      height: 2902px;
     }
   }
   &__notice {
@@ -379,23 +395,52 @@ section {
   }
 
   .bigText {
-    font-size: 5rem;
+    font-size: 4rem;
+    font-weight: bolder;
     color: var(--color-white);
-    display: block;
     width: 100%;
     text-align: center;
     z-index: 2;
+    &-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      width: 20rem;
+      &:nth-child(1) {
+        margin: 1% auto;
+        @media screen and (max-width: 390px) {
+          margin: 15% auto;
+        }
+      }
+      &:nth-child(2) {
+        margin: 1% auto;
+        @media screen and (max-width: 390px) {
+          margin: 15% auto;
+        }
+      }
+    }
+    span {
+      line-height: 4rem;
+      &:nth-child(1){
+        margin: 0 auto auto 0;
+      }
+      &:nth-child(2){
+        margin: auto 0 0 auto;
+      }
+    }
   }
   #comingSoon1 {
-    margin: 28% auto;
+    margin: 28% 0%;
     @media screen and (max-width: 390px) {
-      margin: 68% auto;
+      margin: 80% 0%;
+      //padding: 0 5rem;
     }
   }
   #comingSoon2 {
-    margin: 50% auto;
+    margin: 50% 0%;
     @media screen and (max-width: 390px) {
-      margin: 185% auto;
+      margin: 197% 0%;
+      //padding: 0 5rem;
     }
   }
 }
