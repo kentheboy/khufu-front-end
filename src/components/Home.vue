@@ -71,8 +71,18 @@
               <a class="button" href="tel:098-9967266">098-9967266</a>
           </div>
         </div>
-        <h1 class="comingSoon__notice bigText" id="comingSoon1">Coming Soon...</h1>
-        <h1 class="comingSoon__notice bigText" id="comingSoon2">Coming Soon...</h1>
+        <div class="comingSoon__notice bigText" id="comingSoon1">
+          <div class="bigText-content">
+            <span>Coming</span>
+            <span>Soon...</span>
+          </div>
+        </div>
+        <div class="comingSoon__notice bigText" id="comingSoon2">
+          <div class="bigText-content">
+            <span>Coming</span>
+            <span>Soon...</span>
+          </div>
+        </div>
         <section class="section__form">
           <div class="section__form--title">
             <h1>SCHEDULE</h1>
@@ -385,23 +395,52 @@ section {
   }
 
   .bigText {
-    font-size: 5rem;
+    font-size: 4rem;
+    font-weight: bolder;
     color: var(--color-white);
-    display: block;
     width: 100%;
     text-align: center;
     z-index: 2;
+    &-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      width: 20rem;
+      &:nth-child(1) {
+        margin: 1% auto;
+        @media screen and (max-width: 390px) {
+          margin: 15% auto;
+        }
+      }
+      &:nth-child(2) {
+        margin: 1% auto;
+        @media screen and (max-width: 390px) {
+          margin: 15% auto;
+        }
+      }
+    }
+    span {
+      line-height: 5rem;
+      &:nth-child(1){
+        margin: 0 auto auto 0;
+      }
+      &:nth-child(2){
+        margin: auto 0 0 auto;
+      }
+    }
   }
   #comingSoon1 {
-    margin: 28% auto;
+    margin: 28% 0%;
     @media screen and (max-width: 390px) {
-      margin: 68% auto;
+      margin: 80% 0%;
+      //padding: 0 5rem;
     }
   }
   #comingSoon2 {
-    margin: 50% auto;
+    margin: 50% 0%;
     @media screen and (max-width: 390px) {
-      margin: 185% auto;
+      margin: 197% 0%;
+      //padding: 0 5rem;
     }
   }
 }
