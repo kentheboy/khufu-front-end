@@ -5,7 +5,7 @@
             <div class="footer__content--postal-code">〒901-0203　沖縄県豊見城市長堂67</div>
             <div class="footer__content--contact">
                 <div class="hours">営業時間　8:00-18:00</div>
-                <a href="tel:098-9967266">098-9967266</a>
+                <a href="tel:098-996-7266">098-996-7266</a>
             </div>
         </div>
     </footer>
