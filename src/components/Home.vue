@@ -433,14 +433,12 @@ section {
     margin: 28% 0%;
     @media screen and (max-width: 390px) {
       margin: 80% 0%;
-      //padding: 0 5rem;
     }
   }
   #comingSoon2 {
     margin: 50% 0%;
     @media screen and (max-width: 390px) {
       margin: 197% 0%;
-      //padding: 0 5rem;
     }
   }
 }
