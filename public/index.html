@@ -1,54 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="./favicon.ico">
-    <title>Coming Soon...</title>
-    <style>
-        body {
-            background-color: #fff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            font-family: 'Arial', sans-serif;
-        }
-
-        .container {
-            background-color: #fff;
-            border-radius: 5px;
-            padding: 20px;
-            color: #333;
-            text-align: center;
-        }
-
-        .logo {
-            width: 100px;
-            height: 100px;
-            margin: 0 auto;
-            background-color: #85b7d2;
-            border-radius: 50%;
-            animation: scale 2s infinite alternate;
-        }
-
-        @keyframes scale {
-            0% {
-                transform: scale(.8);
-            }
-            100% {
-                transform: scale(1.1);
-            }
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <div class="logo"></div>
-        <h1>Coming Soon...</h1>
-        <p><b>11/3 15:00~ 公開予定</b></p>
-        <p>絶賛サイト制作中です！お楽しみに！</p>
-    </div>
-</body>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <title>Class レンタカー</title>
+    <meta name="description" content="7人・8人アルファード・ヴェルファイア専門店。優雅なひとときをご提供いたします。"/>
+    <meta name="robots" content="index,follow"/>
+    <meta name="description" content="7人・8人アルファード・ヴェルファイア専門店。優雅なひとときをご提供いたします。">
+    <meta property="og:title" content="<%= BASE_URL %>">
+    <meta property="og:type" content="website">
+    <meta property="og:description" content="7人・8人アルファード・ヴェルファイア専門店。優雅なひとときをご提供いたします。">
+    <meta property="og:url" content="<%= BASE_URL %>">
+    <meta property="og:site_name" content="Class レンタカー">
+    <meta property="og:local" content="ja_JP">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Class レンタカー">
+    <meta name="twitter:description" content="7人・8人アルファード・ヴェルファイア専門店。優雅なひとときをご提供いたします。">
+    <meta name="twitter:site" content="<%= BASE_URL %>">
+  </head>
+  <body>
+    <noscript>
+      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+    </noscript>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+  </body>
 </html>
