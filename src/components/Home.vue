@@ -420,7 +420,7 @@ section {
       }
     }
     span {
-      line-height: 5rem;
+      line-height: 4rem;
       &:nth-child(1){
         margin: 0 auto auto 0;
       }
