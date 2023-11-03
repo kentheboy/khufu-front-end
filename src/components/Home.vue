@@ -68,7 +68,7 @@
         <div id="myModal" class="comingSoon__notice custom-modal">
           <div class="modal-content">
               <p>現在、下記の電話にて<br>予約を承っております。</p>
-              <a class="button" href="tel:098-9967266">098-9967266</a>
+              <a class="button" href="tel:098-996-7266">098-996-7266</a>
           </div>
         </div>
         <div class="comingSoon__notice bigText" id="comingSoon1">
