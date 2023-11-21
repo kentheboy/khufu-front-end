@@ -175,8 +175,8 @@ export default {
       comingSoonHeight: null
     }
   },
-  created() {
-    this.testApi();
+  async created() {
+    await this.testApi();
   },
   mounted() {
     setTimeout(() => {
@@ -190,13 +190,17 @@ export default {
       return {
         '--comingSoon-height': this.comingSoonHeight
       }
+    },
+    envVariable() {
+      return this.$store.state.envVariable;
     }
   },
   methods: {
-    testApi() {
-      axios.get('http://52.198.121.46/api/test').then((response) => {
+    async testApi() {
+      await axios.get(`http://${this.envVariable.backendDomain}/api/test`).then((response) => {
         console.log(response);
-      })
+        return
+      });
     }
   }
 }
