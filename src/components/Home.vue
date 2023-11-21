@@ -137,6 +137,7 @@ import Products from "/src/components/common/Products";
 import Information from "/src/components/common/Information";
 import Footer from "/src/components/common/Footer";
 import Button from "primevue/button";
+import axios from "axios";
 export default {
   name: 'Home',
   components: {
@@ -174,6 +175,9 @@ export default {
       comingSoonHeight: null
     }
   },
+  async created() {
+    await this.testApi();
+  },
   mounted() {
     setTimeout(() => {
       const comingSoonElement = this.$refs.comingSoon;
@@ -186,6 +190,17 @@ export default {
       return {
         '--comingSoon-height': this.comingSoonHeight
       }
+    },
+    envVariable() {
+      return this.$store.state.envVariable;
+    }
+  },
+  methods: {
+    async testApi() {
+      await axios.get(`http://${this.envVariable.backendDomain}/api/test`).then((response) => {
+        console.log(response);
+        return
+      });
     }
   }
 }
