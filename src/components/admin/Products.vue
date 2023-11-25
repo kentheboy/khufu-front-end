@@ -36,6 +36,7 @@
             <div class="product-edit__content">
                 <Input type="text" label="車両名" name="name" placeholder="アルファード１"></Input>
                 <Input type="text" label="車両情報" name="licenseNumber" placeholder="沖縄　301 わ　2609"></Input>
+                <Input type="selectbox" label="ステータス" name="status" :options=productStatus></Input>
                 <Input type="date" label="車検期限" name="syakenDate"></Input>
                 <Input type="date" label="点検期限" name="tenkenDate"></Input>
                 <Input type="file" label="画像1" name="additionalDriverImage1"></Input>
@@ -117,6 +118,7 @@ export default {
                     image: "/images/car-images/main4.png"
                 }
             ],
+            productStatus: ["利用可","車検中","点検中"],
             productDialog: false,
             deleteProductDialog: false,
             selectedProduct: null,

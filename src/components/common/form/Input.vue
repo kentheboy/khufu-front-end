@@ -1,5 +1,5 @@
 <template>
-    <div v-if="type==='address'" :class="`input-area ${classes}`">
+    <div v-if="type==='address'" :class="`input-area address ${classes}`">
         <label>住所</label>
         <span>〒</span>
         <input type="text" name="postalcode">
@@ -45,6 +45,12 @@
                 <label :for="option.name">{{ option.label }}</label>
             </div>
         </div>
+    </div>
+    <div v-else-if="type==='selectbox'" :class="`input-area ${classes}`">
+        <label v-if="label">{{ label }}</label>
+        <select>
+            <option v-for="option in options" :key="option">{{ option }}</option>
+        </select>
     </div>
     <div v-else-if="type==='textarea'" :class="`input-area ${classes}`">
         <label v-if="label">{{ label }}</label>
@@ -177,12 +183,17 @@ export default {
         background-color: var(--color-aliceblue);
         border-radius: 24.94px;
         box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
-        width: 7rem;
+        width: 100%;
         box-sizing: border-box;
         height: 2.09rem;
         padding-left: 1.25rem;
         padding-right: 1.25rem;
         margin-top: .3rem;
+    }
+    &.address {
+        select {
+            width: 7rem;
+        }
     }
 
     textarea {
