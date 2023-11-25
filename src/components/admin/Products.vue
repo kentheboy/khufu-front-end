@@ -4,6 +4,11 @@
         <DataTable :value="products" responsiveLayout="scroll" class="product-list__table">
             <Column field="id" header="ID" :sortable="true"></Column>
             <Column field="name" header="Name" :sortable="true"></Column>
+            <Column field="image" header="image">
+                <template #body="slotProps">
+                    <img class="product-list__table--image-column" alt="" :src=slotProps.data.image />
+                </template>
+            </Column>
             <Column field="licenseNumber" header="licenseNumber" :sortable="true"></Column>
             <Column field="syakenDate" header="syakenDate" :sortable="true"></Column>
             <Column field="tenkenDate" header="tenkenDate" :sortable="true"></Column>
@@ -33,6 +38,11 @@
                 <Input type="text" label="車両情報" name="licenseNumber" placeholder="沖縄　301 わ　2609"></Input>
                 <Input type="date" label="車検期限" name="syakenDate"></Input>
                 <Input type="date" label="点検期限" name="tenkenDate"></Input>
+                <Input type="file" label="画像1" name="additionalDriverImage1"></Input>
+                <Input type="file" label="画像2" name="additionalDriverImage2"></Input>
+                <Input type="file" label="画像3" name="additionalDriverImage3"></Input>
+                <Input type="file" label="画像4" name="additionalDriverImage4"></Input>
+                <Input type="file" label="画像5" name="additionalDriverImage5"></Input>
             </div>
             <template #footer>
                 <Button label="完了" @click="visible = false" autofocus />
@@ -77,6 +87,7 @@ export default {
                     syakenDate: '2024/12/31',
                     tenkenDate: '2024/12/31',
                     status: 1,
+                    image: "/images/car-images/main4.png"
                 },
                 {
                     id: 2,
@@ -85,6 +96,7 @@ export default {
                     syakenDate: '2024/12/30',
                     tenkenDate: '2024/12/31',
                     status: 1,
+                    image: "/images/car-images/main4.png"
                 },
                 {
                     id: 3,
@@ -93,6 +105,7 @@ export default {
                     syakenDate: '2024/12/31',
                     tenkenDate: '2024/12/31',
                     status: 1,
+                    image: "/images/car-images/main4.png"
                 },
                 {
                     id: 4,
@@ -101,6 +114,7 @@ export default {
                     syakenDate: '2024/12/31',
                     tenkenDate: '2024/12/31',
                     status: 1,
+                    image: "/images/car-images/main4.png"
                 }
             ],
             productDialog: false,
@@ -159,9 +173,12 @@ export default {
 <style lang="scss" scoped>
 .product-list {
     &__table{
-        &--action_buttons{
+        &--action_buttons {
             display: flex;
             justify-content: space-between;
+        }
+        &--image-column {
+            max-height: 10rem;
         }
     }
 }
