@@ -1,3 +1,4 @@
+// Button
 .p-button, a.button{
     font-size: 1rem;
     margin-bottom: 1.5rem;
@@ -8,4 +9,25 @@
     width: 10rem;
     border-radius: 2rem;
     cursor: pointer;
+
+    &.icon_only {
+        color: #418EB8;
+        background: unset;
+        width: auto;
+    }
+}
+
+// Dialog
+.p-dialog {
+    &-header {
+        justify-content: end;
+        padding-bottom: 0;
+    }
+    &.product-edit {
+        width: 70%;
+    }
+    &-footer {
+        display: flex;
+        justify-content: center;
+    }
 }

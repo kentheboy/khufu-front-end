@@ -1,7 +1,7 @@
 <template>
     <div class="product-list">
-        <h2>Products</h2>
-        <DataTable :value="products" responsiveLayout="scroll">
+        <h2>車種一覧</h2>
+        <DataTable :value="products" responsiveLayout="scroll" class="product-list__table">
             <Column field="id" header="ID" :sortable="true"></Column>
             <Column field="name" header="Name" :sortable="true"></Column>
             <Column field="licenseNumber" header="licenseNumber" :sortable="true"></Column>
@@ -10,41 +10,32 @@
             <Column field="status" header="Status" :sortable="true"></Column>
             <Column header="Action">
                 <template #body="slotProps">
-                    <Button icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2" @click="editProduct(slotProps.data)"></Button>
-                    <Button icon="pi pi-trash" class="p-button-rounded p-button-warning" @click="confirmDelete(slotProps.data)"></Button>
+                    <div class="product-list__table--action_buttons">
+                        <Button icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2 icon_only" severity="info" text rounded @click="editProduct(slotProps.data)"></Button>
+                        <Button icon="pi pi-trash" class="p-button-rounded p-button-warning icon_only" disabled></Button>
+                    </div>
                 </template>
             </Column>
         </DataTable>
-        <Dialog v-model:visible="productDialog" :style="{width: '450px'}" header="Product Details" :modal="true" class="p-fluid">
-            <img :src="selectedProduct.image" :alt="selectedProduct.name" class="product-image" v-if="selectedProduct.image" />
-            <div class="p-field">
-                <label for="name">Name</label>
-                <InputText id="name" v-model="selectedProduct.name" required="true" autofocus :class="{'p-invalid': validationErrors.name}" />
-                <small class="p-invalid" v-if="validationErrors.name">{{validationErrors.name}}</small>
+        <Dialog 
+            v-model:visible="productDialog"
+            maximizable
+            header=""
+            :modal="true"
+            class="p-fluid product-edit"
+        >
+            <div class="customTitle">
+                <h1>CAR INFORMATION</h1>
+                <h3>車両情報</h3>
             </div>
-            <div class="p-field">
-                <label for="category">Category</label>
-                <InputText id="category" v-model="selectedProduct.category" required="true" autofocus :class="{'p-invalid': validationErrors.category}" />
-                <small class="p-invalid" v-if="validationErrors.category">{{validationErrors.category}}</small>
-            </div>
-            <div class="p-field">
-                <label for="price">Price</label>
-                <InputNumber id="price" v-model="selectedProduct.price" mode="currency" currency="USD" locale="en-US" :class="{'p-invalid': validationErrors.price}" />
-                <small class="p-invalid" v-if="validationErrors.price">{{validationErrors.price}}</small>
-            </div>
-            <div class="p-field">
-                <label for="rating">Rating</label>
-                <InputNumber id="rating" v-model="selectedProduct.rating" :class="{'p-invalid': validationErrors.rating}" />
-                <small class="p-invalid" v-if="validationErrors.rating">{{validationErrors.rating}}</small>
-            </div>
-            <div class="p-field">
-                <label for="status">Status</label>
-                <Dropdown id="status" v-model="selectedProduct.status" :options="statuses" optionLabel="label" optionValue="value" :class="{'p-invalid': validationErrors.status}" />
-                <small class="p-invalid" v-if="validationErrors.status">{{validationErrors.status}}</small>
+            <div class="product-edit__content">
+                <Input type="text" label="車両名" name="name" placeholder="アルファード１"></Input>
+                <Input type="text" label="車両情報" name="licenseNumber" placeholder="沖縄　301 わ　2609"></Input>
+                <Input type="date" label="車検期限" name="syakenDate"></Input>
+                <Input type="date" label="点検期限" name="tenkenDate"></Input>
             </div>
             <template #footer>
-                <Button label="Cancel" icon="pi pi-times" class="p-button-text" @click="hideDialog"></Button>
-                <Button label="Save" icon="pi pi-check" class="p-button-text" @click="saveProduct"></Button>
+                <Button label="完了" @click="visible = false" autofocus />
             </template>
         </Dialog>
         <Dialog v-model:visible="deleteProductDialog" :style="{width: '450px'}" header="Confirm" :modal="true">
@@ -64,13 +55,17 @@
 import DataTable from 'primevue/datatable';
 import Column from 'primevue/column';
 import Dialog from 'primevue/dialog';
+import Button from "primevue/button";
+import Input from "/src/components/common/form/Input";
 
 // import { mapState, mapActions } from 'vuex';
 export default {
     components: {
         DataTable,
         Column,
-        Dialog
+        Dialog,
+        Button,
+        Input
     },
     data() {
         return {
@@ -129,10 +124,10 @@ export default {
         //     updateProduct: 'product/updateProduct',
         //     deleteProductAction: 'product/deleteProduct'
         // }),
-        // editProduct(product) {
-        //     this.selectedProduct = {...product};
-        //     this.productDialog = true;
-        // },
+        editProduct(product) {
+            this.selectedProduct = {...product};
+            this.productDialog = true;
+        },
         // confirmDelete(product) {
         //     this.selectedProduct = product;
         //     this.deleteProductDialog = true;
@@ -162,6 +157,22 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.product-list {}
-
+.product-list {
+    &__table{
+        &--action_buttons{
+            display: flex;
+            justify-content: space-between;
+        }
+    }
+}
+.product-edit {
+    &__content {
+        display: flex;
+        flex-direction: column;
+        color: #418EB8;
+        &::v-deep .input-area {
+            margin: 0 auto 2rem;
+        }
+    }
+}
 </style>
