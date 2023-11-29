@@ -6,17 +6,24 @@
         </div>
         <DataTable :value="products" responsiveLayout="scroll" class="product-list__table">
             <Column field="id" header="ID" :sortable="true"></Column>
-            <Column field="name" header="Name" :sortable="true"></Column>
-            <Column field="image" header="image">
+            <Column field="name" header="車両名" :sortable="true"></Column>
+            <Column field="image" header="画像">
                 <template #body="slotProps">
-                    <img class="product-list__table--image-column" alt="" :src=slotProps.data.image />
+                    <img class="product-list__table--image-column" alt="画像がありません" :src=slotProps.data.image />
                 </template>
             </Column>
-            <Column field="licenseNumber" header="licenseNumber" :sortable="true"></Column>
-            <Column field="syakenDate" header="syakenDate" :sortable="true"></Column>
-            <Column field="tenkenDate" header="tenkenDate" :sortable="true"></Column>
-            <Column field="status" header="Status" :sortable="true"></Column>
-            <Column header="Action">
+            <Column field="licenseNumber" header="車両情報" :sortable="true"></Column>
+            <Column field="syakenDate" header="車検期限" :sortable="true"></Column>
+            <Column field="tenkenDate" header="点検期限" :sortable="true"></Column>
+            <Column field="status" header="ステータス" :sortable="true">
+                <template #body="slotProps">
+                    <Badge 
+                        :value="slotProps.data.status==0?'貸出不可':slotProps.data.status==1?'貸出可':'貸出中'" 
+                        :severity="slotProps.data.status==0?'danger':slotProps.data.status==1?'info':'warning'">
+                    </Badge>
+                </template>
+            </Column>
+            <Column>
                 <template #body="slotProps">
                     <div class="product-list__table--action_buttons">
                         <Button icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2 icon_only" severity="info" text rounded @click="editProduct(slotProps.data)"></Button>
@@ -50,7 +57,7 @@
             <template #footer>
                 <Button 
                     :label="submitMode==='create'?'追加':'更新'" 
-                    @click="visible = false"
+                    @click="submitNewProduct"
                     autofocus
                 />
             </template>
@@ -73,58 +80,23 @@ import DataTable from 'primevue/datatable';
 import Column from 'primevue/column';
 import Dialog from 'primevue/dialog';
 import Button from "primevue/button";
+import Badge from 'primevue/badge';
 import Input from "/src/components/common/form/Input";
+import axios from 'axios';
 
-// import { mapState, mapActions } from 'vuex';
 export default {
     components: {
         DataTable,
         Column,
         Dialog,
         Button,
+        Badge,
         Input
     },
     data() {
         return {
             submitMode: null,
-            products: [
-                {
-                    id: 1,
-                    name: 'アルファード',
-                    licenseNumber: '沖縄　301 わ　2609',
-                    syakenDate: '2024/12/31',
-                    tenkenDate: '2024/12/31',
-                    status: 1,
-                    image: "/images/car-images/main4.png"
-                },
-                {
-                    id: 2,
-                    name: 'ヴェルファイア',
-                    licenseNumber: '沖縄　302 わ　2609',
-                    syakenDate: '2024/12/30',
-                    tenkenDate: '2024/12/31',
-                    status: 1,
-                    image: "/images/car-images/main4.png"
-                },
-                {
-                    id: 3,
-                    name: 'アルファード',
-                    licenseNumber: '沖縄　301 わ　2609',
-                    syakenDate: '2024/12/31',
-                    tenkenDate: '2024/12/31',
-                    status: 1,
-                    image: "/images/car-images/main4.png"
-                },
-                {
-                    id: 4,
-                    name: 'ヴェルファイア',
-                    licenseNumber: '沖縄　302 わ　2609',
-                    syakenDate: '2024/12/31',
-                    tenkenDate: '2024/12/31',
-                    status: 1,
-                    image: "/images/car-images/main4.png"
-                }
-            ],
+            products: [],
             productStatus: ["利用可","車検中","点検中"],
             productDialog: false,
             deleteProductDialog: false,
@@ -137,50 +109,56 @@ export default {
         }
     },
     computed: {
-        // ...mapState({
-        //     products: state => state.product.products
-        // })
+        backendDomain() {
+            return process.env.VUE_APP_BACKEND_DOMAIN;
+        },
+        envVariable() {
+            return this.$store.state.envVariable;
+        },
     },
     methods: {
+        getProducts() {
+            console.log(this.backendDomain);
+            axios.get(`${this.backendDomain}/api/products`).then(response => {
+                response.data.forEach(product => {
+                    if (product.customfields) {
+                        Object.assign(product, JSON.parse(product.customfields));
+                    }
+                })
+                this.products = response.data;
+            })
+        },
         openCreateModal(){
             console.log('create!')
             this.productDialog = true;
             this.submitMode = "create";
         },
-        // ...mapActions({
-        //     getProducts: 'product/getProducts',
-        //     updateProduct: 'product/updateProduct',
-        //     deleteProductAction: 'product/deleteProduct'
-        // }),
         editProduct(product) {
             this.selectedProduct = {...product};
             this.productDialog = true;
             this.submitMode = "update";
         },
-        // confirmDelete(product) {
-        //     this.selectedProduct = product;
-        //     this.deleteProductDialog = true;
-        // },
-        // saveProduct() {
-        //     this.validationErrors = {};
+        submitNewProduct() {
+            let customfields = {
+                "licenseNumber": "301 2609",
+                "syakenDate": "2024/12/31",
+                "tenkenDate": "2024/12/31",
+                "isSmokingAllowed": 1
+            };
+            const data = {
+                "name": "アルファード",
+                "description": "This is my first product!",
+                "price": "333333",
+                "customfields": JSON.stringify(customfields)
+            }
 
-        //     if (!this.selectedProduct.name) {
-        //         this.validationErrors.name = 'Name is required.';
-        //     }
-
-        //     if (!this.selectedProduct.category) {
-        //         this.validationErrors.category = 'Category is required.';
-        //     }
-
-        //     if (!this.selectedProduct.price || this.selectedProduct.price < 0) {
-        //         this.validationErrors.price = 'Price is required and must be a positive number.';
-        //     }
-
-        //     if (!this.selectedProduct.rating || this.selectedProduct.rating < 0) {
-        //         this.validationErrors.rating
+            axios.post(`${this.backendDomain}/api/products/create`, data).then(response => {
+                console.log(response);
+            })
+        }
     },
     created() {
-        // this.getProducts();
+        this.getProducts();
     }
 }
 </script>
