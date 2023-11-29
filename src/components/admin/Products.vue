@@ -1,6 +1,9 @@
 <template>
     <div class="product-list">
-        <h2>車種一覧</h2>
+        <div class="product-list__header">
+            <h2>車種一覧</h2>
+            <Button class="product-list__header--create-btn" icon="pi pi-plus" label="新規作成" @click="openCreateModal" rounded />
+        </div>
         <DataTable :value="products" responsiveLayout="scroll" class="product-list__table">
             <Column field="id" header="ID" :sortable="true"></Column>
             <Column field="name" header="Name" :sortable="true"></Column>
@@ -45,7 +48,11 @@
                 <Input type="file" label="画像4" name="additionalDriverImage4"></Input>
             </div>
             <template #footer>
-                <Button label="完了" @click="visible = false" autofocus />
+                <Button 
+                    :label="submitMode==='create'?'追加':'更新'" 
+                    @click="visible = false"
+                    autofocus
+                />
             </template>
         </Dialog>
         <Dialog v-model:visible="deleteProductDialog" :style="{width: '450px'}" header="Confirm" :modal="true">
@@ -79,6 +86,7 @@ export default {
     },
     data() {
         return {
+            submitMode: null,
             products: [
                 {
                     id: 1,
@@ -134,6 +142,11 @@ export default {
         // })
     },
     methods: {
+        openCreateModal(){
+            console.log('create!')
+            this.productDialog = true;
+            this.submitMode = "create";
+        },
         // ...mapActions({
         //     getProducts: 'product/getProducts',
         //     updateProduct: 'product/updateProduct',
@@ -142,6 +155,7 @@ export default {
         editProduct(product) {
             this.selectedProduct = {...product};
             this.productDialog = true;
+            this.submitMode = "update";
         },
         // confirmDelete(product) {
         //     this.selectedProduct = product;
@@ -173,6 +187,14 @@ export default {
 
 <style lang="scss" scoped>
 .product-list {
+    &__header{
+        display: flex;
+        justify-content: space-between;
+        &--create-btn{
+            margin: 1rem;
+            width: initial;
+        }
+    }
     &__table{
         &--action_buttons {
             display: flex;
