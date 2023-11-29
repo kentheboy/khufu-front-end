@@ -43,7 +43,6 @@
                 <Input type="file" label="画像2" name="additionalDriverImage2"></Input>
                 <Input type="file" label="画像3" name="additionalDriverImage3"></Input>
                 <Input type="file" label="画像4" name="additionalDriverImage4"></Input>
-                <Input type="file" label="画像5" name="additionalDriverImage5"></Input>
             </div>
             <template #footer>
                 <Button label="完了" @click="visible = false" autofocus />
