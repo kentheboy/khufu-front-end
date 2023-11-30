@@ -77,6 +77,13 @@
                     name="tenkenDate"
                     v-model="submitData.tenkenDate"
                 ></Input>
+                <Input 
+                    type="radio"
+                    label="喫煙（電子タバコのみ）"
+                    :options="isSmokingAllowedOption"
+                    v-model="submitData.isSmokingAllowed"
+                >
+                </Input>
                 <Input
                     type="file"
                     label="画像1"
@@ -159,7 +166,7 @@ export default {
                 licenseNumber: "",
                 syakenDate: "",
                 tenkenDate: "",
-                isSmokingAllowed: null
+                isSmokingAllowed: false
             },
             products: [],
             productStatus: ["利用可","車検中","点検中"],
@@ -170,6 +177,10 @@ export default {
             statuses: [
                 {label: 'Available', value: 'Available'},
                 {label: 'Unavailable', value: 'Unavailable'},
+            ],
+            isSmokingAllowedOption: [
+                { name: "isSmokingAllowed", value: true, label: "喫煙可"},
+                { name: "isSmokingAllowed", value: false, label: "喫煙不可"},
             ]
         }
     },
@@ -224,7 +235,7 @@ export default {
                 "price": this.submitData.price,
                 "customfields": JSON.stringify(customfields)
             }
-            
+
             await axios.post(`${this.backendDomain}/api/products/create`, data).then(response => {
                 console.log(response);
             })
