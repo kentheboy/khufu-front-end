@@ -41,7 +41,7 @@
         >
             <div class="customTitle">
                 <h1>CAR INFORMATION</h1>
-                <h3>車両情報</h3>
+                <h3>車両情報{{submitMode==='create'?'追加':'更新'}}</h3>
             </div>
             <div class="product-edit__content">
                 <Input
@@ -50,6 +50,13 @@
                     name="name"
                     placeholder="アルファード１"
                     v-model="submitData.name"
+                ></Input>
+                <Input
+                    type="number"
+                    label="金額（日当たり）"
+                    name="price"
+                    placeholder="20000"
+                    v-model="submitData.price"
                 ></Input>
                 <Input 
                     type="text"
@@ -102,7 +109,7 @@
             <template #footer>
                 <Button 
                     :label="submitMode==='create'?'追加':'更新'" 
-                    @click="submitNewProduct"
+                    @click="submitProduct"
                     autofocus
                 />
             </template>
@@ -143,12 +150,12 @@ export default {
             submitMode: null,
             submitData: {
                 name: "test",
+                price: 0,
                 image1: null,
                 image2: null,
                 image3: null,
                 image4: null,
                 description: "",
-                price: "",
                 licenseNumber: "",
                 syakenDate: "",
                 tenkenDate: "",
@@ -199,21 +206,26 @@ export default {
             this.productDialog = true;
             this.submitMode = "update";
         },
-        submitNewProduct() {
+        submitProduct() {
+            if(this.submitMode === "create") {
+                this.sendNewProduct();
+            }
+        },
+        async sendNewProduct() {
             let customfields = {
-                "licenseNumber": "301 2609",
-                "syakenDate": "2024/12/31",
-                "tenkenDate": "2024/12/31",
-                "isSmokingAllowed": 1
+                "licenseNumber": this.submitData.licenseNumber,
+                "syakenDate": this.submitData.syakenDate,
+                "tenkenDate": this.submitData.tenkenDate,
+                // "isSmokingAllowed": this.submitData.isSmokingAllowed
             };
             const data = {
-                "name": "アルファード",
-                "description": "This is my first product!",
-                "price": "333333",
+                "name": this.submitData.name,
+                "description": this.submitData.description,
+                "price": this.submitData.price,
                 "customfields": JSON.stringify(customfields)
             }
-
-            axios.post(`${this.backendDomain}/api/products/create`, data).then(response => {
+            
+            await axios.post(`${this.backendDomain}/api/products/create`, data).then(response => {
                 console.log(response);
             })
         }
