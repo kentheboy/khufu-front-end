@@ -8,7 +8,10 @@
             <option>北海道</option>
             <option>東京都</option>
         </select>
-        <input type="text" name="addressline">
+        <input 
+            type="text"
+            name="addressline"
+        >
     </div>
     <div v-else-if="type==='airport-timpicker'" class="input-area airport-timpicker">
         <div class="airport-timpicker__headline">
@@ -54,7 +57,10 @@
     </div>
     <div v-else-if="type==='textarea'" :class="`input-area ${classes}`">
         <label v-if="label">{{ label }}</label>
-        <textarea :value="value"></textarea>
+        <textarea
+            :value="modelValue"
+            @input="handleInput"
+        ></textarea>
     </div>
     <div v-else :class="`input-area ${classes}`">
         <label v-if="label">{{ label }}</label>
@@ -62,7 +68,8 @@
             :type="type"
             :name="name"
             :placeholder="placeholder"
-            :value="value"
+            :value="modelValue"
+            @input="handleInput"
         >
     </div>
 </template>
@@ -91,7 +98,7 @@ export default {
             type: String,
             default: ""
         },
-        value: { 
+        modelValue: { 
             type: [String, Number],
             default: ""
         },
@@ -105,7 +112,13 @@ export default {
             dataURL: null
         }
     },
+    emits: [
+        'update:modelValue'
+    ], 
     methods: {
+        handleInput($event) {
+            this.$emit('update:modelValue', $event.target.value)
+        },
         openImageSelector() {
             console.log(this.$refs.fileInput);
             let fileInput = this.$refs.fileInput;
