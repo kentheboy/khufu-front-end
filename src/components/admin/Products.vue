@@ -224,10 +224,12 @@ export default {
                 this.submitData.syakenDate = customfields.syakenDate;
                 this.submitData.tenkenDate = customfields.tenkenDate;
                 this.submitData.isSmokingAllowed = customfields.isSmokingAllowed;
-                this.submitData.image1 = images[0];
-                this.submitData.image2 = images[1];
-                this.submitData.image3 = images[2];
-                this.submitData.image4 = images[3];
+                if(images) {
+                    this.submitData.image1 = images[0];
+                    this.submitData.image2 = images[1];
+                    this.submitData.image3 = images[2];
+                    this.submitData.image4 = images[3];
+                }
             })
         },
         openCreateModal(){
