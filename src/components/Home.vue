@@ -176,7 +176,7 @@ export default {
     }
   },
   async created() {
-    await this.testApi();
+    // await this.testApi();
   },
   mounted() {
     setTimeout(() => {

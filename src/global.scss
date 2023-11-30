@@ -2186,3 +2186,23 @@ a {
   text-decoration: none;
   color: var(--color-white);
 }
+.customTitle {
+  color: #418EB8;
+  text-align: center;
+  margin: 2.3rem;
+  border-bottom: 1.5px solid var(--color-steelblue);
+
+  h1 {
+    letter-spacing: 0.15em;
+    font-size: 2rem;
+    font-family: var(--font-istok-web);
+    font-weight: normal;
+    margin: unset;
+  }
+  h3 {
+    letter-spacing: 0.15em;
+    font-family: var(--font-istok-web);
+    font-weight: normal;
+    margin: unset;
+  }
+}
