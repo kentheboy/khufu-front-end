@@ -227,7 +227,7 @@ export default {
                 "licenseNumber": this.submitData.licenseNumber,
                 "syakenDate": this.submitData.syakenDate,
                 "tenkenDate": this.submitData.tenkenDate,
-                // "isSmokingAllowed": this.submitData.isSmokingAllowed
+                "isSmokingAllowed": this.submitData.isSmokingAllowed
             };
             const data = {
                 "name": this.submitData.name,
