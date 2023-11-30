@@ -9,7 +9,7 @@
             <Column field="name" header="車両名" :sortable="true"></Column>
             <Column field="image" header="画像">
                 <template #body="slotProps">
-                    <img class="product-list__table--image-column" alt="画像がありません" :src=slotProps.data.image />
+                    <img class="product-list__table--image-column" alt="画像がありません" :src=slotProps.data.main_image />
                 </template>
             </Column>
             <Column field="licenseNumber" header="車両情報" :sortable="true"></Column>
@@ -26,8 +26,8 @@
             <Column>
                 <template #body="slotProps">
                     <div class="product-list__table--action_buttons">
-                        <Button icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2 icon_only" severity="info" text rounded @click="editProduct(slotProps.data)"></Button>
-                        <Button icon="pi pi-trash" class="p-button-rounded p-button-warning icon_only" disabled></Button>
+                        <Button icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2 icon_only" severity="info" text rounded @click="editProduct(slotProps.data.id)"></Button>
+                        <Button icon="pi pi-trash" class="p-button-rounded p-button-warning icon_only" @click="deleteProduct(slotProps.data.id)"></Button>
                     </div>
                 </template>
             </Column>
@@ -121,14 +121,18 @@
                 />
             </template>
         </Dialog>
-        <Dialog v-model:visible="deleteProductDialog" :style="{width: '450px'}" header="Confirm" :modal="true">
+        <Dialog
+            v-model:visible="deleteProductDialog"
+            :style="{width: '450px'}" 
+            header=""
+            :modal="true"
+        >
             <div class="confirmation-content">
-                <i class="pi pi-exclamation-triangle p-mr-3" style="font-size: 2rem" />
-                <span v-if="selectedProduct">Are you sure you want to delete <b>{{selectedProduct.name}}</b>?</span>
+                <span><b>{{ products.find(product =>  product.id == deleteProductId ).name }}</b>の車両情報を削除します。よろしいですか?</span>
             </div>
             <template #footer>
-                <Button label="No" icon="pi pi-times" class="p-button-text" @click="deleteProductDialog = false"></Button>
-                <Button label="Yes" icon="pi pi-check" class="p-button-text" @click="deleteProduct" autofocus></Button>
+                <Button label="いいえ" icon="pi pi-times" class="p-button-text" @click="deleteProductDialog = false"></Button>
+                <Button label="削除" icon="pi pi-check" class="p-button-text" severity="danger" @click="sendDeleteProcudct" autofocus></Button>
             </template>
         </Dialog>
     </div>
@@ -156,6 +160,7 @@ export default {
         return {
             submitMode: null,
             submitData: {
+                id: null,
                 name: "test",
                 price: 0,
                 image1: null,
@@ -169,6 +174,7 @@ export default {
                 isSmokingAllowed: false
             },
             products: [],
+            deleteProductId: null,
             productStatus: ["利用可","車検中","点検中"],
             productDialog: false,
             deleteProductDialog: false,
@@ -197,7 +203,6 @@ export default {
             console.log(event);
         },
         getProducts() {
-            console.log(this.backendDomain);
             axios.get(`${this.backendDomain}/api/products`).then(response => {
                 response.data.forEach(product => {
                     if (product.customfields) {
@@ -207,15 +212,38 @@ export default {
                 this.products = response.data;
             })
         },
+        getProduct(id) {
+            axios.get(`${this.backendDomain}/api/products/${id}`).then(response => {
+                const productData = response.data;
+                const customfields = JSON.parse(productData.customfields);
+                const images = JSON.parse(productData.images);
+                this.submitData.name = productData.name;
+                this.submitData.price = productData.price;
+                this.submitData.description = productData.description;
+                this.submitData.licenseNumber = customfields.licenseNumber;
+                this.submitData.syakenDate = customfields.syakenDate;
+                this.submitData.tenkenDate = customfields.tenkenDate;
+                this.submitData.isSmokingAllowed = customfields.isSmokingAllowed;
+                this.submitData.image1 = images[0];
+                this.submitData.image2 = images[1];
+                this.submitData.image3 = images[2];
+                this.submitData.image4 = images[3];
+            })
+        },
         openCreateModal(){
-            console.log('create!')
             this.productDialog = true;
             this.submitMode = "create";
+            this.submitData.id = null;
         },
-        editProduct(product) {
-            this.selectedProduct = {...product};
+        editProduct(productId) {
             this.productDialog = true;
             this.submitMode = "update";
+            this.submitData.id = productId;
+            this.getProduct(productId)
+        },
+        deleteProduct(productId){
+            this.deleteProductDialog = true;
+            this.deleteProductId = productId;
         },
         submitProduct() {
             if(this.submitMode === "create") {
@@ -244,9 +272,14 @@ export default {
                 "images": JSON.stringify(images)
             }
 
-            await axios.post(`${this.backendDomain}/api/products/create`, data).then(response => {
-                console.log(response);
+            await axios.post(`${this.backendDomain}/api/products/create`, data).then(() => {
             })
+        },
+        async sendDeleteProcudct() {
+            await axios.delete(`${this.backendDomain}/api/products/${this.deleteProductId}`).then(() => {
+                this.deleteProductDialog = false;
+            });
+            this.getProducts();
         }
     },
     created() {

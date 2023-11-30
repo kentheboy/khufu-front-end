@@ -9,6 +9,9 @@
     width: 10rem;
     border-radius: 2rem;
     cursor: pointer;
+    &-danger {
+        background-color: #D32F2F;
+    }
 
     &.icon_only {
         color: #418EB8;
