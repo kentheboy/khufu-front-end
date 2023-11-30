@@ -26,7 +26,7 @@
     <div v-else-if="type==='file'" :class="`input-area ${classes}`">
         <label v-if="label">{{ label }}</label>
         <input 
-            @change="onImageSelector($event)"
+            @change="handleFileUpload($event)"
             :type="type"
             :name="name"
             :placeholder="placeholder"
@@ -34,9 +34,9 @@
             ref="fileInput"
             accept="image/png, image/jpeg"
         >
-        <div class="file-input" @click="openImageSelector()">
-            <img v-if="dataURL" :src="dataURL" alt="">
-            <span v-if="dataURL" class="file-delete" @click="deleteImage"><img src="/images/icons/cross.png"></span>
+        <div class="file-input" @click="openImageSelector">
+            <img v-if="dataUrl&&!deleted" :src="dataUrl" alt="">
+            <span v-if="dataUrl&&!deleted" class="file-delete" @click="deleteImage($event)"><img src="/images/icons/cross.png"></span>
             <p v-else>クリックして画像を選択</p>
         </div>
     </div>
@@ -102,6 +102,10 @@ export default {
             type: [String, Number],
             default: ""
         },
+        dataUrl: { 
+            type: String,
+            default: ""
+        },
         options: {
             type: Array,
             default: null
@@ -109,24 +113,25 @@ export default {
     },
     data() {
         return {
-            dataURL: null
+            deleted: false
         }
     },
     emits: [
-        'update:modelValue'
+        'update:modelValue',
+        'update:dataUrl'
     ], 
     methods: {
         handleInput($event) {
             this.$emit('update:modelValue', $event.target.value)
         },
         openImageSelector() {
-            console.log(this.$refs.fileInput);
             let fileInput = this.$refs.fileInput;
             fileInput.click();
         },
-        async onImageSelector($event) {
+        async handleFileUpload($event) {
             if ($event.target.files[0]) {
-                this.dataURL = await this.convertToBase64($event.target.files[0]);
+                this.deleted = false;
+                this.$emit('update:dataUrl', await this.convertToBase64($event.target.files[0]))
             }
         },
         convertToBase64(file) {
@@ -138,8 +143,10 @@ export default {
                 reader.onerror = error => reject(error)
             });
         },
-        deleteImage() {
-            this.dataURL = null;
+        deleteImage(event) {
+            event.stopPropagation();
+            this.deleted = true;
+            this.$emit('update:modelValue', null);
         }
     }
 }

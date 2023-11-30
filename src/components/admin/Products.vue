@@ -51,14 +51,53 @@
                     placeholder="アルファード１"
                     v-model="submitData.name"
                 ></Input>
-                <Input type="text" label="車両情報" name="licenseNumber" placeholder="沖縄　301 わ　2609"></Input>
-                <Input type="selectbox" label="ステータス" name="status" :options=productStatus></Input>
-                <Input type="date" label="車検期限" name="syakenDate"></Input>
-                <Input type="date" label="点検期限" name="tenkenDate"></Input>
-                <Input type="file" label="画像1" name="additionalDriverImage1"></Input>
-                <Input type="file" label="画像2" name="additionalDriverImage2"></Input>
-                <Input type="file" label="画像3" name="additionalDriverImage3"></Input>
-                <Input type="file" label="画像4" name="additionalDriverImage4"></Input>
+                <Input 
+                    type="text"
+                    label="車両情報"
+                    name="licenseNumber"
+                    placeholder="沖縄　301 わ　2609"
+                    v-model="submitData.licenseNumber"
+                ></Input>
+                <Input
+                    type="date"
+                    label="車検期限"
+                    name="syakenDate"
+                    v-model="submitData.syakenDate"
+                ></Input>
+                <Input
+                    type="date"
+                    label="点検期限"
+                    name="tenkenDate"
+                    v-model="submitData.tenkenDate"
+                ></Input>
+                <Input
+                    type="file"
+                    label="画像1"
+                    name="image1"
+                    :dataUrl="submitData.image1"
+                    @update:dataUrl="(event) => {submitData.image1 = event}"
+                ></Input>
+                <Input
+                    type="file"
+                    label="画像2"
+                    name="image2"
+                    :dataUrl="submitData.image2"
+                    @update:dataUrl="(event) => {submitData.image2 = event}"
+                ></Input>
+                <Input
+                    type="file"
+                    label="画像3"
+                    name="image3"
+                    :dataUrl="submitData.image3"
+                    @update:dataUrl="(event) => {submitData.image3 = event}"
+                ></Input>
+                <Input
+                    type="file"
+                    label="画像4"
+                    name="image4"
+                    :dataUrl="submitData.image4"
+                    @update:dataUrl="(event) => {submitData.image4 = event}"
+                ></Input>
             </div>
             <template #footer>
                 <Button 
@@ -136,6 +175,9 @@ export default {
         },
     },
     methods: {
+        test(event) {
+            console.log(event);
+        },
         getProducts() {
             console.log(this.backendDomain);
             axios.get(`${this.backendDomain}/api/products`).then(response => {
