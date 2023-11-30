@@ -44,7 +44,7 @@
         <label v-if="label">{{ label }}</label>
         <div class="radio-input__options">
             <div v-for="option in options" :key="option" class="radio-input__options--input">
-                <input type="radio" :name="option.name" :value="option.value">
+                <input type="radio" :name="option.name" :value=option.value  v-model="selectedValue">
                 <label :for="option.name">{{ option.label }}</label>
             </div>
         </div>
@@ -99,7 +99,7 @@ export default {
             default: ""
         },
         modelValue: { 
-            type: [String, Number],
+            type: [String, Number, Boolean],
             default: ""
         },
         dataUrl: { 
@@ -113,13 +113,22 @@ export default {
     },
     data() {
         return {
-            deleted: false
+            deleted: false,
+            selectedValue: this.modelValue
         }
     },
     emits: [
         'update:modelValue',
         'update:dataUrl'
     ], 
+    watch: {
+        modelValue(newValue) {
+            this.selectedValue = newValue;
+        },
+        selectedValue(newValue) {
+            this.$emit('update:modelValue', newValue);
+        },
+    },
     methods: {
         handleInput($event) {
             this.$emit('update:modelValue', $event.target.value)
