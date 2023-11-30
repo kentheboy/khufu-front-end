@@ -229,11 +229,19 @@ export default {
                 "tenkenDate": this.submitData.tenkenDate,
                 "isSmokingAllowed": this.submitData.isSmokingAllowed
             };
+            let images = [
+                this.submitData.image1,
+                this.submitData.image2,
+                this.submitData.image3,
+                this.submitData.image4
+            ];
+
             const data = {
                 "name": this.submitData.name,
                 "description": this.submitData.description,
                 "price": this.submitData.price,
-                "customfields": JSON.stringify(customfields)
+                "customfields": JSON.stringify(customfields),
+                "images": JSON.stringify(images)
             }
 
             await axios.post(`${this.backendDomain}/api/products/create`, data).then(response => {
