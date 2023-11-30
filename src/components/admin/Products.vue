@@ -44,7 +44,13 @@
                 <h3>車両情報</h3>
             </div>
             <div class="product-edit__content">
-                <Input type="text" label="車両名" name="name" placeholder="アルファード１"></Input>
+                <Input
+                    type="text"
+                    label="車両名"
+                    name="name"
+                    placeholder="アルファード１"
+                    v-model="submitData.name"
+                ></Input>
                 <Input type="text" label="車両情報" name="licenseNumber" placeholder="沖縄　301 わ　2609"></Input>
                 <Input type="selectbox" label="ステータス" name="status" :options=productStatus></Input>
                 <Input type="date" label="車検期限" name="syakenDate"></Input>
@@ -96,6 +102,19 @@ export default {
     data() {
         return {
             submitMode: null,
+            submitData: {
+                name: "test",
+                image1: null,
+                image2: null,
+                image3: null,
+                image4: null,
+                description: "",
+                price: "",
+                licenseNumber: "",
+                syakenDate: "",
+                tenkenDate: "",
+                isSmokingAllowed: null
+            },
             products: [],
             productStatus: ["利用可","車検中","点検中"],
             productDialog: false,
