@@ -33,7 +33,7 @@
             </Column>
         </DataTable>
         <Dialog 
-            v-model:visible.sync="productDialog"
+            v-model:visible="productDialog"
             maximizable
             header=""
             :modal="true"
@@ -136,7 +136,6 @@
                 <Button label="削除" icon="pi pi-check" class="p-button-text" severity="danger" @click="sendDeleteProcudct" autofocus></Button>
             </template>
         </Dialog>
-        <Toast />
     </div>
 </template>
 
