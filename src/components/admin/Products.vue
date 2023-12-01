@@ -120,6 +120,7 @@
                     autofocus
                 />
             </template>
+            <ProgressSpinner v-if="loading" />
         </Dialog>
         <Dialog
             v-model:visible="deleteProductDialog"
@@ -144,6 +145,7 @@ import Column from 'primevue/column';
 import Dialog from 'primevue/dialog';
 import Button from "primevue/button";
 import Badge from 'primevue/badge';
+import ProgressSpinner from 'primevue/progressspinner';
 import Input from "/src/components/common/form/Input";
 import axios from 'axios';
 
@@ -154,6 +156,7 @@ export default {
         Dialog,
         Button,
         Badge,
+        ProgressSpinner,
         Input
     },
     data() {
@@ -174,6 +177,7 @@ export default {
                 isSmokingAllowed: false
             },
             products: [],
+            loading: false,
             deleteProductId: null,
             productStatus: ["利用可","車検中","点検中"],
             productDialog: false,
@@ -274,7 +278,11 @@ export default {
                 "images": JSON.stringify(images)
             }
 
+            this.loading = true;
             await axios.post(`${this.backendDomain}/api/products/create`, data).then(() => {
+                this.displayDialog = false;
+                this.productDialog = false;
+                this.getProducts();
             })
         },
         async sendDeleteProcudct() {
