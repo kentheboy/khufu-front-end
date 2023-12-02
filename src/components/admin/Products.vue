@@ -120,7 +120,6 @@
                     autofocus
                 />
             </template>
-            <ProgressSpinner v-if="loading" />
         </Dialog>
         <Dialog
             v-model:visible="deleteProductDialog"
@@ -146,7 +145,6 @@ import Column from 'primevue/column';
 import Dialog from 'primevue/dialog';
 import Button from "primevue/button";
 import Badge from 'primevue/badge';
-import ProgressSpinner from 'primevue/progressspinner';
 import Input from "/src/components/common/form/Input";
 import Toast from 'primevue/toast';
 import { useToast } from "primevue/usetoast";
@@ -159,7 +157,6 @@ export default {
         Dialog,
         Button,
         Badge,
-        ProgressSpinner,
         Input,
         Toast
     },
@@ -181,7 +178,6 @@ export default {
                 isSmokingAllowed: false
             },
             products: [],
-            loading: false,
             deleteProductId: null,
             productStatus: ["利用可","車検中","点検中"],
             productDialog: false,
@@ -290,9 +286,7 @@ export default {
                 "images": JSON.stringify(images)
             }
 
-            this.loading = true;
             await axios.post(`${this.backendDomain}/api/products/create`, data).then(() => {
-                this.displayDialog = false;
                 this.productDialog = false;
                 this.showToastMeassage('success', '車両情報追加成功', '車両情報が追加されました。');
                 this.getProducts();
@@ -300,6 +294,7 @@ export default {
             .catch(error => {
                 console.log(error);
                 this.showToastMeassage('error', 'エラー', '車両情報が追加に失敗しました。ページの再読み込みをお願いします。');
+                this.productDialog = false;
             });
         },
         async sendDeleteProcudct() {
