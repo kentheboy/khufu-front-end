@@ -136,6 +136,7 @@
                 <Button label="削除" icon="pi pi-check" class="p-button-text" severity="danger" @click="sendDeleteProcudct" autofocus></Button>
             </template>
         </Dialog>
+        <Toast />
     </div>
 </template>
 
@@ -147,6 +148,8 @@ import Button from "primevue/button";
 import Badge from 'primevue/badge';
 import ProgressSpinner from 'primevue/progressspinner';
 import Input from "/src/components/common/form/Input";
+import Toast from 'primevue/toast';
+import { useToast } from "primevue/usetoast";
 import axios from 'axios';
 
 export default {
@@ -157,7 +160,8 @@ export default {
         Button,
         Badge,
         ProgressSpinner,
-        Input
+        Input,
+        Toast
     },
     data() {
         return {
@@ -193,6 +197,14 @@ export default {
                 { name: "isSmokingAllowed", value: false, label: "喫煙不可"},
             ]
         }
+    },
+    setup() {
+        const toast = useToast();
+
+        const showToastMeassage = (severity, summary, detail) => {
+            toast.add({ severity: severity, summary: summary, detail: detail, life: 3000 });
+        };
+        return { showToastMeassage };
     },
     computed: {
         backendDomain() {
@@ -282,8 +294,13 @@ export default {
             await axios.post(`${this.backendDomain}/api/products/create`, data).then(() => {
                 this.displayDialog = false;
                 this.productDialog = false;
+                this.showToastMeassage('success', '車両情報追加成功', '車両情報が追加されました。');
                 this.getProducts();
             })
+            .catch(error => {
+                console.log(error);
+                this.showToastMeassage('error', 'エラー', '車両情報が追加に失敗しました。ページの再読み込みをお願いします。');
+            });
         },
         async sendDeleteProcudct() {
             await axios.delete(`${this.backendDomain}/api/products/${this.deleteProductId}`).then(() => {
