@@ -50,3 +50,14 @@ jobs:
           run: |
             aws s3 sync . s3://class-rental-car.com --delete --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
 
+  Slack-Notification:
+      runs-on: ubuntu-latest
+      steps:
+        - uses: abinoda/slack-action@master
+          env:
+            SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+          with:
+          # message to send to slack
+            args: '{\"channel\":\"${{ secrets.SLACK_CHANNEL_ID }}\",\"as_user\":false,\"blocks\":[{\"type\":\"section\",\"text\":{\"type\":\"mrkdwn\",\"text\":\"*Repository pushed to:* ${{ github.event.repository.name }}\"}},{\"type\":\"section\",\"text\":{\"type\":\"mrkdwn\",\"text\":\"*Pusher:* ${{ github.event.pusher.name }}\n*Commit Message:* ${{ github.event.head_commit.message }}\"}},{\"type\":\"section\",\"text\":{\"type\":\"mrkdwn\",\"text\":\"<${{ github.event.repository.html_url }}|View Repository>\"}}]}' 
+          if: success()
+
