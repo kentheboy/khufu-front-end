@@ -1,5 +1,5 @@
 <template>
-    <div v-if="type==='address'" :class="`input-area ${classes}`">
+    <div v-if="type==='address'" :class="`input-area address ${classes}`">
         <label>住所</label>
         <span>〒</span>
         <input type="text" name="postalcode">
@@ -8,7 +8,10 @@
             <option>北海道</option>
             <option>東京都</option>
         </select>
-        <input type="text" name="addressline">
+        <input 
+            type="text"
+            name="addressline"
+        >
     </div>
     <div v-else-if="type==='airport-timpicker'" class="input-area airport-timpicker">
         <div class="airport-timpicker__headline">
@@ -23,7 +26,7 @@
     <div v-else-if="type==='file'" :class="`input-area ${classes}`">
         <label v-if="label">{{ label }}</label>
         <input 
-            @change="onImageSelector($event)"
+            @change="handleFileUpload($event)"
             :type="type"
             :name="name"
             :placeholder="placeholder"
@@ -31,9 +34,9 @@
             ref="fileInput"
             accept="image/png, image/jpeg"
         >
-        <div class="file-input" @click="openImageSelector()">
-            <img v-if="dataURL" :src="dataURL" alt="">
-            <span v-if="dataURL" class="file-delete" @click="deleteImage"><img src="/images/icons/cross.png"></span>
+        <div class="file-input" @click="openImageSelector">
+            <img v-if="dataUrl&&!deleted" :src="dataUrl" alt="">
+            <span v-if="dataUrl&&!deleted" class="file-delete" @click="deleteImage($event)"><img src="/images/icons/cross.png"></span>
             <p v-else>クリックして画像を選択</p>
         </div>
     </div>
@@ -41,14 +44,23 @@
         <label v-if="label">{{ label }}</label>
         <div class="radio-input__options">
             <div v-for="option in options" :key="option" class="radio-input__options--input">
-                <input type="radio" :name="option.name" :value="option.value">
+                <input type="radio" :name="option.name" :value=option.value  v-model="selectedValue">
                 <label :for="option.name">{{ option.label }}</label>
             </div>
         </div>
     </div>
+    <div v-else-if="type==='selectbox'" :class="`input-area ${classes}`">
+        <label v-if="label">{{ label }}</label>
+        <select>
+            <option v-for="option in options" :key="option">{{ option }}</option>
+        </select>
+    </div>
     <div v-else-if="type==='textarea'" :class="`input-area ${classes}`">
         <label v-if="label">{{ label }}</label>
-        <textarea :value="value"></textarea>
+        <textarea
+            :value="modelValue"
+            @input="handleInput"
+        ></textarea>
     </div>
     <div v-else :class="`input-area ${classes}`">
         <label v-if="label">{{ label }}</label>
@@ -56,7 +68,8 @@
             :type="type"
             :name="name"
             :placeholder="placeholder"
-            :value="value"
+            :value="modelValue"
+            @input="handleInput"
         >
     </div>
 </template>
@@ -85,8 +98,12 @@ export default {
             type: String,
             default: ""
         },
-        value: { 
-            type: [String, Number],
+        modelValue: { 
+            type: [String, Number, Boolean],
+            default: ""
+        },
+        dataUrl: { 
+            type: String,
             default: ""
         },
         options: {
@@ -96,18 +113,34 @@ export default {
     },
     data() {
         return {
-            dataURL: null
+            deleted: false,
+            selectedValue: this.modelValue
         }
     },
+    emits: [
+        'update:modelValue',
+        'update:dataUrl'
+    ], 
+    watch: {
+        modelValue(newValue) {
+            this.selectedValue = newValue;
+        },
+        selectedValue(newValue) {
+            this.$emit('update:modelValue', newValue);
+        },
+    },
     methods: {
+        handleInput($event) {
+            this.$emit('update:modelValue', $event.target.value)
+        },
         openImageSelector() {
-            console.log(this.$refs.fileInput);
             let fileInput = this.$refs.fileInput;
             fileInput.click();
         },
-        async onImageSelector($event) {
+        async handleFileUpload($event) {
             if ($event.target.files[0]) {
-                this.dataURL = await this.convertToBase64($event.target.files[0]);
+                this.deleted = false;
+                this.$emit('update:dataUrl', await this.convertToBase64($event.target.files[0]))
             }
         },
         convertToBase64(file) {
@@ -119,8 +152,10 @@ export default {
                 reader.onerror = error => reject(error)
             });
         },
-        deleteImage() {
-            this.dataURL = null;
+        deleteImage(event) {
+            event.stopPropagation();
+            this.deleted = true;
+            this.$emit('update:dataUrl', null);
         }
     }
 }
@@ -177,12 +212,17 @@ export default {
         background-color: var(--color-aliceblue);
         border-radius: 24.94px;
         box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
-        width: 7rem;
+        width: 100%;
         box-sizing: border-box;
         height: 2.09rem;
         padding-left: 1.25rem;
         padding-right: 1.25rem;
         margin-top: .3rem;
+    }
+    &.address {
+        select {
+            width: 7rem;
+        }
     }
 
     textarea {
