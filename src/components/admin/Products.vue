@@ -88,29 +88,29 @@
                     type="file"
                     label="画像1"
                     name="image1"
-                    :dataUrl="submitData.image1"
-                    @update:dataUrl="(event) => {submitData.image1 = event}"
+                    :dataUrl="submitData.images[0]"
+                    @update:dataUrl="(event) => {updateImage(event, 0)}"
                 ></Input>
                 <Input
                     type="file"
                     label="画像2"
                     name="image2"
-                    :dataUrl="submitData.image2"
-                    @update:dataUrl="(event) => {submitData.image2 = event}"
+                    :dataUrl="submitData.images[1]"
+                    @update:dataUrl="(event) => {updateImage(event, 1)}"
                 ></Input>
                 <Input
                     type="file"
                     label="画像3"
                     name="image3"
-                    :dataUrl="submitData.image3"
-                    @update:dataUrl="(event) => {submitData.image3 = event}"
+                    :dataUrl="submitData.images[2]"
+                    @update:dataUrl="(event) => {updateImage(event, 2)}"
                 ></Input>
                 <Input
                     type="file"
                     label="画像4"
                     name="image4"
-                    :dataUrl="submitData.image4"
-                    @update:dataUrl="(event) => {submitData.image4 = event}"
+                    :dataUrl="submitData.images[3]"
+                    @update:dataUrl="(event) => {updateImage(event, 3)}"
                 ></Input>
             </div>
             <template #footer>
@@ -167,15 +167,13 @@ export default {
                 id: null,
                 name: "test",
                 price: 0,
-                image1: null,
-                image2: null,
-                image3: null,
-                image4: null,
+                images: [],
                 description: "",
                 licenseNumber: "",
                 syakenDate: "",
                 tenkenDate: "",
-                isSmokingAllowed: false
+                isSmokingAllowed: false,
+                updatedImages: []
             },
             products: [],
             deleteProductId: null,
@@ -237,10 +235,7 @@ export default {
                 this.submitData.tenkenDate = customfields.tenkenDate;
                 this.submitData.isSmokingAllowed = customfields.isSmokingAllowed;
                 if(images) {
-                    this.submitData.image1 = images[0];
-                    this.submitData.image2 = images[1];
-                    this.submitData.image3 = images[2];
-                    this.submitData.image4 = images[3];
+                    this.submitData.images = images;
                 }
             })
         },
@@ -255,6 +250,13 @@ export default {
             this.submitData.id = productId;
             this.getProduct(productId)
         },
+        updateImage(event, index){
+            this.submitData.images[index] = event;
+            console.log(event);
+            if(this.submitMode === "update" && !this.submitData.updatedImages.includes(index)) {
+                this.submitData.updatedImages.push(index);
+            }
+        },
         deleteProduct(productId){
             this.deleteProductDialog = true;
             this.deleteProductId = productId;
@@ -262,6 +264,8 @@ export default {
         submitProduct() {
             if(this.submitMode === "create") {
                 this.sendNewProduct();
+            } else if (this.submitMode === "update") {
+                this.sendEditedProduct();
             }
         },
         async sendNewProduct() {
@@ -271,23 +275,18 @@ export default {
                 "tenkenDate": this.submitData.tenkenDate,
                 "isSmokingAllowed": this.submitData.isSmokingAllowed
             };
-            let images = [
-                this.submitData.image1,
-                this.submitData.image2,
-                this.submitData.image3,
-                this.submitData.image4
-            ];
 
             const data = {
                 "name": this.submitData.name,
                 "description": this.submitData.description,
                 "price": this.submitData.price,
                 "customfields": JSON.stringify(customfields),
-                "images": JSON.stringify(images)
+                "images": JSON.stringify(this.submitData.images)
             }
 
             await axios.post(`${this.backendDomain}/api/products/create`, data).then(() => {
                 this.productDialog = false;
+                this.resetSubmitData()
                 this.showToastMeassage('success', '車両情報追加成功', '車両情報が追加されました。');
                 this.getProducts();
             })
@@ -297,11 +296,54 @@ export default {
                 this.productDialog = false;
             });
         },
+        async sendEditedProduct(){
+            let customfields = {
+                "licenseNumber": this.submitData.licenseNumber,
+                "syakenDate": this.submitData.syakenDate,
+                "tenkenDate": this.submitData.tenkenDate,
+                "isSmokingAllowed": this.submitData.isSmokingAllowed
+            };
+
+            const data = {
+                "name": this.submitData.name,
+                "description": this.submitData.description,
+                "price": this.submitData.price,
+                "customfields": JSON.stringify(customfields),
+                "images": JSON.stringify(this.submitData.images),
+            }
+
+            await axios.patch(`${this.backendDomain}/api/products/${this.submitData.id}`, data).then(() => {
+                this.productDialog = false;
+                this.resetSubmitData()
+                this.showToastMeassage('success', '車両情報追加成功', '車両情報が追加されました。');
+                this.getProducts();
+            })
+            .catch(error => {
+                console.log(error);
+                this.showToastMeassage('error', 'エラー', '車両情報が更新に失敗しました。ページの再読み込みをお願いします。');
+                this.productDialog = false;
+            });
+        },
         async sendDeleteProcudct() {
             await axios.delete(`${this.backendDomain}/api/products/${this.deleteProductId}`).then(() => {
                 this.deleteProductDialog = false;
             });
             this.getProducts();
+        },
+        resetSubmitData() {
+            this.submitData = {};
+            this.submitData = {
+                id: null,
+                name: "test",
+                price: 0,
+                images: [],
+                description: "",
+                licenseNumber: "",
+                syakenDate: "",
+                tenkenDate: "",
+                isSmokingAllowed: false,
+                updatedImages: []
+            };
         }
     },
     created() {

@@ -155,7 +155,7 @@ export default {
         deleteImage(event) {
             event.stopPropagation();
             this.deleted = true;
-            this.$emit('update:modelValue', null);
+            this.$emit('update:dataUrl', null);
         }
     }
 }
