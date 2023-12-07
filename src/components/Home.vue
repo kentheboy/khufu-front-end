@@ -64,25 +64,7 @@
         </div>
       </section>
       <Information></Information>
-      <div class="comingSoon" ref="comingSoon" :style="cssVars">
-        <div id="myModal" class="comingSoon__notice custom-modal">
-          <div class="modal-content">
-              <p>現在、下記の電話にて<br>予約を承っております。</p>
-              <a class="button" href="tel://098-996-7266">098-996-7266</a>
-          </div>
-        </div>
-        <div class="comingSoon__notice bigText" id="comingSoon1">
-          <div class="bigText-content">
-            <span>Coming</span>
-            <span>Soon...</span>
-          </div>
-        </div>
-        <div class="comingSoon__notice bigText" id="comingSoon2">
-          <div class="bigText-content">
-            <span>Coming</span>
-            <span>Soon...</span>
-          </div>
-        </div>
+      <div>
         <section class="section__form">
           <div class="section__form--title">
             <h1>SCHEDULE</h1>
@@ -179,11 +161,6 @@ export default {
     // await this.testApi();
   },
   mounted() {
-    setTimeout(() => {
-      const comingSoonElement = this.$refs.comingSoon;
-      this.comingSoonHeight = `${comingSoonElement.offsetHeight}px`;
-      console.log(this.comingSoonHeight);
-    }, 500);
   },
   computed: {
     cssVars() {
