@@ -81,23 +81,12 @@
             </div>
             <div class="section__form--content">
               <Input type="text" label="お名前" name="name" placeholder="山田太郎"></Input>
-              <Input type="text" label="お名前(かな)" name="kana-name" placeholder="やまだたろう"></Input>
               <Input type="email" label="メールアドレス" name="email" placeholder="example@class.okinawa"></Input>
               <Input type="tel" label="電話番号" name="phonenumber" placeholder="080-0000-0000"></Input>
               <Input type="number" label="免許番号" name="license-number" placeholder="1234567890"></Input>
               <Input type="date" label="生年月日" name="dob"></Input>
-              <Input type="address"></Input>
               <Input type="airport-timpicker" label="空港お出迎え" name="airport-pickup"></Input>
               <Input type="airport-timpicker" label="空港お見送り" name="airport-dropoff"></Input>
-              <CreditCardInfo></CreditCardInfo>
-              <p class="label">本人確認書類アップロード</p>
-              <Input type="file" label="画像1" name="image1"></Input>
-              <Input type="radio" label="追加運転者" :options="additionalDriverRadio"></Input>
-              <Input type="file" label="画像1" name="additionalDriverImage1"></Input>
-              <Input type="textarea" label="備考" name="memos"  :value="comingSoonHeight"></Input>
-              <Input type="password" label="パスワード" name="newPassword"></Input>
-              <Input type="password" label="パスワード（確認）" name="newPasswordConfirmation"></Input>
-              <Input type="radio" label="会員登録" :options="signUp"></Input>
               <div class="section__form--submit">
                 <Button label="予約確認"></Button>
               </div>
@@ -113,7 +102,6 @@
 import Header from "/src/components/common/Header";
 import ImageSlider from "/src/components/common/ImageSlider";
 import DateTimePicker from "/src/components/common/form/DateTimePicker";
-import CreditCardInfo from "/src/components/common/form/CreditCardInfo";
 import Input from "/src/components/common/form/Input";
 import Products from "/src/components/common/Products";
 import Information from "/src/components/common/Information";
@@ -126,7 +114,6 @@ export default {
     Header,
     ImageSlider,
     DateTimePicker,
-    CreditCardInfo,
     Input,
     Products,
     Information,
