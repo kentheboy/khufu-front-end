@@ -17,11 +17,17 @@
         <div class="airport-timpicker__headline">
             <label v-if="label">{{ label }}</label>
             <div class="airport-timpicker__headline--pickup">
-                <input type="radio" name="airport-pickup" value="yes">あり
-                <input type="radio" name="airport-pickup" value="no">なし
+                <input type="radio" name="airport-pickup" value="true" @input="handleAirportTimpicker">あり
+                <input type="radio" name="airport-pickup" value="false" @input="handleAirportTimpicker">なし
             </div>
         </div>
-        <input type="time" :name="name" :placeholder="placeholder">
+        <input 
+            v-if="isAirportPickUpRequired"
+            type="time" 
+            :name="name" 
+            :placeholder="placeholder" 
+            @input="handleInput"
+        >
     </div>
     <div v-else-if="type==='file'" :class="`input-area ${classes}`">
         <label v-if="label">{{ label }}</label>
@@ -114,7 +120,8 @@ export default {
     data() {
         return {
             deleted: false,
-            selectedValue: this.modelValue
+            selectedValue: this.modelValue,
+            isAirportPickUpRequired: false
         }
     },
     emits: [
@@ -132,6 +139,15 @@ export default {
     methods: {
         handleInput($event) {
             this.$emit('update:modelValue', $event.target.value)
+        },
+        handleAirportTimpicker($event){
+            let value = $event.target.value;
+            if (value === "true") {
+                this.isAirportPickUpRequired = true;
+            } else {
+                this.isAirportPickUpRequired = false;
+                this.$emit('update:modelValue', false)
+            }
         },
         openImageSelector() {
             let fileInput = this.$refs.fileInput;
