@@ -165,7 +165,7 @@ export default {
             submitMode: null,
             submitData: {
                 id: null,
-                name: "test",
+                name: "",
                 price: 0,
                 images: [],
                 description: "",
@@ -252,7 +252,6 @@ export default {
         },
         updateImage(event, index){
             this.submitData.images[index] = event;
-            console.log(event);
             if(this.submitMode === "update" && !this.submitData.updatedImages.includes(index)) {
                 this.submitData.updatedImages.push(index);
             }
