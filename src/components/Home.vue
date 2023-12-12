@@ -80,13 +80,80 @@
               <h3>お客様情報入力</h3>
             </div>
             <div class="section__form--content">
-              <Input type="text" label="お名前" name="name" placeholder="山田太郎"></Input>
-              <Input type="email" label="メールアドレス" name="email" placeholder="example@class.okinawa"></Input>
-              <Input type="tel" label="電話番号" name="phonenumber" placeholder="080-0000-0000"></Input>
-              <Input type="number" label="免許番号" name="license-number" placeholder="1234567890"></Input>
-              <Input type="date" label="生年月日" name="dob"></Input>
-              <Input type="airport-timpicker" label="空港お出迎え" name="airport-pickup"></Input>
-              <Input type="airport-timpicker" label="空港お見送り" name="airport-dropoff"></Input>
+              <div class="section__form--content-input-area">
+                <Input
+                  type="text"
+                  label="お名前"
+                  name="name"
+                  placeholder="山田太郎"
+                  v-model="scheduleInfo.customerName.value"
+                  @update:modelValue="isValid('name')"
+                ></Input>
+                <span class="error-msg" v-if="!scheduleInfo.customerName.isValid">※必須</span>
+              </div>
+              <div class="section__form--content-input-area">
+                <Input
+                  type="email"
+                  label="メールアドレス"
+                  name="email"
+                  placeholder="example@class.okinawa"
+                  v-model="scheduleInfo.customerEmail.value"
+                  @update:modelValue="isValid('email')"
+                ></Input>
+                <span class="error-msg" v-if="!scheduleInfo.customerEmail.isValid">※必須：正しいメールアドレスを入力してください</span>
+              </div>
+              <div class="section__form--content-input-area">
+                <Input
+                  type="tel"
+                  label="電話番号"
+                  name="phonenumber"
+                  placeholder="08000000000"
+                  v-model="scheduleInfo.customerPhoneNumber.value"
+                  @update:modelValue="isValid('phone')"
+                ></Input>
+                <span class="error-msg" v-if="!scheduleInfo.customerPhoneNumber.isValid">※必須：正しい電話番号を入力してください</span>
+              </div>
+              <div class="section__form--content-input-area">
+                <Input
+                  type="number"
+                  label="免許番号"
+                  name="license-number"
+                  placeholder="1234567890"
+                  v-model="scheduleInfo.licenseNumber.value"
+                  @update:modelValue="isValid('licenseNumber')"
+                ></Input>
+                <span class="error-msg" v-if="!scheduleInfo.licenseNumber.isValid">※必須</span>
+              </div>
+              <div class="section__form--content-input-area">
+                <Input
+                  type="date"
+                  label="生年月日"
+                  name="dob"
+                  v-model="scheduleInfo.dob.value"
+                  @update:modelValue="isValid('dob')"
+                ></Input>
+                <span class="error-msg" v-if="!scheduleInfo.dob.isValid">※必須</span>
+              </div>
+              <div class="section__form--content-input-area">
+                <Input
+                  type="airport-timpicker"
+                  label="空港お出迎え"
+                  name="airport-pickup"
+                  v-model="scheduleInfo.airportPickup.value"
+                  @update:modelValue="isValid('airportPickup')"
+                ></Input>
+                <span class="error-msg" v-if="!scheduleInfo.airportPickup.isValid">※必須</span>
+              </div>
+              <div class="section__form--content-input-area">
+                <Input
+                  type="airport-timpicker"
+                  label="空港お見送り"
+                  name="airport-dropoff"
+                  v-model="scheduleInfo.airportDropoff.value"
+                  @update:modelValue="isValid('airportDropoff')"
+                ></Input>
+                <span class="error-msg" v-if="!scheduleInfo.airportDropoff.isValid">※必須</span>
+              </div>
               <div class="section__form--submit">
                 <Button label="予約確認"></Button>
               </div>
@@ -107,7 +174,7 @@ import Products from "/src/components/common/Products";
 import Information from "/src/components/common/Information";
 import Footer from "/src/components/common/Footer";
 import Button from "primevue/button";
-import axios from "axios";
+// import axios from "axios";
 export default {
   name: 'Home',
   components: {
@@ -141,13 +208,44 @@ export default {
         { name: "sign-up", value: "yes", label: "希望する"},
         { name: "sign-up", value: "no", label: "希望しない"},
       ],
-      comingSoonHeight: null
+      comingSoonHeight: null,
+      scheduleInfo: {
+        reservationCarId: null,
+        start_at: null,
+        end_at: null,
+        totalFee: null,
+        customerName: {
+          value: "",
+          isValid: true
+        },
+        customerEmail: {
+          value: "",
+          isValid: true
+        },
+        customerPhoneNumber: {
+          value: "",
+          isValid: true
+        },
+        licenseNumber: {
+          value: "",
+          isValid: true
+        },
+        dob: {
+          value: "",
+          isValid: true
+        },
+        airportPickup: {
+          value: false,
+          isValid: true
+        },
+        airportDropoff: {
+          value: false,
+          isValid: true
+        },
+      },
     }
   },
   async created() {
-    // await this.testApi();
-  },
-  mounted() {
   },
   computed: {
     cssVars() {
@@ -160,12 +258,63 @@ export default {
     }
   },
   methods: {
-    async testApi() {
-      await axios.get(`http://${this.envVariable.backendDomain}/api/test`).then((response) => {
-        console.log(response);
-        return
-      });
-    }
+    isValid(inputName) {
+      const emailRegex = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
+      const phoneRegex = /^[+-]?[0-9]{7,13}$/;
+      switch(inputName){
+        case "name":
+          if(this.scheduleInfo.customerName.value.length < 1) {
+            this.scheduleInfo.customerName.isValid = false;
+          } else {
+            this.scheduleInfo.customerName.isValid = true;
+          }
+          break;
+        case "email":
+          if (!emailRegex.test(this.scheduleInfo.customerEmail.value)) {
+            this.scheduleInfo.customerEmail.isValid = false;
+          } else {
+            this.scheduleInfo.customerEmail.isValid  = true;
+          }
+          break;
+        case "phone":
+          if (phoneRegex.test(this.scheduleInfo.customerPhoneNumber.value)) {
+            this.scheduleInfo.customerPhoneNumber.isValid = true;
+          } else {
+            this.scheduleInfo.customerPhoneNumber.isValid = false;
+          }
+          break;
+        case "licenseNumber":
+          if(this.scheduleInfo.licenseNumber.value.length < 1) {
+            this.scheduleInfo.licenseNumber.isValid = false;
+          } else {
+            this.scheduleInfo.licenseNumber.isValid = true;
+          }
+          break;
+        case "dob":
+          if(this.scheduleInfo.dob.value.length < 1) {
+            this.scheduleInfo.dob.isValid = false;
+          } else {
+            this.scheduleInfo.dob.isValid = true;
+          }
+          break
+        case "airportPickup":
+          if (this.scheduleInfo.airportPickup.value.length < 1) {
+            this.scheduleInfo.airportPickup.isValid = false;
+          } else {
+            this.scheduleInfo.airportPickup.isValid = true;
+          }
+          break;
+        case "airportDropoff":
+          if (this.scheduleInfo.airportPickup.value.length < 1) {
+            this.scheduleInfo.airportPickup.isValid = false;
+          } else {
+            this.scheduleInfo.airportPickup.isValid = true;
+          }
+          break;
+        default:
+          break;
+      }
+    },
   }
 }
 </script>
@@ -341,6 +490,15 @@ section {
       text-align: left;
       @media screen and (max-width: 390px) {
         width: 100%;
+      }
+      &-input-area {
+        margin-bottom: 2rem;
+        &::v-deep .input-area {
+          margin-bottom: initial;
+        }
+        .error-msg {
+          color: red
+        }
       }
     }
 
