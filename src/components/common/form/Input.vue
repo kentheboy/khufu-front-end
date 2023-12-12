@@ -17,8 +17,8 @@
         <div class="airport-timpicker__headline">
             <label v-if="label">{{ label }}</label>
             <div class="airport-timpicker__headline--pickup">
-                <input type="radio" name="airport-pickup" value="true" @input="handleAirportTimpicker">あり
-                <input type="radio" name="airport-pickup" value="false" @input="handleAirportTimpicker">なし
+                <input type="radio" :name="name" value="true" @input="handleAirportTimpicker">あり
+                <input type="radio" :name="name" value="false" @input="handleAirportTimpicker">なし
             </div>
         </div>
         <input 

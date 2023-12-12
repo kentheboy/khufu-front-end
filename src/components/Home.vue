@@ -89,7 +89,7 @@
                   v-model="scheduleInfo.customerName.value"
                   @update:modelValue="isValid('name')"
                 ></Input>
-                <span class="error-msg" v-if="!scheduleInfo.customerName.isValid">※必須</span>
+                <span class="error-msg" v-if="!scheduleInfo.customerName.isValid && formEntryStart">※必須</span>
               </div>
               <div class="section__form--content-input-area">
                 <Input
@@ -100,7 +100,7 @@
                   v-model="scheduleInfo.customerEmail.value"
                   @update:modelValue="isValid('email')"
                 ></Input>
-                <span class="error-msg" v-if="!scheduleInfo.customerEmail.isValid">※必須：正しいメールアドレスを入力してください</span>
+                <span class="error-msg" v-if="!scheduleInfo.customerEmail.isValid && formEntryStart">※必須：正しいメールアドレスを入力してください</span>
               </div>
               <div class="section__form--content-input-area">
                 <Input
@@ -111,7 +111,7 @@
                   v-model="scheduleInfo.customerPhoneNumber.value"
                   @update:modelValue="isValid('phone')"
                 ></Input>
-                <span class="error-msg" v-if="!scheduleInfo.customerPhoneNumber.isValid">※必須：正しい電話番号を入力してください</span>
+                <span class="error-msg" v-if="!scheduleInfo.customerPhoneNumber.isValid && formEntryStart">※必須：正しい電話番号を入力してください</span>
               </div>
               <div class="section__form--content-input-area">
                 <Input
@@ -122,7 +122,7 @@
                   v-model="scheduleInfo.licenseNumber.value"
                   @update:modelValue="isValid('licenseNumber')"
                 ></Input>
-                <span class="error-msg" v-if="!scheduleInfo.licenseNumber.isValid">※必須</span>
+                <span class="error-msg" v-if="!scheduleInfo.licenseNumber.isValid && formEntryStart">※必須</span>
               </div>
               <div class="section__form--content-input-area">
                 <Input
@@ -132,7 +132,7 @@
                   v-model="scheduleInfo.dob.value"
                   @update:modelValue="isValid('dob')"
                 ></Input>
-                <span class="error-msg" v-if="!scheduleInfo.dob.isValid">※必須</span>
+                <span class="error-msg" v-if="!scheduleInfo.dob.isValid && formEntryStart">※必須</span>
               </div>
               <div class="section__form--content-input-area">
                 <Input
@@ -142,7 +142,7 @@
                   v-model="scheduleInfo.airportPickup.value"
                   @update:modelValue="isValid('airportPickup')"
                 ></Input>
-                <span class="error-msg" v-if="!scheduleInfo.airportPickup.isValid">※必須</span>
+                <span class="error-msg" v-if="!scheduleInfo.airportPickup.isValid && formEntryStart">※必須</span>
               </div>
               <div class="section__form--content-input-area">
                 <Input
@@ -152,10 +152,13 @@
                   v-model="scheduleInfo.airportDropoff.value"
                   @update:modelValue="isValid('airportDropoff')"
                 ></Input>
-                <span class="error-msg" v-if="!scheduleInfo.airportDropoff.isValid">※必須</span>
+                <span class="error-msg" v-if="!scheduleInfo.airportDropoff.isValid && formEntryStart">※必須</span>
               </div>
               <div class="section__form--submit">
-                <Button label="予約確認"></Button>
+                <Button
+                  label="予約確認"
+                  :disabled="!isValidScheduleInfo"
+                ></Button>
               </div>
             </div>
         </section>
@@ -209,6 +212,7 @@ export default {
         { name: "sign-up", value: "no", label: "希望しない"},
       ],
       comingSoonHeight: null,
+      formEntryStart: false,
       scheduleInfo: {
         reservationCarId: null,
         start_at: null,
@@ -243,6 +247,7 @@ export default {
           isValid: true
         },
       },
+      isValidScheduleInfo: false
     }
   },
   async created() {
@@ -259,6 +264,7 @@ export default {
   },
   methods: {
     isValid(inputName) {
+      this.formEntryStart = true;
       const emailRegex = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
       const phoneRegex = /^[+-]?[0-9]{7,13}$/;
       switch(inputName){
@@ -267,6 +273,7 @@ export default {
             this.scheduleInfo.customerName.isValid = false;
           } else {
             this.scheduleInfo.customerName.isValid = true;
+            this.isReadyToBeSubmited();
           }
           break;
         case "email":
@@ -274,6 +281,7 @@ export default {
             this.scheduleInfo.customerEmail.isValid = false;
           } else {
             this.scheduleInfo.customerEmail.isValid  = true;
+            this.isReadyToBeSubmited();
           }
           break;
         case "phone":
@@ -281,6 +289,7 @@ export default {
             this.scheduleInfo.customerPhoneNumber.isValid = true;
           } else {
             this.scheduleInfo.customerPhoneNumber.isValid = false;
+            this.isReadyToBeSubmited();
           }
           break;
         case "licenseNumber":
@@ -288,6 +297,7 @@ export default {
             this.scheduleInfo.licenseNumber.isValid = false;
           } else {
             this.scheduleInfo.licenseNumber.isValid = true;
+            this.isReadyToBeSubmited();
           }
           break;
         case "dob":
@@ -295,26 +305,45 @@ export default {
             this.scheduleInfo.dob.isValid = false;
           } else {
             this.scheduleInfo.dob.isValid = true;
+            this.isReadyToBeSubmited();
           }
-          break
+          break;
         case "airportPickup":
           if (this.scheduleInfo.airportPickup.value.length < 1) {
             this.scheduleInfo.airportPickup.isValid = false;
           } else {
             this.scheduleInfo.airportPickup.isValid = true;
+            this.isReadyToBeSubmited();
           }
           break;
         case "airportDropoff":
-          if (this.scheduleInfo.airportPickup.value.length < 1) {
-            this.scheduleInfo.airportPickup.isValid = false;
+          if (this.scheduleInfo.airportDropoff.value.length < 1) {
+            this.scheduleInfo.airportDropoff.isValid = false;
           } else {
-            this.scheduleInfo.airportPickup.isValid = true;
+            this.scheduleInfo.airportDropoff.isValid = true;
+            this.isReadyToBeSubmited();
           }
           break;
         default:
           break;
       }
     },
+    isReadyToBeSubmited() {
+      if (
+        this.formEntryStart &&
+        this.scheduleInfo.customerName.isValid &&
+        this.scheduleInfo.customerEmail.isValid &&
+        this.scheduleInfo.customerPhoneNumber.isValid &&
+        this.scheduleInfo.licenseNumber.isValid &&
+        this.scheduleInfo.dob.isValid &&
+        this.scheduleInfo.airportPickup.isValid &&
+        this.scheduleInfo.airportDropoff.isValid
+      ) {
+        this.isValidScheduleInfo = true;
+      } else {
+        this.isValidScheduleInfo = false;
+      }
+    }
   }
 }
 </script>
