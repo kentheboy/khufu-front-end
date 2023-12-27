@@ -70,7 +70,22 @@
             <h1>SCHEDULE</h1>
             <h3>旅行日程で探す</h3>
           </div>
-          <DateTimePicker></DateTimePicker>
+          <div class="datetimepicker">
+            <div class="datetimepicker-selector">
+              <label>出発日時</label>
+              <input type="date" name="startDate">
+              <input type="time" name="startTime">
+            </div>
+            <div class="datetimepicker-selector">
+              <label>返却日時</label>
+              <input type="date" name="endDate">
+              <input type="time" name="endTime">
+            </div>
+            <div class="datetimepicker-deselector">
+              <input type="checkbox" value="1">
+              <label>日付未定</label>
+            </div>
+          </div>
           <Button label="空き状況を検索"></Button>
           <Products></Products>
         </section>
@@ -172,7 +187,6 @@
 <script>
 import Header from "/src/components/common/Header";
 import ImageSlider from "/src/components/common/ImageSlider";
-import DateTimePicker from "/src/components/common/form/DateTimePicker";
 import Input from "/src/components/common/form/Input";
 import Products from "/src/components/common/Products";
 import Information from "/src/components/common/Information";
@@ -184,7 +198,6 @@ export default {
   components: {
     Header,
     ImageSlider,
-    DateTimePicker,
     Input,
     Products,
     Information,
@@ -248,7 +261,6 @@ export default {
           isValid: true
         },
       },
-      isValidScheduleInfo: false
     }
   },
   async created() {
@@ -262,6 +274,22 @@ export default {
     backendDomain() {
       return process.env.VUE_APP_BACKEND_DOMAIN;
     },
+    isValidScheduleInfo() {
+      if (
+        this.formEntryStart &&
+        this.scheduleInfo.customerName.isValid &&
+        this.scheduleInfo.customerEmail.isValid &&
+        this.scheduleInfo.customerPhoneNumber.isValid &&
+        this.scheduleInfo.licenseNumber.isValid &&
+        this.scheduleInfo.dob.isValid &&
+        this.scheduleInfo.airportPickup.isValid &&
+        this.scheduleInfo.airportDropoff.isValid
+      ) {
+        return true;
+      } else {
+        return false;
+      }
+    }
   },
   methods: {
     isValid(inputName) {
@@ -274,7 +302,6 @@ export default {
             this.scheduleInfo.customerName.isValid = false;
           } else {
             this.scheduleInfo.customerName.isValid = true;
-            this.isReadyToBeSubmited();
           }
           break;
         case "email":
@@ -282,7 +309,6 @@ export default {
             this.scheduleInfo.customerEmail.isValid = false;
           } else {
             this.scheduleInfo.customerEmail.isValid  = true;
-            this.isReadyToBeSubmited();
           }
           break;
         case "phone":
@@ -290,7 +316,6 @@ export default {
             this.scheduleInfo.customerPhoneNumber.isValid = true;
           } else {
             this.scheduleInfo.customerPhoneNumber.isValid = false;
-            this.isReadyToBeSubmited();
           }
           break;
         case "licenseNumber":
@@ -298,7 +323,6 @@ export default {
             this.scheduleInfo.licenseNumber.isValid = false;
           } else {
             this.scheduleInfo.licenseNumber.isValid = true;
-            this.isReadyToBeSubmited();
           }
           break;
         case "dob":
@@ -306,7 +330,6 @@ export default {
             this.scheduleInfo.dob.isValid = false;
           } else {
             this.scheduleInfo.dob.isValid = true;
-            this.isReadyToBeSubmited();
           }
           break;
         case "airportPickup":
@@ -314,7 +337,6 @@ export default {
             this.scheduleInfo.airportPickup.isValid = false;
           } else {
             this.scheduleInfo.airportPickup.isValid = true;
-            this.isReadyToBeSubmited();
           }
           break;
         case "airportDropoff":
@@ -322,27 +344,10 @@ export default {
             this.scheduleInfo.airportDropoff.isValid = false;
           } else {
             this.scheduleInfo.airportDropoff.isValid = true;
-            this.isReadyToBeSubmited();
           }
           break;
         default:
           break;
-      }
-    },
-    isReadyToBeSubmited() {
-      if (
-        this.formEntryStart &&
-        this.scheduleInfo.customerName.isValid &&
-        this.scheduleInfo.customerEmail.isValid &&
-        this.scheduleInfo.customerPhoneNumber.isValid &&
-        this.scheduleInfo.licenseNumber.isValid &&
-        this.scheduleInfo.dob.isValid &&
-        this.scheduleInfo.airportPickup.isValid &&
-        this.scheduleInfo.airportDropoff.isValid
-      ) {
-        this.isValidScheduleInfo = true;
-      } else {
-        this.isValidScheduleInfo = false;
       }
     },
     async submitForm() {
@@ -554,6 +559,48 @@ section {
     &--submit {
       text-align: center;
     }
+  }
+}
+.datetimepicker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1.5rem;
+
+  &-selector {
+    font-size: 1rem;
+    display: inline-flex;
+    width: 21.5rem;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.6rem;
+    flex-direction: initial;
+
+    input[type=date] {
+      border-radius: 24.94px;
+      background-color: var(--color-aliceblue);
+      box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
+      width: 8.73rem;
+      height: 2rem;
+      border: none;
+      padding: 0 0.7rem;
+    }
+
+    input[type=time] {
+      border-radius: 24.94px;
+      background-color: var(--color-aliceblue);
+      box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
+      width: 5rem;
+      height: 2rem;
+      border: none;
+      padding: 0 0.7rem;
+    }
+  }
+
+  &-deselector {
+    display: flex;
+    align-items: flex-start;
+    color: var(--color-steelblue);
   }
 }
 .comingSoon {
