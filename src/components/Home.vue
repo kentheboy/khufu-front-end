@@ -158,6 +158,7 @@
                 <Button
                   label="予約確認"
                   :disabled="!isValidScheduleInfo"
+                  @click="submitForm"
                 ></Button>
               </div>
             </div>
@@ -177,7 +178,7 @@ import Products from "/src/components/common/Products";
 import Information from "/src/components/common/Information";
 import Footer from "/src/components/common/Footer";
 import Button from "primevue/button";
-// import axios from "axios";
+import axios from "axios";
 export default {
   name: 'Home',
   components: {
@@ -258,9 +259,9 @@ export default {
         '--comingSoon-height': this.comingSoonHeight
       }
     },
-    envVariable() {
-      return this.$store.state.envVariable;
-    }
+    backendDomain() {
+      return process.env.VUE_APP_BACKEND_DOMAIN;
+    },
   },
   methods: {
     isValid(inputName) {
@@ -343,6 +344,25 @@ export default {
       } else {
         this.isValidScheduleInfo = false;
       }
+    },
+    async submitForm() {
+      const data = {
+        'product_id': 1,
+        'name': "テスト　太郎",
+        'email': 'test@gmail.com',
+        'tel': '1234567890',
+        'start_at': '2023-12-27 21:30',
+        'end_at': '2023-12-27 23:30',
+        'total_fee': 20000,
+      };
+
+      await axios.post(`${this.backendDomain}/api/schedule/create`, data).then((response) => {
+        console.log(response);
+        // this.productDialog = false;
+        // this.resetSubmitData()
+        // this.showToastMeassage('success', '車両情報追加成功', '車両情報が追加されました。');
+        // this.getProducts();
+      })
     }
   }
 }
