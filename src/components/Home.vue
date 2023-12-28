@@ -94,7 +94,7 @@
                 name="endDate"
                 v-model="search.returnDate.value"
                 @update:modelValue="isValidSearch('returnDate')"
-                :min="today"
+                :min="search.departDate.value?search.departDate.value:today"
               >
               <input
                 type="time"
@@ -414,8 +414,8 @@ export default {
     async searchAvailability() {
       const param = {
         "params": {
-          "start_at": `${this.search.departDate} ${this.search.departTime}`,
-          "end_at": `${this.search.returnDate} ${this.search.returnTime}`,
+          "start_at": `${this.search.departDate.value} ${this.search.departTime}`,
+          "end_at": `${this.search.returnDate.value} ${this.search.returnTime}`,
         }
       };
 
