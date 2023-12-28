@@ -1,12 +1,16 @@
 <template>
     <div class="products">
-        <div class="product__card">
-            <img src="/img/main5@3x.fb64a8f0.png">
+        <div 
+            class="product__card"
+            v-for="(product, index) in products"
+            v-bind:key="index"
+        >
+            <img :src="product.main_image">
             <div class="product__card--description">
-                <div class="product__card--description-title">ALPHARD</div>
-                <div class="product__card--description-passenger">乗車定員　7人</div>
+                <div class="product__card--description-title">{{product.title}}</div>
+                <div class="product__card--description-passenger">乗車定員　{{ product.passenger }}人</div>
                 <hr>
-                <div class="product__card--description-price">¥25,000~/24h</div>
+                <div class="product__card--description-price">¥{{ addCommas(product.price) }}~/24h</div>
                 <div class="product__card--description-select-buttons">
                     <Button text="会員の方"></Button>
                     <Button text="はじめての方"></Button>
@@ -21,6 +25,46 @@ export default {
     name: 'Products',
     components: {
         Button
+    },
+    props: {
+        products: {
+            type: Array,
+            default: () => (
+                [
+                    {
+                        title: "ALPHARD",
+                        main_image: "/img/main5@3x.fb64a8f0.png",
+                        passenger: 7,
+                        price: 25000,
+                    },
+                    {
+                        title: "ALPHARD",
+                        main_image: "/img/main5@3x.fb64a8f0.png",
+                        passenger: 7,
+                        price: 25000,
+                    }
+                ]
+            )
+        }
+    },
+    methods: {
+        addCommas(num) {
+            let str = num.toString();
+            let result = '';
+            let insertComma = false;
+
+            for (let i = str.length - 1; i >= 0; i--) {
+                if (insertComma) {
+                    result += ',';
+                    insertComma = false;
+                }
+                result += str[i];
+                if ((str.length - i) % 3 === 0 && i > 0) {
+                    insertComma = true;
+                }
+            }
+            return result.split('').reverse().join('');
+        }
     }
 }
 </script>
@@ -28,6 +72,9 @@ export default {
 .products {
     display: flex;
     justify-content: center;
+    @media screen and (max-width: 390px) {
+        flex-direction: column;
+    }
 
     .product__card {
         border-radius: 3.49px;
@@ -36,6 +83,7 @@ export default {
         width: 18.15rem;
         height: 23.39rem;
         display: inline-block;
+        margin: 1rem 2rem;
 
         img {
             width: 18.15rem;
