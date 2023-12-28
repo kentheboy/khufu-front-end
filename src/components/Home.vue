@@ -73,20 +73,42 @@
           <div class="datetimepicker">
             <div class="datetimepicker-selector">
               <label>出発日時</label>
-              <input type="date" name="startDate">
-              <input type="time" name="startTime">
+              <input
+                type="date"
+                name="startDate"
+                v-model="search.departDate.value"
+                @update:modelValue="isValidSearch('departDate')"
+                :min="today"
+              >
+              <input
+                type="time"
+                name="startTime"
+                v-model="search.departTime"
+                @update:modelValue="isValidSearch('departTime')"
+              >
             </div>
             <div class="datetimepicker-selector">
               <label>返却日時</label>
-              <input type="date" name="endDate">
-              <input type="time" name="endTime">
-            </div>
-            <div class="datetimepicker-deselector">
-              <input type="checkbox" value="1">
-              <label>日付未定</label>
+              <input
+                type="date"
+                name="endDate"
+                v-model="search.returnDate.value"
+                @update:modelValue="isValidSearch('returnDate')"
+                :min="today"
+              >
+              <input
+                type="time"
+                name="endTime"
+                v-model="search.returnTime"
+                @update:modelValue="isValidSearch('returnTime')"
+              >
             </div>
           </div>
-          <Button label="空き状況を検索"></Button>
+          <Button
+            label="空き状況を検索"
+            :disabled="!isReadyToSearch"
+            @click="searchAvailability"
+          ></Button>
           <Products></Products>
         </section>
         <section class="section__form" style="margin-bottom: 0;">
@@ -225,6 +247,19 @@ export default {
         { name: "sign-up", value: "yes", label: "希望する"},
         { name: "sign-up", value: "no", label: "希望しない"},
       ],
+      today: null,
+      search: {
+        departDate: {
+          value: null,
+          isValid: false
+        },
+        departTime: '00:00',
+        returnDate: {
+          value: null,
+          isValid: false
+        },
+        returnTime: '00:00',
+      },
       comingSoonHeight: null,
       formEntryStart: false,
       scheduleInfo: {
@@ -264,6 +299,7 @@ export default {
     }
   },
   async created() {
+    this.today = new Date().toISOString().slice(0, 10);
   },
   computed: {
     cssVars() {
@@ -273,6 +309,13 @@ export default {
     },
     backendDomain() {
       return process.env.VUE_APP_BACKEND_DOMAIN;
+    },
+    isReadyToSearch() {
+      if (this.search.departDate.isValid && this.search.returnDate.isValid) {
+        return true;
+      } else {
+        return false;
+      }
     },
     isValidScheduleInfo() {
       if (
@@ -292,6 +335,24 @@ export default {
     }
   },
   methods: {
+    isValidSearch(inputName) {
+      switch(inputName) {
+        case "departDate":
+          if (this.search.departDate.value) {
+            this.search.departDate.isValid = true;
+          } else {
+            this.search.departDate.isValid = false;
+          }
+          break;
+        case "returnDate":
+          if (this.search.returnDate.value) {
+            this.search.returnDate.isValid = true;
+          } else {
+            this.search.returnDate.isValid = false;
+          }
+          break;
+      }
+    },
     isValid(inputName) {
       this.formEntryStart = true;
       const emailRegex = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
@@ -349,6 +410,18 @@ export default {
         default:
           break;
       }
+    },
+    async searchAvailability() {
+      const param = {
+        "params": {
+          "start_at": `${this.search.departDate} ${this.search.departTime}`,
+          "end_at": `${this.search.returnDate} ${this.search.returnTime}`,
+        }
+      };
+
+      await axios.get(`${this.backendDomain}/api/schedule/search`, param).then((response) => {
+        console.log(response);
+      })
     },
     async submitForm() {
       const data = {
@@ -580,7 +653,7 @@ section {
       border-radius: 24.94px;
       background-color: var(--color-aliceblue);
       box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
-      width: 8.73rem;
+      width: 9.73rem;
       height: 2rem;
       border: none;
       padding: 0 0.7rem;
@@ -590,7 +663,7 @@ section {
       border-radius: 24.94px;
       background-color: var(--color-aliceblue);
       box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
-      width: 5rem;
+      width: 7rem;
       height: 2rem;
       border: none;
       padding: 0 0.7rem;
