@@ -111,97 +111,106 @@
           ></Button>
           <Products
             :products="availableCar"
+            @selected="opneReservationForm"
           >
           </Products>
-        </section>
-        <section class="section__form" style="margin-bottom: 0;">
-            <div class="section__form--title">
-              <h1>YOUR INFORMATION</h1>
-              <h3>お客様情報入力</h3>
-            </div>
-            <div class="section__form--content">
-              <div class="section__form--content-input-area">
-                <Input
-                  type="text"
-                  label="お名前"
-                  name="name"
-                  placeholder="山田太郎"
-                  v-model="scheduleInfo.customerName.value"
-                  @update:modelValue="isValid('name')"
-                ></Input>
-                <span class="error-msg" v-if="!scheduleInfo.customerName.isValid && formEntryStart">※必須</span>
-              </div>
-              <div class="section__form--content-input-area">
-                <Input
-                  type="email"
-                  label="メールアドレス"
-                  name="email"
-                  placeholder="example@class.okinawa"
-                  v-model="scheduleInfo.customerEmail.value"
-                  @update:modelValue="isValid('email')"
-                ></Input>
-                <span class="error-msg" v-if="!scheduleInfo.customerEmail.isValid && formEntryStart">※必須：正しいメールアドレスを入力してください</span>
-              </div>
-              <div class="section__form--content-input-area">
-                <Input
-                  type="tel"
-                  label="電話番号"
-                  name="phonenumber"
-                  placeholder="08000000000"
-                  v-model="scheduleInfo.customerPhoneNumber.value"
-                  @update:modelValue="isValid('phone')"
-                ></Input>
-                <span class="error-msg" v-if="!scheduleInfo.customerPhoneNumber.isValid && formEntryStart">※必須：正しい電話番号を入力してください</span>
-              </div>
-              <div class="section__form--content-input-area">
-                <Input
-                  type="number"
-                  label="免許番号"
-                  name="license-number"
-                  placeholder="1234567890"
-                  v-model="scheduleInfo.licenseNumber.value"
-                  @update:modelValue="isValid('licenseNumber')"
-                ></Input>
-                <span class="error-msg" v-if="!scheduleInfo.licenseNumber.isValid && formEntryStart">※必須</span>
-              </div>
-              <div class="section__form--content-input-area">
-                <Input
-                  type="date"
-                  label="生年月日"
-                  name="dob"
-                  v-model="scheduleInfo.dob.value"
-                  @update:modelValue="isValid('dob')"
-                ></Input>
-                <span class="error-msg" v-if="!scheduleInfo.dob.isValid && formEntryStart">※必須</span>
-              </div>
-              <div class="section__form--content-input-area">
-                <Input
-                  type="airport-timpicker"
-                  label="空港お出迎え"
-                  name="airport-pickup"
-                  v-model="scheduleInfo.airportPickup.value"
-                  @update:modelValue="isValid('airportPickup')"
-                ></Input>
-                <span class="error-msg" v-if="!scheduleInfo.airportPickup.isValid && formEntryStart">※必須</span>
-              </div>
-              <div class="section__form--content-input-area">
-                <Input
-                  type="airport-timpicker"
-                  label="空港お見送り"
-                  name="airport-dropoff"
-                  v-model="scheduleInfo.airportDropoff.value"
-                  @update:modelValue="isValid('airportDropoff')"
-                ></Input>
-                <span class="error-msg" v-if="!scheduleInfo.airportDropoff.isValid && formEntryStart">※必須</span>
-              </div>
-              <div class="section__form--submit">
-                <Button
-                  label="予約確認"
-                  :disabled="!isValidScheduleInfo"
-                  @click="submitForm"
-                ></Button>
-              </div>
-            </div>
+          <Dialog
+            v-model:visible="openReservationForm"
+            maximizable
+            header=""
+            class="reservation-form"
+            :modal="true"
+          >
+            <section class="section__form" style="margin-bottom: 0;">
+                <div class="section__form--title">
+                  <h1>YOUR INFORMATION</h1>
+                  <h3>お客様情報入力</h3>
+                </div>
+                <div class="section__form--content">
+                  <div class="section__form--content-input-area">
+                    <Input
+                      type="text"
+                      label="お名前"
+                      name="name"
+                      placeholder="山田太郎"
+                      v-model="scheduleInfo.customerName.value"
+                      @update:modelValue="isValid('name')"
+                    ></Input>
+                    <span class="error-msg" v-if="!scheduleInfo.customerName.isValid && formEntryStart">※必須</span>
+                  </div>
+                  <div class="section__form--content-input-area">
+                    <Input
+                      type="email"
+                      label="メールアドレス"
+                      name="email"
+                      placeholder="example@class.okinawa"
+                      v-model="scheduleInfo.customerEmail.value"
+                      @update:modelValue="isValid('email')"
+                    ></Input>
+                    <span class="error-msg" v-if="!scheduleInfo.customerEmail.isValid && formEntryStart">※必須：正しいメールアドレスを入力してください</span>
+                  </div>
+                  <div class="section__form--content-input-area">
+                    <Input
+                      type="tel"
+                      label="電話番号"
+                      name="phonenumber"
+                      placeholder="08000000000"
+                      v-model="scheduleInfo.customerPhoneNumber.value"
+                      @update:modelValue="isValid('phone')"
+                    ></Input>
+                    <span class="error-msg" v-if="!scheduleInfo.customerPhoneNumber.isValid && formEntryStart">※必須：正しい電話番号を入力してください</span>
+                  </div>
+                  <div class="section__form--content-input-area">
+                    <Input
+                      type="number"
+                      label="免許番号"
+                      name="license-number"
+                      placeholder="1234567890"
+                      v-model="scheduleInfo.licenseNumber.value"
+                      @update:modelValue="isValid('licenseNumber')"
+                    ></Input>
+                    <span class="error-msg" v-if="!scheduleInfo.licenseNumber.isValid && formEntryStart">※必須</span>
+                  </div>
+                  <div class="section__form--content-input-area">
+                    <Input
+                      type="date"
+                      label="生年月日"
+                      name="dob"
+                      v-model="scheduleInfo.dob.value"
+                      @update:modelValue="isValid('dob')"
+                    ></Input>
+                    <span class="error-msg" v-if="!scheduleInfo.dob.isValid && formEntryStart">※必須</span>
+                  </div>
+                  <div class="section__form--content-input-area">
+                    <Input
+                      type="airport-timpicker"
+                      label="空港お出迎え"
+                      name="airport-pickup"
+                      v-model="scheduleInfo.airportPickup.value"
+                      @update:modelValue="isValid('airportPickup')"
+                    ></Input>
+                    <span class="error-msg" v-if="!scheduleInfo.airportPickup.isValid && formEntryStart">※必須</span>
+                  </div>
+                  <div class="section__form--content-input-area">
+                    <Input
+                      type="airport-timpicker"
+                      label="空港お見送り"
+                      name="airport-dropoff"
+                      v-model="scheduleInfo.airportDropoff.value"
+                      @update:modelValue="isValid('airportDropoff')"
+                    ></Input>
+                    <span class="error-msg" v-if="!scheduleInfo.airportDropoff.isValid && formEntryStart">※必須</span>
+                  </div>
+                  <div class="section__form--submit">
+                    <Button
+                      label="予約確認"
+                      :disabled="!isValidScheduleInfo"
+                      @click="submitForm"
+                    ></Button>
+                  </div>
+                </div>
+            </section>
+          </Dialog>
         </section>
       </div>
     </main>
@@ -217,6 +226,7 @@ import Products from "/src/components/common/Products";
 import Information from "/src/components/common/Information";
 import Footer from "/src/components/common/Footer";
 import Button from "primevue/button";
+import Dialog from 'primevue/dialog';
 import axios from "axios";
 export default {
   name: 'Home',
@@ -227,7 +237,8 @@ export default {
     Products,
     Information,
     Footer,
-    Button
+    Button,
+    Dialog
   },
   props: {
     msg: {
@@ -300,6 +311,7 @@ export default {
           isValid: true
         },
       },
+      openReservationForm: true
     }
   },
   async created() {
@@ -424,7 +436,6 @@ export default {
       };
 
       await axios.get(`${this.backendDomain}/api/schedule/search`, param).then((response) => {
-        console.log(response);
         let tmpProducts = response.data.data;
         for (let i in tmpProducts) {
           tmpProducts[i].main_image = this.backendDomain + tmpProducts[i].images[0];
@@ -455,6 +466,10 @@ export default {
         // this.showToastMeassage('success', '車両情報追加成功', '車両情報が追加されました。');
         // this.getProducts();
       })
+    },
+    opneReservationForm(event) {
+      this.openReservationForm = true;
+      console.log(event);
     }
   }
 }
@@ -609,6 +624,7 @@ section {
       border-bottom: 1.5px solid var(--color-steelblue);
 
       h1 {
+        color: var(--color-steelblue);
         letter-spacing: 0.15em;
         font-size: 2rem;
         font-family: var(--font-istok-web);
@@ -617,6 +633,7 @@ section {
       }
 
       h3 {
+        color: var(--color-steelblue);
         letter-spacing: 0.15em;
         font-family: var(--font-istok-web);
         font-weight: normal;
@@ -646,6 +663,11 @@ section {
     &--submit {
       text-align: center;
     }
+  }
+}
+.reservation-form {
+  section {
+    margin: 0rem 2.4rem 
   }
 }
 .datetimepicker {

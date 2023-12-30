@@ -21,13 +21,23 @@
                         alt="喫煙可（電子タバコのみ）"
                     >
                 </div>
+                <div class="product__card--description-select-buttons">
+                    <Button
+                        text="すぐ予約する"
+                        @click="selected(product.id)"
+                    ></Button>
+                </div>
             </div>
         </div>
     </div>
 </template>
 <script>
+import Button from "/src/components/common/Button";
 export default {
     name: 'Products',
+    components: {
+        Button
+    },
     props: {
         products: {
             type: Array,
@@ -52,6 +62,9 @@ export default {
         }
     },
     methods: {
+        selected(selcetedProductId) {
+            this.$emit("selected", selcetedProductId);
+        },
         addCommas(num) {
             let str = num.toString();
             let result = '';
@@ -86,7 +99,7 @@ export default {
         background-color: var(--color-lightblue);
         box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.25);
         width: 18.15rem;
-        height: 22.39rem;
+        height: 24.39rem;
         display: inline-block;
         margin: 1rem 2rem;
 
@@ -145,7 +158,7 @@ export default {
                 padding: 0 1.5rem;
                 justify-content: space-around;
                 position: relative;
-                top: 5.5rem;
+                top: 6.5rem;
 
                 &::v-deep button {
                     width: 7rem;
