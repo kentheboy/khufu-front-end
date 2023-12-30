@@ -109,7 +109,10 @@
             :disabled="!isReadyToSearch"
             @click="searchAvailability"
           ></Button>
-          <Products></Products>
+          <Products
+            :products="availableCar"
+          >
+          </Products>
         </section>
         <section class="section__form" style="margin-bottom: 0;">
             <div class="section__form--title">
@@ -260,6 +263,7 @@ export default {
         },
         returnTime: '00:00',
       },
+      availableCar: [],
       comingSoonHeight: null,
       formEntryStart: false,
       scheduleInfo: {
@@ -421,6 +425,16 @@ export default {
 
       await axios.get(`${this.backendDomain}/api/schedule/search`, param).then((response) => {
         console.log(response);
+        let tmpProducts = response.data.data;
+        for (let i in tmpProducts) {
+          tmpProducts[i].main_image = this.backendDomain + tmpProducts[i].images[0];
+          let customfields = JSON.parse(tmpProducts[i].customfields);
+          tmpProducts[i].isSmokingAllowed = customfields.isSmokingAllowed;
+          tmpProducts[i].passenger = customfields.passenger;
+          delete tmpProducts[i].customfields;
+          delete tmpProducts[i].images;
+        }
+        this.availableCar = tmpProducts;
       })
     },
     async submitForm() {

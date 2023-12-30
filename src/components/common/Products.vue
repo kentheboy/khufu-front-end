@@ -76,6 +76,7 @@ export default {
 .products {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     @media screen and (max-width: 390px) {
         flex-direction: column;
     }
@@ -106,7 +107,7 @@ export default {
                 position: absolute;
                 top: 0;
                 left: 1rem;
-                font-size: var(--font-size-base);
+                font-size: 1.4rem;
                 letter-spacing: 0.1em;
                 color: var(--color-black);
             }
@@ -117,7 +118,7 @@ export default {
                 right: 1rem;
                 letter-spacing: 0.15em;
                 display: inline-block;
-                width: 6.3rem;
+                width: 6.6rem;
                 height: 1.1rem;
                 color: var(--color-black);
             }
