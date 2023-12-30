@@ -13,7 +13,7 @@
                 <div class="mode">
                     <div class="at">AT</div>
                 </div>
-                <img class="no-smoking" alt="" src="/images/mask-group@2x.png" />
+                <img class="no-smoking" alt="" src="/images/icons/smoking_unallowed.png" />
             </div>
         </div>
         <div class="sub-images">
