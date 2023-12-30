@@ -1,5 +1,8 @@
 <template>
-    <div class="products">
+    <div
+        class="products"
+        v-if="products"
+    >
         <div 
             class="product__card"
             v-for="(product, index) in products"
@@ -11,21 +14,20 @@
                 <div class="product__card--description-passenger">乗車定員　{{ product.passenger }}人</div>
                 <hr>
                 <div class="product__card--description-price">¥{{ addCommas(product.price) }}~/24h</div>
-                <div class="product__card--description-select-buttons">
-                    <Button text="会員の方"></Button>
-                    <Button text="はじめての方"></Button>
+                <div class="product__card--description-icons">
+                    <img 
+                        class="product__card--description-icon"
+                        :src="`/images/icons/smoking_${product.isSmokingAllowed ? 'allowed' : 'unallowed'}.png`"
+                        alt="喫煙可（電子タバコのみ）"
+                    >
                 </div>
             </div>
         </div>
     </div>
 </template>
 <script>
-import Button from "/src/components/common/Button";
 export default {
     name: 'Products',
-    components: {
-        Button
-    },
     props: {
         products: {
             type: Array,
@@ -36,12 +38,14 @@ export default {
                         main_image: "/img/main5@3x.fb64a8f0.png",
                         passenger: 7,
                         price: 25000,
+                        isSmokingAllowed: false
                     },
                     {
                         title: "ALPHARD",
                         main_image: "/img/main5@3x.fb64a8f0.png",
                         passenger: 7,
                         price: 25000,
+                        isSmokingAllowed: true
                     }
                 ]
             )
@@ -81,13 +85,17 @@ export default {
         background-color: var(--color-lightblue);
         box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.25);
         width: 18.15rem;
-        height: 23.39rem;
+        height: 22.39rem;
         display: inline-block;
         margin: 1rem 2rem;
 
         img {
             width: 18.15rem;
             height: 14.06rem;
+            &.product__card--description-icon {
+                width: 1rem;
+                height: auto;
+            }
         }
 
         &--description {
@@ -146,6 +154,12 @@ export default {
                     box-shadow: 0.9974358678px 1.9948717356px 1.99px rgba(0, 0, 0, 0.25);
                     cursor: pointer;
                 }
+            }
+
+            &-icons {
+                position: absolute;
+                top: 4.8rem;
+                right: 1rem;
             }
         }
     }
