@@ -121,6 +121,11 @@
             class="reservation-form"
             :modal="true"
           >
+            <div class="reservation-form__statuses">
+              <div :class="`reservation-form__status ${reservationFormStatus==='entry'?'active':''}`">入力</div>
+              <div :class="`reservation-form__status ${reservationFormStatus==='confirm'?'active':''}`">確認</div>
+              <div :class="`reservation-form__status ${reservationFormStatus==='done'?'active':''}`">完了</div>
+            </div>
             <section class="section__form" style="margin-bottom: 0;">
                 <div class="section__form--title">
                   <h1>YOUR INFORMATION</h1>
@@ -238,7 +243,7 @@ export default {
     Information,
     Footer,
     Button,
-    Dialog
+    Dialog,
   },
   props: {
     msg: {
@@ -277,6 +282,7 @@ export default {
       availableCar: [],
       comingSoonHeight: null,
       formEntryStart: false,
+      reservationFormStatus: null,
       scheduleInfo: {
         reservationCarId: null,
         start_at: null,
@@ -467,9 +473,10 @@ export default {
         // this.getProducts();
       })
     },
-    opneReservationForm(event) {
+    opneReservationForm(carId) {
       this.openReservationForm = true;
-      console.log(event);
+      this.scheduleInfo.reservationCarId = carId;
+      this.reservationFormStatus = "entry";
     }
   }
 }
@@ -668,6 +675,26 @@ section {
 .reservation-form {
   section {
     margin: 0rem 2.4rem 
+  }
+
+  &__statuses {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 1.6rem;
+  }
+
+  &__status {
+    width: 8rem;
+    text-align: center;
+    font-size: 1.1rem;
+    color: gray;
+    height: 4rem;
+    padding: 1rem;
+    &.active {
+      font-weight: bold;
+      color: #428eb8;
+      border-bottom: 1px solid;
+    }
   }
 }
 .datetimepicker {
