@@ -460,8 +460,8 @@ export default {
           let customfields = JSON.parse(tmpProducts[i].customfields);
           tmpProducts[i].isSmokingAllowed = customfields.isSmokingAllowed;
           tmpProducts[i].passenger = customfields.passenger;
+          tmpProducts[i].images = tmpProducts[i].images.map(imagePath => this.backendDomain + imagePath);
           delete tmpProducts[i].customfields;
-          delete tmpProducts[i].images;
         }
         this.availableCar = tmpProducts;
       })
@@ -495,8 +495,9 @@ export default {
       this.reservationFormStatus = "entry";
     },
     confirmForm() {
+      let selectedCarInfo = this.availableCar.find(car => car.id === this.scheduleInfo.reservationCarId)
       this.confirmationInfo = {
-        title: this.availableCar.find(car => car.id === this.scheduleInfo.reservationCarId).title,
+        title: selectedCarInfo.title,
         start_at: this.scheduleInfo.start_at.replace(/-/g, '/'),
         end_at: this.scheduleInfo.end_at.replace(/-/g, '/'),
         totalFee: this.scheduleInfo.totalFee,
@@ -507,6 +508,12 @@ export default {
         dob: this.scheduleInfo.dob.value,
         airportPickup: this.scheduleInfo.airportPickup.value,
         airportDropoff: this.scheduleInfo.airportDropoff.value,
+        carInfos: {
+          main_image: selectedCarInfo.main_image,
+          images: selectedCarInfo.images,
+          maxmumPassenger: selectedCarInfo.passenger,
+          isSmokingAllowed: selectedCarInfo.isSmokingAllowed
+        }
       };
       this.reservationFormStatus = "confirm";
     },

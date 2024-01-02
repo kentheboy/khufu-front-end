@@ -7,7 +7,9 @@
         <div class="section__information--car-info">
             <h4>■車両情報 <span v-if="isExample">（例）</span></h4>
             <h5>{{ reservationInfo.title }}</h5>
-            <CarInfo></CarInfo>
+            <CarInfo
+                :information="reservationInfo.carInfos"
+            ></CarInfo>
             <div class="info-detail-area">
                 <div class="row-content">
                     <div class="title">■貸出日程</div>
@@ -82,6 +84,17 @@ export default {
                 dob: "",
                 airportPickup: false,
                 airportDropoff: true,
+                carInfos: {
+                    main_image: "/images/car-images/main4.png",
+                    images: [
+                        "/images/car-images/main1.png",
+                        "/images/car-images/main2.png",
+                        "/images/car-images/main3.png",
+                        "/images/car-images/main4.png"
+                    ],
+                    maxmumPassenger: 7,
+                    isSmokingAllowed: false
+                }
             })
         },
         isExample: {
