@@ -107,6 +107,7 @@
             </div>
           </div>
           <Button
+            icon="pi pi-search"
             label="空き状況を検索"
             :disabled="!isReadyToSearch"
             @click="searchAvailability"
@@ -122,6 +123,7 @@
             header=""
             class="reservation-form"
             :modal="true"
+            @after-hide="reservationCancel"
           >
             <div class="reservation-form__statuses">
               <div :class="`reservation-form__status ${reservationFormStatus==='entry'?'active':''}`">入力</div>
@@ -212,13 +214,6 @@
                     ></Input>
                     <span class="error-msg" v-if="!scheduleInfo.airportDropoff.isValid && formEntryStart">※必須</span>
                   </div>
-                  <div class="section__form--submit">
-                    <Button
-                      label="予約確認へ"
-                      :disabled="!isValidScheduleInfo"
-                      @click="confirmForm"
-                    ></Button>
-                  </div>
                 </div>
             </section>
             <Information
@@ -226,6 +221,33 @@
               :isExample=false
               :reservationInfo="confirmationInfo"
             ></Information>
+            <div v-if="reservationFormStatus==='done'">
+              予約が完了しました。<br />
+              ご入力いただいたメールアドレス宛に担当者から確認の連絡を差し上げます。
+              今しばらくお待ちください。
+              （このウィンドウは10秒後に自動で閉じられます。）
+            </div>
+            <div class="reservation-form__button">
+              <Button
+                v-if="reservationFormStatus==='entry'"
+                label="予約確認へ"
+                :disabled="!isValidScheduleInfo"
+                @click="confirmForm"
+              ></Button>
+              <Button
+                v-if="reservationFormStatus==='confirm'"
+                label="内容を修正する"
+                severity="secondary"
+                @click="reservationFormStatus='entry'"
+              ></Button>
+              <Button
+                v-if="reservationFormStatus==='confirm'"
+                icon="pi pi-send"
+                label="予約する"
+                :loading="reservationLoading"
+                @click="submitForm"
+              ></Button>
+            </div>
           </Dialog>
         </section>
       </div>
@@ -328,8 +350,9 @@ export default {
           isValid: true
         },
       },
-      openReservationForm: true,
-      confirmationInfo: null
+      openReservationForm: false,
+      confirmationInfo: null,
+      reservationLoading: false
     }
   },
   async created() {
@@ -467,14 +490,23 @@ export default {
       })
     },
     async submitForm() {
+      this.reservationFormStatus = 'done';
+      this.reservationLoading = true;
+      const customfields = JSON.stringify({
+        'licenseNumber': this.scheduleInfo.licenseNumber.value,
+        'dob': this.scheduleInfo.dob.value,
+        'airportPickup': this.scheduleInfo.airportPickup.value,
+        'airportDropoff': this.scheduleInfo.airportDropoff.value,
+      });
       const data = {
-        'product_id': 1,
-        'name': "テスト　太郎",
-        'email': 'test@gmail.com',
-        'tel': '1234567890',
-        'start_at': '2023-12-27 21:30',
-        'end_at': '2023-12-27 23:30',
-        'total_fee': 20000,
+        'product_id': this.scheduleInfo.reservationCarId,
+        'name': this.scheduleInfo.customerName.value,
+        'email': this.scheduleInfo.customerEmail.value,
+        'tel': this.scheduleInfo.customerPhoneNumber.value,
+        'start_at': this.scheduleInfo.start_at,
+        'end_at': this.scheduleInfo.end_at,
+        'total_fee': this.scheduleInfo.totalFee,
+        'customfields': customfields
       };
 
       await axios.post(`${this.backendDomain}/api/schedule/create`, data).then((response) => {
@@ -498,8 +530,8 @@ export default {
       let selectedCarInfo = this.availableCar.find(car => car.id === this.scheduleInfo.reservationCarId)
       this.confirmationInfo = {
         title: selectedCarInfo.title,
-        start_at: this.scheduleInfo.start_at.replace(/-/g, '/'),
-        end_at: this.scheduleInfo.end_at.replace(/-/g, '/'),
+        start_at: this.scheduleInfo.start_at,
+        end_at: this.scheduleInfo.end_at,
         totalFee: this.scheduleInfo.totalFee,
         customerName: this.scheduleInfo.customerName.value,
         customerEmail: this.scheduleInfo.customerEmail.value,
@@ -523,6 +555,47 @@ export default {
       let timeDiff = Math.abs(date2.getTime() - date1.getTime());
       let diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24)); 
       return diffDays;
+    },
+    reservationCancel() {
+      this.openReservationForm = false;
+      this.resetForm();
+    },
+    resetForm() {
+      this.scheduleInfo = {
+        reservationCarId: null,
+        start_at: null,
+        end_at: null,
+        totalFee: null,
+        customerName: {
+          value: "",
+          isValid: true
+        },
+        customerEmail: {
+          value: "",
+          isValid: true
+        },
+        customerPhoneNumber: {
+          value: "",
+          isValid: true
+        },
+        licenseNumber: {
+          value: "",
+          isValid: true
+        },
+        dob: {
+          value: "",
+          isValid: true
+        },
+        airportPickup: {
+          value: false,
+          isValid: true
+        },
+        airportDropoff: {
+          value: false,
+          isValid: true
+        },
+      };
+      this.confirmationInfo = null;
     }
   }
 }
@@ -741,6 +814,11 @@ section {
       color: #428eb8;
       border-bottom: 1px solid;
     }
+  }
+
+  &__button {
+    text-align: center;
+    display: flex
   }
 }
 .datetimepicker {

@@ -14,7 +14,7 @@
                 <div class="row-content">
                     <div class="title">■貸出日程</div>
                     <div class="detail">
-                        <p>{{ reservationInfo.start_at }} ~ {{ reservationInfo.end_at }}</p>
+                        <p>{{ reservationInfo.start_at.replace(/-/g, '/') }} ~ {{ reservationInfo.end_at.replace(/-/g, '/') }}</p>
                     </div>
                 </div>
                 <div class="row-content">
@@ -44,6 +44,8 @@
                         <dl>
                             <dt>お名前</dt>
                             <dd>{{ reservationInfo.customerName }}　様</dd>
+                            <dt>生年月日</dt>
+                            <dd>{{ reservationInfo.dob.replace(/-/g, '/') }}</dd>
                             <dt>メールアドレス</dt>
                             <dd>{{ reservationInfo.customerEmail }}</dd>
                             <dt>電話番号</dt>
@@ -81,7 +83,7 @@ export default {
                 customerEmail: "example@class.okinawa",
                 customerPhoneNumber: "080-0000-0000",
                 licenseNumber: "1234567890",
-                dob: "",
+                dob: "2023/1/1",
                 airportPickup: false,
                 airportDropoff: true,
                 carInfos: {
