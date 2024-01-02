@@ -63,7 +63,9 @@
           </div>
         </div>
       </section>
-      <Information></Information>
+      <Information
+        :isExample=true
+      ></Information>
       <div>
         <section class="section__form">
           <div class="section__form--title">
@@ -126,7 +128,11 @@
               <div :class="`reservation-form__status ${reservationFormStatus==='confirm'?'active':''}`">確認</div>
               <div :class="`reservation-form__status ${reservationFormStatus==='done'?'active':''}`">完了</div>
             </div>
-            <section class="section__form" style="margin-bottom: 0;">
+            <section
+              class="section__form"
+              style="margin-bottom: 0;"
+              v-if="reservationFormStatus==='entry'"
+            >
                 <div class="section__form--title">
                   <h1>YOUR INFORMATION</h1>
                   <h3>お客様情報入力</h3>
@@ -208,13 +214,18 @@
                   </div>
                   <div class="section__form--submit">
                     <Button
-                      label="予約確認"
+                      label="予約確認へ"
                       :disabled="!isValidScheduleInfo"
-                      @click="submitForm"
+                      @click="confirmForm"
                     ></Button>
                   </div>
                 </div>
             </section>
+            <Information
+              v-if="reservationFormStatus==='confirm'"
+              :isExample=false
+              :reservationInfo="confirmationInfo"
+            ></Information>
           </Dialog>
         </section>
       </div>
@@ -317,7 +328,8 @@ export default {
           isValid: true
         },
       },
-      openReservationForm: true
+      openReservationForm: true,
+      confirmationInfo: null
     }
   },
   async created() {
@@ -474,9 +486,36 @@ export default {
       })
     },
     opneReservationForm(carId) {
+      let retalSpan = this.dateDifference(this.search.departDate.value, this.search.returnDate.value);
       this.openReservationForm = true;
       this.scheduleInfo.reservationCarId = carId;
+      this.scheduleInfo.start_at = `${this.search.departDate.value} ${this.search.departTime}`;
+      this.scheduleInfo.end_at = `${this.search.returnDate.value} ${this.search.returnTime}`;
+      this.scheduleInfo.totalFee =  retalSpan * this.availableCar.find(car => car.id === this.scheduleInfo.reservationCarId).price
       this.reservationFormStatus = "entry";
+    },
+    confirmForm() {
+      this.confirmationInfo = {
+        title: this.availableCar.find(car => car.id === this.scheduleInfo.reservationCarId).title,
+        start_at: this.scheduleInfo.start_at.replace(/-/g, '/'),
+        end_at: this.scheduleInfo.end_at.replace(/-/g, '/'),
+        totalFee: this.scheduleInfo.totalFee,
+        customerName: this.scheduleInfo.customerName.value,
+        customerEmail: this.scheduleInfo.customerEmail.value,
+        customerPhoneNumber: this.scheduleInfo.customerPhoneNumber.value,
+        licenseNumber: this.scheduleInfo.licenseNumber.value,
+        dob: this.scheduleInfo.dob.value,
+        airportPickup: this.scheduleInfo.airportPickup.value,
+        airportDropoff: this.scheduleInfo.airportDropoff.value,
+      };
+      this.reservationFormStatus = "confirm";
+    },
+    dateDifference(startDate, endDate) {
+      let date1 = new Date(startDate);
+      let date2 = new Date(endDate);
+      let timeDiff = Math.abs(date2.getTime() - date1.getTime());
+      let diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24)); 
+      return diffDays;
     }
   }
 }
