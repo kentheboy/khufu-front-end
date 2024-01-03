@@ -140,8 +140,8 @@ export default {
                     left: 3.25rem;
                     border-radius: 2.49px;
                     background-color: var(--color-steelblue);
-                    width: 1.46rem;
-                    height: 0.89rem;
+                    width: 1.5rem;
+                    height: 1rem;
 
                     .at,
                     .mn {
@@ -160,7 +160,7 @@ export default {
 
                 .no-smoking {
                     position: absolute;
-                    top: 0.7rem;
+                    top: 0.5rem;
                     left: 5.63rem;
                     width: 1.07rem;
                     height: 1.07rem;

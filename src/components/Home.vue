@@ -123,7 +123,7 @@
             header=""
             class="reservation-form"
             :modal="true"
-            @after-hide="reservationCancel"
+            @after-hide="closeReservationForm"
           >
             <div class="reservation-form__statuses">
               <div :class="`reservation-form__status ${reservationFormStatus==='entry'?'active':''}`">入力</div>
@@ -221,11 +221,17 @@
               :isExample=false
               :reservationInfo="confirmationInfo"
             ></Information>
-            <div v-if="reservationFormStatus==='done'">
-              予約が完了しました。<br />
-              ご入力いただいたメールアドレス宛に担当者から確認の連絡を差し上げます。
-              今しばらくお待ちください。
-              （このウィンドウは10秒後に自動で閉じられます。）
+            <div 
+              v-if="reservationFormStatus==='done'"
+              class="reservation-form__completed"
+            >
+              <img class="reservation-form__completed-img" src="/images/icons/mail.png">
+              <p>
+                予約が完了しました。<br />
+                ご入力いただいたメールアドレス宛に担当者から確認の連絡を差し上げます。
+                今しばらくお待ちください。
+                （このウィンドウは10秒後に自動で閉じられます。）
+              </p>
             </div>
             <div class="reservation-form__button">
               <Button
@@ -490,8 +496,11 @@ export default {
       })
     },
     async submitForm() {
-      this.reservationFormStatus = 'done';
       this.reservationLoading = true;
+      await setTimeout(() => {
+      // this timeOut add loading effect for minimum 3 sec
+      }, 3000)
+  
       const customfields = JSON.stringify({
         'licenseNumber': this.scheduleInfo.licenseNumber.value,
         'dob': this.scheduleInfo.dob.value,
@@ -508,14 +517,15 @@ export default {
         'total_fee': this.scheduleInfo.totalFee,
         'customfields': customfields
       };
-
       await axios.post(`${this.backendDomain}/api/schedule/create`, data).then((response) => {
+        this.reservationFormStatus = 'done';
         console.log(response);
-        // this.productDialog = false;
-        // this.resetSubmitData()
-        // this.showToastMeassage('success', '車両情報追加成功', '車両情報が追加されました。');
-        // this.getProducts();
+        setTimeout(() => {
+          this.reservationLoading = false;
+          this.closeReservationForm();
+        }, 10000)
       })
+      
     },
     opneReservationForm(carId) {
       let retalSpan = this.dateDifference(this.search.departDate.value, this.search.returnDate.value);
@@ -556,7 +566,7 @@ export default {
       let diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24)); 
       return diffDays;
     },
-    reservationCancel() {
+    closeReservationForm() {
       this.openReservationForm = false;
       this.resetForm();
     },
@@ -813,6 +823,17 @@ section {
       font-weight: bold;
       color: #428eb8;
       border-bottom: 1px solid;
+    }
+  }
+
+  &__completed {
+    margin: 3rem auto 0;
+    max-width: 31rem;
+    min-height: 30rem;
+    padding: inherit;
+    text-align: center;
+    &-img {
+      width: 5rem;
     }
   }
 
