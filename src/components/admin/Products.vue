@@ -343,7 +343,7 @@ export default {
             this.submitData = {};
             this.submitData = {
                 id: null,
-                name: "test",
+                name: "",
                 price: 0,
                 passenger: 7,
                 images: [],
