@@ -12,12 +12,16 @@
     &-danger {
         background-color: #D32F2F;
     }
+    &-secondary {
+        background: #607D8B;
+    }
 
     &.icon_only {
         color: #418EB8;
         background: unset;
         width: auto;
     }
+
 }
 
 // Dialog
