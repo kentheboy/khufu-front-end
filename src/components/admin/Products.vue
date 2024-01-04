@@ -58,6 +58,12 @@
                     placeholder="20000"
                     v-model="submitData.price"
                 ></Input>
+                <Input
+                    type="number"
+                    label="乗車定員"
+                    name="passenger"
+                    v-model="submitData.passenger"
+                ></Input>
                 <Input 
                     type="text"
                     label="車両情報"
@@ -165,8 +171,9 @@ export default {
             submitMode: null,
             submitData: {
                 id: null,
-                name: "test",
+                name: "",
                 price: 0,
+                passenger: 7,
                 images: [],
                 description: "",
                 licenseNumber: "",
@@ -229,6 +236,7 @@ export default {
                 const images = JSON.parse(productData.images);
                 this.submitData.name = productData.name;
                 this.submitData.price = productData.price;
+                this.submitData.passenger = customfields.passenger;
                 this.submitData.description = productData.description;
                 this.submitData.licenseNumber = customfields.licenseNumber;
                 this.submitData.syakenDate = customfields.syakenDate;
@@ -252,7 +260,6 @@ export default {
         },
         updateImage(event, index){
             this.submitData.images[index] = event;
-            console.log(event);
             if(this.submitMode === "update" && !this.submitData.updatedImages.includes(index)) {
                 this.submitData.updatedImages.push(index);
             }
@@ -270,6 +277,7 @@ export default {
         },
         async sendNewProduct() {
             let customfields = {
+                "passenger": this.submitData.passenger,
                 "licenseNumber": this.submitData.licenseNumber,
                 "syakenDate": this.submitData.syakenDate,
                 "tenkenDate": this.submitData.tenkenDate,
@@ -298,6 +306,7 @@ export default {
         },
         async sendEditedProduct(){
             let customfields = {
+                "passenger": this.submitData.passenger,
                 "licenseNumber": this.submitData.licenseNumber,
                 "syakenDate": this.submitData.syakenDate,
                 "tenkenDate": this.submitData.tenkenDate,
@@ -336,6 +345,7 @@ export default {
                 id: null,
                 name: "test",
                 price: 0,
+                passenger: 7,
                 images: [],
                 description: "",
                 licenseNumber: "",

@@ -1,32 +1,63 @@
 <template>
     <div class="section__information--car-images">
         <div class="main-image">
-            <img src="/images/car-images/main4.png" alt="">
+            <img :src="information.main_image" alt="">
             <div class="info-logos">
                 <div class="div29 passenger-info">
                     <img class="vectorIcon1" alt="" src="/images/vector.svg" />
                     <img class="vectorIcon2" alt="" src="/images/vector1.svg" />
                     <img class="vectorIcon3" alt="" src="/images/vector2.svg" />
                     <img class="vectorIcon4" alt="" src="/images/vector3.svg" />
-                    <div class="passenger-number">7人</div>
+                    <div class="passenger-number">{{ information.maxmumPassenger }}人</div>
                 </div>
                 <div class="mode">
                     <div class="at">AT</div>
                 </div>
-                <img class="no-smoking" alt="" src="/images/mask-group@2x.png" />
+                <img
+                    class="no-smoking"
+                    alt=""
+                    :src="`/images/icons/smoking_${information.isSmokingAllowed ? 'allowed' : 'unallowed'}.png`" 
+                />
             </div>
         </div>
         <div class="sub-images">
-            <img src="/images/car-images/main1.png" alt="404">
-            <img src="/images/car-images/main2.png" alt="404">
-            <img src="/images/car-images/main3.png" alt="404">
-            <img src="/images/car-images/main3.png" alt="404">
+            <img :src="information.images[0]" alt="">
+            <img
+                v-if="information.images[1]"
+                :src="information.images[1]"
+            >
+            <img
+                v-if="information.images[2]"
+                :src="information.images[2]"
+            >
+            <img
+                v-if="information.images[3]"
+                :src="information.images[3]"
+            >
         </div>
     </div>
 </template>
 <script>
 export default {
-    name: 'CarInfo'
+    name: 'CarInfo',
+    props: {
+        information: {
+            type: Object,
+            default: () => {
+                return {
+                    main_image: "/images/car-images/main4.png",
+                    images: [
+                        "/images/car-images/main1.png",
+                        "/images/car-images/main2.png",
+                        "/images/car-images/main3.png",
+                        "/images/car-images/main4.png"
+                    ],
+                    maxmumPassenger: 7,
+                    isSmokingAllowed: false
+                }
+            }
+        }
+    }
 }
 </script>
 <style lang="scss">
@@ -92,6 +123,7 @@ export default {
                     }
 
                     .passenger-number {
+                        font-size: smaller;
                         position: absolute;
                         top: 0rem;
                         left: 1.36rem;
@@ -108,13 +140,14 @@ export default {
                     left: 3.25rem;
                     border-radius: 2.49px;
                     background-color: var(--color-steelblue);
-                    width: 1.46rem;
-                    height: 0.89rem;
+                    width: 1.5rem;
+                    height: 1rem;
 
                     .at,
                     .mn {
                         position: absolute;
-                        top: -0.1rem;
+                        font-size: smaller;
+                        top: 0rem;
                         left: 0.21rem;
                         letter-spacing: 0.15em;
                         display: inline-block;
@@ -127,7 +160,7 @@ export default {
 
                 .no-smoking {
                     position: absolute;
-                    top: 0.7rem;
+                    top: 0.5rem;
                     left: 5.63rem;
                     width: 1.07rem;
                     height: 1.07rem;
