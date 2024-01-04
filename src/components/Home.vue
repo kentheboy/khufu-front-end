@@ -485,11 +485,10 @@ export default {
       await axios.get(`${this.backendDomain}/api/schedule/search`, param).then((response) => {
         let tmpProducts = response.data.data;
         for (let i in tmpProducts) {
-          tmpProducts[i].main_image = this.backendDomain + tmpProducts[i].images[0];
+          tmpProducts[i].main_image = tmpProducts[i].images[0];
           let customfields = JSON.parse(tmpProducts[i].customfields);
           tmpProducts[i].isSmokingAllowed = customfields.isSmokingAllowed;
           tmpProducts[i].passenger = customfields.passenger;
-          tmpProducts[i].images = tmpProducts[i].images.map(imagePath => this.backendDomain + imagePath);
           delete tmpProducts[i].customfields;
         }
         this.availableCar = tmpProducts;
