@@ -147,6 +147,7 @@ export default {
         h3 {
             color: var(--color-steelblue);
             letter-spacing: 0.15em;
+            font-size: 1rem;
             font-family: var(--font-istok-web);
             font-weight: normal;
             margin: unset;
