@@ -11,7 +11,7 @@
             <Button icon="pi pi-align-justify" @click="openSideNav = true" />
           </div>
           <Sidebar v-model:visible="openSideNav" header="Right Sidebar" position="right">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <Menu :model="items" />
           </Sidebar>
         </div>
       </header>
@@ -19,15 +19,24 @@
 <script>
 import Button from "primevue/button";
 import Sidebar from 'primevue/sidebar';
+import Menu from 'primevue/menu';
 export default {
   name: 'Header',
   components: {
     Button,
-    Sidebar
+    Sidebar,
+    Menu
   },
   data() {
     return {
-      openSideNav: false
+      openSideNav: false,
+      items: [
+        { label: 'Top', icon: 'pi pi-home' },
+        { label: 'ご予約', icon: 'pi pi-pencil' },
+        { label: '会社概要', icon: 'pi pi-folder-open' },
+        { label: 'ガイド', icon: 'pi pi-car' },
+        { label: 'プライバシーポリシー', icon: 'pi pi-link' }
+      ]
     }
   },
 }
