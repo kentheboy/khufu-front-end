@@ -14,7 +14,7 @@
             <Menu :model="items">
               <template #item="{ item, props }">
                 <router-link v-if="item.route" v-slot="{ href, navigate }" :to="item.route" custom>
-                  <a :href="href" v-bind="props.action" @click="navigate">
+                  <a :href="href" v-bind="props.action" @click="navigate" :class="href === $router.currentRoute.value.path ? 'active' : ''">
                     <span :class="item.icon" />
                     <span class="label">{{ item.label }}</span>
                   </a>
@@ -58,7 +58,7 @@ export default {
           icon: 'pi pi-pencil',
           command: () => {
             if(this.$router.currentRoute.value.path !== "/") {
-              this.$router.push("/")
+              this.$router.push({name: "Home"})
               setTimeout(() => {
                 this.openSideNav = false;
                 window.scrollTo({
@@ -81,9 +81,9 @@ export default {
           route: '/company'
         },
         { 
-          label: 'ガイド',
+          label: 'ご利用ガイド',
           icon: 'pi pi-car',
-          route: '/guid'
+          route: '/guide'
         },
         { 
           label: '貸渡約款',
