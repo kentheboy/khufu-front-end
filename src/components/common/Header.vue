@@ -8,17 +8,28 @@
             :onClick="onCLASSLogo311Click"
           />
           <div class="hamburgerMenu">
-            <a href="#">menu 1</a>
-            <a href="#">menu 2</a>
-            <a href="#">menu 3</a>
+            <Button icon="pi pi-align-justify" @click="openSideNav = true" />
           </div>
-          <!-- <button class="button">予約する</button> -->
+          <Sidebar v-model:visible="openSideNav" header="Right Sidebar" position="right">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          </Sidebar>
         </div>
       </header>
 </template>
 <script>
+import Button from "primevue/button";
+import Sidebar from 'primevue/sidebar';
 export default {
-    name: 'Header',
+  name: 'Header',
+  components: {
+    Button,
+    Sidebar
+  },
+  data() {
+    return {
+      openSideNav: false
+    }
+  },
 }
 </script>
 <style lang="scss" scoped>
@@ -28,19 +39,24 @@ export default {
     overflow: hidden;
     
     .hamburgerMenu {
-        content: "";
-        position: absolute;
-        right: 3.9rem;
-        display: block;
-        width: 1.5rem;
-        top: 2rem;
-        height: 0;
-        box-shadow: 0 14.5px 0 0.1rem #fff, 0 24.5px 0 0.1rem #fff, 0 34.9px 0 0.1rem #fff;
-        
-        a {
-          display: none;
+      content: "";
+      position: absolute;
+      right: 3.9rem;
+      display: block;
+      width: 1.5rem;
+      top: 2rem;
+      height: 0;
+      button.p-button {
+        margin: inherit;
+        background-color: inherit;
+        padding: initial;
+        width: initial;
+        border-radius: 0.1rem;
+        &::v-deep span.p-button-icon.pi {
+          font-size: 2rem;
+          line-height: 3.5rem;
         }
-    
+      }
     }
     .logo{
       position: absolute;
