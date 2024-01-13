@@ -38,7 +38,6 @@ export default {
             margin-bottom: 1.8rem;
         }
         &--contact {
-            display: flex;
             margin-bottom: 1.8rem;
             @media screen and (max-width: 390px) {
                 flex-direction: column;
