@@ -196,6 +196,8 @@ section {
 
         .steps__descriptions {
             margin: 3rem auto 0;
+            display: flex;
+            flex-direction: column;
             .step__description {
                 display: flex;
                 margin-top: 3rem;
@@ -219,12 +221,30 @@ section {
             }
         }
 
-        @media screen and (max-width: 390px) {
+        
+    }
+}
+@media screen and (max-width: 390px) {
+    .section {
+        &__guide {
+
+            &--content {
+                margin: initial;
+                width: initial;
+            }
             .steps__diagram {
                 display: none;
             }
+            .steps__descriptions {
+                .step__description {
+                    &--number {
+                        margin-right: 1rem;
+                    }
+                }
+            }
         }
-
     }
+
+
 }
 </style>
