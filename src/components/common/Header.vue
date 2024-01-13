@@ -57,11 +57,22 @@ export default {
           label: 'ご予約',
           icon: 'pi pi-pencil',
           command: () => {
-            this.openSideNav = false;
-            window.scrollTo({
-              top: document.getElementById('searchAndReservation').offsetTop,
-              behavior: 'smooth'
-            });
+            if(this.$router.currentRoute.value.path !== "/") {
+              this.$router.push("/")
+              setTimeout(() => {
+                this.openSideNav = false;
+                window.scrollTo({
+                  top: document.getElementById('searchAndReservation').offsetTop,
+                  behavior: 'smooth'
+                });
+              }, 100);
+            } else {
+              this.openSideNav = false;
+              window.scrollTo({
+                top: document.getElementById('searchAndReservation').offsetTop,
+                behavior: 'smooth'
+              });
+            }
           }
         },
         { 
