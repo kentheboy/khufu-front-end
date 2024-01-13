@@ -67,7 +67,7 @@
         :isExample=true
       ></Information>
       <div>
-        <section class="section__form">
+        <section class="section__form" id="searchAndReservation">
           <div class="section__form--title">
             <h1>SCHEDULE</h1>
             <h3>旅行日程で探す</h3>
