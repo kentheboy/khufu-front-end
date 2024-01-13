@@ -11,7 +11,20 @@
             <Button icon="pi pi-align-justify" @click="openSideNav = true" />
           </div>
           <Sidebar v-model:visible="openSideNav" header="Right Sidebar" position="right">
-            <Menu :model="items" />
+            <Menu :model="items">
+              <template #item="{ item, props }">
+                <router-link v-if="item.route" v-slot="{ href, navigate }" :to="item.route" custom>
+                  <a :href="href" v-bind="props.action" @click="navigate">
+                    <span :class="item.icon" />
+                    <span class="label">{{ item.label }}</span>
+                  </a>
+                </router-link>
+                <a v-else :href="item.url" :target="item.target" v-bind="props.action">
+                  <span :class="item.icon" />
+                  <span class="label">{{ item.label }}</span>
+                </a>
+              </template>
+            </Menu>
           </Sidebar>
         </div>
       </header>
@@ -20,6 +33,7 @@
 import Button from "primevue/button";
 import Sidebar from 'primevue/sidebar';
 import Menu from 'primevue/menu';
+import Ripple from "primevue/ripple";
 export default {
   name: 'Header',
   components: {
@@ -27,15 +41,50 @@ export default {
     Sidebar,
     Menu
   },
+  directives: {
+    Ripple
+  },
   data() {
     return {
       openSideNav: false,
       items: [
-        { label: 'Top', icon: 'pi pi-home' },
-        { label: 'ご予約', icon: 'pi pi-pencil' },
-        { label: '会社概要', icon: 'pi pi-folder-open' },
-        { label: 'ガイド', icon: 'pi pi-car' },
-        { label: 'プライバシーポリシー', icon: 'pi pi-link' }
+        { 
+          label: 'Top', 
+          icon: 'pi pi-home',
+          route: '/'
+        },
+        { 
+          label: 'ご予約',
+          icon: 'pi pi-pencil',
+          command: () => {
+            this.openSideNav = false;
+            window.scrollTo({
+              top: document.getElementById('searchAndReservation').offsetTop,
+              behavior: 'smooth'
+            });
+          }
+        },
+        { 
+          label: '会社概要',
+          icon: 'pi pi-folder-open',
+          route: '/company'
+        },
+        { 
+          label: 'ガイド',
+          icon: 'pi pi-car',
+          route: '/guid'
+        },
+        { 
+          label: '貸渡約款',
+          icon: 'pi pi-book',
+          route: '/terms'
+        },
+        { 
+          label: 'プライバシーポリシー',
+          icon: 'pi pi-link',
+          url: "./files/privacy_policy.pdf",
+          target: "_blank"
+        }
       ]
     }
   },
