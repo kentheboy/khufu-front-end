@@ -67,7 +67,7 @@
         :isExample=true
       ></Information>
       <div>
-        <section class="section__form">
+        <section class="section__form" id="searchAndReservation">
           <div class="section__form--title">
             <h1>SCHEDULE</h1>
             <h3>旅行日程で探す</h3>
@@ -257,6 +257,7 @@
           </Dialog>
         </section>
       </div>
+      <ScrollTop />
     </main>
     <Footer></Footer>
   </div>
@@ -271,6 +272,7 @@ import Information from "/src/components/common/Information";
 import Footer from "/src/components/common/Footer";
 import Button from "primevue/button";
 import Dialog from 'primevue/dialog';
+import ScrollTop from 'primevue/scrolltop';
 import axios from "axios";
 export default {
   name: 'Home',
@@ -283,6 +285,7 @@ export default {
     Footer,
     Button,
     Dialog,
+    ScrollTop
   },
   props: {
     msg: {

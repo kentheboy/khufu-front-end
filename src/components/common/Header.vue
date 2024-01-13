@@ -8,17 +8,97 @@
             :onClick="onCLASSLogo311Click"
           />
           <div class="hamburgerMenu">
-            <a href="#">menu 1</a>
-            <a href="#">menu 2</a>
-            <a href="#">menu 3</a>
+            <Button icon="pi pi-align-justify" @click="openSideNav = true" />
           </div>
-          <!-- <button class="button">予約する</button> -->
+          <Sidebar v-model:visible="openSideNav" header="Right Sidebar" position="right">
+            <Menu :model="items">
+              <template #item="{ item, props }">
+                <router-link v-if="item.route" v-slot="{ href, navigate }" :to="item.route" custom>
+                  <a :href="href" v-bind="props.action" @click="navigate">
+                    <span :class="item.icon" />
+                    <span class="label">{{ item.label }}</span>
+                  </a>
+                </router-link>
+                <a v-else :href="item.url" :target="item.target" v-bind="props.action">
+                  <span :class="item.icon" />
+                  <span class="label">{{ item.label }}</span>
+                </a>
+              </template>
+            </Menu>
+          </Sidebar>
         </div>
       </header>
 </template>
 <script>
+import Button from "primevue/button";
+import Sidebar from 'primevue/sidebar';
+import Menu from 'primevue/menu';
+import Ripple from "primevue/ripple";
 export default {
-    name: 'Header',
+  name: 'Header',
+  components: {
+    Button,
+    Sidebar,
+    Menu
+  },
+  directives: {
+    Ripple
+  },
+  data() {
+    return {
+      openSideNav: false,
+      items: [
+        { 
+          label: 'Top', 
+          icon: 'pi pi-home',
+          route: '/'
+        },
+        { 
+          label: 'ご予約',
+          icon: 'pi pi-pencil',
+          command: () => {
+            if(this.$router.currentRoute.value.path !== "/") {
+              this.$router.push("/")
+              setTimeout(() => {
+                this.openSideNav = false;
+                window.scrollTo({
+                  top: document.getElementById('searchAndReservation').offsetTop,
+                  behavior: 'smooth'
+                });
+              }, 100);
+            } else {
+              this.openSideNav = false;
+              window.scrollTo({
+                top: document.getElementById('searchAndReservation').offsetTop,
+                behavior: 'smooth'
+              });
+            }
+          }
+        },
+        { 
+          label: '会社概要',
+          icon: 'pi pi-folder-open',
+          route: '/company'
+        },
+        { 
+          label: 'ガイド',
+          icon: 'pi pi-car',
+          route: '/guid'
+        },
+        { 
+          label: '貸渡約款',
+          icon: 'pi pi-book',
+          route: '/terms'
+        },
+        { 
+          label: 'プライバシーポリシー',
+          icon: 'pi pi-link',
+          url: "./files/privacy_policy.pdf",
+          target: "_blank"
+        }
+      ]
+    }
+  },
 }
 </script>
 <style lang="scss" scoped>
@@ -28,19 +108,24 @@ export default {
     overflow: hidden;
     
     .hamburgerMenu {
-        content: "";
-        position: absolute;
-        right: 3.9rem;
-        display: block;
-        width: 1.5rem;
-        top: 2rem;
-        height: 0;
-        box-shadow: 0 14.5px 0 0.1rem #fff, 0 24.5px 0 0.1rem #fff, 0 34.9px 0 0.1rem #fff;
-        
-        a {
-          display: none;
+      content: "";
+      position: absolute;
+      right: 3.9rem;
+      display: block;
+      width: 1.5rem;
+      top: 2rem;
+      height: 0;
+      button.p-button {
+        margin: inherit;
+        background-color: inherit;
+        padding: initial;
+        width: initial;
+        border-radius: 0.1rem;
+        &::v-deep span.p-button-icon.pi {
+          font-size: 2rem;
+          line-height: 3.5rem;
         }
-    
+      }
     }
     .logo{
       position: absolute;
