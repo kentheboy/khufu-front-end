@@ -8,25 +8,94 @@
                   <h3>ご利用ガイド</h3>
                 </div>
                 <div class="section__guide--content">
-                    <dl>
-                        <dt>会社名</dt>
-                        <dd>株式会社ACCELE SPEED</dd>
-
-                        <dt>住所</dt>
-                        <dd>埼玉県川口市青木2-6-43</dd>
-
-                        <dt>電話番号</dt>
-                        <dd>048-240-3840</dd>
-
-                        <dt>代表者名</dt>
-                        <dd>松橋望</dd>
-
-                        <dt>主な事業内容</dt>
-                        <dd>中古車販売、レンタカー</dd>
-
-                        <dt>設立年月日</dt>
-                        <dd>2017/10/25</dd>
-                    </dl>
+                    <div class="steps__diagram">
+                        <div class="steps__diagram--card">
+                            <div class="step-number">01</div>
+                            <hr>
+                            <p class="step-title">ご予約</p>
+                        </div>
+                        <div class="steps__diagram--arrow">
+                            <i class="pi pi-angle-right"></i>
+                        </div>
+                        <div class="steps__diagram--card">
+                            <div class="step-number">02</div>
+                            <hr>
+                            <p class="step-title">ご来店</p>
+                        </div>
+                        <div class="steps__diagram--arrow">
+                            <i class="pi pi-angle-right"></i>
+                        </div>
+                        <div class="steps__diagram--card">
+                            <div class="step-number">03</div>
+                            <hr>
+                            <p class="step-title">ご出発</p>
+                        </div>
+                        <div class="steps__diagram--arrow">
+                            <i class="pi pi-angle-right"></i>
+                        </div>
+                        <div class="steps__diagram--card">
+                            <div class="step-number">04</div>
+                            <hr>
+                            <p class="step-title">ご返却</p>
+                        </div>
+                    </div>
+                    <div class="steps__descriptions">
+                        <div class="step__description">
+                            <div class="step__description--number">
+                                01
+                            </div>
+                            <div class="step__description--text">
+                                <h3 class="step-title">ご予約</h3>
+                                <p class="step-description">
+                                    予約後に、予約完了通知メールとご案内<br>
+                                    （LINE公式アカウントまたはカカオトークのQRコード）を送付いたしますので、<br>
+                                    空港送迎時間やホテル送迎時間等を<br>
+                                    LINE公式アカウントまたはカカオトークにてお知らせくださいませ。<br>
+                                    ※メールでのお問い合わせは行なっておりません。
+                                </p>
+                            </div>
+                        </div>
+                        <div class="step__description">
+                            <div class="step__description--number">
+                                02
+                            </div>
+                            <div class="step__description--text">
+                                <h3 class="step-title">ご来店</h3>
+                                <p class="step-description">
+                                    ご予約いただいた店舗にご来店いただき、<br>
+                                    下記必要なものをご掲示頂いた後、『貸渡契約書』にサイン頂きます。<br>
+                                    <br>
+                                    必要なもの<br>
+                                    ・運転免許証<br>
+                                    ・免許証以外の現住所が確認できるもの（クレジットカード決済の場合は不要）<br>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="step__description">
+                            <div class="step__description--number">
+                                03
+                            </div>
+                            <div class="step__description--text">
+                                <h3 class="step-title">ご出発</h3>
+                                <p class="step-description">
+                                    ご出発前に、店舗スタッフからの『注意事項、事故補償説明』をお受けください。<br>
+                                    車両操作の説明並びに車体チェック終了後、ご出発いただきます。
+                                </p>
+                            </div>
+                        </div>
+                        <div class="step__description">
+                            <div class="step__description--number">
+                                04
+                            </div>
+                            <div class="step__description--text">
+                                <h3 class="step-title">ご返却</h3>
+                                <p class="step-description">
+                                    ご契約の時間までにご返却ください。<br>
+                                    ご返却店舗付近のガソリンスタンドで燃料を満タンにした上、ご返却ください。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
         </main>
@@ -84,24 +153,78 @@ section {
               margin: unset;
             }
         }
+        &--content {
+            margin: 3rem auto 0;
+            width: 75%;
+        }
 
-        dl {
-            width: 50rem;
-            margin: auto;
-            @media screen and (max-width: 390px) {
-                width: inherit;
+        .steps__diagram {
+            display: flex;
+            justify-content: space-between;
+            margin: 7rem auto;
+            &--card {
+                width: 8rem;
+                height: 8rem;
+                background-color: var(--color-skyblue);
+                color: var(--color-white);
+                font-family: var(--font-istok-web);
+                font-weight: normal;
+                border-radius: 1rem;
+                padding: 1rem;
+                .step-number {
+                    font-size: 2.5rem;
+                }
+                hr {
+                    margin: 0 auto;
+                    border-bottom: 2px solid var(--color-white);
+                    border-top: none;
+                }
+                .step-title {
+                    font-size: 1.17rem;
+                    margin-top: 0.5rem;
+                }
+            }
+            &--arrow {
+                width: 3rem;
+                .pi {
+                    font-size: 2rem;
+                    margin-top: 3.7rem;
+                    color: var(--color-black)
+                }
             }
         }
-        dt {
-            text-align: start;
-            margin-top: 0.5rem;
+
+        .steps__descriptions {
+            margin: 3rem auto 0;
+            .step__description {
+                display: flex;
+                margin-top: 3rem;
+                &--number {
+                    height: 8rem;
+                    font-size: 2.5rem;
+                    border-left: 0.3rem solid var(--color-skyblue);
+                    padding: 0 0.5rem;
+                    margin-right: 4rem;
+                }
+                &--text {
+                    color: var(--color-black);
+                    text-align: left;
+                    h3 {
+                        margin-top: 0;
+                    }
+                    p {
+                        font-size: 1rem;
+                    }
+                }
+            }
         }
-        dd {
-            text-align: end;
-            margin-bottom: 0.5em;
-            border-bottom: 1px solid;
-            margin-left: 0;
+
+        @media screen and (max-width: 390px) {
+            .steps__diagram {
+                display: none;
+            }
         }
+
     }
 }
 </style>
