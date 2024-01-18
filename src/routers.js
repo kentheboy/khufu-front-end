@@ -1,6 +1,7 @@
 import Home from './components/Home.vue'
 import Company from './components/Company.vue'
 import Guide from './components/Guide.vue'
+import Terms from './components/Terms.vue'
 
 import AdminFull from './components/admin/AdminFull.vue'
 import Products from './components/admin/Products.vue'
@@ -24,6 +25,12 @@ const routes=[
         name: 'Guide',
         component: Guide,
         path: '/guide',
+        exact: true
+    },
+    {
+        name: 'Terms',
+        component: Terms,
+        path: '/terms',
         exact: true
     },
     {
