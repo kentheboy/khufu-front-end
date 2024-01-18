@@ -60,7 +60,7 @@
                     </div>
                 </div>
             </div>
-            <p v-if="isExample">※これは予約例です</p>
+            <p v-if="isExample">※こちらは予約例です</p>
         </div>
     </section>
 </template>
