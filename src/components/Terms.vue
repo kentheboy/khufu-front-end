@@ -732,11 +732,13 @@ section {
 }
 .terms__chapter {
     text-align: left;
+    &:not(:first-child) {
+        margin-top: 3rem;
+    }
     &--title {
-        height: 4rem;
+        max-height: 10rem;
         border-left: 0.3rem solid var(--color-skyblue);
         padding: 0 0.5rem;
-        margin-right: 4rem;
     }
     &--paragraph {
         color: var(--color-black);
