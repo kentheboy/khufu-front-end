@@ -585,6 +585,8 @@ export default {
     closeReservationForm() {
       this.openReservationForm = false;
       this.resetForm();
+      // reset search result area by displaying latest available cars with pre-search conditions
+      this.searchAvailability();
     },
     resetForm() {
       this.scheduleInfo = {
@@ -622,7 +624,7 @@ export default {
         },
       };
       this.confirmationInfo = null;
-    }
+    },
   }
 }
 </script>
