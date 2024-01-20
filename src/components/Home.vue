@@ -238,6 +238,7 @@
                       type="radio"
                       label="お子様用シート"
                       name="use-of-chiled-sheet"
+                      classes="display-block"
                       :options='[{"name": "useOfChiledSheet", "label": "希望しない", "value": 0}, {"name": "useOfChiledSheet", "label": "ベビシート", "value": 1}, {"name": "useOfChiledSheet", "label": "ジュニアシート", "value": 2}]'
                       v-model="scheduleInfo.useOfChiledSheet"
                     ></Input>
@@ -876,6 +877,9 @@ section {
         margin-bottom: 2rem;
         &::v-deep .input-area {
           margin-bottom: initial;
+          &.display-block {
+            display: block;
+          }
         }
         .error-msg {
           color: red
