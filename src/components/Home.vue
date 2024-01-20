@@ -108,6 +108,7 @@
           </div>
           <Button
             icon="pi pi-search"
+            class="p-ripple"
             label="空き状況を検索"
             :disabled="!isReadyToSearch"
             @click="searchAvailability"
@@ -243,18 +244,21 @@
             </div>
             <div class="reservation-form__button">
               <Button
+                class="p-ripple"
                 v-if="reservationFormStatus==='entry'"
                 label="予約確認へ"
                 :disabled="!isValidScheduleInfo"
                 @click="confirmForm"
               ></Button>
               <Button
+                class="p-ripple"
                 v-if="reservationFormStatus==='confirm'"
                 label="内容を修正する"
                 severity="secondary"
                 @click="reservationFormStatus='entry'"
               ></Button>
               <Button
+                class="p-ripple"
                 v-if="reservationFormStatus==='confirm'"
                 icon="pi pi-send"
                 label="予約する"
