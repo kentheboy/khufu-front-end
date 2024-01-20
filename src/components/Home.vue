@@ -546,6 +546,8 @@ export default {
         'dob': this.scheduleInfo.dob.value,
         'airportPickup': this.scheduleInfo.airportPickup.value,
         'airportDropoff': this.scheduleInfo.airportDropoff.value,
+        'akamineStaDelivery': this.scheduleInfoakamineStaDelivery,
+        'useOfChiledSheet': this.scheduleInfo.useOfChiledSheet
       });
       const data = {
         'product_id': this.scheduleInfo.reservationCarId,
