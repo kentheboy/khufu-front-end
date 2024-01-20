@@ -223,6 +223,15 @@
                     ></Input>
                     <span class="error-msg" v-if="!scheduleInfo.airportDropoff.isValid && formEntryStart">※必須</span>
                   </div>
+                  <div class="section__form--content-input-area">
+                    <Input
+                      type="radio"
+                      label="赤嶺駅貸出"
+                      name="akamine-station-delivery"
+                      :options='[{"name": "akamineStaDelivery", "label": "希望しない", "value": 0}, {"name": "akamineStaDelivery", "label": "希望する", "value": 1}]'
+                      v-model="scheduleInfo.akamineStaDelivery"
+                    ></Input>
+                  </div>
                 </div>
             </section>
             <Information
@@ -371,6 +380,8 @@ export default {
           value: false,
           isValid: true
         },
+        useChiledSheet: 0,
+        akamineStaDelivery: 0
       },
       openReservationForm: false,
       confirmationInfo: null,
@@ -544,22 +555,24 @@ export default {
       
     },
     opneReservationForm(carId) {
-      let retalSpan = this.dateDifference(this.search.departDate.value, this.search.returnDate.value);
-      console.log(retalSpan);
-      this.openReservationForm = true;
       this.scheduleInfo.reservationCarId = carId;
 
       // calculate totalFee
-      let totalFee = this.calculateTotalFeeByRentalSpan(`${this.search.departDate.value} ${this.search.departTime}`, `${this.search.returnDate.value} ${this.search.returnTime}`, this.availableCar.find(car => car.id === this.scheduleInfo.reservationCarId).price) 
-      console.log(totalFee);
+      this.scheduleInfo.totalFee = this.calculateTotalFeeByRentalSpan(`${this.search.departDate.value} ${this.search.departTime}`, `${this.search.returnDate.value} ${this.search.returnTime}`, this.availableCar.find(car => car.id === this.scheduleInfo.reservationCarId).price) 
 
       this.scheduleInfo.start_at = `${this.search.departDate.value} ${this.search.departTime}`;
       this.scheduleInfo.end_at = `${this.search.returnDate.value} ${this.search.returnTime}`;
-      this.scheduleInfo.totalFee =  retalSpan * this.availableCar.find(car => car.id === this.scheduleInfo.reservationCarId).price
+      this.openReservationForm = true;
       this.reservationFormStatus = "entry";
     },
     confirmForm() {
       let selectedCarInfo = this.availableCar.find(car => car.id === this.scheduleInfo.reservationCarId)
+      
+      if(this.scheduleInfo.akamineStaDelivery) {
+        // if akamineStaDelivery is requested charge extra 3000yen
+        this.scheduleInfo.totalFee += 3000;
+      }
+      
       this.confirmationInfo = {
         title: selectedCarInfo.title,
         start_at: this.scheduleInfo.start_at,
@@ -638,10 +651,10 @@ export default {
       const diffInMilliseconds = endDateTimeObj - startDateTimeObj;
       const retalSpanInHours = diffInMilliseconds / 3600000;
       const RoundedDate = Math.floor(retalSpanInHours / 24);
-      let totalFee = RoundedDate * pricePerDay;
+      let totalFee = RoundedDate > 1 ? (RoundedDate * pricePerDay) : pricePerDay;
 
       const unrandedRemainingHours = retalSpanInHours % 24;
-      if (unrandedRemainingHours > 0) {
+      if (RoundedDate > 1 && unrandedRemainingHours > 0) {
         if (unrandedRemainingHours > 10) {
           // if unrandedRemainingHours is more than 10hr, add extra fullday price
           totalFee += pricePerDay;
