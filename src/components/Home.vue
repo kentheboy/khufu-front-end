@@ -545,8 +545,14 @@ export default {
     },
     opneReservationForm(carId) {
       let retalSpan = this.dateDifference(this.search.departDate.value, this.search.returnDate.value);
+      console.log(retalSpan);
       this.openReservationForm = true;
       this.scheduleInfo.reservationCarId = carId;
+
+      // calculate totalFee
+      let totalFee = this.calculateTotalFeeByRentalSpan(`${this.search.departDate.value} ${this.search.departTime}`, `${this.search.returnDate.value} ${this.search.returnTime}`, this.availableCar.find(car => car.id === this.scheduleInfo.reservationCarId).price) 
+      console.log(totalFee);
+
       this.scheduleInfo.start_at = `${this.search.departDate.value} ${this.search.departTime}`;
       this.scheduleInfo.end_at = `${this.search.returnDate.value} ${this.search.returnTime}`;
       this.scheduleInfo.totalFee =  retalSpan * this.availableCar.find(car => car.id === this.scheduleInfo.reservationCarId).price
@@ -625,6 +631,28 @@ export default {
       };
       this.confirmationInfo = null;
     },
+    calculateTotalFeeByRentalSpan(startDateTime, endDateTime, pricePerDay) {
+      const startDateTimeObj = new Date(startDateTime);
+      const endDateTimeObj = new Date(endDateTime);
+
+      const diffInMilliseconds = endDateTimeObj - startDateTimeObj;
+      const retalSpanInHours = diffInMilliseconds / 3600000;
+      const RoundedDate = Math.floor(retalSpanInHours / 24);
+      let totalFee = RoundedDate * pricePerDay;
+
+      const unrandedRemainingHours = retalSpanInHours % 24;
+      if (unrandedRemainingHours > 0) {
+        if (unrandedRemainingHours > 10) {
+          // if unrandedRemainingHours is more than 10hr, add extra fullday price
+          totalFee += pricePerDay;
+        } else {
+          // if unrandedRemainingHours is less than 10hr, add extra price per hour
+          const pricePerHour = pricePerDay / 24;
+          totalFee += unrandedRemainingHours * pricePerHour;
+        }
+      }
+      return Math.ceil(totalFee);
+    }
   }
 }
 </script>
