@@ -646,9 +646,8 @@ export default {
           // if unrandedRemainingHours is more than 10hr, add extra fullday price
           totalFee += pricePerDay;
         } else {
-          // if unrandedRemainingHours is less than 10hr, add extra price per hour
-          const pricePerHour = pricePerDay / 24;
-          totalFee += unrandedRemainingHours * pricePerHour;
+          // if unrandedRemainingHours is less than 10hr, add extra 2000yen per hour
+          totalFee += unrandedRemainingHours * 2000;
         }
       }
       return Math.ceil(totalFee);
