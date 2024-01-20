@@ -231,6 +231,18 @@
                       :options='[{"name": "akamineStaDelivery", "label": "希望しない", "value": 0}, {"name": "akamineStaDelivery", "label": "希望する", "value": 1}]'
                       v-model="scheduleInfo.akamineStaDelivery"
                     ></Input>
+                    <span class="input-description">追加料 ¥3,000</span>
+                  </div>
+                  <div class="section__form--content-input-area">
+                    <Input
+                      type="radio"
+                      label="お子様用シート"
+                      name="use-of-chiled-sheet"
+                      :options='[{"name": "useOfChiledSheet", "label": "希望しない", "value": 0}, {"name": "useOfChiledSheet", "label": "ベビシート", "value": 1}, {"name": "useOfChiledSheet", "label": "ジュニアシート", "value": 2}]'
+                      v-model="scheduleInfo.useOfChiledSheet"
+                    ></Input>
+                    <span class="input-description">ベビーシート（目安0歳〜3歳位向け）¥1,000</span>
+                    <span class="input-description">ジュニアシート（3歳位〜向け）¥5000</span>
                   </div>
                 </div>
             </section>
@@ -380,9 +392,10 @@ export default {
           value: false,
           isValid: true
         },
-        useChiledSheet: 0,
+        useOfChiledSheet: 0,
         akamineStaDelivery: 0
       },
+      totalFeeHolder: null,
       openReservationForm: false,
       confirmationInfo: null,
       reservationLoading: false
@@ -541,7 +554,7 @@ export default {
         'tel': this.scheduleInfo.customerPhoneNumber.value,
         'start_at': this.scheduleInfo.start_at,
         'end_at': this.scheduleInfo.end_at,
-        'total_fee': this.scheduleInfo.totalFee,
+        'total_fee': this.totalFeeHolder,
         'customfields': customfields
       };
       await axios.post(`${this.backendDomain}/api/schedule/create`, data).then((response) => {
@@ -557,7 +570,7 @@ export default {
     opneReservationForm(carId) {
       this.scheduleInfo.reservationCarId = carId;
 
-      // calculate totalFee
+      // calculate basic totalFee (fees without options)
       this.scheduleInfo.totalFee = this.calculateTotalFeeByRentalSpan(`${this.search.departDate.value} ${this.search.departTime}`, `${this.search.returnDate.value} ${this.search.returnTime}`, this.availableCar.find(car => car.id === this.scheduleInfo.reservationCarId).price) 
 
       this.scheduleInfo.start_at = `${this.search.departDate.value} ${this.search.departTime}`;
@@ -568,16 +581,29 @@ export default {
     confirmForm() {
       let selectedCarInfo = this.availableCar.find(car => car.id === this.scheduleInfo.reservationCarId)
       
+      // add basic totalFee inside temporal variable holder
+      this.totalFeeHolder = this.scheduleInfo.totalFee;
+      // if akamineStaDelivery is requested, charge extra 3000yen
       if(this.scheduleInfo.akamineStaDelivery) {
-        // if akamineStaDelivery is requested charge extra 3000yen
-        this.scheduleInfo.totalFee += 3000;
+        this.totalFeeHolder += 3000;
+      }
+      // if any childSheet requested, charge extra fee depending on the sheet type
+      switch(this.scheduleInfo.useOfChiledSheet) {
+        case 1:
+          this.totalFeeHolder += 1000;
+          break;
+        case 2:
+          this.totalFeeHolder += 500;
+          break;
+        default:
+          break;
       }
       
       this.confirmationInfo = {
         title: selectedCarInfo.title,
         start_at: this.scheduleInfo.start_at,
         end_at: this.scheduleInfo.end_at,
-        totalFee: this.scheduleInfo.totalFee,
+        totalFee: this.totalFeeHolder,
         customerName: this.scheduleInfo.customerName.value,
         customerEmail: this.scheduleInfo.customerEmail.value,
         customerPhoneNumber: this.scheduleInfo.customerPhoneNumber.value,
@@ -851,6 +877,11 @@ section {
         }
         .error-msg {
           color: red
+        }
+        .input-description {
+          display: block;
+          font-size: .8rem;
+          font-weight: bold;
         }
       }
     }
