@@ -23,7 +23,10 @@
                         <p>¥{{ addCommas(reservationInfo.totalFee) }}</p>
                         <hr>
                         <dl class="price-detail">
-                            <dt class="basic-price-title">基本料金</dt>
+                            <dt class="basic-price-title">
+                                基本料金
+                                <img class="insurance-price-help-icon" alt="" src="/images/@2x.png">
+                            </dt>
                             <dd class="basic-price">¥{{ addCommas(reservationInfo.carInfos.basicFee) }}</dd>
                             <dt 
                                 v-if="reservationInfo.additionalService && reservationInfo.additionalService.akamineStaDelivery == 1"
@@ -210,6 +213,7 @@ export default {
                 .price-detail {
                     display: flex;
                     flex-wrap: wrap;
+                    align-items: center;
                     @media screen and (max-width: 390px) {
                         height: 4rem
                     }
