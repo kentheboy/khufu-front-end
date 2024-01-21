@@ -618,7 +618,12 @@ export default {
           main_image: selectedCarInfo.main_image,
           images: selectedCarInfo.images,
           maxmumPassenger: selectedCarInfo.passenger,
-          isSmokingAllowed: selectedCarInfo.isSmokingAllowed
+          isSmokingAllowed: selectedCarInfo.isSmokingAllowed,
+          basicFee: selectedCarInfo.price
+        },
+        additionalService: {
+          akamineStaDelivery: this.scheduleInfo.akamineStaDelivery,
+          useOfChiledSheet: this.scheduleInfo.useOfChiledSheet === 1 ? 1000 : this.scheduleInfo.useOfChiledSheet === 2 ? 500 : 0
         }
       };
       this.reservationFormStatus = "confirm";
