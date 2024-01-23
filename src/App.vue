@@ -3,8 +3,15 @@
 </template>
 
 <script>
+import Ripple from 'primevue/ripple';
 export default {
-  name: 'App'
+  name: 'App',
+  directives: {
+    Ripple
+  },
+  mounted() {
+    this.$primevue.config.ripple = true;
+  }
 }
 </script>
 

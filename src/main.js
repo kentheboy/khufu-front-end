@@ -15,6 +15,6 @@ import ToastService from 'primevue/toastservice';
 createApp(App)
     .use(router, globalCss)
     .use(store)
-    .use(PrimeVue)
+    .use(PrimeVue, { ripple: true })
     .use(ToastService)
     .mount('#app')

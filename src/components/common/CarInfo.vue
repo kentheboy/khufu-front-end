@@ -53,7 +53,8 @@ export default {
                         "/images/car-images/main4.png"
                     ],
                     maxmumPassenger: 7,
-                    isSmokingAllowed: false
+                    isSmokingAllowed: false,
+                    basicFee: 2000
                 }
             }
         }

@@ -33,16 +33,12 @@
 import Button from "primevue/button";
 import Sidebar from 'primevue/sidebar';
 import Menu from 'primevue/menu';
-import Ripple from "primevue/ripple";
 export default {
   name: 'Header',
   components: {
     Button,
     Sidebar,
     Menu
-  },
-  directives: {
-    Ripple
   },
   data() {
     return {

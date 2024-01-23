@@ -108,6 +108,7 @@
           </div>
           <Button
             icon="pi pi-search"
+            class="p-ripple"
             label="空き状況を検索"
             :disabled="!isReadyToSearch"
             @click="searchAvailability"
@@ -222,6 +223,28 @@
                     ></Input>
                     <span class="error-msg" v-if="!scheduleInfo.airportDropoff.isValid && formEntryStart">※必須</span>
                   </div>
+                  <div class="section__form--content-input-area">
+                    <Input
+                      type="radio"
+                      label="赤嶺駅貸出"
+                      name="akamine-station-delivery"
+                      :options='[{"name": "akamineStaDelivery", "label": "希望しない", "value": 0}, {"name": "akamineStaDelivery", "label": "希望する", "value": 1}]'
+                      v-model="scheduleInfo.akamineStaDelivery"
+                    ></Input>
+                    <span class="input-description">追加料 ¥3,000</span>
+                  </div>
+                  <div class="section__form--content-input-area">
+                    <Input
+                      type="radio"
+                      label="お子様用シート"
+                      name="use-of-chiled-sheet"
+                      classes="display-block"
+                      :options='[{"name": "useOfChiledSheet", "label": "希望しない", "value": 0}, {"name": "useOfChiledSheet", "label": "ベビシート", "value": 1}, {"name": "useOfChiledSheet", "label": "ジュニアシート", "value": 2}]'
+                      v-model="scheduleInfo.useOfChiledSheet"
+                    ></Input>
+                    <span class="input-description">ベビーシート（目安0歳〜3歳位向け）¥1,000</span>
+                    <span class="input-description">ジュニアシート（3歳位〜向け）¥500</span>
+                  </div>
                 </div>
             </section>
             <Information
@@ -243,18 +266,21 @@
             </div>
             <div class="reservation-form__button">
               <Button
+                class="p-ripple"
                 v-if="reservationFormStatus==='entry'"
                 label="予約確認へ"
                 :disabled="!isValidScheduleInfo"
                 @click="confirmForm"
               ></Button>
               <Button
+                class="p-ripple"
                 v-if="reservationFormStatus==='confirm'"
                 label="内容を修正する"
                 severity="secondary"
                 @click="reservationFormStatus='entry'"
               ></Button>
               <Button
+                class="p-ripple"
                 v-if="reservationFormStatus==='confirm'"
                 icon="pi pi-send"
                 label="予約する"
@@ -367,7 +393,10 @@ export default {
           value: false,
           isValid: true
         },
+        useOfChiledSheet: 0,
+        akamineStaDelivery: 0
       },
+      totalFeeHolder: null,
       openReservationForm: false,
       confirmationInfo: null,
       reservationLoading: false
@@ -518,6 +547,8 @@ export default {
         'dob': this.scheduleInfo.dob.value,
         'airportPickup': this.scheduleInfo.airportPickup.value,
         'airportDropoff': this.scheduleInfo.airportDropoff.value,
+        'akamineStaDelivery': this.scheduleInfo.akamineStaDelivery,
+        'useOfChiledSheet': this.scheduleInfo.useOfChiledSheet
       });
       const data = {
         'product_id': this.scheduleInfo.reservationCarId,
@@ -526,7 +557,7 @@ export default {
         'tel': this.scheduleInfo.customerPhoneNumber.value,
         'start_at': this.scheduleInfo.start_at,
         'end_at': this.scheduleInfo.end_at,
-        'total_fee': this.scheduleInfo.totalFee,
+        'total_fee': this.totalFeeHolder,
         'customfields': customfields
       };
       await axios.post(`${this.backendDomain}/api/schedule/create`, data).then((response) => {
@@ -540,21 +571,42 @@ export default {
       
     },
     opneReservationForm(carId) {
-      let retalSpan = this.dateDifference(this.search.departDate.value, this.search.returnDate.value);
-      this.openReservationForm = true;
       this.scheduleInfo.reservationCarId = carId;
+
+      // calculate basic totalFee (fees without options)
+      this.scheduleInfo.totalFee = this.calculateTotalFeeByRentalSpan(`${this.search.departDate.value} ${this.search.departTime}`, `${this.search.returnDate.value} ${this.search.returnTime}`, this.availableCar.find(car => car.id === this.scheduleInfo.reservationCarId).price) 
+
       this.scheduleInfo.start_at = `${this.search.departDate.value} ${this.search.departTime}`;
       this.scheduleInfo.end_at = `${this.search.returnDate.value} ${this.search.returnTime}`;
-      this.scheduleInfo.totalFee =  retalSpan * this.availableCar.find(car => car.id === this.scheduleInfo.reservationCarId).price
+      this.openReservationForm = true;
       this.reservationFormStatus = "entry";
     },
     confirmForm() {
       let selectedCarInfo = this.availableCar.find(car => car.id === this.scheduleInfo.reservationCarId)
+      
+      // add basic totalFee inside temporal variable holder
+      this.totalFeeHolder = this.scheduleInfo.totalFee;
+      // if akamineStaDelivery is requested, charge extra 3000yen
+      if(this.scheduleInfo.akamineStaDelivery) {
+        this.totalFeeHolder += 3000;
+      }
+      // if any childSheet requested, charge extra fee depending on the sheet type
+      switch(this.scheduleInfo.useOfChiledSheet) {
+        case 1:
+          this.totalFeeHolder += 1000;
+          break;
+        case 2:
+          this.totalFeeHolder += 500;
+          break;
+        default:
+          break;
+      }
+      
       this.confirmationInfo = {
         title: selectedCarInfo.title,
         start_at: this.scheduleInfo.start_at,
         end_at: this.scheduleInfo.end_at,
-        totalFee: this.scheduleInfo.totalFee,
+        totalFee: this.totalFeeHolder,
         customerName: this.scheduleInfo.customerName.value,
         customerEmail: this.scheduleInfo.customerEmail.value,
         customerPhoneNumber: this.scheduleInfo.customerPhoneNumber.value,
@@ -566,7 +618,12 @@ export default {
           main_image: selectedCarInfo.main_image,
           images: selectedCarInfo.images,
           maxmumPassenger: selectedCarInfo.passenger,
-          isSmokingAllowed: selectedCarInfo.isSmokingAllowed
+          isSmokingAllowed: selectedCarInfo.isSmokingAllowed,
+          basicFee: selectedCarInfo.price
+        },
+        additionalService: {
+          akamineStaDelivery: this.scheduleInfo.akamineStaDelivery,
+          useOfChiledSheet: this.scheduleInfo.useOfChiledSheet === 1 ? 1000 : this.scheduleInfo.useOfChiledSheet === 2 ? 500 : 0
         }
       };
       this.reservationFormStatus = "confirm";
@@ -581,6 +638,8 @@ export default {
     closeReservationForm() {
       this.openReservationForm = false;
       this.resetForm();
+      // reset search result area by displaying latest available cars with pre-search conditions
+      this.searchAvailability();
     },
     resetForm() {
       this.scheduleInfo = {
@@ -617,7 +676,29 @@ export default {
           isValid: true
         },
       };
+      this.totalFeeHolder = null;
       this.confirmationInfo = null;
+    },
+    calculateTotalFeeByRentalSpan(startDateTime, endDateTime, pricePerDay) {
+      const startDateTimeObj = new Date(startDateTime);
+      const endDateTimeObj = new Date(endDateTime);
+
+      const diffInMilliseconds = endDateTimeObj - startDateTimeObj;
+      const retalSpanInHours = diffInMilliseconds / 3600000;
+      const RoundedDate = Math.floor(retalSpanInHours / 24);
+      let totalFee = RoundedDate > 1 ? (RoundedDate * pricePerDay) : pricePerDay;
+
+      const unrandedRemainingHours = retalSpanInHours % 24;
+      if (RoundedDate > 1 && unrandedRemainingHours > 0) {
+        if (unrandedRemainingHours > 10) {
+          // if unrandedRemainingHours is more than 10hr, add extra fullday price
+          totalFee += pricePerDay;
+        } else {
+          // if unrandedRemainingHours is less than 10hr, add extra 2000yen per hour
+          totalFee += unrandedRemainingHours * 2000;
+        }
+      }
+      return Math.ceil(totalFee);
     }
   }
 }
@@ -802,9 +883,17 @@ section {
         margin-bottom: 2rem;
         &::v-deep .input-area {
           margin-bottom: initial;
+          &.display-block {
+            display: block;
+          }
         }
         .error-msg {
           color: red
+        }
+        .input-description {
+          display: block;
+          font-size: .8rem;
+          font-weight: bold;
         }
       }
     }
