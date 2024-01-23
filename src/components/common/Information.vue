@@ -24,10 +24,15 @@
                         <hr>
                         <dl class="price-detail">
                             <dt class="basic-price-title">
-                                基本料金
-                                <img class="insurance-price-help-icon" alt="" src="/images/@2x.png">
+                                基本料金(1日あたり)
                             </dt>
-                            <dd class="basic-price">¥{{ addCommas(reservationInfo.carInfos.basicFee) }}</dd>
+                            <dd class="basic-price">
+                                ¥{{ addCommas(reservationInfo.carInfos.basicFee) }}
+                            </dd>
+                            <dt class="additional-note">
+                                <i class="pi pi-info-circle"></i>
+                                <span>補償制度の含まれた金額です</span>
+                            </dt>
                             <dt 
                                 v-if="reservationInfo.additionalService && reservationInfo.additionalService.akamineStaDelivery == 1"
                                 class="options-price-title"
@@ -217,9 +222,21 @@ export default {
                     @media screen and (max-width: 390px) {
                         height: 4rem
                     }
-                    dt, dd {
+                    dt {
                         margin: 0;
                         width: 50%;
+                    }
+                    dd {
+                        margin: 0;
+                        padding-left: 2rem;
+                        width: 50%;
+                    }
+                    .additional-note {
+                        font-size: .7rem;
+                        width: 100%;
+                        .pi {
+                            font-size: .7rem;
+                        }
                     }
                     .options-price-help {
                         position: absolute;
