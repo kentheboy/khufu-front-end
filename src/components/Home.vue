@@ -243,7 +243,7 @@
                       v-model="scheduleInfo.useOfChiledSheet"
                     ></Input>
                     <span class="input-description">ベビーシート（目安0歳〜3歳位向け）¥1,000</span>
-                    <span class="input-description">ジュニアシート（3歳位〜向け）¥5000</span>
+                    <span class="input-description">ジュニアシート（3歳位〜向け）¥500</span>
                   </div>
                 </div>
             </section>
@@ -547,7 +547,7 @@ export default {
         'dob': this.scheduleInfo.dob.value,
         'airportPickup': this.scheduleInfo.airportPickup.value,
         'airportDropoff': this.scheduleInfo.airportDropoff.value,
-        'akamineStaDelivery': this.scheduleInfoakamineStaDelivery,
+        'akamineStaDelivery': this.scheduleInfo.akamineStaDelivery,
         'useOfChiledSheet': this.scheduleInfo.useOfChiledSheet
       });
       const data = {
@@ -676,6 +676,7 @@ export default {
           isValid: true
         },
       };
+      this.totalFeeHolder = null;
       this.confirmationInfo = null;
     },
     calculateTotalFeeByRentalSpan(startDateTime, endDateTime, pricePerDay) {
