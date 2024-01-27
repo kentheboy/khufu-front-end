@@ -152,7 +152,7 @@ export default {
                     .at,
                     .mn {
                         position: absolute;
-                        font-size: smaller;
+                        font-size: .7rem;
                         top: 0rem;
                         left: 0.21rem;
                         letter-spacing: 0.15em;
