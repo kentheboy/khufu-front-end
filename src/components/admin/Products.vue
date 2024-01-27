@@ -18,7 +18,7 @@
             <Column field="status" header="ステータス" :sortable="true">
                 <template #body="slotProps">
                     <Badge 
-                        :value="slotProps.data.status==0?'貸出不可':slotProps.data.status==1?'貸出可':'貸出中'" 
+                        :value="slotProps.data.status==0?'貸出不可':slotProps.data.status==1?'貸出可':'貸出不可'" 
                         :severity="slotProps.data.status==0?'danger':slotProps.data.status==1?'info':'warning'">
                     </Badge>
                 </template>
@@ -63,6 +63,18 @@
                     label="乗車定員"
                     name="passenger"
                     v-model="submitData.passenger"
+                ></Input>
+                <Input
+                    type="date"
+                    label="貸出開始日"
+                    name="lendingStartDate"
+                    v-model="submitData.startDate"
+                ></Input>
+                <Input
+                    type="date"
+                    label="貸出終了日"
+                    name="lendingEndDate"
+                    v-model="submitData.endDate"
                 ></Input>
                 <Input 
                     type="text"
@@ -172,8 +184,10 @@ export default {
             submitData: {
                 id: null,
                 name: "",
-                price: 0,
+                price: 20000,
                 passenger: 7,
+                startDate: "",
+                endDate: "",
                 images: [],
                 description: "",
                 licenseNumber: "",
@@ -236,6 +250,8 @@ export default {
                 const images = JSON.parse(productData.images);
                 this.submitData.name = productData.name;
                 this.submitData.price = productData.price;
+                this.submitData.startDate = productData.startDate;
+                this.submitData.endDate = productData.endDate;
                 this.submitData.passenger = customfields.passenger;
                 this.submitData.description = productData.description;
                 this.submitData.licenseNumber = customfields.licenseNumber;
@@ -288,6 +304,8 @@ export default {
                 "name": this.submitData.name,
                 "description": this.submitData.description,
                 "price": this.submitData.price,
+                "start_date": this.submitData.startDate,
+                "end_date": this.submitData.endDate,
                 "customfields": JSON.stringify(customfields),
                 "images": JSON.stringify(this.submitData.images)
             }
@@ -317,6 +335,8 @@ export default {
                 "name": this.submitData.name,
                 "description": this.submitData.description,
                 "price": this.submitData.price,
+                "start_date": this.submitData.startDate,
+                "end_date": this.submitData.endDate,
                 "customfields": JSON.stringify(customfields),
                 "images": JSON.stringify(this.submitData.images),
             }
@@ -348,6 +368,8 @@ export default {
                 passenger: 7,
                 images: [],
                 description: "",
+                startDate: "",
+                endDate: "",
                 licenseNumber: "",
                 syakenDate: "",
                 tenkenDate: "",
