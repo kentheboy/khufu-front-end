@@ -155,10 +155,9 @@
                       label="お名前"
                       name="name"
                       placeholder="山田太郎"
-                      v-model="scheduleInfo.customerName.value"
-                      @update:modelValue="isValid('name')"
+                      required
+                      v-model="scheduleInfo.customerName"
                     ></Input>
-                    <span class="error-msg" v-if="!scheduleInfo.customerName.isValid && formEntryStart">※必須</span>
                   </div>
                   <div class="section__form--content-input-area">
                     <Input
@@ -166,10 +165,9 @@
                       label="メールアドレス"
                       name="email"
                       placeholder="example@class.okinawa"
-                      v-model="scheduleInfo.customerEmail.value"
-                      @update:modelValue="isValid('email')"
+                      required
+                      v-model="scheduleInfo.customerEmail"
                     ></Input>
-                    <span class="error-msg" v-if="!scheduleInfo.customerEmail.isValid && formEntryStart">※必須：正しいメールアドレスを入力してください</span>
                   </div>
                   <div class="section__form--content-input-area">
                     <Input
@@ -177,10 +175,9 @@
                       label="電話番号"
                       name="phonenumber"
                       placeholder="08000000000"
-                      v-model="scheduleInfo.customerPhoneNumber.value"
-                      @update:modelValue="isValid('phone')"
+                      required
+                      v-model="scheduleInfo.customerPhoneNumber"
                     ></Input>
-                    <span class="error-msg" v-if="!scheduleInfo.customerPhoneNumber.isValid && formEntryStart">※必須：正しい電話番号を入力してください</span>
                   </div>
                   <div class="section__form--content-input-area">
                     <Input
@@ -188,40 +185,32 @@
                       label="免許番号"
                       name="license-number"
                       placeholder="1234567890"
-                      v-model="scheduleInfo.licenseNumber.value"
-                      @update:modelValue="isValid('licenseNumber')"
+                      v-model="scheduleInfo.licenseNumber"
                     ></Input>
-                    <span class="error-msg" v-if="!scheduleInfo.licenseNumber.isValid && formEntryStart">※必須</span>
                   </div>
                   <div class="section__form--content-input-area">
                     <Input
                       type="date"
                       label="生年月日"
                       name="dob"
-                      v-model="scheduleInfo.dob.value"
-                      @update:modelValue="isValid('dob')"
+                      v-model="scheduleInfo.dob"
                     ></Input>
-                    <span class="error-msg" v-if="!scheduleInfo.dob.isValid && formEntryStart">※必須</span>
                   </div>
                   <div class="section__form--content-input-area">
                     <Input
                       type="airport-timpicker"
                       label="空港お出迎え"
                       name="airport-pickup"
-                      v-model="scheduleInfo.airportPickup.value"
-                      @update:modelValue="isValid('airportPickup')"
+                      v-model="scheduleInfo.airportPickup"
                     ></Input>
-                    <span class="error-msg" v-if="!scheduleInfo.airportPickup.isValid && formEntryStart">※必須</span>
                   </div>
                   <div class="section__form--content-input-area">
                     <Input
                       type="airport-timpicker"
                       label="空港お見送り"
                       name="airport-dropoff"
-                      v-model="scheduleInfo.airportDropoff.value"
-                      @update:modelValue="isValid('airportDropoff')"
+                      v-model="scheduleInfo.airportDropoff"
                     ></Input>
-                    <span class="error-msg" v-if="!scheduleInfo.airportDropoff.isValid && formEntryStart">※必須</span>
                   </div>
                   <div class="section__form--content-input-area">
                     <Input
@@ -365,34 +354,13 @@ export default {
         start_at: null,
         end_at: null,
         totalFee: null,
-        customerName: {
-          value: "",
-          isValid: true
-        },
-        customerEmail: {
-          value: "",
-          isValid: true
-        },
-        customerPhoneNumber: {
-          value: "",
-          isValid: true
-        },
-        licenseNumber: {
-          value: "",
-          isValid: true
-        },
-        dob: {
-          value: "",
-          isValid: true
-        },
-        airportPickup: {
-          value: false,
-          isValid: true
-        },
-        airportDropoff: {
-          value: false,
-          isValid: true
-        },
+        customerName: "",
+        customerEmail: "",
+        customerPhoneNumber: "",
+        licenseNumber: "",
+        dob: "",
+        airportPickup: false,
+        airportDropoff: false,
         useOfChiledSheet: 0,
         akamineStaDelivery: 0
       },
@@ -422,15 +390,12 @@ export default {
       }
     },
     isValidScheduleInfo() {
+      const emailRegex = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
+      const phoneRegex = /^[+-]?[0-9]{7,13}$/;
       if (
-        this.formEntryStart &&
-        this.scheduleInfo.customerName.isValid &&
-        this.scheduleInfo.customerEmail.isValid &&
-        this.scheduleInfo.customerPhoneNumber.isValid &&
-        this.scheduleInfo.licenseNumber.isValid &&
-        this.scheduleInfo.dob.isValid &&
-        this.scheduleInfo.airportPickup.isValid &&
-        this.scheduleInfo.airportDropoff.isValid
+        this.scheduleInfo.customerName.length > 0 &&
+        emailRegex.test(this.scheduleInfo.customerEmail) &&
+        phoneRegex.test(this.scheduleInfo.customerPhoneNumber)
       ) {
         return true;
       } else {
@@ -454,64 +419,6 @@ export default {
           } else {
             this.search.returnDate.isValid = false;
           }
-          break;
-      }
-    },
-    isValid(inputName) {
-      this.formEntryStart = true;
-      const emailRegex = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
-      const phoneRegex = /^[+-]?[0-9]{7,13}$/;
-      switch(inputName){
-        case "name":
-          if(this.scheduleInfo.customerName.value.length < 1) {
-            this.scheduleInfo.customerName.isValid = false;
-          } else {
-            this.scheduleInfo.customerName.isValid = true;
-          }
-          break;
-        case "email":
-          if (!emailRegex.test(this.scheduleInfo.customerEmail.value)) {
-            this.scheduleInfo.customerEmail.isValid = false;
-          } else {
-            this.scheduleInfo.customerEmail.isValid  = true;
-          }
-          break;
-        case "phone":
-          if (phoneRegex.test(this.scheduleInfo.customerPhoneNumber.value)) {
-            this.scheduleInfo.customerPhoneNumber.isValid = true;
-          } else {
-            this.scheduleInfo.customerPhoneNumber.isValid = false;
-          }
-          break;
-        case "licenseNumber":
-          if(this.scheduleInfo.licenseNumber.value.length < 1) {
-            this.scheduleInfo.licenseNumber.isValid = false;
-          } else {
-            this.scheduleInfo.licenseNumber.isValid = true;
-          }
-          break;
-        case "dob":
-          if(this.scheduleInfo.dob.value.length < 1) {
-            this.scheduleInfo.dob.isValid = false;
-          } else {
-            this.scheduleInfo.dob.isValid = true;
-          }
-          break;
-        case "airportPickup":
-          if (this.scheduleInfo.airportPickup.value.length < 1) {
-            this.scheduleInfo.airportPickup.isValid = false;
-          } else {
-            this.scheduleInfo.airportPickup.isValid = true;
-          }
-          break;
-        case "airportDropoff":
-          if (this.scheduleInfo.airportDropoff.value.length < 1) {
-            this.scheduleInfo.airportDropoff.isValid = false;
-          } else {
-            this.scheduleInfo.airportDropoff.isValid = true;
-          }
-          break;
-        default:
           break;
       }
     },
@@ -543,18 +450,18 @@ export default {
       }, 3000)
   
       const customfields = JSON.stringify({
-        'licenseNumber': this.scheduleInfo.licenseNumber.value,
-        'dob': this.scheduleInfo.dob.value,
-        'airportPickup': this.scheduleInfo.airportPickup.value,
-        'airportDropoff': this.scheduleInfo.airportDropoff.value,
+        'licenseNumber': this.scheduleInfo.licenseNumber,
+        'dob': this.scheduleInfo.dob,
+        'airportPickup': this.scheduleInfo.airportPickup,
+        'airportDropoff': this.scheduleInfo.airportDropoff,
         'akamineStaDelivery': this.scheduleInfo.akamineStaDelivery,
         'useOfChiledSheet': this.scheduleInfo.useOfChiledSheet
       });
       const data = {
         'product_id': this.scheduleInfo.reservationCarId,
-        'name': this.scheduleInfo.customerName.value,
-        'email': this.scheduleInfo.customerEmail.value,
-        'tel': this.scheduleInfo.customerPhoneNumber.value,
+        'name': this.scheduleInfo.customerName,
+        'email': this.scheduleInfo.customerEmail,
+        'tel': this.scheduleInfo.customerPhoneNumber,
         'start_at': this.scheduleInfo.start_at,
         'end_at': this.scheduleInfo.end_at,
         'total_fee': this.totalFeeHolder,
@@ -607,13 +514,13 @@ export default {
         start_at: this.scheduleInfo.start_at,
         end_at: this.scheduleInfo.end_at,
         totalFee: this.totalFeeHolder,
-        customerName: this.scheduleInfo.customerName.value,
-        customerEmail: this.scheduleInfo.customerEmail.value,
-        customerPhoneNumber: this.scheduleInfo.customerPhoneNumber.value,
-        licenseNumber: this.scheduleInfo.licenseNumber.value,
-        dob: this.scheduleInfo.dob.value,
-        airportPickup: this.scheduleInfo.airportPickup.value,
-        airportDropoff: this.scheduleInfo.airportDropoff.value,
+        customerName: this.scheduleInfo.customerName,
+        customerEmail: this.scheduleInfo.customerEmail,
+        customerPhoneNumber: this.scheduleInfo.customerPhoneNumber,
+        licenseNumber: this.scheduleInfo.licenseNumber,
+        dob: this.scheduleInfo.dob,
+        airportPickup: this.scheduleInfo.airportPickup,
+        airportDropoff: this.scheduleInfo.airportDropoff,
         carInfos: {
           main_image: selectedCarInfo.main_image,
           images: selectedCarInfo.images,
@@ -647,37 +554,17 @@ export default {
         start_at: null,
         end_at: null,
         totalFee: null,
-        customerName: {
-          value: "",
-          isValid: true
-        },
-        customerEmail: {
-          value: "",
-          isValid: true
-        },
-        customerPhoneNumber: {
-          value: "",
-          isValid: true
-        },
-        licenseNumber: {
-          value: "",
-          isValid: true
-        },
-        dob: {
-          value: "",
-          isValid: true
-        },
-        airportPickup: {
-          value: false,
-          isValid: true
-        },
-        airportDropoff: {
-          value: false,
-          isValid: true
-        },
+        customerName: "",
+        customerEmail: "",
+        customerPhoneNumber: "",
+        licenseNumber: "",
+        dob: "",
+        airportPickup: false,
+        airportDropoff: false,
       };
       this.totalFeeHolder = null;
       this.confirmationInfo = null;
+      this.reservationLoading = false;
     },
     calculateTotalFeeByRentalSpan(startDateTime, endDateTime, pricePerDay) {
       const startDateTimeObj = new Date(startDateTime);
@@ -886,9 +773,6 @@ section {
           &.display-block {
             display: block;
           }
-        }
-        .error-msg {
-          color: red
         }
         .input-description {
           display: block;
