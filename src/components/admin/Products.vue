@@ -15,6 +15,7 @@
             <Column field="licenseNumber" header="車両情報" :sortable="true"></Column>
             <Column field="syakenDate" header="車検期限" :sortable="true"></Column>
             <Column field="tenkenDate" header="点検期限" :sortable="true"></Column>
+            <Column field="startDate" header="貸出開始日" :sortable="true"></Column>
             <Column field="status" header="ステータス" :sortable="true">
                 <template #body="slotProps">
                     <Badge 
@@ -236,12 +237,12 @@ export default {
         },
         getProducts() {
             axios.get(`${this.backendDomain}/api/products`).then(response => {
-                response.data.forEach(product => {
+                response.data.data.forEach(product => {
                     if (product.customfields) {
                         Object.assign(product, JSON.parse(product.customfields));
                     }
                 })
-                this.products = response.data;
+                this.products = response.data.data;
             })
         },
         getProduct(id) {
