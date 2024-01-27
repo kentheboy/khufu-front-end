@@ -157,7 +157,6 @@
                       placeholder="山田太郎"
                       required
                       v-model="scheduleInfo.customerName"
-                      @update:modelValue="isValid('name')"
                     ></Input>
                   </div>
                   <div class="section__form--content-input-area">
@@ -168,7 +167,6 @@
                       placeholder="example@class.okinawa"
                       required
                       v-model="scheduleInfo.customerEmail"
-                      @update:modelValue="isValid('email')"
                     ></Input>
                   </div>
                   <div class="section__form--content-input-area">
@@ -179,7 +177,6 @@
                       placeholder="08000000000"
                       required
                       v-model="scheduleInfo.customerPhoneNumber"
-                      @update:modelValue="isValid('phone')"
                     ></Input>
                   </div>
                   <div class="section__form--content-input-area">
@@ -189,7 +186,6 @@
                       name="license-number"
                       placeholder="1234567890"
                       v-model="scheduleInfo.licenseNumber"
-                      @update:modelValue="isValid('licenseNumber')"
                     ></Input>
                   </div>
                   <div class="section__form--content-input-area">
@@ -198,7 +194,6 @@
                       label="生年月日"
                       name="dob"
                       v-model="scheduleInfo.dob"
-                      @update:modelValue="isValid('dob')"
                     ></Input>
                   </div>
                   <div class="section__form--content-input-area">
@@ -207,7 +202,6 @@
                       label="空港お出迎え"
                       name="airport-pickup"
                       v-model="scheduleInfo.airportPickup"
-                      @update:modelValue="isValid('airportPickup')"
                     ></Input>
                   </div>
                   <div class="section__form--content-input-area">
@@ -216,7 +210,6 @@
                       label="空港お見送り"
                       name="airport-dropoff"
                       v-model="scheduleInfo.airportDropoff"
-                      @update:modelValue="isValid('airportDropoff')"
                     ></Input>
                   </div>
                   <div class="section__form--content-input-area">
@@ -571,6 +564,7 @@ export default {
       };
       this.totalFeeHolder = null;
       this.confirmationInfo = null;
+      this.reservationLoading = false;
     },
     calculateTotalFeeByRentalSpan(startDateTime, endDateTime, pricePerDay) {
       const startDateTimeObj = new Date(startDateTime);
