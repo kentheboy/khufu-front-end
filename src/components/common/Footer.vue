@@ -38,11 +38,11 @@ export default {
         a {
             margin-left: 1rem;
             &.instagram i {
-                font-size: 2.5rem;
+                font-size: 2rem;
             }
             &.line {
                 img {
-                    height: 2.5rem;
+                    height: 2rem;
                 }
             }
         }
