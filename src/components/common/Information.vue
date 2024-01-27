@@ -86,7 +86,10 @@
                     </div>
                 </div>
             </div>
-            <p v-if="isExample">※こちらは予約例です</p>
+            <p v-if="isExample">
+                ※こちらは予約例です<br>
+                ※10時間を超えない延長は1時間あたり2,000円、超える場合は1日あたりの基本料金が加算されます
+            </p>
         </div>
     </section>
 </template>
@@ -104,7 +107,7 @@ export default {
                 title: "TOYOTA　アルファード",
                 start_at: "2023/1/1 10:00",
                 end_at: "2023/1/2 18:00",
-                totalFee: 30000,
+                totalFee: 41000,
                 customerName: "山田太郎",
                 customerEmail: "example@class.okinawa",
                 customerPhoneNumber: "080-0000-0000",
@@ -122,7 +125,7 @@ export default {
                     ],
                     maxmumPassenger: 7,
                     isSmokingAllowed: false,
-                    basicFee: 2000
+                    basicFee: 25000
                 }
             })
         },
