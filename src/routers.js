@@ -37,12 +37,11 @@ const routes=[
         name: 'admin',
         component: AdminFull,
         path: '/admin',
-        redirect: '/admin/products',
         children: [
             {
                 name: 'admin.products',
                 component: Products,
-                path: 'products',
+                path: '2134dfghds/products',
             },
         ]
     },

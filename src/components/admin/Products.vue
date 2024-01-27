@@ -266,6 +266,7 @@ export default {
             })
         },
         openCreateModal(){
+            this.resetSubmitData()
             this.productDialog = true;
             this.submitMode = "create";
             this.submitData.id = null;
