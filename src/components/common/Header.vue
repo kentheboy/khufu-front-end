@@ -7,6 +7,9 @@
             src="/images/class-logo-main@2x.png"
             :onClick="onCLASSLogo311Click"
           />
+          <div class="toReservation">
+            <Button label="今すぐ予約する" @click="scrollToEearchAndReservation"/>
+          </div>
           <div class="hamburgerMenu">
             <Button icon="pi pi-align-justify" @click="openSideNav = true" />
           </div>
@@ -95,6 +98,14 @@ export default {
       ]
     }
   },
+  methods: {
+    scrollToEearchAndReservation() {
+      window.scrollTo({
+        top: document.getElementById('searchAndReservation').offsetTop,
+        behavior: 'smooth'
+      });
+    }
+  }
 }
 </script>
 <style lang="scss" scoped>
@@ -103,6 +114,22 @@ export default {
     background-color: var(--color-skyblue);
     overflow: hidden;
     
+    .toReservation {
+      position: absolute;
+      right: 7rem;
+      top: 1.2rem;
+      button.p-button {
+        height: 2.2rem;
+        padding: unset;
+        font-size: .9rem;
+        background-color: white;
+        color: var(--color-steelblue);
+        box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
+      }
+      @media screen and (max-width: 390px) {
+        display: none;
+      }
+    }
     .hamburgerMenu {
       content: "";
       position: absolute;
