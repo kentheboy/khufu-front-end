@@ -15,7 +15,10 @@
     </div>
     <div v-else-if="type==='airport-timpicker'" class="input-area airport-timpicker">
         <div class="airport-timpicker__headline">
-            <label v-if="label">{{ label }}</label>
+            <label v-if="label">
+                {{ label }}
+                <span v-if="required" class="required-notice">※必須</span>
+            </label>
             <div class="airport-timpicker__headline--pickup">
                 <input type="radio" :name="name" value="true" @input="handleAirportTimpicker">あり
                 <input type="radio" :name="name" value="false" @input="handleAirportTimpicker">なし
@@ -30,7 +33,10 @@
         >
     </div>
     <div v-else-if="type==='file'" :class="`input-area ${classes}`">
-        <label v-if="label">{{ label }}</label>
+        <label v-if="label">
+            {{ label }}
+            <span v-if="required" class="required-notice">※必須</span>
+        </label>
         <input 
             @change="handleFileUpload($event)"
             :type="type"
@@ -47,7 +53,10 @@
         </div>
     </div>
     <div v-else-if="type==='radio'" :class="`input-area radio-input ${classes}`">
-        <label v-if="label">{{ label }}</label>
+        <label v-if="label">
+            {{ label }}
+            <span v-if="required" class="required-notice">※必須</span>
+        </label>
         <div class="radio-input__options">
             <div v-for="option in options" :key="option" class="radio-input__options--input">
                 <input type="radio" :name="option.name" :value=option.value  v-model="selectedValue">
@@ -56,20 +65,29 @@
         </div>
     </div>
     <div v-else-if="type==='selectbox'" :class="`input-area ${classes}`">
-        <label v-if="label">{{ label }}</label>
+        <label v-if="label">
+            {{ label }}
+            <span v-if="required" class="required-notice">※必須</span>
+        </label>
         <select>
             <option v-for="option in options" :key="option">{{ option }}</option>
         </select>
     </div>
     <div v-else-if="type==='textarea'" :class="`input-area ${classes}`">
-        <label v-if="label">{{ label }}</label>
+        <label v-if="label">
+            {{ label }}
+            <span v-if="required" class="required-notice">※必須</span>
+        </label>
         <textarea
             :value="modelValue"
             @input="handleInput"
         ></textarea>
     </div>
     <div v-else :class="`input-area ${classes}`">
-        <label v-if="label">{{ label }}</label>
+        <label v-if="label">
+            {{ label }}
+            <span v-if="required" class="required-notice">※必須</span>
+        </label>
         <input
             :type="type"
             :name="name"
@@ -115,6 +133,10 @@ export default {
         options: {
             type: Array,
             default: null
+        },
+        required: {
+            type: Boolean,
+            default: false
         }
     },
     data() {
@@ -189,6 +211,12 @@ export default {
         display: block;
         margin-bottom: 0.3rem;
         margin-right: 1rem;
+        .required-notice {
+            margin-left: 1rem;
+            font-size: .7rem;
+            font-weight: bold;
+            color: gray;
+        }
     }
 
     input {

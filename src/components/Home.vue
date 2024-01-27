@@ -155,10 +155,10 @@
                       label="お名前"
                       name="name"
                       placeholder="山田太郎"
+                      required
                       v-model="scheduleInfo.customerName"
                       @update:modelValue="isValid('name')"
                     ></Input>
-                    <span class="error-msg" v-if="!scheduleInfo.customerName.isValid && formEntryStart">※必須</span>
                   </div>
                   <div class="section__form--content-input-area">
                     <Input
@@ -166,10 +166,10 @@
                       label="メールアドレス"
                       name="email"
                       placeholder="example@class.okinawa"
+                      required
                       v-model="scheduleInfo.customerEmail"
                       @update:modelValue="isValid('email')"
                     ></Input>
-                    <span class="error-msg" v-if="!scheduleInfo.customerEmail.isValid && formEntryStart">※必須：正しいメールアドレスを入力してください</span>
                   </div>
                   <div class="section__form--content-input-area">
                     <Input
@@ -177,10 +177,10 @@
                       label="電話番号"
                       name="phonenumber"
                       placeholder="08000000000"
+                      required
                       v-model="scheduleInfo.customerPhoneNumber"
                       @update:modelValue="isValid('phone')"
                     ></Input>
-                    <span class="error-msg" v-if="!scheduleInfo.customerPhoneNumber.isValid && formEntryStart">※必須：正しい電話番号を入力してください</span>
                   </div>
                   <div class="section__form--content-input-area">
                     <Input
@@ -191,7 +191,6 @@
                       v-model="scheduleInfo.licenseNumber"
                       @update:modelValue="isValid('licenseNumber')"
                     ></Input>
-                    <span class="error-msg" v-if="!scheduleInfo.licenseNumber.isValid && formEntryStart">※必須</span>
                   </div>
                   <div class="section__form--content-input-area">
                     <Input
@@ -201,7 +200,6 @@
                       v-model="scheduleInfo.dob"
                       @update:modelValue="isValid('dob')"
                     ></Input>
-                    <span class="error-msg" v-if="!scheduleInfo.dob.isValid && formEntryStart">※必須</span>
                   </div>
                   <div class="section__form--content-input-area">
                     <Input
@@ -211,7 +209,6 @@
                       v-model="scheduleInfo.airportPickup"
                       @update:modelValue="isValid('airportPickup')"
                     ></Input>
-                    <span class="error-msg" v-if="!scheduleInfo.airportPickup.isValid && formEntryStart">※必須</span>
                   </div>
                   <div class="section__form--content-input-area">
                     <Input
@@ -221,7 +218,6 @@
                       v-model="scheduleInfo.airportDropoff"
                       @update:modelValue="isValid('airportDropoff')"
                     ></Input>
-                    <span class="error-msg" v-if="!scheduleInfo.airportDropoff.isValid && formEntryStart">※必須</span>
                   </div>
                   <div class="section__form--content-input-area">
                     <Input
@@ -401,6 +397,17 @@ export default {
       }
     },
     isValidScheduleInfo() {
+      const emailRegex = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
+      const phoneRegex = /^[+-]?[0-9]{7,13}$/;
+      if (
+        this.scheduleInfo.customerName.length > 0 &&
+        emailRegex.test(this.scheduleInfo.customerEmail) &&
+        phoneRegex.test(this.scheduleInfo.customerPhoneNumber)
+      ) {
+        return true;
+      } else {
+        return false;
+      }
     }
   },
   methods: {
@@ -421,12 +428,6 @@ export default {
           }
           break;
       }
-    },
-    isValid(inputName) {
-      this.formEntryStart = true;
-      const emailRegex = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
-      const phoneRegex = /^[+-]?[0-9]{7,13}$/;
-      
     },
     async searchAvailability() {
       const param = {
@@ -778,9 +779,6 @@ section {
           &.display-block {
             display: block;
           }
-        }
-        .error-msg {
-          color: red
         }
         .input-description {
           display: block;
