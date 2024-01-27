@@ -252,8 +252,8 @@ export default {
                 const images = JSON.parse(productData.images);
                 this.submitData.name = productData.name;
                 this.submitData.price = productData.price;
-                this.submitData.startDate = productData.startDate;
-                this.submitData.endDate = productData.endDate;
+                this.submitData.startDate = productData.start_at;
+                this.submitData.endDate = productData.end_at;
                 this.submitData.passenger = customfields.passenger;
                 this.submitData.description = productData.description;
                 this.submitData.licenseNumber = customfields.licenseNumber;
