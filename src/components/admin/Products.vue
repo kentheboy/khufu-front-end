@@ -18,8 +18,8 @@
             <Column field="status" header="ステータス" :sortable="true">
                 <template #body="slotProps">
                     <Badge 
-                        :value="slotProps.data.status==0?'貸出不可':slotProps.data.status==1?'貸出可':'貸出不可'" 
-                        :severity="slotProps.data.status==0?'danger':slotProps.data.status==1?'info':'warning'">
+                        :value="productStatus[slotProps.data.status]" 
+                        :severity="productStatusColor[slotProps.data.status]">
                     </Badge>
                 </template>
             </Column>
@@ -198,7 +198,8 @@ export default {
             },
             products: [],
             deleteProductId: null,
-            productStatus: ["利用可","車検中","点検中"],
+            productStatus: ["非公開","公開","車検中","点検中"],
+            productStatusColor: ["danger","info","warning"],
             productDialog: false,
             deleteProductDialog: false,
             selectedProduct: null,
