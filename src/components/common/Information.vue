@@ -24,7 +24,7 @@
                         <hr>
                         <dl class="price-detail">
                             <dt class="basic-price-title">
-                                基本料金(1日あたり)
+                                基本料金<br class="sp">(1日あたり)
                             </dt>
                             <dd class="basic-price">
                                 ¥{{ addCommas(reservationInfo.carInfos.basicFee) }}
@@ -114,7 +114,7 @@ export default {
                 licenseNumber: "1234567890",
                 dob: "2023/1/1",
                 airportPickup: false,
-                airportDropoff: true,
+                airportDropoff: "18:00",
                 carInfos: {
                     main_image: "/images/car-images/main4.png",
                     images: [
@@ -289,6 +289,12 @@ export default {
         letter-spacing: 0.15em;
         font-weight: initial;
         margin: 0rem;  
+    }
+}
+.sp {
+    display: none;
+    @media screen and (max-width: 390px) {
+        display: block;
     }
 }
 </style>
