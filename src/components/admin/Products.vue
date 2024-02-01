@@ -15,11 +15,12 @@
             <Column field="licenseNumber" header="車両情報" :sortable="true"></Column>
             <Column field="syakenDate" header="車検期限" :sortable="true"></Column>
             <Column field="tenkenDate" header="点検期限" :sortable="true"></Column>
+            <Column field="startDate" header="貸出開始日" :sortable="true"></Column>
             <Column field="status" header="ステータス" :sortable="true">
                 <template #body="slotProps">
                     <Badge 
-                        :value="slotProps.data.status==0?'貸出不可':slotProps.data.status==1?'貸出可':'貸出中'" 
-                        :severity="slotProps.data.status==0?'danger':slotProps.data.status==1?'info':'warning'">
+                        :value="productStatus[slotProps.data.status]" 
+                        :severity="productStatusColor[slotProps.data.status]">
                     </Badge>
                 </template>
             </Column>
@@ -63,6 +64,18 @@
                     label="乗車定員"
                     name="passenger"
                     v-model="submitData.passenger"
+                ></Input>
+                <Input
+                    type="date"
+                    label="貸出開始日"
+                    name="lendingStartDate"
+                    v-model="submitData.startDate"
+                ></Input>
+                <Input
+                    type="date"
+                    label="貸出終了日"
+                    name="lendingEndDate"
+                    v-model="submitData.endDate"
                 ></Input>
                 <Input 
                     type="text"
@@ -172,8 +185,10 @@ export default {
             submitData: {
                 id: null,
                 name: "",
-                price: 0,
+                price: 20000,
                 passenger: 7,
+                startDate: null,
+                endDate: null,
                 images: [],
                 description: "",
                 licenseNumber: "",
@@ -184,7 +199,8 @@ export default {
             },
             products: [],
             deleteProductId: null,
-            productStatus: ["利用可","車検中","点検中"],
+            productStatus: ["非公開","公開","車検中","点検中"],
+            productStatusColor: ["danger","info","warning"],
             productDialog: false,
             deleteProductDialog: false,
             selectedProduct: null,
@@ -221,12 +237,12 @@ export default {
         },
         getProducts() {
             axios.get(`${this.backendDomain}/api/products`).then(response => {
-                response.data.forEach(product => {
+                response.data.data.forEach(product => {
                     if (product.customfields) {
                         Object.assign(product, JSON.parse(product.customfields));
                     }
                 })
-                this.products = response.data;
+                this.products = response.data.data;
             })
         },
         getProduct(id) {
@@ -236,6 +252,8 @@ export default {
                 const images = JSON.parse(productData.images);
                 this.submitData.name = productData.name;
                 this.submitData.price = productData.price;
+                this.submitData.startDate = productData.start_at;
+                this.submitData.endDate = productData.end_at;
                 this.submitData.passenger = customfields.passenger;
                 this.submitData.description = productData.description;
                 this.submitData.licenseNumber = customfields.licenseNumber;
@@ -248,6 +266,7 @@ export default {
             })
         },
         openCreateModal(){
+            this.resetSubmitData()
             this.productDialog = true;
             this.submitMode = "create";
             this.submitData.id = null;
@@ -288,6 +307,8 @@ export default {
                 "name": this.submitData.name,
                 "description": this.submitData.description,
                 "price": this.submitData.price,
+                "start_date": this.submitData.startDate,
+                "end_date": this.submitData.endDate,
                 "customfields": JSON.stringify(customfields),
                 "images": JSON.stringify(this.submitData.images)
             }
@@ -317,6 +338,8 @@ export default {
                 "name": this.submitData.name,
                 "description": this.submitData.description,
                 "price": this.submitData.price,
+                "start_date": this.submitData.startDate,
+                "end_date": this.submitData.endDate,
                 "customfields": JSON.stringify(customfields),
                 "images": JSON.stringify(this.submitData.images),
             }
@@ -348,6 +371,8 @@ export default {
                 passenger: 7,
                 images: [],
                 description: "",
+                startDate: "",
+                endDate: "",
                 licenseNumber: "",
                 syakenDate: "",
                 tenkenDate: "",

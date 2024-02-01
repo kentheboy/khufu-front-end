@@ -53,7 +53,8 @@ export default {
                         "/images/car-images/main4.png"
                     ],
                     maxmumPassenger: 7,
-                    isSmokingAllowed: false
+                    isSmokingAllowed: false,
+                    basicFee: 2000
                 }
             }
         }
@@ -68,7 +69,7 @@ export default {
         margin-bottom: 3rem;
 
         .main-image {
-            width: 15.16rem;
+            width: 16.16rem;
             display: flex;
             flex-direction: column;
             @media screen and (max-width: 390px) {
@@ -77,10 +78,15 @@ export default {
 
             img {
                 width: 100%;
+                margin: 10px 0;
             }
 
             .info-logos {
                 position: relative;
+
+                img {
+                    margin: initial;
+                }
 
                 .passenger-info {
                     position: absolute;
@@ -146,7 +152,7 @@ export default {
                     .at,
                     .mn {
                         position: absolute;
-                        font-size: smaller;
+                        font-size: .7rem;
                         top: 0rem;
                         left: 0.21rem;
                         letter-spacing: 0.15em;
@@ -173,7 +179,8 @@ export default {
         .sub-images {
             display: flex;
             flex-wrap: wrap;
-            width: 15.16rem;
+            width: 17rem;
+            justify-content: space-between;
             @media screen and (max-width: 390px) {
                 width: 9.16rem;
             }
@@ -181,6 +188,7 @@ export default {
             img {
                 width: 7.58rem;
                 height: 6.86rem;
+                object-fit: contain;
                 @media screen and (max-width: 390px) {
                     width: 4.28rem;
                     height: auto;

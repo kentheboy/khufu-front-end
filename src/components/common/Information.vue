@@ -22,16 +22,42 @@
                     <div class="detail">
                         <p>¥{{ addCommas(reservationInfo.totalFee) }}</p>
                         <hr>
-                        <div class="price-detail">
-                            <div class="basic-price-title">基本料金</div>
-                            <div class="basic-price">¥20,000</div>
-                            <div class="insurance-price-title">補償制度</div>
-                            <div class="insurance-price">¥3,000</div>
-                            <!-- <div class="insurance-price-help">
-                                <img class="insurance-price-help-icon" alt="" src="/images/@2x.png">
-                                <div class="">補償制度を詳しく</div>
-                            </div> -->
-                        </div>
+                        <dl class="price-detail">
+                            <dt class="basic-price-title">
+                                基本料金<br class="sp">(1日あたり)
+                            </dt>
+                            <dd class="basic-price">
+                                ¥{{ addCommas(reservationInfo.carInfos.basicFee) }}
+                            </dd>
+                            <dt class="additional-note">
+                                <i class="pi pi-info-circle"></i>
+                                <span>補償制度の含まれた金額です</span>
+                            </dt>
+                            <dt 
+                                v-if="reservationInfo.additionalService && reservationInfo.additionalService.akamineStaDelivery == 1"
+                                class="options-price-title"
+                            >
+                                赤嶺駅貸出料
+                            </dt>
+                            <dd 
+                                v-if="reservationInfo.additionalService && reservationInfo.additionalService.akamineStaDelivery == 1"
+                                class="options-price"
+                            >
+                                ¥3,000
+                            </dd>
+                            <dt 
+                                v-if="reservationInfo.additionalService && reservationInfo.additionalService.useOfChiledSheet > 0"
+                                class="options-price-title"
+                            >
+                                お子様用シート代
+                            </dt>
+                            <dd 
+                                v-if="reservationInfo.additionalService && reservationInfo.additionalService.useOfChiledSheet > 0"
+                                class="options-price"
+                            >
+                                ¥{{ addCommas(reservationInfo.additionalService.useOfChiledSheet) }}
+                            </dd>
+                        </dl>
                     </div>
                 </div>
             </div>
@@ -60,7 +86,10 @@
                     </div>
                 </div>
             </div>
-            <p v-if="isExample">※これは予約例です</p>
+            <p v-if="isExample">
+                ※こちらは予約例です<br>
+                ※10時間を超えない延長は1時間あたり2,000円、超える場合は1日あたりの基本料金が加算されます
+            </p>
         </div>
     </section>
 </template>
@@ -78,14 +107,14 @@ export default {
                 title: "TOYOTA　アルファード",
                 start_at: "2023/1/1 10:00",
                 end_at: "2023/1/2 18:00",
-                totalFee: 30000,
+                totalFee: 41000,
                 customerName: "山田太郎",
                 customerEmail: "example@class.okinawa",
                 customerPhoneNumber: "080-0000-0000",
                 licenseNumber: "1234567890",
                 dob: "2023/1/1",
                 airportPickup: false,
-                airportDropoff: true,
+                airportDropoff: "18:00",
                 carInfos: {
                     main_image: "/images/car-images/main4.png",
                     images: [
@@ -95,7 +124,8 @@ export default {
                         "/images/car-images/main4.png"
                     ],
                     maxmumPassenger: 7,
-                    isSmokingAllowed: false
+                    isSmokingAllowed: false,
+                    basicFee: 25000
                 }
             })
         },
@@ -189,33 +219,29 @@ export default {
                     width: 14rem;
                 }
                 .price-detail {
-                    position: relative;
-                    width: 100%;
-                    height: 3rem;
+                    display: flex;
+                    flex-wrap: wrap;
+                    align-items: center;
                     @media screen and (max-width: 390px) {
                         height: 4rem
                     }
-                    .basic-price-title {
-                        position: absolute;
-                        top: 0;
-                        left: 0;
+                    dt {
+                        margin: 0;
+                        width: 50%;
                     }
-                    .basic-price {
-                        position: absolute;
-                        top: 0;
-                        left: 5rem;
+                    dd {
+                        margin: 0;
+                        padding-left: 2rem;
+                        width: 50%;
                     }
-                    .insurance-price-title {
-                        position: absolute;
-                        top: 1.2rem;
-                        left: 0rem;
+                    .additional-note {
+                        font-size: .7rem;
+                        width: 100%;
+                        .pi {
+                            font-size: .7rem;
+                        }
                     }
-                    .insurance-price {
-                        position: absolute;
-                        top: 1.2rem;
-                        left: 5rem;
-                    }
-                    .insurance-price-help {
+                    .options-price-help {
                         position: absolute;
                         cursor: pointer;
                         display: flex;
@@ -227,7 +253,7 @@ export default {
                             top: 2.7rem;
                             left: 0rem;
                         }
-                        .insurance-price-help-icon {
+                        .options-price-help-icon {
                             height: 0.9rem
                         }
                     }
@@ -263,6 +289,12 @@ export default {
         letter-spacing: 0.15em;
         font-weight: initial;
         margin: 0rem;  
+    }
+}
+.sp {
+    display: none;
+    @media screen and (max-width: 390px) {
+        display: block;
     }
 }
 </style>
