@@ -5,67 +5,6 @@
       <section class="section__heroImageArea">
         <ImageSlider :images="heroImages"></ImageSlider>
       </section>
-      <section class="section__features">
-        <div class="section__features--title">
-          <h3>特徴</h3>
-          <h1>FEATURE</h1>
-        </div>
-        <div class="section__features--contents">
-          <div class="section__features--content">
-            <div class="ellipse-parent">
-              <div class="ellipseDiv">
-                <div class="ellipseInside-number">01</div>
-                <h1 class="ellipseInside-text">
-                  <p class="p">難しい手続きなしで</p>
-                  <p class="p">すぐご出発</p>
-                </h1>
-              </div>
-            </div>
-            <div class="subtext">
-              <h1>
-                <p class="p">必要書類はメールにて送信。<br class="sp">かんたんに手続きが済みます。</p>
-              </h1>
-            </div>
-          </div>
-          <div class="section__features--content">
-            <div class="ellipse-parent">
-              <div class="ellipseDiv">
-                <div class="ellipseInside-number">02</div>
-                <h1 class="ellipseInside-text">
-                  <p class="p">混みにくい高速道路の</p>
-                  <p class="p">近くだからスイスイ</p>
-                </h1>
-              </div>
-            </div>
-            <div class="subtext">
-              <h1>
-                <p class="p">混みにくいインターチェンジへ<br class="sp">最短アクセスが可能です。</p>
-              </h1>
-              <h3>
-                <p class="p">※空港近辺では使用インターが重なり、<br class="sp">度々渋滞になります。</p>
-              </h3>
-            </div>
-          </div>
-          <div class="section__features--content">
-            <div class="ellipse-parent">
-              <div class="ellipseDiv">
-                <div class="ellipseInside-number">03</div>
-                <h1 class="ellipseInside-text singleLine">
-                  <p class="p">支払いもスマートに</p>
-                </h1>
-              </div>
-            </div>
-            <div class="subtext">
-              <h1>
-                <p class="p">免責補償込みで予約可能。<br class="sp">余計なオプションも、<br class="sp">追加保険料も必要なし。</p>
-              </h1>
-            </div>
-          </div>
-        </div>
-      </section>
-      <Information
-        :isExample=true
-      ></Information>
       <div>
         <section class="section__form" id="searchAndReservation">
           <div class="section__form--title">
@@ -280,6 +219,64 @@
           </Dialog>
         </section>
       </div>
+      <section class="section__features">
+        <div class="section__features--title">
+          <h3>特徴</h3>
+          <h1>FEATURE</h1>
+        </div>
+        <div class="section__features--contents">
+          <div class="section__features--content">
+            <div class="ellipse-parent">
+              <div class="ellipseDiv">
+                <div class="ellipseInside-number">01</div>
+                <h1 class="ellipseInside-text">
+                  <p class="p">難しい手続きなしで</p>
+                  <p class="p">すぐご出発</p>
+                </h1>
+              </div>
+            </div>
+            <div class="subtext">
+              <h1>
+                <p class="p">必要書類はメールにて送信。<br class="sp">かんたんに手続きが済みます。</p>
+              </h1>
+            </div>
+          </div>
+          <div class="section__features--content">
+            <div class="ellipse-parent">
+              <div class="ellipseDiv">
+                <div class="ellipseInside-number">02</div>
+                <h1 class="ellipseInside-text">
+                  <p class="p">混みにくい高速道路の</p>
+                  <p class="p">近くだからスイスイ</p>
+                </h1>
+              </div>
+            </div>
+            <div class="subtext">
+              <h1>
+                <p class="p">混みにくいインターチェンジへ<br class="sp">最短アクセスが可能です。</p>
+              </h1>
+              <h3>
+                <p class="p">※空港近辺では使用インターが重なり、<br class="sp">度々渋滞になります。</p>
+              </h3>
+            </div>
+          </div>
+          <div class="section__features--content">
+            <div class="ellipse-parent">
+              <div class="ellipseDiv">
+                <div class="ellipseInside-number">03</div>
+                <h1 class="ellipseInside-text singleLine">
+                  <p class="p">支払いもスマートに</p>
+                </h1>
+              </div>
+            </div>
+            <div class="subtext">
+              <h1>
+                <p class="p">免責補償込みで予約可能。<br class="sp">余計なオプションも、<br class="sp">追加保険料も必要なし。</p>
+              </h1>
+            </div>
+          </div>
+        </div>
+      </section>
       <ScrollTop />
     </main>
     <Footer></Footer>
@@ -599,6 +596,9 @@ export default {
 }
 section {
   margin: 8rem 2.4rem;
+  &#searchAndReservation {
+    margin-top: 0;
+  }
 }
 .section {
   &__heroImageArea {
@@ -610,7 +610,7 @@ section {
     font-size: var(--font-size-base);
     color: var(--color-white);
     font-family: var(--font-istok-web);
-    margin: 0 6%;
+    margin: 0 6% 8rem;
 
     &--title {
       h3 {
