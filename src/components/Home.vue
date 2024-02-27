@@ -219,6 +219,19 @@
           </Dialog>
         </section>
       </div>
+      <div>
+        <section class="section__products">
+          <div class="section__products--title">
+            <h1>VEHICLE LIST</h1>
+            <h3>車両一覧</h3>
+          </div>
+          <div class="section__products--lists">
+            <ProductCard @click="scrollToEearchAndReservation"></ProductCard>
+            <ProductCard @click="scrollToEearchAndReservation"></ProductCard>
+            <ProductCard @click="scrollToEearchAndReservation"></ProductCard>
+          </div>
+        </section>
+      </div>
       <section class="section__features">
         <div class="section__features--title">
           <h3>特徴</h3>
@@ -288,6 +301,7 @@ import Header from "/src/components/common/Header";
 import ImageSlider from "/src/components/common/ImageSlider";
 import Input from "/src/components/common/form/Input";
 import Products from "/src/components/common/Products";
+import ProductCard from "/src/components/common/ProductCard";
 import Information from "/src/components/common/Information";
 import Footer from "/src/components/common/Footer";
 import Button from "primevue/button";
@@ -301,6 +315,7 @@ export default {
     ImageSlider,
     Input,
     Products,
+    ProductCard,
     Information,
     Footer,
     Button,
@@ -583,6 +598,12 @@ export default {
         }
       }
       return Math.ceil(totalFee);
+    },
+    scrollToEearchAndReservation() {
+      window.scrollTo({
+        top: document.getElementById('searchAndReservation').offsetTop,
+        behavior: 'smooth'
+      });
     }
   }
 }
@@ -784,6 +805,42 @@ section {
 
     &--submit {
       text-align: center;
+    }
+  }
+
+  &__products {
+
+    &--title {
+      text-align: center;
+      margin: 2.3rem;
+      border-bottom: 1.5px solid var(--color-steelblue);
+
+      h1 {
+        color: var(--color-steelblue);
+        letter-spacing: 0.15em;
+        font-size: 2rem;
+        font-family: var(--font-istok-web);
+        font-weight: normal;
+        margin: unset;
+      }
+
+      h3 {
+        color: var(--color-steelblue);
+        letter-spacing: 0.15em;
+        font-size: 1rem;
+        font-family: var(--font-istok-web);
+        font-weight: normal;
+        margin: unset;
+      }
+    }
+
+    &--lists{
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      @media screen and (max-width: 390px) {
+        flex-direction: column;
+      }
     }
   }
 }
