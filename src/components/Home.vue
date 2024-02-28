@@ -617,9 +617,6 @@ export default {
 }
 section {
   margin: 8rem 2.4rem;
-  &#searchAndReservation {
-    margin-top: 0;
-  }
 }
 .section {
   &__heroImageArea {
@@ -753,7 +750,7 @@ section {
 
   &__form {
     text-align: center;
-    margin-bottom: 5rem;
+    margin: 0 2.4rem 5rem;
 
     &--title {
       text-align: center;
@@ -809,6 +806,7 @@ section {
   }
 
   &__products {
+    margin: 0 2.4rem 5rem;
 
     &--title {
       text-align: center;
