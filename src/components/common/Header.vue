@@ -1,12 +1,13 @@
 <template>
     <header class="header" header>
         <div class="headerChild">
-          <img
-            class="logo"
-            alt=""
-            src="/images/class-logo-main@2x.png"
-            :onClick="onCLASSLogo311Click"
-          />
+          <a href="/">
+            <img
+              class="logo"
+              alt=""
+              src="/images/class-logo-main@2x.png"
+            />
+          </a>
           <div class="toReservation">
             <Button label="今すぐ予約する" @click="scrollToEearchAndReservation"/>
           </div>
@@ -85,6 +86,12 @@ export default {
           route: '/guide'
         },
         { 
+          label: '料金表',
+          icon: 'pi pi-dollar',
+          url: "./files/prices.pdf",
+          target: "_blank"
+        },
+        { 
           label: '貸渡約款',
           icon: 'pi pi-book',
           route: '/terms'
@@ -122,6 +129,7 @@ export default {
         height: 2.2rem;
         padding: unset;
         font-size: .9rem;
+        font-weight: bold;
         background-color: white;
         color: var(--color-steelblue);
         box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
