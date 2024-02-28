@@ -76,9 +76,10 @@ export default {
           }
         },
         { 
-          label: '会社概要',
-          icon: 'pi pi-folder-open',
-          route: '/company'
+          label: '料金表',
+          icon: 'pi pi-dollar',
+          url: "./files/prices.pdf",
+          target: "_blank"
         },
         { 
           label: 'ご利用ガイド',
@@ -86,10 +87,9 @@ export default {
           route: '/guide'
         },
         { 
-          label: '料金表',
-          icon: 'pi pi-dollar',
-          url: "./files/prices.pdf",
-          target: "_blank"
+          label: '会社概要',
+          icon: 'pi pi-folder-open',
+          route: '/company'
         },
         { 
           label: '貸渡約款',
