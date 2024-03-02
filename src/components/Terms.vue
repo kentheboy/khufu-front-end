@@ -4,7 +4,7 @@
         <main class="main">
             <section class="section__terms">
                 <div class="section__terms--title">
-                  <h1>Terms</h1>
+                  <h1>TERMS</h1>
                   <h3>貸渡約款</h3>
                 </div>
                 <div class="section__terms--content">

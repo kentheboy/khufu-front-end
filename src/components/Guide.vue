@@ -4,7 +4,7 @@
         <main class="main">
             <section class="section__guide">
                 <div class="section__guide--title">
-                  <h1>Guide</h1>
+                  <h1>GUIDE</h1>
                   <h3>ご利用ガイド</h3>
                 </div>
                 <div class="section__guide--content">
