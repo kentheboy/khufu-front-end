@@ -772,11 +772,14 @@ section {
       h3 {
         color: var(--color-steelblue);
         letter-spacing: 0.15em;
-        font-size: .8rem;
+        font-size: 1rem;
         font-family: var(--font-istok-web);
         font-weight: normal;
         margin: unset;
         margin-bottom: 0.8rem;
+        @media screen and (max-width: 390px) {
+          font-size: 0.8rem;
+        }
       }
     }
 
@@ -832,11 +835,14 @@ section {
       h3 {
         color: var(--color-steelblue);
         letter-spacing: 0.15em;
-        font-size: .8rem;
+        font-size: 1rem;
         font-family: var(--font-istok-web);
         font-weight: normal;
         margin: unset;
         margin-bottom: 0.8rem;
+        @media screen and (max-width: 390px) {
+          font-size: 0.8rem;
+        }
       }
     }
 
