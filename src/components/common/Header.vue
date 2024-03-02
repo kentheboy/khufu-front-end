@@ -14,7 +14,7 @@
           <div class="hamburgerMenu">
             <Button icon="pi pi-align-justify" @click="openSideNav = true" />
           </div>
-          <Sidebar v-model:visible="openSideNav" header="Right Sidebar" position="right">
+          <Sidebar v-model:visible="openSideNav" header="" position="right">
             <Menu :model="items">
               <template #item="{ item, props }">
                 <router-link v-if="item.route" v-slot="{ href, navigate }" :to="item.route" custom>
