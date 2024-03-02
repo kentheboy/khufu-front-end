@@ -123,6 +123,7 @@ export default {
                 font-size: 1.4rem;
                 letter-spacing: 0.1em;
                 color: var(--color-black);
+                font-weight: bold;
             }
 
             &-passenger {
@@ -134,6 +135,7 @@ export default {
                 width: 6.6rem;
                 height: 1.1rem;
                 color: var(--color-black);
+                font-weight: bold;
             }
 
             hr {
