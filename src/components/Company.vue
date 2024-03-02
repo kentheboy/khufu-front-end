@@ -63,7 +63,7 @@ section {
         font-size: var(--font-size-base);
         &--title {
             text-align: center;
-            margin: 2.3rem;
+            margin: 2.3rem 0;
             border-bottom: 1.5px solid var(--color-steelblue);
       
             h1 {
@@ -78,10 +78,11 @@ section {
             h3 {
               color: var(--color-steelblue);
               letter-spacing: 0.15em;
-              font-size: 1rem;
+              font-size: .8rem;
               font-family: var(--font-istok-web);
               font-weight: normal;
               margin: unset;
+              margin-bottom: 0.8rem;
             }
         }
 
@@ -101,6 +102,16 @@ section {
             margin-bottom: 0.5em;
             border-bottom: 1px solid;
             margin-left: 0;
+        }
+    }
+}
+@media screen and (max-width: 390px) {
+    .section {
+        &__company {
+
+            &--title {
+                border-bottom: 2px solid var(--color-steelblue);
+            }
         }
     }
 }
