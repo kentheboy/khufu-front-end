@@ -21,7 +21,9 @@ export default {
     text-align: left;
     font-size: 1rem;
     color: var(--color-black);
-    font-family: var(--font-istok-web);
+    font-family: var(--font-noto-sans);
+    font-optical-sizing: var(--font-default-optical-sizing);
+    font-style: var(--font-default-style);
 }
 .main {
     width: auto;

@@ -31,6 +31,9 @@
         justify-content: end;
         padding-bottom: 0;
     }
+    &-content {
+        scrollbar-width: none;
+    }
     &.product-edit {
         width: 70%;
     }

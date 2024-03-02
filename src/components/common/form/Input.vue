@@ -283,7 +283,7 @@ export default {
     &__headline {
         display: flex;
         justify-content: space-between;
-        width: 14.5rem;
+        width: 15.5rem;
         &--pickup {
             input[type=radio] {
                 width: auto;
