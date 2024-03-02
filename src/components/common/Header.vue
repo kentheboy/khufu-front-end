@@ -107,10 +107,22 @@ export default {
   },
   methods: {
     scrollToEearchAndReservation() {
-      window.scrollTo({
-        top: document.getElementById('searchAndReservation').offsetTop,
-        behavior: 'smooth'
-      });
+      if(this.$router.currentRoute.value.path !== "/") {
+        this.$router.push({name: "Home"})
+        setTimeout(() => {
+          this.openSideNav = false;
+          window.scrollTo({
+            top: document.getElementById('searchAndReservation').offsetTop,
+            behavior: 'smooth'
+          });
+        }, 100);
+      } else {
+        this.openSideNav = false;
+        window.scrollTo({
+          top: document.getElementById('searchAndReservation').offsetTop,
+          behavior: 'smooth'
+        });
+      }
     }
   }
 }
