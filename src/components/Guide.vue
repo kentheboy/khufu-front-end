@@ -98,17 +98,20 @@
                     </div>
                 </div>
             </section>
+            <ScrollTop />
         </main>
         <Footer></Footer>
     </div>
 </template>
 <script>
 import Header from "/src/components/common/Header";
+import ScrollTop from 'primevue/scrolltop';
 import Footer from "/src/components/common/Footer";
 export default {
   name: 'Guide',
   components: {
     Header,
+    ScrollTop,
     Footer
   }
 }
