@@ -42,6 +42,9 @@
 // Side Menu
 .p-sidebar-visible {
     .p-sidebar {
+        &-header {
+            flex-direction: row-reverse;
+        }
         &-content {
             padding: 0;
         }
