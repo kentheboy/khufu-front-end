@@ -658,7 +658,7 @@ section {
       margin: 4rem;
 
       @media screen and (max-width: 390px) {
-        margin: 4rem 1rem;
+        margin: 4rem .5rem;
       }
 
       .ellipse-parent {
@@ -673,7 +673,7 @@ section {
           height: 27.48rem;
 
           @media screen and (max-width: 390px) {
-            height: 22.48rem;
+            height: 82vw;
           }
 
           .ellipseInside {
@@ -754,8 +754,8 @@ section {
 
     &--title {
       text-align: center;
-      margin: 2.3rem;
-      border-bottom: 1.5px solid var(--color-steelblue);
+      margin: 2.3rem 0;
+      border-bottom: 2px solid var(--color-steelblue);
 
       h1 {
         color: var(--color-steelblue);
@@ -773,6 +773,10 @@ section {
         font-family: var(--font-istok-web);
         font-weight: normal;
         margin: unset;
+        margin-bottom: 0.8rem;
+        @media screen and (max-width: 390px) {
+          font-size: 0.8rem;
+        }
       }
     }
 
@@ -810,8 +814,8 @@ section {
 
     &--title {
       text-align: center;
-      margin: 2.3rem;
-      border-bottom: 1.5px solid var(--color-steelblue);
+      margin: 2.3rem 0;
+      border-bottom: 2px solid var(--color-steelblue);
 
       h1 {
         color: var(--color-steelblue);
@@ -829,6 +833,10 @@ section {
         font-family: var(--font-istok-web);
         font-weight: normal;
         margin: unset;
+        margin-bottom: 0.8rem;
+        @media screen and (max-width: 390px) {
+          font-size: 0.8rem;
+        }
       }
     }
 
@@ -890,6 +898,7 @@ section {
 
   &-selector {
     font-size: 1rem;
+    letter-spacing: 0.05em;
     display: inline-flex;
     width: 21.5rem;
     justify-content: space-between;
@@ -905,6 +914,7 @@ section {
       height: 2rem;
       border: none;
       padding: 0 0.7rem;
+      letter-spacing: 0.05em;
     }
 
     input[type=time] {

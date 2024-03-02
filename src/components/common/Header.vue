@@ -14,7 +14,7 @@
           <div class="hamburgerMenu">
             <Button icon="pi pi-align-justify" @click="openSideNav = true" />
           </div>
-          <Sidebar v-model:visible="openSideNav" header="Right Sidebar" position="right">
+          <Sidebar v-model:visible="openSideNav" header="" position="right">
             <Menu :model="items">
               <template #item="{ item, props }">
                 <router-link v-if="item.route" v-slot="{ href, navigate }" :to="item.route" custom>
@@ -107,10 +107,22 @@ export default {
   },
   methods: {
     scrollToEearchAndReservation() {
-      window.scrollTo({
-        top: document.getElementById('searchAndReservation').offsetTop,
-        behavior: 'smooth'
-      });
+      if(this.$router.currentRoute.value.path !== "/") {
+        this.$router.push({name: "Home"})
+        setTimeout(() => {
+          this.openSideNav = false;
+          window.scrollTo({
+            top: document.getElementById('searchAndReservation').offsetTop,
+            behavior: 'smooth'
+          });
+        }, 100);
+      } else {
+        this.openSideNav = false;
+        window.scrollTo({
+          top: document.getElementById('searchAndReservation').offsetTop,
+          behavior: 'smooth'
+        });
+      }
     }
   }
 }

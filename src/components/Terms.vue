@@ -4,7 +4,7 @@
         <main class="main">
             <section class="section__terms">
                 <div class="section__terms--title">
-                  <h1>Terms</h1>
+                  <h1>TERMS</h1>
                   <h3>貸渡約款</h3>
                 </div>
                 <div class="section__terms--content">
@@ -696,8 +696,8 @@ section {
         font-size: var(--font-size-base);
         &--title {
             text-align: center;
-            margin: 2.3rem;
-            border-bottom: 1.5px solid var(--color-steelblue);
+            margin: 2.3rem 0;
+            border-bottom: 2px solid var(--color-steelblue);
       
             h1 {
               color: var(--color-steelblue);
@@ -715,6 +715,7 @@ section {
               font-family: var(--font-istok-web);
               font-weight: normal;
               margin: unset;
+              margin-bottom: 0.8rem;
             }
         }
         &--content {
@@ -750,6 +751,13 @@ section {
 
 @media screen and (max-width: 390px) {
     .section {
+
+        &--title {
+            h3 {
+                font-size: .8rem;
+            }
+        }
+
         &__terms {
             &--content {
                 margin: initial;
