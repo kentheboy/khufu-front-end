@@ -658,7 +658,7 @@ section {
       margin: 4rem;
 
       @media screen and (max-width: 390px) {
-        margin: 4rem 1rem;
+        margin: 4rem .5rem;
       }
 
       .ellipse-parent {
@@ -673,7 +673,7 @@ section {
           height: 27.48rem;
 
           @media screen and (max-width: 390px) {
-            height: 22.48rem;
+            height: 82vw;
           }
 
           .ellipseInside {
