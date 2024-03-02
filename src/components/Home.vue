@@ -755,10 +755,7 @@ section {
     &--title {
       text-align: center;
       margin: 2.3rem 0;
-      border-bottom: 1.5px solid var(--color-steelblue);
-      @media screen and (max-width: 390px) {
-        border-bottom: 2px solid var(--color-steelblue);
-      }
+      border-bottom: 2px solid var(--color-steelblue);
 
       h1 {
         color: var(--color-steelblue);
@@ -818,10 +815,7 @@ section {
     &--title {
       text-align: center;
       margin: 2.3rem 0;
-      border-bottom: 1.5px solid var(--color-steelblue);
-      @media screen and (max-width: 390px) {
-        border-bottom: 2px solid var(--color-steelblue);
-      }
+      border-bottom: 2px solid var(--color-steelblue);
 
       h1 {
         color: var(--color-steelblue);

@@ -64,7 +64,7 @@ section {
         &--title {
             text-align: center;
             margin: 2.3rem 0;
-            border-bottom: 1.5px solid var(--color-steelblue);
+            border-bottom: 2px solid var(--color-steelblue);
       
             h1 {
               color: var(--color-steelblue);
@@ -110,7 +110,6 @@ section {
         &__company {
 
             &--title {
-                border-bottom: 2px solid var(--color-steelblue);
                 h3 {
                     font-size: .8rem;
                 }
