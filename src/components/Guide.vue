@@ -4,7 +4,7 @@
         <main class="main">
             <section class="section__guide">
                 <div class="section__guide--title">
-                  <h1>Guide</h1>
+                  <h1>GUIDE</h1>
                   <h3>ご利用ガイド</h3>
                 </div>
                 <div class="section__guide--content">
@@ -132,8 +132,8 @@ section {
         font-size: var(--font-size-base);
         &--title {
             text-align: center;
-            margin: 2.3rem;
-            border-bottom: 1.5px solid var(--color-steelblue);
+            margin: 2.3rem 0;
+            border-bottom: 2px solid var(--color-steelblue);
       
             h1 {
               color: var(--color-steelblue);
@@ -151,6 +151,7 @@ section {
               font-family: var(--font-istok-web);
               font-weight: normal;
               margin: unset;
+              margin-bottom: 0.8rem;
             }
         }
         &--content {
@@ -187,8 +188,8 @@ section {
             &--arrow {
                 width: 3rem;
                 .pi {
-                    font-size: 2rem;
-                    margin-top: 3.7rem;
+                    font-size: 3rem;
+                    margin-top: 2.7rem;
                     color: var(--color-black)
                 }
             }
@@ -227,6 +228,12 @@ section {
 @media screen and (max-width: 390px) {
     .section {
         &__guide {
+
+            &--title {
+                h3 {
+                    font-size: .8rem;
+                }
+            }
 
             &--content {
                 margin: initial;
