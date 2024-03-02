@@ -129,7 +129,7 @@ export default {
                 position: absolute;
                 top: 0.71rem;
                 right: 1rem;
-                letter-spacing: 0.15em;
+                letter-spacing: 0.05em;
                 display: inline-block;
                 width: 6.6rem;
                 height: 1.1rem;
@@ -146,7 +146,7 @@ export default {
 
             &-price {
                 font-size: 1.2rem;
-                letter-spacing: 0.15em;
+                letter-spacing: 0.05em;
                 position: absolute;
                 top: 2.8rem;
                 right: 1rem;

@@ -613,7 +613,9 @@ export default {
   text-align: left;
   font-size: 1rem;
   color: var(--color-black);
-  font-family: var(--font-istok-web);
+  font-family: var(--font-noto-sans);
+  font-optical-sizing: var(--font-default-optical-sizing);
+  font-style: var(--font-default-style);
 }
 section {
   margin: 8rem 2.4rem;
@@ -627,7 +629,6 @@ section {
     text-align: center;
     font-size: var(--font-size-base);
     color: var(--color-white);
-    font-family: var(--font-istok-web);
     margin: 0 6% 8rem;
 
     &--title {
@@ -635,8 +636,9 @@ section {
         margin: 0;
         font-size: var(--font-size-xs);
         letter-spacing: 0.2em;
-        font-weight: 400;
-        font-family: inherit;
+        font-family: var(--font-noto-sans);
+        font-optical-sizing: var(--font-default-optical-sizing);
+        font-style: var(--font-default-style);
         color: var(--color-steelblue);
         text-align: left;
       }
@@ -645,8 +647,9 @@ section {
         margin: 0;
         font-size: 3.2rem;
         letter-spacing: 0.2em;
-        font-weight: 400;
-        font-family: inherit;
+        font-family: var(--font-noto-sans);
+        font-optical-sizing: var(--font-default-optical-sizing);
+        font-style: var(--font-default-style);
         color: var(--color-steelblue);
         text-align: left;
         line-height: 3rem;
@@ -761,8 +764,9 @@ section {
         color: var(--color-steelblue);
         letter-spacing: 0.15em;
         font-size: 2rem;
-        font-family: var(--font-istok-web);
-        font-weight: normal;
+        font-family: var(--font-noto-sans);
+        font-optical-sizing: var(--font-default-optical-sizing);
+        font-style: var(--font-default-style);
         margin: unset;
       }
 
@@ -770,8 +774,9 @@ section {
         color: var(--color-steelblue);
         letter-spacing: 0.15em;
         font-size: 1rem;
-        font-family: var(--font-istok-web);
-        font-weight: normal;
+        font-family: var(--font-noto-sans);
+        font-optical-sizing: var(--font-default-optical-sizing);
+        font-style: var(--font-default-style);
         margin: unset;
         margin-bottom: 0.8rem;
         @media screen and (max-width: 390px) {
@@ -821,8 +826,9 @@ section {
         color: var(--color-steelblue);
         letter-spacing: 0.15em;
         font-size: 2rem;
-        font-family: var(--font-istok-web);
-        font-weight: normal;
+        font-family: var(--font-noto-sans);
+        font-optical-sizing: var(--font-default-optical-sizing);
+        font-style: var(--font-default-style);
         margin: unset;
       }
 
@@ -830,8 +836,9 @@ section {
         color: var(--color-steelblue);
         letter-spacing: 0.15em;
         font-size: 1rem;
-        font-family: var(--font-istok-web);
-        font-weight: normal;
+        font-family: var(--font-noto-sans);
+        font-optical-sizing: var(--font-default-optical-sizing);
+        font-style: var(--font-default-style);
         margin: unset;
         margin-bottom: 0.8rem;
         @media screen and (max-width: 390px) {

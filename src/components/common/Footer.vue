@@ -30,7 +30,9 @@ export default {
     background-color: var(--color-skyblue);
     font-size: var(--font-size-5xs);
     color: var(--color-white);
-    font-family: var(--font-istok-web);
+    font-family: var(--font-noto-sans);
+    font-optical-sizing: var(--font-default-optical-sizing);
+    font-style: var(--font-default-style);
     overflow: hidden;
     padding: 1.9rem 0;
     .sns-links {
