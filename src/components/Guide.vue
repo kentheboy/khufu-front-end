@@ -187,8 +187,8 @@ section {
             &--arrow {
                 width: 3rem;
                 .pi {
-                    font-size: 2rem;
-                    margin-top: 3.7rem;
+                    font-size: 3rem;
+                    margin-top: 2.7rem;
                     color: var(--color-black)
                 }
             }
