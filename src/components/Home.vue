@@ -898,6 +898,7 @@ section {
 
   &-selector {
     font-size: 1rem;
+    letter-spacing: 0.05em;
     display: inline-flex;
     width: 21.5rem;
     justify-content: space-between;
@@ -913,6 +914,7 @@ section {
       height: 2rem;
       border: none;
       padding: 0 0.7rem;
+      letter-spacing: 0.05em;
     }
 
     input[type=time] {
