@@ -333,8 +333,13 @@ export default {
     return {
       heroImages: [
         "/images/car-images/hero-image1.jpg",
+        "/images/hero-images/hero-image3.jpg",
         "/images/car-images/hero-image2.png",
-        "/images/car-images/hero-image3.png"
+        "/images/hero-images/hero-image4.jpg",
+        "/images/hero-images/hero-image1.jpg",
+        "/images/car-images/hero-image3.png",
+        "/images/hero-images/hero-image2.jpg",
+        "/images/hero-images/hero-image5.jpg"
       ],
       additionalDriverRadio: [
         { name: "additional-driver-radio", value: "yes", label: "あり"},
@@ -362,13 +367,13 @@ export default {
           title: "ALPHARD",
           main_image: "/images/car-images/ALPHARD-1.jpg",
           passenger: 7,
-          stock: 1
+          stock: 7
         },
         {
           title: "ALPHARD",
           main_image: "/images/car-images/ALPHARD-2.jpg",
           passenger: 8,
-          stock: 1
+          stock: 2
         },
         {
           title: "VELLFIRE",
@@ -380,7 +385,7 @@ export default {
           title: "HIACE",
           main_image: "/images/car-images/HIACE.jpg",
           passenger: 10,
-          stock: 1
+          stock: 2
         }
       ],
       isSearched: false,
@@ -661,7 +666,7 @@ section {
     &--title {
       h3 {
         margin: 0;
-        font-size: var(--font-size-xs);
+        font-size: 1rem;
         letter-spacing: 0.2em;
         font-family: var(--font-noto-sans);
         font-optical-sizing: var(--font-default-optical-sizing);
@@ -672,7 +677,7 @@ section {
 
       h1 {
         margin: 0;
-        font-size: 3.2rem;
+        font-size: 2rem;
         letter-spacing: 0.2em;
         font-family: var(--font-noto-sans);
         font-optical-sizing: var(--font-default-optical-sizing);
