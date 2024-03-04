@@ -1,6 +1,9 @@
-@import url("https://fonts.googleapis.com/css2?family=Istok+Web:wght@400;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap');
 html {
-  font-size: 14px;
+  font-size: 16px;
+  @media screen and (max-width: 390px) {
+    font-size: 14px;
+  }
 }
 body {
   margin: 0;
@@ -8,7 +11,9 @@ body {
 }
 :root {
   /* fonts */
-  --font-istok-web: "Istok Web";
+  --font-noto-sans: "Noto Sans JP", sans-serif;
+  --font-default-optical-sizing: auto;
+  --font-default-style: normal;
 
   /* font sizes */
   --font-size-xl: 2rem;
@@ -48,21 +53,25 @@ body {
   --br-10xs-5: 2.5px;
   --br-10xs: 3px;
 }
+* {
+  font-family: var(--font-noto-sans);
+  letter-spacing: 0.05em;
+}
 .div {
   left: 4.1rem;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.05em;
 }
 .div1 {
   position: absolute;
   top: 7.4rem;
   left: 4.1rem;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.05em;
 }
 .div2 {
   position: absolute;
   top: 7.4rem;
   left: 16rem;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.05em;
 }
 .classLogo31 {
   position: absolute;
@@ -100,7 +109,9 @@ body {
   left: 15.48%;
   font-size: 1rem;
   letter-spacing: 0.1em;
-  font-family: var(--font-istok-web);
+  font-family: var(--font-noto-sans);
+  font-optical-sizing: var(--font-default-optical-sizing);
+  font-style: var(--font-default-style);
   color: var(--color-white);
   text-align: left;
   display: inline-block;
@@ -122,67 +133,67 @@ body {
   position: absolute;
   top: 0.9rem;
   left: 1rem;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.05em;
 }
 .div8 {
   position: absolute;
   top: 3.39rem;
   left: 1rem;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.05em;
 }
 .div9 {
   position: absolute;
   top: 4.89rem;
   left: 1rem;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.05em;
 }
 .div10 {
   position: absolute;
   top: 6.38rem;
   left: 1rem;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.05em;
 }
 .div11 {
   position: absolute;
   top: 6.38rem;
   left: 10.97rem;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.05em;
 }
 .div12 {
   position: absolute;
   top: 7.88rem;
   left: 1rem;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.05em;
 }
 .div13 {
   position: absolute;
   top: 9.38rem;
   left: 1rem;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.05em;
 }
 .div14 {
   position: absolute;
   top: 9.38rem;
   left: 10.97rem;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.05em;
 }
 .div15 {
   position: absolute;
   top: 7.88rem;
   left: 10.97rem;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.05em;
 }
 .exampleclassokinawa {
   position: absolute;
   top: 4.89rem;
   left: 10.97rem;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.05em;
 }
 .div16 {
   position: absolute;
   top: 3.39rem;
   left: 10.97rem;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.05em;
 }
 .div6 {
   position: absolute;
@@ -212,7 +223,7 @@ body {
   position: absolute;
   top: 0rem;
   left: 0.71rem;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.05em;
 }
 .div18 {
   position: absolute;
@@ -226,47 +237,47 @@ body {
   position: absolute;
   top: 4.89rem;
   left: 15.46rem;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.05em;
 }
 .div22 {
   position: absolute;
   top: 5.89rem;
   left: 10.97rem;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.05em;
 }
 .div23 {
   position: absolute;
   top: 5.89rem;
   left: 15.91rem;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.05em;
 }
 .div24 {
   position: absolute;
   top: 2.89rem;
   left: 10.97rem;
   font-size: 0.8rem;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.05em;
 }
 .div25 {
   position: absolute;
   top: 0.9rem;
   left: 10.97rem;
   font-size: 0.8rem;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.05em;
 }
 .div26 {
   position: absolute;
   top: 2.89rem;
   left: 1rem;
   font-size: 0.8rem;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.05em;
 }
 .div27 {
   position: absolute;
   top: 0.9rem;
   left: 1rem;
   font-size: 0.8rem;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.05em;
 }
 .div17 {
   position: absolute;
@@ -282,7 +293,7 @@ body {
   position: absolute;
   top: 0rem;
   left: 0.21rem;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.05em;
   display: inline-block;
   width: 1.2rem;
   height: 1rem;
@@ -328,7 +339,7 @@ body {
   position: absolute;
   top: 0rem;
   left: 1.36rem;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.05em;
   display: inline-block;
   width: 1.8rem;
   height: 1.1rem;
@@ -424,19 +435,19 @@ body {
   top: 7.98rem;
   left: 1.45rem;
   font-size: 1rem;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.05em;
 }
 .toyota {
   position: absolute;
   top: 9.48rem;
   left: 1.45rem;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.05em;
 }
 .bookingInformation {
   position: absolute;
   top: 0rem;
   left: 3.24rem;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.05em;
   display: inline-block;
   width: 28.48rem;
   height: 2.89rem;
@@ -446,7 +457,7 @@ body {
   top: 2.43rem;
   left: 15.41rem;
   font-size: 0.8rem;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.05em;
   display: inline-block;
   width: 6.33rem;
   height: 1.15rem;
@@ -596,7 +607,9 @@ body {
 }
 .input {
   border: none;
-  font-family: var(--font-istok-web);
+  font-family: var(--font-noto-sans);
+  font-optical-sizing: var(--font-default-optical-sizing);
+  font-style: var(--font-default-style);
   font-size: 0.7rem;
   background-color: transparent;
   position: absolute;
@@ -607,7 +620,9 @@ body {
 }
 .input1 {
   border: none;
-  font-family: var(--font-istok-web);
+  font-family: var(--font-noto-sans);
+  font-optical-sizing: var(--font-default-optical-sizing);
+  font-style: var(--font-default-style);
   font-size: 0.7rem;
   background-color: transparent;
   position: absolute;
@@ -680,7 +695,9 @@ body {
 }
 .input4 {
   border: none;
-  font-family: var(--font-istok-web);
+  font-family: var(--font-noto-sans);
+  font-optical-sizing: var(--font-default-optical-sizing);
+  font-style: var(--font-default-style);
   font-size: 0.7rem;
   background-color: transparent;
   position: absolute;
@@ -691,7 +708,9 @@ body {
 }
 .input5 {
   border: none;
-  font-family: var(--font-istok-web);
+  font-family: var(--font-noto-sans);
+  font-optical-sizing: var(--font-default-optical-sizing);
+  font-style: var(--font-default-style);
   font-size: 0.7rem;
   background-color: transparent;
   position: absolute;
@@ -997,7 +1016,9 @@ body {
 }
 .input8 {
   border: none;
-  font-family: var(--font-istok-web);
+  font-family: var(--font-noto-sans);
+  font-optical-sizing: var(--font-default-optical-sizing);
+  font-style: var(--font-default-style);
   font-size: 1rem;
   background-color: var(--color-lightblue);
   position: absolute;
@@ -1017,7 +1038,9 @@ body {
 }
 .input9 {
   border: none;
-  font-family: var(--font-istok-web);
+  font-family: var(--font-noto-sans);
+  font-optical-sizing: var(--font-default-optical-sizing);
+  font-style: var(--font-default-style);
   font-size: 1rem;
   background-color: var(--color-lightblue);
   position: absolute;
@@ -1145,7 +1168,9 @@ body {
 }
 .input10 {
   border: none;
-  font-family: var(--font-istok-web);
+  font-family: var(--font-noto-sans);
+  font-optical-sizing: var(--font-default-optical-sizing);
+  font-style: var(--font-default-style);
   font-size: 1rem;
   background-color: var(--color-aliceblue);
   position: absolute;
@@ -1551,7 +1576,7 @@ body {
   position: absolute;
   top: 0rem;
   left: 5.49rem;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.05em;
   display: inline-block;
   width: 24.04rem;
   height: 2.89rem;
@@ -1561,7 +1586,7 @@ body {
   top: 2.58rem;
   left: 14.36rem;
   font-size: 0.8rem;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.05em;
   display: inline-block;
   width: 6.33rem;
   height: 1.15rem;
@@ -1609,7 +1634,7 @@ body {
   position: absolute;
   top: 0.71rem;
   left: 0rem;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.05em;
   display: inline-block;
   width: 6.3rem;
   height: 1.1rem;
@@ -1635,7 +1660,7 @@ body {
   top: 38.11rem;
   left: 16.16rem;
   font-size: 1.2rem;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.05em;
   color: var(--color-black);
 }
 .alphard {
@@ -1936,7 +1961,7 @@ body {
   position: absolute;
   top: 0rem;
   left: 11.32rem;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.05em;
   display: inline-block;
   width: 12.42rem;
   height: 2.9rem;
@@ -1946,7 +1971,7 @@ body {
   top: 2.55rem;
   left: 14.36rem;
   font-size: 0.8rem;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.05em;
   display: inline-block;
   width: 6.33rem;
   height: 1.15rem;
@@ -1989,7 +2014,9 @@ body {
   text-align: left;
   font-size: 0.8rem;
   color: var(--color-white);
-  font-family: var(--font-istok-web);
+  font-family: var(--font-noto-sans);
+  font-optical-sizing: var(--font-default-optical-sizing);
+  font-style: var(--font-default-style);
 }
 .h1 {
   margin: 0;
@@ -2108,7 +2135,9 @@ body {
   text-align: left;
   font-size: 0.8rem;
   color: var(--color-steelblue);
-  font-family: var(--font-istok-web);
+  font-family: var(--font-noto-sans);
+  font-optical-sizing: var(--font-default-optical-sizing);
+  font-style: var(--font-default-style);
 }
 .div192 {
   position: absolute;
@@ -2142,7 +2171,9 @@ body {
   left: 30.09%;
   font-size: 0.59rem;
   letter-spacing: 0.1em;
-  font-family: var(--font-istok-web);
+  font-family: var(--font-noto-sans);
+  font-optical-sizing: var(--font-default-optical-sizing);
+  font-style: var(--font-default-style);
   color: var(--color-skyblue);
   text-align: left;
 }
@@ -2180,7 +2211,9 @@ body {
   text-align: left;
   font-size: 1rem;
   color: var(--color-black);
-  font-family: var(--font-istok-web);
+  font-family: var(--font-noto-sans);
+  font-optical-sizing: var(--font-default-optical-sizing);
+  font-style: var(--font-default-style);
 }
 a {
   text-decoration: none;
@@ -2193,16 +2226,18 @@ a {
   border-bottom: 1.5px solid var(--color-steelblue);
 
   h1 {
-    letter-spacing: 0.15em;
+    letter-spacing: 0.05em;
     font-size: 2rem;
-    font-family: var(--font-istok-web);
-    font-weight: normal;
+    font-family: var(--font-noto-sans);
+    font-optical-sizing: var(--font-default-optical-sizing);
+    font-style: var(--font-default-style);
     margin: unset;
   }
   h3 {
-    letter-spacing: 0.15em;
-    font-family: var(--font-istok-web);
-    font-weight: normal;
+    letter-spacing: 0.05em;
+    font-family: var(--font-noto-sans);
+    font-optical-sizing: var(--font-default-optical-sizing);
+    font-style: var(--font-default-style);
     margin: unset;
   }
 }

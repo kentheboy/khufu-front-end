@@ -195,7 +195,9 @@ export default {
       box-shadow: 0.9974358677864075px 1.994871735572815px 1.99px rgba(0, 0, 0, 0.25);
       font-size: 0.59rem;
       letter-spacing: 0.1em;
-      font-family: var(--font-istok-web);
+      font-family: var(--font-noto-sans);
+      font-optical-sizing: var(--font-default-optical-sizing);
+      font-style: var(--font-default-style);
       color: var(--color-skyblue);
       font-weight: bold;
     }

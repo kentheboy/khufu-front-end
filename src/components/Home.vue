@@ -613,7 +613,9 @@ export default {
   text-align: left;
   font-size: 1rem;
   color: var(--color-black);
-  font-family: var(--font-istok-web);
+  font-family: var(--font-noto-sans);
+  font-optical-sizing: var(--font-default-optical-sizing);
+  font-style: var(--font-default-style);
 }
 section {
   margin: 8rem 2.4rem;
@@ -627,7 +629,6 @@ section {
     text-align: center;
     font-size: var(--font-size-base);
     color: var(--color-white);
-    font-family: var(--font-istok-web);
     margin: 0 6% 8rem;
 
     &--title {
@@ -635,8 +636,9 @@ section {
         margin: 0;
         font-size: var(--font-size-xs);
         letter-spacing: 0.2em;
-        font-weight: 400;
-        font-family: inherit;
+        font-family: var(--font-noto-sans);
+        font-optical-sizing: var(--font-default-optical-sizing);
+        font-style: var(--font-default-style);
         color: var(--color-steelblue);
         text-align: left;
       }
@@ -645,8 +647,9 @@ section {
         margin: 0;
         font-size: 3.2rem;
         letter-spacing: 0.2em;
-        font-weight: 400;
-        font-family: inherit;
+        font-family: var(--font-noto-sans);
+        font-optical-sizing: var(--font-default-optical-sizing);
+        font-style: var(--font-default-style);
         color: var(--color-steelblue);
         text-align: left;
         line-height: 3rem;
@@ -658,7 +661,7 @@ section {
       margin: 4rem;
 
       @media screen and (max-width: 390px) {
-        margin: 4rem 1rem;
+        margin: 4rem .5rem;
       }
 
       .ellipse-parent {
@@ -673,7 +676,7 @@ section {
           height: 27.48rem;
 
           @media screen and (max-width: 390px) {
-            height: 22.48rem;
+            height: 82vw;
           }
 
           .ellipseInside {
@@ -754,15 +757,16 @@ section {
 
     &--title {
       text-align: center;
-      margin: 2.3rem;
-      border-bottom: 1.5px solid var(--color-steelblue);
+      margin: 2.3rem 0;
+      border-bottom: 2px solid var(--color-steelblue);
 
       h1 {
         color: var(--color-steelblue);
         letter-spacing: 0.15em;
         font-size: 2rem;
-        font-family: var(--font-istok-web);
-        font-weight: normal;
+        font-family: var(--font-noto-sans);
+        font-optical-sizing: var(--font-default-optical-sizing);
+        font-style: var(--font-default-style);
         margin: unset;
       }
 
@@ -770,9 +774,14 @@ section {
         color: var(--color-steelblue);
         letter-spacing: 0.15em;
         font-size: 1rem;
-        font-family: var(--font-istok-web);
-        font-weight: normal;
+        font-family: var(--font-noto-sans);
+        font-optical-sizing: var(--font-default-optical-sizing);
+        font-style: var(--font-default-style);
         margin: unset;
+        margin-bottom: 0.8rem;
+        @media screen and (max-width: 390px) {
+          font-size: 0.8rem;
+        }
       }
     }
 
@@ -810,15 +819,16 @@ section {
 
     &--title {
       text-align: center;
-      margin: 2.3rem;
-      border-bottom: 1.5px solid var(--color-steelblue);
+      margin: 2.3rem 0;
+      border-bottom: 2px solid var(--color-steelblue);
 
       h1 {
         color: var(--color-steelblue);
         letter-spacing: 0.15em;
         font-size: 2rem;
-        font-family: var(--font-istok-web);
-        font-weight: normal;
+        font-family: var(--font-noto-sans);
+        font-optical-sizing: var(--font-default-optical-sizing);
+        font-style: var(--font-default-style);
         margin: unset;
       }
 
@@ -826,9 +836,14 @@ section {
         color: var(--color-steelblue);
         letter-spacing: 0.15em;
         font-size: 1rem;
-        font-family: var(--font-istok-web);
-        font-weight: normal;
+        font-family: var(--font-noto-sans);
+        font-optical-sizing: var(--font-default-optical-sizing);
+        font-style: var(--font-default-style);
         margin: unset;
+        margin-bottom: 0.8rem;
+        @media screen and (max-width: 390px) {
+          font-size: 0.8rem;
+        }
       }
     }
 
@@ -890,6 +905,7 @@ section {
 
   &-selector {
     font-size: 1rem;
+    letter-spacing: 0.05em;
     display: inline-flex;
     width: 21.5rem;
     justify-content: space-between;
@@ -905,6 +921,7 @@ section {
       height: 2rem;
       border: none;
       padding: 0 0.7rem;
+      letter-spacing: 0.05em;
     }
 
     input[type=time] {

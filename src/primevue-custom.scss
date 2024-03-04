@@ -6,8 +6,9 @@
     border: none;
     color: white;
     padding: 0.6rem;
-    width: 10rem;
+    width: 11rem;
     border-radius: 2rem;
+    letter-spacing: 0.05em;
     cursor: pointer;
     &-danger {
         background-color: #D32F2F;
@@ -29,6 +30,9 @@
     &-header {
         justify-content: end;
         padding-bottom: 0;
+    }
+    &-content {
+        scrollbar-width: none;
     }
     &.product-edit {
         width: 70%;

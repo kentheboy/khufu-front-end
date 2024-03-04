@@ -49,7 +49,9 @@ export default {
     text-align: left;
     font-size: 1rem;
     color: var(--color-black);
-    font-family: var(--font-istok-web);
+    font-family: var(--font-noto-sans);
+    font-optical-sizing: var(--font-default-optical-sizing);
+    font-style: var(--font-default-style);
 }
 section {
     margin: 8rem 2.4rem;
@@ -63,15 +65,16 @@ section {
         font-size: var(--font-size-base);
         &--title {
             text-align: center;
-            margin: 2.3rem;
-            border-bottom: 1.5px solid var(--color-steelblue);
+            margin: 2.3rem 0;
+            border-bottom: 2px solid var(--color-steelblue);
       
             h1 {
               color: var(--color-steelblue);
               letter-spacing: 0.15em;
               font-size: 2rem;
-              font-family: var(--font-istok-web);
-              font-weight: normal;
+              font-family: var(--font-noto-sans);
+              font-optical-sizing: var(--font-default-optical-sizing);
+              font-style: var(--font-default-style);
               margin: unset;
             }
       
@@ -79,9 +82,11 @@ section {
               color: var(--color-steelblue);
               letter-spacing: 0.15em;
               font-size: 1rem;
-              font-family: var(--font-istok-web);
-              font-weight: normal;
+              font-family: var(--font-noto-sans);
+              font-optical-sizing: var(--font-default-optical-sizing);
+              font-style: var(--font-default-style);
               margin: unset;
+              margin-bottom: 0.8rem;
             }
         }
 
@@ -101,6 +106,18 @@ section {
             margin-bottom: 0.5em;
             border-bottom: 1px solid;
             margin-left: 0;
+        }
+    }
+}
+@media screen and (max-width: 390px) {
+    .section {
+        &__company {
+
+            &--title {
+                h3 {
+                    font-size: .8rem;
+                }
+            }
         }
     }
 }

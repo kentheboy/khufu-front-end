@@ -4,7 +4,7 @@
         <main class="main">
             <section class="section__guide">
                 <div class="section__guide--title">
-                  <h1>Guide</h1>
+                  <h1>GUIDE</h1>
                   <h3>ご利用ガイド</h3>
                 </div>
                 <div class="section__guide--content">
@@ -98,17 +98,20 @@
                     </div>
                 </div>
             </section>
+            <ScrollTop />
         </main>
         <Footer></Footer>
     </div>
 </template>
 <script>
 import Header from "/src/components/common/Header";
+import ScrollTop from 'primevue/scrolltop';
 import Footer from "/src/components/common/Footer";
 export default {
   name: 'Guide',
   components: {
     Header,
+    ScrollTop,
     Footer
   }
 }
@@ -118,7 +121,9 @@ export default {
     text-align: left;
     font-size: 1rem;
     color: var(--color-black);
-    font-family: var(--font-istok-web);
+    font-family: var(--font-noto-sans);
+    font-optical-sizing: var(--font-default-optical-sizing);
+    font-style: var(--font-default-style);
 }
 section {
     margin: 8rem 2.4rem;
@@ -132,15 +137,16 @@ section {
         font-size: var(--font-size-base);
         &--title {
             text-align: center;
-            margin: 2.3rem;
-            border-bottom: 1.5px solid var(--color-steelblue);
+            margin: 2.3rem 0;
+            border-bottom: 2px solid var(--color-steelblue);
       
             h1 {
               color: var(--color-steelblue);
               letter-spacing: 0.15em;
               font-size: 2rem;
-              font-family: var(--font-istok-web);
-              font-weight: normal;
+              font-family: var(--font-noto-sans);
+              font-optical-sizing: var(--font-default-optical-sizing);
+              font-style: var(--font-default-style);
               margin: unset;
             }
       
@@ -148,9 +154,11 @@ section {
               color: var(--color-steelblue);
               letter-spacing: 0.15em;
               font-size: 1rem;
-              font-family: var(--font-istok-web);
-              font-weight: normal;
+              font-family: var(--font-noto-sans);
+              font-optical-sizing: var(--font-default-optical-sizing);
+              font-style: var(--font-default-style);
               margin: unset;
+              margin-bottom: 0.8rem;
             }
         }
         &--content {
@@ -167,8 +175,9 @@ section {
                 height: 8rem;
                 background-color: var(--color-skyblue);
                 color: var(--color-white);
-                font-family: var(--font-istok-web);
-                font-weight: normal;
+                font-family: var(--font-noto-sans);
+                font-optical-sizing: var(--font-default-optical-sizing);
+                font-style: var(--font-default-style);
                 border-radius: 1rem;
                 padding: 1rem;
                 .step-number {
@@ -187,8 +196,8 @@ section {
             &--arrow {
                 width: 3rem;
                 .pi {
-                    font-size: 2rem;
-                    margin-top: 3.7rem;
+                    font-size: 3rem;
+                    margin-top: 2.7rem;
                     color: var(--color-black)
                 }
             }
@@ -227,6 +236,12 @@ section {
 @media screen and (max-width: 390px) {
     .section {
         &__guide {
+
+            &--title {
+                h3 {
+                    font-size: .8rem;
+                }
+            }
 
             &--content {
                 margin: initial;
