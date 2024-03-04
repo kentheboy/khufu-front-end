@@ -226,9 +226,10 @@
             <h3>車両一覧</h3>
           </div>
           <div class="section__products--lists">
-            <ProductCard @click="scrollToEearchAndReservation"></ProductCard>
-            <ProductCard @click="scrollToEearchAndReservation"></ProductCard>
-            <ProductCard @click="scrollToEearchAndReservation"></ProductCard>
+            <ProductCard :product="vehicle_list[0]"></ProductCard>
+            <ProductCard :product="vehicle_list[1]"></ProductCard>
+            <ProductCard :product="vehicle_list[2]"></ProductCard>
+            <ProductCard :product="vehicle_list[3]"></ProductCard>
           </div>
         </section>
       </div>
@@ -356,6 +357,32 @@ export default {
         },
         returnTime: '00:00',
       },
+      vehicle_list: [
+        {
+          title: "ALPHARD",
+          main_image: "/images/car-images/ALPHARD-1.jpg",
+          passenger: 7,
+          stock: 1
+        },
+        {
+          title: "ALPHARD",
+          main_image: "/images/car-images/ALPHARD-2.jpg",
+          passenger: 8,
+          stock: 1
+        },
+        {
+          title: "VELLFIRE",
+          main_image: "/images/car-images/VELLFIRE.jpg",
+          passenger: 8,
+          stock: 1
+        },
+        {
+          title: "HIACE",
+          main_image: "/images/car-images/HIACE.jpg",
+          passenger: 10,
+          stock: 1
+        }
+      ],
       isSearched: false,
       availableCar: [],
       comingSoonHeight: null,
