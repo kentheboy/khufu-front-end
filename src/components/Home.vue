@@ -333,8 +333,13 @@ export default {
     return {
       heroImages: [
         "/images/car-images/hero-image1.jpg",
+        "/images/hero-images/hero-image3.jpg",
         "/images/car-images/hero-image2.png",
-        "/images/car-images/hero-image3.png"
+        "/images/hero-images/hero-image4.jpg",
+        "/images/hero-images/hero-image1.jpg",
+        "/images/car-images/hero-image3.png",
+        "/images/hero-images/hero-image2.jpg",
+        "/images/hero-images/hero-image5.jpg"
       ],
       additionalDriverRadio: [
         { name: "additional-driver-radio", value: "yes", label: "あり"},
