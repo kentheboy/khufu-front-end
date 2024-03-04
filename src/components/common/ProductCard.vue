@@ -75,12 +75,13 @@ export default {
 
         &-passenger {
             position: absolute;
-            top: 2.2rem;
+            top: 2.5rem;
             right: 1rem;
             letter-spacing: 0.15em;
             display: inline-block;
             width: 6.6rem;
             height: 1.1rem;
+            font-size: .77rem;
             color: var(--color-black);
         }
     }
