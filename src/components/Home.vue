@@ -367,13 +367,13 @@ export default {
           title: "ALPHARD",
           main_image: "/images/car-images/ALPHARD-1.jpg",
           passenger: 7,
-          stock: 1
+          stock: 7
         },
         {
           title: "ALPHARD",
           main_image: "/images/car-images/ALPHARD-2.jpg",
           passenger: 8,
-          stock: 1
+          stock: 2
         },
         {
           title: "VELLFIRE",
@@ -385,7 +385,7 @@ export default {
           title: "HIACE",
           main_image: "/images/car-images/HIACE.jpg",
           passenger: 10,
-          stock: 1
+          stock: 2
         }
       ],
       isSearched: false,
