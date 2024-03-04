@@ -169,8 +169,10 @@ export default {
             color: var(--color-steelblue);
             letter-spacing: 0.15em;
             font-size: 2rem;
-            font-family: var(--font-istok-web);
-            font-weight: normal;
+            font-family: var(--font-noto-sans);
+            font-optical-sizing: var(--font-default-optical-sizing);
+            font-style: var(--font-default-style);
+            
             margin: unset;
         }
     
@@ -178,8 +180,9 @@ export default {
             color: var(--color-steelblue);
             letter-spacing: 0.15em;
             font-size: 1rem;
-            font-family: var(--font-istok-web);
-            font-weight: normal;
+            font-family: var(--font-noto-sans);
+            font-optical-sizing: var(--font-default-optical-sizing);
+            font-style: var(--font-default-style);
             margin: unset;
         }
     }

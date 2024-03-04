@@ -226,9 +226,10 @@
             <h3>車両一覧</h3>
           </div>
           <div class="section__products--lists">
-            <ProductCard @click="scrollToEearchAndReservation"></ProductCard>
-            <ProductCard @click="scrollToEearchAndReservation"></ProductCard>
-            <ProductCard @click="scrollToEearchAndReservation"></ProductCard>
+            <ProductCard :product="vehicle_list[0]"></ProductCard>
+            <ProductCard :product="vehicle_list[1]"></ProductCard>
+            <ProductCard :product="vehicle_list[2]"></ProductCard>
+            <ProductCard :product="vehicle_list[3]"></ProductCard>
           </div>
         </section>
       </div>
@@ -356,6 +357,32 @@ export default {
         },
         returnTime: '00:00',
       },
+      vehicle_list: [
+        {
+          title: "ALPHARD",
+          main_image: "/images/car-images/ALPHARD-1.jpg",
+          passenger: 7,
+          stock: 1
+        },
+        {
+          title: "ALPHARD",
+          main_image: "/images/car-images/ALPHARD-2.jpg",
+          passenger: 8,
+          stock: 1
+        },
+        {
+          title: "VELLFIRE",
+          main_image: "/images/car-images/VELLFIRE.jpg",
+          passenger: 8,
+          stock: 1
+        },
+        {
+          title: "HIACE",
+          main_image: "/images/car-images/HIACE.jpg",
+          passenger: 10,
+          stock: 1
+        }
+      ],
       isSearched: false,
       availableCar: [],
       comingSoonHeight: null,
@@ -613,7 +640,9 @@ export default {
   text-align: left;
   font-size: 1rem;
   color: var(--color-black);
-  font-family: var(--font-istok-web);
+  font-family: var(--font-noto-sans);
+  font-optical-sizing: var(--font-default-optical-sizing);
+  font-style: var(--font-default-style);
 }
 section {
   margin: 8rem 2.4rem;
@@ -627,7 +656,6 @@ section {
     text-align: center;
     font-size: var(--font-size-base);
     color: var(--color-white);
-    font-family: var(--font-istok-web);
     margin: 0 6% 8rem;
 
     &--title {
@@ -635,8 +663,9 @@ section {
         margin: 0;
         font-size: var(--font-size-xs);
         letter-spacing: 0.2em;
-        font-weight: 400;
-        font-family: inherit;
+        font-family: var(--font-noto-sans);
+        font-optical-sizing: var(--font-default-optical-sizing);
+        font-style: var(--font-default-style);
         color: var(--color-steelblue);
         text-align: left;
       }
@@ -645,8 +674,9 @@ section {
         margin: 0;
         font-size: 3.2rem;
         letter-spacing: 0.2em;
-        font-weight: 400;
-        font-family: inherit;
+        font-family: var(--font-noto-sans);
+        font-optical-sizing: var(--font-default-optical-sizing);
+        font-style: var(--font-default-style);
         color: var(--color-steelblue);
         text-align: left;
         line-height: 3rem;
@@ -761,8 +791,9 @@ section {
         color: var(--color-steelblue);
         letter-spacing: 0.15em;
         font-size: 2rem;
-        font-family: var(--font-istok-web);
-        font-weight: normal;
+        font-family: var(--font-noto-sans);
+        font-optical-sizing: var(--font-default-optical-sizing);
+        font-style: var(--font-default-style);
         margin: unset;
       }
 
@@ -770,8 +801,9 @@ section {
         color: var(--color-steelblue);
         letter-spacing: 0.15em;
         font-size: 1rem;
-        font-family: var(--font-istok-web);
-        font-weight: normal;
+        font-family: var(--font-noto-sans);
+        font-optical-sizing: var(--font-default-optical-sizing);
+        font-style: var(--font-default-style);
         margin: unset;
         margin-bottom: 0.8rem;
         @media screen and (max-width: 390px) {
@@ -821,8 +853,9 @@ section {
         color: var(--color-steelblue);
         letter-spacing: 0.15em;
         font-size: 2rem;
-        font-family: var(--font-istok-web);
-        font-weight: normal;
+        font-family: var(--font-noto-sans);
+        font-optical-sizing: var(--font-default-optical-sizing);
+        font-style: var(--font-default-style);
         margin: unset;
       }
 
@@ -830,8 +863,9 @@ section {
         color: var(--color-steelblue);
         letter-spacing: 0.15em;
         font-size: 1rem;
-        font-family: var(--font-istok-web);
-        font-weight: normal;
+        font-family: var(--font-noto-sans);
+        font-optical-sizing: var(--font-default-optical-sizing);
+        font-style: var(--font-default-style);
         margin: unset;
         margin-bottom: 0.8rem;
         @media screen and (max-width: 390px) {

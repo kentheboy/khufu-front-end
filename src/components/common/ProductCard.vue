@@ -1,32 +1,16 @@
 <template>
     <div class="product__card">
+        <div class="product__card--stock">{{ product.stock }}</div>
         <img :src="product.main_image">
         <div class="product__card--description">
             <div class="product__card--description-title">{{ product.title }}</div>
             <div class="product__card--description-passenger">乗車定員　{{ product.passenger }}人</div>
-            <hr>
-            <div class="product__card--description-price">¥{{ addCommas(product.price) }}~/24h</div>
-            <div class="product__card--description-icons">
-                <img class="product__card--description-icon"
-                    :src="`/images/icons/smoking_${product.isSmokingAllowed ? 'allowed' : 'unallowed'}.png`"
-                    alt="喫煙可（電子タバコのみ）">
-            </div>
-            <div class="product__card--description-select-buttons">
-                <Button
-                    text="空き状況を検索する"
-                    @click="click()"
-                ></Button>
-            </div>
         </div>
     </div>
 </template>
 <script>
-import Button from "/src/components/common/Button";
 export default {
     name: 'ProductCard',
-    components: {
-        Button
-    },
     props: {
         product: {
             type: Object,
@@ -35,32 +19,9 @@ export default {
                     title: "ALPHARD",
                     main_image: "/img/main5@3x.fb64a8f0.png",
                     passenger: 7,
-                    price: 25000,
-                    isSmokingAllowed: false
+                    stock: 1
                 }
             )
-        }
-    },
-    methods: {
-        click() {
-            this.$emit("click");
-        },
-        addCommas(num) {
-            let str = num.toString();
-            let result = '';
-            let insertComma = false;
-
-            for (let i = str.length - 1; i >= 0; i--) {
-                if (insertComma) {
-                    result += ',';
-                    insertComma = false;
-                }
-                result += str[i];
-                if ((str.length - i) % 3 === 0 && i > 0) {
-                    insertComma = true;
-                }
-            }
-            return result.split('').reverse().join('');
         }
     }
 }
@@ -71,9 +32,10 @@ export default {
     background-color: var(--color-lightblue);
     box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.25);
     width: 18.15rem;
-    height: 24.39rem;
+    height: 20.39rem;
     display: inline-block;
     margin: 1rem 2rem;
+    position: relative;
 
     img {
         width: 18.15rem;
@@ -85,13 +47,26 @@ export default {
         }
     }
 
+    &--stock {
+        position: absolute;
+        width: 3rem;
+        height: 3rem;
+        top: -1rem;
+        right: -1rem;
+        background-color: var(--color-skyblue);
+        border-radius: 50%;
+        padding: 0.3rem 1.1rem 0;
+        font-size: 1.5rem;
+        color: white;
+        box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.25);
+    }
     &--description {
         position: relative;
-        height: 8rem;
+        font-weight: bold;
 
         &-title {
             position: absolute;
-            top: 0;
+            top: 1.8rem;
             left: 1rem;
             font-size: 1.4rem;
             letter-spacing: 0.1em;
@@ -100,53 +75,14 @@ export default {
 
         &-passenger {
             position: absolute;
-            top: 0.71rem;
+            top: 2.5rem;
             right: 1rem;
             letter-spacing: 0.15em;
             display: inline-block;
             width: 6.6rem;
             height: 1.1rem;
+            font-size: .77rem;
             color: var(--color-black);
-        }
-
-        hr {
-            position: absolute;
-            top: 1.7rem;
-            left: 6.5rem;
-            width: 30%;
-            border: solid 0.1px #c4cfd5;
-        }
-
-        &-price {
-            font-size: 1.2rem;
-            letter-spacing: 0.15em;
-            position: absolute;
-            top: 2.8rem;
-            right: 1rem;
-            color: var(--color-black);
-        }
-
-        &-select-buttons {
-            display: flex;
-            padding: 0 1.5rem;
-            justify-content: space-around;
-            position: relative;
-            top: 6.5rem;
-
-            &::v-deep button {
-                width: 10rem;
-                font-size: var(--font-size-5xs);
-                letter-spacing: 0.1em;
-                margin: 0;
-                box-shadow: 0.9974358678px 1.9948717356px 1.99px rgba(0, 0, 0, 0.25);
-                cursor: pointer;
-            }
-        }
-
-        &-icons {
-            position: absolute;
-            top: 4.8rem;
-            right: 1rem;
         }
     }
 }
