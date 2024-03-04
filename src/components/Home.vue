@@ -661,7 +661,7 @@ section {
     &--title {
       h3 {
         margin: 0;
-        font-size: var(--font-size-xs);
+        font-size: 1rem;
         letter-spacing: 0.2em;
         font-family: var(--font-noto-sans);
         font-optical-sizing: var(--font-default-optical-sizing);
@@ -672,7 +672,7 @@ section {
 
       h1 {
         margin: 0;
-        font-size: 3.2rem;
+        font-size: 2rem;
         letter-spacing: 0.2em;
         font-family: var(--font-noto-sans);
         font-optical-sizing: var(--font-default-optical-sizing);
