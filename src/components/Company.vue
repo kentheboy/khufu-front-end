@@ -62,7 +62,7 @@ section {
 .section {
     &__company {
         text-align: center;
-        font-size: var(--font-size-base);
+        font-size: 1rem;
         &--title {
             text-align: center;
             margin: 2.3rem 0;
@@ -81,7 +81,6 @@ section {
             h3 {
               color: var(--color-steelblue);
               letter-spacing: 0.15em;
-              font-size: 1rem;
               font-family: var(--font-noto-sans);
               font-optical-sizing: var(--font-default-optical-sizing);
               font-style: var(--font-default-style);
