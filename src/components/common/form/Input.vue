@@ -69,8 +69,8 @@
             {{ label }}
             <span v-if="required" class="required-notice">※必須</span>
         </label>
-        <select>
-            <option v-for="option in options" :key="option">{{ option }}</option>
+        <select v-model="selectedValue">
+            <option v-for="option in options" :key="option" :value=option.value>{{ option.label }}</option>
         </select>
     </div>
     <div v-else-if="type==='textarea'" :class="`input-area ${classes}`">
