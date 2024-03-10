@@ -332,14 +332,14 @@ export default {
   data() {
     return {
       heroImages: [
-        "/images/car-images/hero-image1.jpg",
-        "/images/hero-images/hero-image3.jpg",
-        "/images/car-images/hero-image2.png",
-        "/images/hero-images/hero-image4.jpg",
-        "/images/hero-images/hero-image1.jpg",
-        "/images/car-images/hero-image3.png",
-        "/images/hero-images/hero-image2.jpg",
-        "/images/hero-images/hero-image5.jpg"
+        "/images/hero-images/image1.png",
+        "/images/hero-images/image2.jpg",
+        "/images/hero-images/image3.jpg",
+        "/images/hero-images/image4.jpg",
+        "/images/hero-images/image5.jpg",
+        "/images/hero-images/image6.jpg",
+        "/images/hero-images/image7.jpg",
+        "/images/hero-images/image8.png"
       ],
       additionalDriverRadio: [
         { name: "additional-driver-radio", value: "yes", label: "あり"},
