@@ -34,16 +34,52 @@
                                 <span>補償制度の含まれた金額です</span>
                             </dt>
                             <dt 
-                                v-if="reservationInfo.additionalService && reservationInfo.additionalService.akamineStaDelivery == 1"
+                                v-if="reservationInfo.additionalService && reservationInfo.additionalService.deliveryOption == 1"
                                 class="options-price-title"
                             >
                                 赤嶺駅貸出料
                             </dt>
                             <dd 
-                                v-if="reservationInfo.additionalService && reservationInfo.additionalService.akamineStaDelivery == 1"
+                                v-if="reservationInfo.additionalService && reservationInfo.additionalService.deliveryOption == 1"
                                 class="options-price"
                             >
-                                ¥3,000
+                                ¥3,300
+                            </dd>
+                            <dt 
+                                v-if="reservationInfo.additionalService && reservationInfo.additionalService.deliveryOption == 2"
+                                class="options-price-title"
+                            >
+                                那覇市内ホテル貸出
+                            </dt>
+                            <dd 
+                                v-if="reservationInfo.additionalService && reservationInfo.additionalService.deliveryOption == 2"
+                                class="options-price"
+                            >
+                                ¥3,300
+                            </dd>
+                            <dt 
+                                v-if="reservationInfo.additionalService && reservationInfo.additionalService.returnOption == 1"
+                                class="options-price-title"
+                            >
+                                赤嶺駅返却
+                            </dt>
+                            <dd 
+                                v-if="reservationInfo.additionalService && reservationInfo.additionalService.returnOption == 1"
+                                class="options-price"
+                            >
+                                ¥3,300
+                            </dd>
+                            <dt 
+                                v-if="reservationInfo.additionalService && reservationInfo.additionalService.returnOption == 2"
+                                class="options-price-title"
+                            >
+                                那覇市内ホテル返却
+                            </dt>
+                            <dd 
+                                v-if="reservationInfo.additionalService && reservationInfo.additionalService.returnOption == 2"
+                                class="options-price"
+                            >
+                                ¥3,300
                             </dd>
                             <dt 
                                 v-if="reservationInfo.additionalService && reservationInfo.additionalService.useOfChiledSheet > 0"
