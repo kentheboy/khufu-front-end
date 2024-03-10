@@ -45,7 +45,7 @@
               >
             </div>
             <div class="datetimepicker-rule">
-              <span>※営業時間は午前8:00 - 午後7:00となっております。</span>
+              <span>※営業時間(予約可能時間)は午前8:00 - 午後6:00となっております。</span>
             </div>
           </div>
           <Button
@@ -153,6 +153,7 @@
                       name="airport-dropoff"
                       v-model="scheduleInfo.airportDropoff"
                     ></Input>
+                    <span class="input-description">空港送迎時間は午前9:00 - 午後5:00となっております。</span>
                   </div>
                   <div class="section__form--content-input-area">
                     <Input
@@ -444,6 +445,16 @@ export default {
         emailRegex.test(this.scheduleInfo.customerEmail) &&
         phoneRegex.test(this.scheduleInfo.customerPhoneNumber)
       ) {
+        if (this.scheduleInfo.airportPickup) {
+          var pickupTime = new Date(`${this.search.departDate.value} ${this.scheduleInfo.airportPickup}`);
+          var minPickupTime = new Date(`${this.search.departDate.value} 09:00`);
+          var maxPickupTime = new Date(`${this.search.departDate.value} 17:00`);
+          if (pickupTime >= minPickupTime && pickupTime <= maxPickupTime) {
+            return true;
+          } else {
+            return false;
+          }
+        }
         return true;
       } else {
         return false;
