@@ -25,7 +25,7 @@
                 type="time"
                 name="startTime"
                 v-model="search.departTime"
-                @update:modelValue="isValidSearch('departTime')"
+                @update:modelValue="isValidSearch('departDate')"
               >
             </div>
             <div class="datetimepicker-selector">
@@ -41,8 +41,11 @@
                 type="time"
                 name="endTime"
                 v-model="search.returnTime"
-                @update:modelValue="isValidSearch('returnTime')"
+                @update:modelValue="isValidSearch('returnDate')"
               >
+            </div>
+            <div class="datetimepicker-rule">
+              <span>※営業時間は午前8:00 - 午後7:00となっております。</span>
             </div>
           </div>
           <Button
@@ -355,12 +358,12 @@ export default {
           value: null,
           isValid: false
         },
-        departTime: '00:00',
+        departTime: '08:00',
         returnDate: {
           value: null,
           isValid: false
         },
-        returnTime: '00:00',
+        returnTime: '18:00',
       },
       vehicle_list: [
         {
@@ -452,14 +455,28 @@ export default {
       switch(inputName) {
         case "departDate":
           if (this.search.departDate.value) {
-            this.search.departDate.isValid = true;
+            var departTime = new Date(`${this.search.departDate.value} ${this.search.departTime}`);
+            var minDepartTime = new Date(`${this.search.departDate.value} 08:00`);
+            var maxDepartTime = new Date(`${this.search.departDate.value} 18:00`);
+            if (departTime >= minDepartTime && departTime <= maxDepartTime) {
+              this.search.departDate.isValid = true;
+            } else {
+              this.search.departDate.isValid = false;
+            }
           } else {
             this.search.departDate.isValid = false;
           }
           break;
         case "returnDate":
           if (this.search.returnDate.value) {
-            this.search.returnDate.isValid = true;
+            var returnTime = new Date(`${this.search.returnDate.value} ${this.search.returnTime}`);
+            var minReturnTime = new Date(`${this.search.returnDate.value} 08:00`);
+            var maxReturnTime = new Date(`${this.search.returnDate.value} 18:00`);
+            if (returnTime >= minReturnTime && returnTime <= maxReturnTime) {
+              this.search.returnDate.isValid = true;
+            } else {
+              this.search.returnDate.isValid = false;
+            }
           } else {
             this.search.returnDate.isValid = false;
           }
