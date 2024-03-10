@@ -168,6 +168,36 @@
                   <div class="section__form--content-input-area">
                     <Input
                       type="radio"
+                      label="那覇市内ホテル貸出"
+                      name="naha-hotel-delivery"
+                      :options='[{"name": "nahaHotelDelivery", "label": "希望しない", "value": 0}, {"name": "nahaHotelDelivery", "label": "希望する", "value": 1}]'
+                      v-model="scheduleInfo.nahaHotelDelivery"
+                    ></Input>
+                    <span class="input-description">追加料 ¥3,000</span>
+                  </div>
+                  <div class="section__form--content-input-area">
+                    <Input
+                      type="radio"
+                      label="赤嶺駅返却"
+                      name="akamine-station-return"
+                      :options='[{"name": "akamineStaReturn", "label": "希望しない", "value": 0}, {"name": "akamineStaReturn", "label": "希望する", "value": 1}]'
+                      v-model="scheduleInfo.akamineStaReturn"
+                    ></Input>
+                    <span class="input-description">追加料 ¥3,000</span>
+                  </div>
+                  <div class="section__form--content-input-area">
+                    <Input
+                      type="radio"
+                      label="那覇市内ホテル返却"
+                      name="naha-hotel-return"
+                      :options='[{"name": "nahaHotelReturn", "label": "希望しない", "value": 0}, {"name": "nahaHotelReturn", "label": "希望する", "value": 1}]'
+                      v-model="scheduleInfo.nahaHotelReturn"
+                    ></Input>
+                    <span class="input-description">追加料 ¥3,000</span>
+                  </div>
+                  <div class="section__form--content-input-area">
+                    <Input
+                      type="radio"
                       label="お子様用シート"
                       name="use-of-chiled-sheet"
                       classes="display-block"
@@ -410,7 +440,10 @@ export default {
         airportPickup: false,
         airportDropoff: false,
         useOfChiledSheet: 0,
-        akamineStaDelivery: 0
+        akamineStaDelivery: 0,
+        akamineStaReturn: 0,
+        nahaHotelDelivery: 0,
+        nahaHotelReturn: 0
       },
       totalFeeHolder: null,
       openReservationForm: false,
@@ -527,6 +560,9 @@ export default {
         'airportPickup': this.scheduleInfo.airportPickup,
         'airportDropoff': this.scheduleInfo.airportDropoff,
         'akamineStaDelivery': this.scheduleInfo.akamineStaDelivery,
+        'nahaHotelDelivery': this.scheduleInfo.nahaHotelDelivery,
+        'akamineStaReturn': this.scheduleInfo.akamineStaReturn,
+        'nahaHotelReturn': this.scheduleInfo.nahaHotelReturn,
         'useOfChiledSheet': this.scheduleInfo.useOfChiledSheet
       });
       const data = {
@@ -565,8 +601,17 @@ export default {
       
       // add basic totalFee inside temporal variable holder
       this.totalFeeHolder = this.scheduleInfo.totalFee;
-      // if akamineStaDelivery is requested, charge extra 3000yen
+      // if any delivery/return area is requested, charge extra 3000yen
       if(this.scheduleInfo.akamineStaDelivery) {
+        this.totalFeeHolder += 3000;
+      }
+      if(this.scheduleInfo.nahaHotelDelivery) {
+        this.totalFeeHolder += 3000;
+      }
+      if(this.scheduleInfo.akamineStaReturn) {
+        this.totalFeeHolder += 3000;
+      }
+      if(this.scheduleInfo.nahaHotelReturn) {
         this.totalFeeHolder += 3000;
       }
       // if any childSheet requested, charge extra fee depending on the sheet type
@@ -602,6 +647,9 @@ export default {
         },
         additionalService: {
           akamineStaDelivery: this.scheduleInfo.akamineStaDelivery,
+          nahaHotelDelivery: this.scheduleInfo.nahaHotelDelivery,
+          akamineStaReturn: this.scheduleInfo.akamineStaReturn,
+          nahaHotelReturn: this.scheduleInfo.nahaHotelReturn,
           useOfChiledSheet: this.scheduleInfo.useOfChiledSheet === 1 ? 1000 : this.scheduleInfo.useOfChiledSheet === 2 ? 500 : 0
         }
       };

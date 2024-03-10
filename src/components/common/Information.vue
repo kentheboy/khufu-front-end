@@ -46,6 +46,42 @@
                                 ¥3,000
                             </dd>
                             <dt 
+                                v-if="reservationInfo.additionalService && reservationInfo.additionalService.nahaHotelDelivery == 1"
+                                class="options-price-title"
+                            >
+                                那覇市内ホテル貸出
+                            </dt>
+                            <dd 
+                                v-if="reservationInfo.additionalService && reservationInfo.additionalService.nahaHotelDelivery == 1"
+                                class="options-price"
+                            >
+                                ¥3,000
+                            </dd>
+                            <dt 
+                                v-if="reservationInfo.additionalService && reservationInfo.additionalService.akamineStaReturn == 1"
+                                class="options-price-title"
+                            >
+                                赤嶺駅返却
+                            </dt>
+                            <dd 
+                                v-if="reservationInfo.additionalService && reservationInfo.additionalService.akamineStaReturn == 1"
+                                class="options-price"
+                            >
+                                ¥3,000
+                            </dd>
+                            <dt 
+                                v-if="reservationInfo.additionalService && reservationInfo.additionalService.nahaHotelReturn == 1"
+                                class="options-price-title"
+                            >
+                                那覇市内ホテル返却
+                            </dt>
+                            <dd 
+                                v-if="reservationInfo.additionalService && reservationInfo.additionalService.nahaHotelReturn == 1"
+                                class="options-price"
+                            >
+                                ¥3,000
+                            </dd>
+                            <dt 
                                 v-if="reservationInfo.additionalService && reservationInfo.additionalService.useOfChiledSheet > 0"
                                 class="options-price-title"
                             >
