@@ -14,13 +14,13 @@
                 <div class="row-content">
                     <div class="title">■貸出日程</div>
                     <div class="detail">
-                        <p>{{ reservationInfo.start_at.replace(/-/g, '/') }} ~ {{ reservationInfo.end_at.replace(/-/g, '/') }}</p>
+                        <p class="total-hours">{{ reservationInfo.start_at.replace(/-/g, '/') }} ~ {{ reservationInfo.end_at.replace(/-/g, '/') }}</p>
                     </div>
                 </div>
                 <div class="row-content">
                     <div class="title">■料金</div>
                     <div class="detail">
-                        <p>¥{{ addCommas(reservationInfo.totalFee) }}</p>
+                        <p class="total-price">¥{{ addCommas(reservationInfo.totalFee) }}</p>
                         <hr>
                         <dl class="price-detail">
                             <dt class="basic-price-title">
@@ -281,21 +281,22 @@ export default {
                 @media screen and (max-width: 390px) {
                     width: 14rem;
                 }
+                .total-price {
+                    text-align: right;
+                }
                 .price-detail {
                     display: flex;
                     flex-wrap: wrap;
                     align-items: center;
-                    @media screen and (max-width: 390px) {
-                        height: 4rem
-                    }
                     dt {
                         margin: 0;
-                        width: 50%;
+                        width: 60%;
                     }
                     dd {
                         margin: 0;
-                        padding-left: 2rem;
-                        width: 50%;
+                        padding-left: 1.5rem;
+                        width: 40%;
+                        text-align: right;
                     }
                     .additional-note {
                         font-size: .7rem;
