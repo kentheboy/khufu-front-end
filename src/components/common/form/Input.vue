@@ -288,8 +288,9 @@ export default {
 .airport-timpicker {
     &__headline {
         &--pickup {
+            display: flex;
             label {
-                display: inline;
+                width: 50%;
             }
             input[type=radio] {
                 width: auto;
@@ -297,9 +298,6 @@ export default {
                 margin: 0.1rem 0.3rem;
                 height: 0.9rem;
             }
-        }
-        @media screen and (max-width: 390px) {
-            flex-direction: column;
         }
     }
     input[type=time] {
