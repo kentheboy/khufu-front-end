@@ -20,8 +20,14 @@
                 <span v-if="required" class="required-notice">※必須</span>
             </label>
             <div class="airport-timpicker__headline--pickup">
-                <input type="radio" :name="name" value="true" @input="handleAirportTimpicker">あり
-                <input type="radio" :name="name" value="false" @input="handleAirportTimpicker">なし
+                <label>
+                    <input type="radio" :name="name" value="true" @input="handleAirportTimpicker">
+                    <span>あり</span>
+                </label>
+                <label>
+                    <input type="radio" :name="name" value="false" @input="handleAirportTimpicker">
+                    <span>なし</span>
+                </label>
             </div>
         </div>
         <input 
@@ -281,10 +287,10 @@ export default {
 }
 .airport-timpicker {
     &__headline {
-        display: flex;
-        justify-content: space-between;
-        width: 15.5rem;
         &--pickup {
+            label {
+                display: inline;
+            }
             input[type=radio] {
                 width: auto;
                 box-shadow: initial;
