@@ -82,16 +82,40 @@
                                 ¥3,300
                             </dd>
                             <dt 
-                                v-if="reservationInfo.additionalService && reservationInfo.additionalService.useOfChiledSheet > 0"
+                                v-if="reservationInfo.additionalService && reservationInfo.additionalService.useOfBabySheet > 0"
                                 class="options-price-title"
                             >
-                                お子様用シート代
+                                ベビーシート代
                             </dt>
                             <dd 
-                                v-if="reservationInfo.additionalService && reservationInfo.additionalService.useOfChiledSheet > 0"
+                                v-if="reservationInfo.additionalService && reservationInfo.additionalService.useOfBabySheet > 0"
                                 class="options-price"
                             >
-                                ¥{{ addCommas(reservationInfo.additionalService.useOfChiledSheet) }}
+                                ¥{{ addCommas(reservationInfo.additionalService.useOfBabySheet) }}
+                            </dd>
+                            <dt 
+                                v-if="reservationInfo.additionalService && reservationInfo.additionalService.useOfChildSheet > 0"
+                                class="options-price-title"
+                            >
+                                チャイルドシート代
+                            </dt>
+                            <dd 
+                                v-if="reservationInfo.additionalService && reservationInfo.additionalService.useOfChildSheet > 0"
+                                class="options-price"
+                            >
+                                ¥{{ addCommas(reservationInfo.additionalService.useOfChildSheet) }}
+                            </dd>
+                            <dt 
+                                v-if="reservationInfo.additionalService && reservationInfo.additionalService.useOfJuniorSheet > 0"
+                                class="options-price-title"
+                            >
+                                ジュニアシート代
+                            </dt>
+                            <dd 
+                                v-if="reservationInfo.additionalService && reservationInfo.additionalService.useOfJuniorSheet > 0"
+                                class="options-price"
+                            >
+                                ¥{{ addCommas(reservationInfo.additionalService.useOfJuniorSheet) }}
                             </dd>
                         </dl>
                     </div>
