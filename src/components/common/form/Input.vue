@@ -292,6 +292,9 @@ export default {
                 height: 0.9rem;
             }
         }
+        @media screen and (max-width: 390px) {
+            flex-direction: column;
+        }
     }
     input[type=time] {
         width: 7.8rem;
