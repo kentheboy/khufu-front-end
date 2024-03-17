@@ -178,13 +178,33 @@
                   <div class="section__form--content-input-area">
                     <Input
                       type="selectbox"
-                      label="お子様用シート"
-                      name="use-of-chiled-sheet"
+                      label="ベビーシート数(0~1歳以下)"
+                      name="use-of-baby-sheet"
                       classes="display-block"
-                      :options='[{"name": "useOfChiledSheet", "label": "希望しない", "value": 0}, {"name": "useOfChiledSheet", "label": "ベビシート", "value": 1}, {"name": "useOfChiledSheet", "label": "ジュニアシート", "value": 2}, {"name": "useOfChiledSheet", "label": "チャイルドシート", "value": 3}]'
-                      v-model="scheduleInfo.useOfChiledSheet"
+                      :options='[{"name": "useOfBabySheet", "label": "希望しない", "value": 0}, {"name": "useOfBabySheet", "label": "1台", "value": 1}, {"name": "useOfBabySheet", "label": "2台", "value": 2}, {"name": "useOfBabySheet", "label": "3台", "value": 3}]'
+                      v-model="scheduleInfo.useOfBabySheet"
                     ></Input>
-                    <span class="input-description">各種シート追加料 ¥1,100（一律）</span>
+                  </div>
+                  <div class="section__form--content-input-area">
+                    <Input
+                      type="selectbox"
+                      label="チャイルドシート(0~4歳以下)"
+                      name="use-of-child-sheet"
+                      classes="display-block"
+                      :options='[{"name": "useOfChildSheet", "label": "希望しない", "value": 0}, {"name": "useOfChildSheet", "label": "1台", "value": 1}, {"name": "useOfChildSheet", "label": "2台", "value": 2}, {"name": "useOfChildSheet", "label": "3台", "value": 3}]'
+                      v-model="scheduleInfo.useOfChildSheet"
+                    ></Input>
+                  </div>
+                  <div class="section__form--content-input-area">
+                    <Input
+                      type="selectbox"
+                      label="ジュニアシート数(4歳以上~10歳以下)"
+                      name="use-of-junior-sheet"
+                      classes="display-block"
+                      :options='[{"name": "useOfJuniorSheet", "label": "希望しない", "value": 0}, {"name": "useOfJuniorSheet", "label": "1台", "value": 1}, {"name": "useOfJuniorSheet", "label": "2台", "value": 2}, {"name": "useOfBabySheet", "label": "3台", "value": 3}]'
+                      v-model="scheduleInfo.useOfJuniorSheet"
+                    ></Input>
+                    <span class="input-description">各種シート1台あたり追加料 ¥1,100（一律）</span>
                   </div>
                 </div>
             </section>
@@ -418,7 +438,9 @@ export default {
         dob: "",
         airportPickup: false,
         airportDropoff: false,
-        useOfChiledSheet: 0,
+        useOfBabySheet: 0,
+        useOfChildSheet: 0,
+        useOfJuniorSheet: 0,
         deliveryOption: 0,
         returnOption: 0,
       },
@@ -538,7 +560,9 @@ export default {
         'airportDropoff': this.scheduleInfo.airportDropoff,
         'deliveryOption': this.scheduleInfo.deliveryOption,
         'returnOption': this.scheduleInfo.returnOption,
-        'useOfChiledSheet': this.scheduleInfo.useOfChiledSheet
+        'useOfBabySheet': this.scheduleInfo.useOfBabySheet,
+        'useOfChildSheet': this.scheduleInfo.useOfChildSheet,
+        'useOfJuniorSheet': this.scheduleInfo.useOfJuniorSheet
       });
       const data = {
         'product_id': this.scheduleInfo.reservationCarId,
@@ -573,29 +597,27 @@ export default {
     },
     confirmForm() {
       let selectedCarInfo = this.availableCar.find(car => car.id === this.scheduleInfo.reservationCarId)
+      const deriveryReturnFee = 3300;
+      const generalChildSheetFee = 1100;
       
       // add basic totalFee inside temporal variable holder
       this.totalFeeHolder = this.scheduleInfo.totalFee;
       // if any delivery/return area is requested, charge extra 3000yen
       if(this.scheduleInfo.deliveryOption) {
-        this.totalFeeHolder += 3300;
+        this.totalFeeHolder += deriveryReturnFee;
       }
       if(this.scheduleInfo.returnOption) {
-        this.totalFeeHolder += 3300;
+        this.totalFeeHolder += deriveryReturnFee;
       }
       // if any childSheet requested, charge extra fee depending on the sheet type
-      switch(this.scheduleInfo.useOfChiledSheet) {
-        case 1:
-          this.totalFeeHolder += 1100;
-          break;
-        case 2:
-          this.totalFeeHolder += 1100;
-          break;
-        case 3:
-          this.totalFeeHolder += 1100;
-          break;
-        default:
-          break;
+      if (this.scheduleInfo.useOfBabySheet) {
+        this.totalFeeHolder += this.scheduleInfo.useOfBabySheet * generalChildSheetFee;
+      }
+      if (this.scheduleInfo.useOfChildSheet) {
+        this.totalFeeHolder += this.scheduleInfo.useOfChildSheet * generalChildSheetFee;
+      }
+      if (this.scheduleInfo.useOfJuniorSheet) {
+        this.totalFeeHolder += this.scheduleInfo.useOfJuniorSheet * generalChildSheetFee;
       }
       
       this.confirmationInfo = {
@@ -620,7 +642,9 @@ export default {
         additionalService: {
           deliveryOption: this.scheduleInfo.deliveryOption,
           returnOption: this.scheduleInfo.returnOption,
-          useOfChiledSheet: this.scheduleInfo.useOfChiledSheet !== 0 ? 1100 : 0
+          useOfBabySheet: this.scheduleInfo.useOfBabySheet * generalChildSheetFee,
+          useOfChildSheet: this.scheduleInfo.useOfChildSheet * generalChildSheetFee,
+          useOfJuniorSheet: this.scheduleInfo.useOfJuniorSheet * generalChildSheetFee
         }
       };
       this.reservationFormStatus = "confirm";
@@ -651,6 +675,11 @@ export default {
         dob: "",
         airportPickup: false,
         airportDropoff: false,
+        useOfBabySheet: 0,
+        useOfChildSheet: 0,
+        useOfJuniorSheet: 0,
+        deliveryOption: 0,
+        returnOption: 0,
       };
       this.totalFeeHolder = null;
       this.confirmationInfo = null;
