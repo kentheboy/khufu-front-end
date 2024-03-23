@@ -14,35 +14,33 @@
           <div class="datetimepicker">
             <div class="datetimepicker-selector">
               <label>出発日時</label>
-              <input
+              <Calendar
                 type="date"
                 name="startDate"
-                v-model="search.departDate.value"
+                showIcon
+                showTime
+                hourFormat="12" 
+                iconDisplay="input" 
+                dateFormat="yy/mm/dd"
+                v-model="search.departDate.rawValue"
                 @update:modelValue="isValidSearch('departDate')"
-                :min="today"
-              >
-              <input
-                type="time"
-                name="startTime"
-                v-model="search.departTime"
-                @update:modelValue="isValidSearch('departDate')"
-              >
+                :minDate="today"
+              />
             </div>
             <div class="datetimepicker-selector">
               <label>返却日時</label>
-              <input
+              <Calendar
                 type="date"
                 name="endDate"
-                v-model="search.returnDate.value"
+                showIcon
+                showTime
+                hourFormat="12" 
+                iconDisplay="input" 
+                dateFormat="yy/mm/dd"
+                v-model="search.returnDate.rawValue"
                 @update:modelValue="isValidSearch('returnDate')"
-                :min="search.departDate.value?search.departDate.value:today"
-              >
-              <input
-                type="time"
-                name="endTime"
-                v-model="search.returnTime"
-                @update:modelValue="isValidSearch('returnDate')"
-              >
+                :minDate="search.departDate.rawValue?search.departDate.rawValue:today"
+              />
             </div>
             <div class="datetimepicker-rule">
               <span>※営業時間(予約可能時間)は午前8:00 - 午後6:00となっております。</span>
@@ -334,6 +332,7 @@
 import Header from "/src/components/common/Header";
 import ImageSlider from "/src/components/common/ImageSlider";
 import Input from "/src/components/common/form/Input";
+import Calendar from 'primevue/calendar';
 import Products from "/src/components/common/Products";
 import ProductCard from "/src/components/common/ProductCard";
 import Information from "/src/components/common/Information";
@@ -348,6 +347,7 @@ export default {
     Header,
     ImageSlider,
     Input,
+    Calendar,
     Products,
     ProductCard,
     Information,
@@ -385,15 +385,15 @@ export default {
       today: null,
       search: {
         departDate: {
+          rawValue: null,
           value: null,
           isValid: false
         },
-        departTime: '08:00',
         returnDate: {
+          rawValue: null,
           value: null,
           isValid: false
         },
-        returnTime: '18:00',
       },
       vehicle_list: [
         {
@@ -451,7 +451,7 @@ export default {
     }
   },
   async created() {
-    this.today = new Date().toISOString().slice(0, 10);
+    this.today = new Date();
   },
   computed: {
     cssVars() {
@@ -495,14 +495,15 @@ export default {
   },
   methods: {
     isValidSearch(inputName) {
+      let salesStartTime = 8; //8:00 AM
+      let salesEndTime = 18; //6:00 PM
       switch(inputName) {
         case "departDate":
-          if (this.search.departDate.value) {
-            var departTime = new Date(`${this.search.departDate.value} ${this.search.departTime}`);
-            var minDepartTime = new Date(`${this.search.departDate.value} 08:00`);
-            var maxDepartTime = new Date(`${this.search.departDate.value} 18:00`);
-            if (departTime >= minDepartTime && departTime <= maxDepartTime) {
+          if (this.search.departDate.rawValue) {
+            let departTime = new Date(this.search.departDate.rawValue);
+            if (departTime.getHours() >= salesStartTime && departTime.getHours() <= salesEndTime) {
               this.search.departDate.isValid = true;
+              this.search.departDate.value = departTime.toISOString().slice(0, 10)+" "+departTime.toISOString().slice(11, 16)
             } else {
               this.search.departDate.isValid = false;
             }
@@ -511,12 +512,11 @@ export default {
           }
           break;
         case "returnDate":
-          if (this.search.returnDate.value) {
-            var returnTime = new Date(`${this.search.returnDate.value} ${this.search.returnTime}`);
-            var minReturnTime = new Date(`${this.search.returnDate.value} 08:00`);
-            var maxReturnTime = new Date(`${this.search.returnDate.value} 18:00`);
-            if (returnTime >= minReturnTime && returnTime <= maxReturnTime) {
+          if (this.search.returnDate.rawValue) {
+            let returnTime = new Date(this.search.returnDate.rawValue);
+            if (returnTime.getHours() >= salesStartTime && returnTime.getHours() <= salesEndTime) {
               this.search.returnDate.isValid = true;
+              this.search.returnDate.value = returnTime.toISOString().slice(0, 10)+" "+returnTime.toISOString().slice(11, 16)
             } else {
               this.search.returnDate.isValid = false;
             }
@@ -529,8 +529,8 @@ export default {
     async searchAvailability() {
       const param = {
         "params": {
-          "start_at": `${this.search.departDate.value} ${this.search.departTime}`,
-          "end_at": `${this.search.returnDate.value} ${this.search.returnTime}`,
+          "start_at": `${this.search.departDate.value}`,
+          "end_at": `${this.search.returnDate.value}`,
         }
       };
 
