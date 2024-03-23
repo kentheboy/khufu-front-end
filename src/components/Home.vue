@@ -588,10 +588,10 @@ export default {
       this.scheduleInfo.reservationCarId = carId;
 
       // calculate basic totalFee (fees without options)
-      this.scheduleInfo.totalFee = this.calculateTotalFeeByRentalSpan(`${this.search.departDate.value} ${this.search.departTime}`, `${this.search.returnDate.value} ${this.search.returnTime}`, this.availableCar.find(car => car.id === this.scheduleInfo.reservationCarId).price) 
+      this.scheduleInfo.totalFee = this.calculateTotalFeeByRentalSpan(`${this.search.departDate.value}`, `${this.search.returnDate.value}`, this.availableCar.find(car => car.id === this.scheduleInfo.reservationCarId).price) 
 
-      this.scheduleInfo.start_at = `${this.search.departDate.value} ${this.search.departTime}`;
-      this.scheduleInfo.end_at = `${this.search.returnDate.value} ${this.search.returnTime}`;
+      this.scheduleInfo.start_at = `${this.search.departDate.value}`;
+      this.scheduleInfo.end_at = `${this.search.returnDate.value}`;
       this.openReservationForm = true;
       this.reservationFormStatus = "entry";
     },
