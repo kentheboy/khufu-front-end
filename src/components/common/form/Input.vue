@@ -301,7 +301,7 @@ export default {
         }
     }
     input[type=time] {
-        width: 7.8rem;
+        width: 10.8rem;
     }
 }
 .file-input {
