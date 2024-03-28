@@ -478,12 +478,20 @@ export default {
         phoneRegex.test(this.scheduleInfo.customerPhoneNumber)
       ) {
         if (this.scheduleInfo.airportPickup) {
-          var pickupTime = new Date(`${this.search.departDate.value} ${this.scheduleInfo.airportPickup}`);
-          var minPickupTime = new Date(`${this.search.departDate.value} 09:00`);
-          var maxPickupTime = new Date(`${this.search.departDate.value} 17:00`);
-          if (pickupTime >= minPickupTime && pickupTime <= maxPickupTime) {
-            return true;
-          } else {
+          var pickupTime = new Date(`${this.search.departDate.value.slice(0, 10)} ${this.scheduleInfo.airportPickup}`);
+          console.log(pickupTime)
+          var minPickupTime = new Date(`${this.search.departDate.value.slice(0, 10)} 09:00`);
+          var maxPickupTime = new Date(`${this.search.departDate.value.slice(0, 10)} 17:00`);
+          if (pickupTime <= minPickupTime || pickupTime >= maxPickupTime) {
+            return false;
+          }
+        }
+        if (this.scheduleInfo.airportDropoff) {
+          var dropoffTime = new Date(`${this.search.returnDate.value.slice(0, 10)} ${this.scheduleInfo.airportDropoff}`);
+          console.log(dropoffTime)
+          var minDropoffTime = new Date(`${this.search.returnDate.value.slice(0, 10)} 09:00`);
+          var maxDropoffTime = new Date(`${this.search.returnDate.value.slice(0, 10)} 17:00`);
+          if (dropoffTime <= minDropoffTime || dropoffTime >= maxDropoffTime) {
             return false;
           }
         }
