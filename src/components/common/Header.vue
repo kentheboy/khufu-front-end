@@ -1,19 +1,20 @@
 <template>
     <header class="header" header>
         <div class="headerChild">
-          <img
-            class="logo"
-            alt=""
-            src="/images/class-logo-main@2x.png"
-            :onClick="onCLASSLogo311Click"
-          />
+          <a href="/">
+            <img
+              class="logo"
+              alt=""
+              src="/images/class-logo-main@2x.png"
+            />
+          </a>
           <div class="toReservation">
             <Button label="今すぐ予約する" @click="scrollToEearchAndReservation"/>
           </div>
           <div class="hamburgerMenu">
             <Button icon="pi pi-align-justify" @click="openSideNav = true" />
           </div>
-          <Sidebar v-model:visible="openSideNav" header="Right Sidebar" position="right">
+          <Sidebar v-model:visible="openSideNav" header="" position="right">
             <Menu :model="items">
               <template #item="{ item, props }">
                 <router-link v-if="item.route" v-slot="{ href, navigate }" :to="item.route" custom>
@@ -75,14 +76,20 @@ export default {
           }
         },
         { 
-          label: '会社概要',
-          icon: 'pi pi-folder-open',
-          route: '/company'
+          label: '料金表',
+          icon: 'pi pi-dollar',
+          url: "./files/prices.pdf",
+          target: "_blank"
         },
         { 
           label: 'ご利用ガイド',
           icon: 'pi pi-car',
           route: '/guide'
+        },
+        { 
+          label: '会社概要',
+          icon: 'pi pi-folder-open',
+          route: '/company'
         },
         { 
           label: '貸渡約款',
@@ -100,10 +107,22 @@ export default {
   },
   methods: {
     scrollToEearchAndReservation() {
-      window.scrollTo({
-        top: document.getElementById('searchAndReservation').offsetTop,
-        behavior: 'smooth'
-      });
+      if(this.$router.currentRoute.value.path !== "/") {
+        this.$router.push({name: "Home"})
+        setTimeout(() => {
+          this.openSideNav = false;
+          window.scrollTo({
+            top: document.getElementById('searchAndReservation').offsetTop,
+            behavior: 'smooth'
+          });
+        }, 100);
+      } else {
+        this.openSideNav = false;
+        window.scrollTo({
+          top: document.getElementById('searchAndReservation').offsetTop,
+          behavior: 'smooth'
+        });
+      }
     }
   }
 }
@@ -122,6 +141,7 @@ export default {
         height: 2.2rem;
         padding: unset;
         font-size: .9rem;
+        font-weight: bold;
         background-color: white;
         color: var(--color-steelblue);
         box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
@@ -175,7 +195,9 @@ export default {
       box-shadow: 0.9974358677864075px 1.994871735572815px 1.99px rgba(0, 0, 0, 0.25);
       font-size: 0.59rem;
       letter-spacing: 0.1em;
-      font-family: var(--font-istok-web);
+      font-family: var(--font-noto-sans);
+      font-optical-sizing: var(--font-default-optical-sizing);
+      font-style: var(--font-default-style);
       color: var(--color-skyblue);
       font-weight: bold;
     }

@@ -21,7 +21,6 @@
             </div>
         </div>
         <div class="sub-images">
-            <img :src="information.images[0]" alt="">
             <img
                 v-if="information.images[1]"
                 :src="information.images[1]"

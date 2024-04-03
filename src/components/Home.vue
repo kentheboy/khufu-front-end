@@ -5,67 +5,6 @@
       <section class="section__heroImageArea">
         <ImageSlider :images="heroImages"></ImageSlider>
       </section>
-      <section class="section__features">
-        <div class="section__features--title">
-          <h3>特徴</h3>
-          <h1>FEATURE</h1>
-        </div>
-        <div class="section__features--contents">
-          <div class="section__features--content">
-            <div class="ellipse-parent">
-              <div class="ellipseDiv">
-                <div class="ellipseInside-number">01</div>
-                <h1 class="ellipseInside-text">
-                  <p class="p">難しい手続きなしで</p>
-                  <p class="p">すぐご出発</p>
-                </h1>
-              </div>
-            </div>
-            <div class="subtext">
-              <h1>
-                <p class="p">必要書類はメールにて送信。<br class="sp">かんたんに手続きが済みます。</p>
-              </h1>
-            </div>
-          </div>
-          <div class="section__features--content">
-            <div class="ellipse-parent">
-              <div class="ellipseDiv">
-                <div class="ellipseInside-number">02</div>
-                <h1 class="ellipseInside-text">
-                  <p class="p">混みにくい高速道路の</p>
-                  <p class="p">近くだからスイスイ</p>
-                </h1>
-              </div>
-            </div>
-            <div class="subtext">
-              <h1>
-                <p class="p">混みにくいインターチェンジへ<br class="sp">最短アクセスが可能です。</p>
-              </h1>
-              <h3>
-                <p class="p">※空港近辺では使用インターが重なり、<br class="sp">度々渋滞になります。</p>
-              </h3>
-            </div>
-          </div>
-          <div class="section__features--content">
-            <div class="ellipse-parent">
-              <div class="ellipseDiv">
-                <div class="ellipseInside-number">03</div>
-                <h1 class="ellipseInside-text singleLine">
-                  <p class="p">支払いもスマートに</p>
-                </h1>
-              </div>
-            </div>
-            <div class="subtext">
-              <h1>
-                <p class="p">免責補償込みで予約可能。<br class="sp">余計なオプションも、<br class="sp">追加保険料も必要なし。</p>
-              </h1>
-            </div>
-          </div>
-        </div>
-      </section>
-      <Information
-        :isExample=true
-      ></Information>
       <div>
         <section class="section__form" id="searchAndReservation">
           <div class="section__form--title">
@@ -75,35 +14,36 @@
           <div class="datetimepicker">
             <div class="datetimepicker-selector">
               <label>出発日時</label>
-              <input
+              <Calendar
                 type="date"
                 name="startDate"
-                v-model="search.departDate.value"
+                showIcon
+                showTime
+                hourFormat="12" 
+                iconDisplay="input" 
+                dateFormat="yy/mm/dd"
+                v-model="search.departDate.rawValue"
                 @update:modelValue="isValidSearch('departDate')"
-                :min="today"
-              >
-              <input
-                type="time"
-                name="startTime"
-                v-model="search.departTime"
-                @update:modelValue="isValidSearch('departTime')"
-              >
+                :minDate="today"
+              />
             </div>
             <div class="datetimepicker-selector">
               <label>返却日時</label>
-              <input
+              <Calendar
                 type="date"
                 name="endDate"
-                v-model="search.returnDate.value"
+                showIcon
+                showTime
+                hourFormat="12" 
+                iconDisplay="input" 
+                dateFormat="yy/mm/dd"
+                v-model="search.returnDate.rawValue"
                 @update:modelValue="isValidSearch('returnDate')"
-                :min="search.departDate.value?search.departDate.value:today"
-              >
-              <input
-                type="time"
-                name="endTime"
-                v-model="search.returnTime"
-                @update:modelValue="isValidSearch('returnTime')"
-              >
+                :minDate="search.departDate.rawValue?search.departDate.rawValue:today"
+              />
+            </div>
+            <div class="datetimepicker-rule">
+              <span>※営業時間(予約可能時間)は午前8:00 - 午後6:00となっております。</span>
             </div>
           </div>
           <Button
@@ -211,28 +151,58 @@
                       name="airport-dropoff"
                       v-model="scheduleInfo.airportDropoff"
                     ></Input>
+                    <span class="input-description">空港送迎時間は午前9:00 - 午後5:00となっております。</span>
                   </div>
                   <div class="section__form--content-input-area">
                     <Input
-                      type="radio"
-                      label="赤嶺駅貸出"
-                      name="akamine-station-delivery"
-                      :options='[{"name": "akamineStaDelivery", "label": "希望しない", "value": 0}, {"name": "akamineStaDelivery", "label": "希望する", "value": 1}]'
-                      v-model="scheduleInfo.akamineStaDelivery"
+                      type="selectbox"
+                      label="貸出オプション"
+                      name="return-option"
+                      :options='[{"name": "none", "label": "特になし", "value": 0}, {"name": "akamineStaDelivery", "label": "赤嶺駅貸出", "value": 1}, {"name": "nahaHotelDelivery", "label": "那覇市内ホテル貸出", "value": 2}]'
+                      v-model="scheduleInfo.deliveryOption"
                     ></Input>
-                    <span class="input-description">追加料 ¥3,000</span>
+                    <span class="input-description">追加料 ¥3,300</span>
                   </div>
                   <div class="section__form--content-input-area">
                     <Input
-                      type="radio"
-                      label="お子様用シート"
-                      name="use-of-chiled-sheet"
+                      type="selectbox"
+                      label="返却オプション"
+                      name="return-option"
+                      :options='[{"name": "none", "label": "特になし", "value": 0}, {"name": "akamineStaReturn", "label": "赤嶺駅返却", "value": 1}, {"name": "nahaHotelReturn", "label": "那覇市内ホテル返却", "value": 2}]'
+                      v-model="scheduleInfo.returnOption"
+                    ></Input>
+                    <span class="input-description">追加料 ¥3,300</span>
+                  </div>
+                  <div class="section__form--content-input-area">
+                    <Input
+                      type="selectbox"
+                      label="ベビーシート数(0~1歳以下)"
+                      name="use-of-baby-sheet"
                       classes="display-block"
-                      :options='[{"name": "useOfChiledSheet", "label": "希望しない", "value": 0}, {"name": "useOfChiledSheet", "label": "ベビシート", "value": 1}, {"name": "useOfChiledSheet", "label": "ジュニアシート", "value": 2}]'
-                      v-model="scheduleInfo.useOfChiledSheet"
+                      :options='[{"name": "useOfBabySheet", "label": "希望しない", "value": 0}, {"name": "useOfBabySheet", "label": "1台", "value": 1}, {"name": "useOfBabySheet", "label": "2台", "value": 2}, {"name": "useOfBabySheet", "label": "3台", "value": 3}]'
+                      v-model="scheduleInfo.useOfBabySheet"
                     ></Input>
-                    <span class="input-description">ベビーシート（目安0歳〜3歳位向け）¥1,000</span>
-                    <span class="input-description">ジュニアシート（3歳位〜向け）¥500</span>
+                  </div>
+                  <div class="section__form--content-input-area">
+                    <Input
+                      type="selectbox"
+                      label="チャイルドシート(0~4歳以下)"
+                      name="use-of-child-sheet"
+                      classes="display-block"
+                      :options='[{"name": "useOfChildSheet", "label": "希望しない", "value": 0}, {"name": "useOfChildSheet", "label": "1台", "value": 1}, {"name": "useOfChildSheet", "label": "2台", "value": 2}, {"name": "useOfChildSheet", "label": "3台", "value": 3}]'
+                      v-model="scheduleInfo.useOfChildSheet"
+                    ></Input>
+                  </div>
+                  <div class="section__form--content-input-area">
+                    <Input
+                      type="selectbox"
+                      label="ジュニアシート数(4歳以上~10歳以下)"
+                      name="use-of-junior-sheet"
+                      classes="display-block"
+                      :options='[{"name": "useOfJuniorSheet", "label": "希望しない", "value": 0}, {"name": "useOfJuniorSheet", "label": "1台", "value": 1}, {"name": "useOfJuniorSheet", "label": "2台", "value": 2}, {"name": "useOfBabySheet", "label": "3台", "value": 3}]'
+                      v-model="scheduleInfo.useOfJuniorSheet"
+                    ></Input>
+                    <span class="input-description">各種シート1台あたり追加料 ¥1,100（一律）</span>
                   </div>
                 </div>
             </section>
@@ -280,6 +250,78 @@
           </Dialog>
         </section>
       </div>
+      <div>
+        <section class="section__products">
+          <div class="section__products--title">
+            <h1>VEHICLE LIST</h1>
+            <h3>車両一覧</h3>
+          </div>
+          <div class="section__products--lists">
+            <ProductCard :product="vehicle_list[0]"></ProductCard>
+            <ProductCard :product="vehicle_list[1]"></ProductCard>
+            <ProductCard :product="vehicle_list[2]"></ProductCard>
+            <ProductCard :product="vehicle_list[3]"></ProductCard>
+          </div>
+        </section>
+      </div>
+      <section class="section__features">
+        <div class="section__features--title">
+          <h3>特徴</h3>
+          <h1>FEATURE</h1>
+        </div>
+        <div class="section__features--contents">
+          <div class="section__features--content">
+            <div class="ellipse-parent">
+              <div class="ellipseDiv">
+                <div class="ellipseInside-number">01</div>
+                <h1 class="ellipseInside-text">
+                  <p class="p">難しい手続きなしで</p>
+                  <p class="p">すぐご出発</p>
+                </h1>
+              </div>
+            </div>
+            <div class="subtext">
+              <h1>
+                <p class="p">必要書類はメールにて送信。<br class="sp">かんたんに手続きが済みます。</p>
+              </h1>
+            </div>
+          </div>
+          <div class="section__features--content">
+            <div class="ellipse-parent">
+              <div class="ellipseDiv">
+                <div class="ellipseInside-number">02</div>
+                <h1 class="ellipseInside-text">
+                  <p class="p">混みにくい高速道路の</p>
+                  <p class="p">近くだからスイスイ</p>
+                </h1>
+              </div>
+            </div>
+            <div class="subtext">
+              <h1>
+                <p class="p">混みにくいインターチェンジへ<br class="sp">最短アクセスが可能です。</p>
+              </h1>
+              <h3>
+                <p class="p">※空港近辺では使用インターが重なり、<br class="sp">度々渋滞になります。</p>
+              </h3>
+            </div>
+          </div>
+          <div class="section__features--content">
+            <div class="ellipse-parent">
+              <div class="ellipseDiv">
+                <div class="ellipseInside-number">03</div>
+                <h1 class="ellipseInside-text singleLine">
+                  <p class="p">支払いもスマートに</p>
+                </h1>
+              </div>
+            </div>
+            <div class="subtext">
+              <h1>
+                <p class="p">免責補償込みで予約可能。<br class="sp">余計なオプションも、<br class="sp">追加保険料も必要なし。</p>
+              </h1>
+            </div>
+          </div>
+        </div>
+      </section>
       <ScrollTop />
     </main>
     <Footer></Footer>
@@ -290,7 +332,9 @@
 import Header from "/src/components/common/Header";
 import ImageSlider from "/src/components/common/ImageSlider";
 import Input from "/src/components/common/form/Input";
+import Calendar from 'primevue/calendar';
 import Products from "/src/components/common/Products";
+import ProductCard from "/src/components/common/ProductCard";
 import Information from "/src/components/common/Information";
 import Footer from "/src/components/common/Footer";
 import Button from "primevue/button";
@@ -303,7 +347,9 @@ export default {
     Header,
     ImageSlider,
     Input,
+    Calendar,
     Products,
+    ProductCard,
     Information,
     Footer,
     Button,
@@ -319,9 +365,14 @@ export default {
   data() {
     return {
       heroImages: [
-        "/images/car-images/hero-image1.jpg",
-        "/images/car-images/hero-image2.png",
-        "/images/car-images/hero-image3.png"
+        "/images/hero-images/image1.png",
+        "/images/hero-images/image2.jpg",
+        "/images/hero-images/image3.jpg",
+        "/images/hero-images/image4.jpg",
+        "/images/hero-images/image5.jpg",
+        "/images/hero-images/image6.jpg",
+        "/images/hero-images/image7.jpg",
+        "/images/hero-images/image8.png"
       ],
       additionalDriverRadio: [
         { name: "additional-driver-radio", value: "yes", label: "あり"},
@@ -334,16 +385,42 @@ export default {
       today: null,
       search: {
         departDate: {
+          rawValue: null,
           value: null,
           isValid: false
         },
-        departTime: '00:00',
         returnDate: {
+          rawValue: null,
           value: null,
           isValid: false
         },
-        returnTime: '00:00',
       },
+      vehicle_list: [
+        {
+          title: "ALPHARD",
+          main_image: "/images/car-images/ALPHARD-1.jpg",
+          passenger: 7,
+          stock: 7
+        },
+        {
+          title: "ALPHARD",
+          main_image: "/images/car-images/ALPHARD-2.jpg",
+          passenger: 8,
+          stock: 2
+        },
+        {
+          title: "VELLFIRE",
+          main_image: "/images/car-images/VELLFIRE.jpg",
+          passenger: 8,
+          stock: 1
+        },
+        {
+          title: "HIACE",
+          main_image: "/images/car-images/HIACE.jpg",
+          passenger: 10,
+          stock: 2
+        }
+      ],
       isSearched: false,
       availableCar: [],
       comingSoonHeight: null,
@@ -361,8 +438,11 @@ export default {
         dob: "",
         airportPickup: false,
         airportDropoff: false,
-        useOfChiledSheet: 0,
-        akamineStaDelivery: 0
+        useOfBabySheet: 0,
+        useOfChildSheet: 0,
+        useOfJuniorSheet: 0,
+        deliveryOption: 0,
+        returnOption: 0,
       },
       totalFeeHolder: null,
       openReservationForm: false,
@@ -371,7 +451,7 @@ export default {
     }
   },
   async created() {
-    this.today = new Date().toISOString().slice(0, 10);
+    this.today = new Date();
   },
   computed: {
     cssVars() {
@@ -397,6 +477,24 @@ export default {
         emailRegex.test(this.scheduleInfo.customerEmail) &&
         phoneRegex.test(this.scheduleInfo.customerPhoneNumber)
       ) {
+        if (this.scheduleInfo.airportPickup) {
+          var pickupTime = new Date(`${this.search.departDate.value.slice(0, 10)} ${this.scheduleInfo.airportPickup}`);
+          console.log(pickupTime)
+          var minPickupTime = new Date(`${this.search.departDate.value.slice(0, 10)} 09:00`);
+          var maxPickupTime = new Date(`${this.search.departDate.value.slice(0, 10)} 17:00`);
+          if (pickupTime <= minPickupTime || pickupTime >= maxPickupTime) {
+            return false;
+          }
+        }
+        if (this.scheduleInfo.airportDropoff) {
+          var dropoffTime = new Date(`${this.search.returnDate.value.slice(0, 10)} ${this.scheduleInfo.airportDropoff}`);
+          console.log(dropoffTime)
+          var minDropoffTime = new Date(`${this.search.returnDate.value.slice(0, 10)} 09:00`);
+          var maxDropoffTime = new Date(`${this.search.returnDate.value.slice(0, 10)} 17:00`);
+          if (dropoffTime <= minDropoffTime || dropoffTime >= maxDropoffTime) {
+            return false;
+          }
+        }
         return true;
       } else {
         return false;
@@ -405,17 +503,31 @@ export default {
   },
   methods: {
     isValidSearch(inputName) {
+      let salesStartTime = 8; //8:00 AM
+      let salesEndTime = 18; //6:00 PM
       switch(inputName) {
         case "departDate":
-          if (this.search.departDate.value) {
-            this.search.departDate.isValid = true;
+          if (this.search.departDate.rawValue) {
+            let departTime = new Date(this.search.departDate.rawValue);
+            if (departTime.getHours() >= salesStartTime && departTime.getHours() <= salesEndTime) {
+              this.search.departDate.isValid = true;
+              this.search.departDate.value = departTime.toISOString().slice(0, 10)+" "+departTime.toISOString().slice(11, 16)
+            } else {
+              this.search.departDate.isValid = false;
+            }
           } else {
             this.search.departDate.isValid = false;
           }
           break;
         case "returnDate":
-          if (this.search.returnDate.value) {
-            this.search.returnDate.isValid = true;
+          if (this.search.returnDate.rawValue) {
+            let returnTime = new Date(this.search.returnDate.rawValue);
+            if (returnTime.getHours() >= salesStartTime && returnTime.getHours() <= salesEndTime) {
+              this.search.returnDate.isValid = true;
+              this.search.returnDate.value = returnTime.toISOString().slice(0, 10)+" "+returnTime.toISOString().slice(11, 16)
+            } else {
+              this.search.returnDate.isValid = false;
+            }
           } else {
             this.search.returnDate.isValid = false;
           }
@@ -425,8 +537,8 @@ export default {
     async searchAvailability() {
       const param = {
         "params": {
-          "start_at": `${this.search.departDate.value} ${this.search.departTime}`,
-          "end_at": `${this.search.returnDate.value} ${this.search.returnTime}`,
+          "start_at": `${this.search.departDate.value}`,
+          "end_at": `${this.search.returnDate.value}`,
         }
       };
 
@@ -454,8 +566,11 @@ export default {
         'dob': this.scheduleInfo.dob,
         'airportPickup': this.scheduleInfo.airportPickup,
         'airportDropoff': this.scheduleInfo.airportDropoff,
-        'akamineStaDelivery': this.scheduleInfo.akamineStaDelivery,
-        'useOfChiledSheet': this.scheduleInfo.useOfChiledSheet
+        'deliveryOption': this.scheduleInfo.deliveryOption,
+        'returnOption': this.scheduleInfo.returnOption,
+        'useOfBabySheet': this.scheduleInfo.useOfBabySheet,
+        'useOfChildSheet': this.scheduleInfo.useOfChildSheet,
+        'useOfJuniorSheet': this.scheduleInfo.useOfJuniorSheet
       });
       const data = {
         'product_id': this.scheduleInfo.reservationCarId,
@@ -481,32 +596,36 @@ export default {
       this.scheduleInfo.reservationCarId = carId;
 
       // calculate basic totalFee (fees without options)
-      this.scheduleInfo.totalFee = this.calculateTotalFeeByRentalSpan(`${this.search.departDate.value} ${this.search.departTime}`, `${this.search.returnDate.value} ${this.search.returnTime}`, this.availableCar.find(car => car.id === this.scheduleInfo.reservationCarId).price) 
+      this.scheduleInfo.totalFee = this.calculateTotalFeeByRentalSpan(`${this.search.departDate.value}`, `${this.search.returnDate.value}`, this.availableCar.find(car => car.id === this.scheduleInfo.reservationCarId).price) 
 
-      this.scheduleInfo.start_at = `${this.search.departDate.value} ${this.search.departTime}`;
-      this.scheduleInfo.end_at = `${this.search.returnDate.value} ${this.search.returnTime}`;
+      this.scheduleInfo.start_at = `${this.search.departDate.value}`;
+      this.scheduleInfo.end_at = `${this.search.returnDate.value}`;
       this.openReservationForm = true;
       this.reservationFormStatus = "entry";
     },
     confirmForm() {
       let selectedCarInfo = this.availableCar.find(car => car.id === this.scheduleInfo.reservationCarId)
+      const deriveryReturnFee = 3300;
+      const generalChildSheetFee = 1100;
       
       // add basic totalFee inside temporal variable holder
       this.totalFeeHolder = this.scheduleInfo.totalFee;
-      // if akamineStaDelivery is requested, charge extra 3000yen
-      if(this.scheduleInfo.akamineStaDelivery) {
-        this.totalFeeHolder += 3000;
+      // if any delivery/return area is requested, charge extra 3000yen
+      if(this.scheduleInfo.deliveryOption) {
+        this.totalFeeHolder += deriveryReturnFee;
+      }
+      if(this.scheduleInfo.returnOption) {
+        this.totalFeeHolder += deriveryReturnFee;
       }
       // if any childSheet requested, charge extra fee depending on the sheet type
-      switch(this.scheduleInfo.useOfChiledSheet) {
-        case 1:
-          this.totalFeeHolder += 1000;
-          break;
-        case 2:
-          this.totalFeeHolder += 500;
-          break;
-        default:
-          break;
+      if (this.scheduleInfo.useOfBabySheet) {
+        this.totalFeeHolder += this.scheduleInfo.useOfBabySheet * generalChildSheetFee;
+      }
+      if (this.scheduleInfo.useOfChildSheet) {
+        this.totalFeeHolder += this.scheduleInfo.useOfChildSheet * generalChildSheetFee;
+      }
+      if (this.scheduleInfo.useOfJuniorSheet) {
+        this.totalFeeHolder += this.scheduleInfo.useOfJuniorSheet * generalChildSheetFee;
       }
       
       this.confirmationInfo = {
@@ -529,8 +648,11 @@ export default {
           basicFee: selectedCarInfo.price
         },
         additionalService: {
-          akamineStaDelivery: this.scheduleInfo.akamineStaDelivery,
-          useOfChiledSheet: this.scheduleInfo.useOfChiledSheet === 1 ? 1000 : this.scheduleInfo.useOfChiledSheet === 2 ? 500 : 0
+          deliveryOption: this.scheduleInfo.deliveryOption,
+          returnOption: this.scheduleInfo.returnOption,
+          useOfBabySheet: this.scheduleInfo.useOfBabySheet * generalChildSheetFee,
+          useOfChildSheet: this.scheduleInfo.useOfChildSheet * generalChildSheetFee,
+          useOfJuniorSheet: this.scheduleInfo.useOfJuniorSheet * generalChildSheetFee
         }
       };
       this.reservationFormStatus = "confirm";
@@ -561,6 +683,11 @@ export default {
         dob: "",
         airportPickup: false,
         airportDropoff: false,
+        useOfBabySheet: 0,
+        useOfChildSheet: 0,
+        useOfJuniorSheet: 0,
+        deliveryOption: 0,
+        returnOption: 0,
       };
       this.totalFeeHolder = null;
       this.confirmationInfo = null;
@@ -586,6 +713,12 @@ export default {
         }
       }
       return Math.ceil(totalFee);
+    },
+    scrollToEearchAndReservation() {
+      window.scrollTo({
+        top: document.getElementById('searchAndReservation').offsetTop,
+        behavior: 'smooth'
+      });
     }
   }
 }
@@ -595,7 +728,9 @@ export default {
   text-align: left;
   font-size: 1rem;
   color: var(--color-black);
-  font-family: var(--font-istok-web);
+  font-family: var(--font-noto-sans);
+  font-optical-sizing: var(--font-default-optical-sizing);
+  font-style: var(--font-default-style);
 }
 section {
   margin: 8rem 2.4rem;
@@ -609,26 +744,27 @@ section {
     text-align: center;
     font-size: var(--font-size-base);
     color: var(--color-white);
-    font-family: var(--font-istok-web);
-    margin: 0 6%;
+    margin: 0 6% 8rem;
 
     &--title {
       h3 {
         margin: 0;
-        font-size: var(--font-size-xs);
+        font-size: 1rem;
         letter-spacing: 0.2em;
-        font-weight: 400;
-        font-family: inherit;
+        font-family: var(--font-noto-sans);
+        font-optical-sizing: var(--font-default-optical-sizing);
+        font-style: var(--font-default-style);
         color: var(--color-steelblue);
         text-align: left;
       }
 
       h1 {
         margin: 0;
-        font-size: 3.2rem;
+        font-size: 2rem;
         letter-spacing: 0.2em;
-        font-weight: 400;
-        font-family: inherit;
+        font-family: var(--font-noto-sans);
+        font-optical-sizing: var(--font-default-optical-sizing);
+        font-style: var(--font-default-style);
         color: var(--color-steelblue);
         text-align: left;
         line-height: 3rem;
@@ -640,7 +776,7 @@ section {
       margin: 4rem;
 
       @media screen and (max-width: 390px) {
-        margin: 4rem 1rem;
+        margin: 4rem .5rem;
       }
 
       .ellipse-parent {
@@ -655,7 +791,7 @@ section {
           height: 27.48rem;
 
           @media screen and (max-width: 390px) {
-            height: 22.48rem;
+            height: 82vw;
           }
 
           .ellipseInside {
@@ -732,19 +868,20 @@ section {
 
   &__form {
     text-align: center;
-    margin-bottom: 5rem;
+    margin: 0 2.4rem 5rem;
 
     &--title {
       text-align: center;
-      margin: 2.3rem;
-      border-bottom: 1.5px solid var(--color-steelblue);
+      margin: 2.3rem 0;
+      border-bottom: 2px solid var(--color-steelblue);
 
       h1 {
         color: var(--color-steelblue);
         letter-spacing: 0.15em;
         font-size: 2rem;
-        font-family: var(--font-istok-web);
-        font-weight: normal;
+        font-family: var(--font-noto-sans);
+        font-optical-sizing: var(--font-default-optical-sizing);
+        font-style: var(--font-default-style);
         margin: unset;
       }
 
@@ -752,9 +889,14 @@ section {
         color: var(--color-steelblue);
         letter-spacing: 0.15em;
         font-size: 1rem;
-        font-family: var(--font-istok-web);
-        font-weight: normal;
+        font-family: var(--font-noto-sans);
+        font-optical-sizing: var(--font-default-optical-sizing);
+        font-style: var(--font-default-style);
         margin: unset;
+        margin-bottom: 0.8rem;
+        @media screen and (max-width: 390px) {
+          font-size: 0.8rem;
+        }
       }
     }
 
@@ -784,6 +926,49 @@ section {
 
     &--submit {
       text-align: center;
+    }
+  }
+
+  &__products {
+    margin: 0 2.4rem 5rem;
+
+    &--title {
+      text-align: center;
+      margin: 2.3rem 0;
+      border-bottom: 2px solid var(--color-steelblue);
+
+      h1 {
+        color: var(--color-steelblue);
+        letter-spacing: 0.15em;
+        font-size: 2rem;
+        font-family: var(--font-noto-sans);
+        font-optical-sizing: var(--font-default-optical-sizing);
+        font-style: var(--font-default-style);
+        margin: unset;
+      }
+
+      h3 {
+        color: var(--color-steelblue);
+        letter-spacing: 0.15em;
+        font-size: 1rem;
+        font-family: var(--font-noto-sans);
+        font-optical-sizing: var(--font-default-optical-sizing);
+        font-style: var(--font-default-style);
+        margin: unset;
+        margin-bottom: 0.8rem;
+        @media screen and (max-width: 390px) {
+          font-size: 0.8rem;
+        }
+      }
+    }
+
+    &--lists{
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      @media screen and (max-width: 390px) {
+        flex-direction: column;
+      }
     }
   }
 }
@@ -835,6 +1020,7 @@ section {
 
   &-selector {
     font-size: 1rem;
+    letter-spacing: 0.05em;
     display: inline-flex;
     width: 21.5rem;
     justify-content: space-between;
@@ -850,6 +1036,7 @@ section {
       height: 2rem;
       border: none;
       padding: 0 0.7rem;
+      letter-spacing: 0.05em;
     }
 
     input[type=time] {

@@ -14,13 +14,13 @@
                 <div class="row-content">
                     <div class="title">■貸出日程</div>
                     <div class="detail">
-                        <p>{{ reservationInfo.start_at.replace(/-/g, '/') }} ~ {{ reservationInfo.end_at.replace(/-/g, '/') }}</p>
+                        <p class="total-hours">{{ reservationInfo.start_at.replace(/-/g, '/') }} ~ {{ reservationInfo.end_at.replace(/-/g, '/') }}</p>
                     </div>
                 </div>
                 <div class="row-content">
                     <div class="title">■料金</div>
                     <div class="detail">
-                        <p>¥{{ addCommas(reservationInfo.totalFee) }}</p>
+                        <p class="total-price">¥{{ addCommas(reservationInfo.totalFee) }}</p>
                         <hr>
                         <dl class="price-detail">
                             <dt class="basic-price-title">
@@ -34,28 +34,88 @@
                                 <span>補償制度の含まれた金額です</span>
                             </dt>
                             <dt 
-                                v-if="reservationInfo.additionalService && reservationInfo.additionalService.akamineStaDelivery == 1"
+                                v-if="reservationInfo.additionalService && reservationInfo.additionalService.deliveryOption == 1"
                                 class="options-price-title"
                             >
                                 赤嶺駅貸出料
                             </dt>
                             <dd 
-                                v-if="reservationInfo.additionalService && reservationInfo.additionalService.akamineStaDelivery == 1"
+                                v-if="reservationInfo.additionalService && reservationInfo.additionalService.deliveryOption == 1"
                                 class="options-price"
                             >
-                                ¥3,000
+                                ¥3,300
                             </dd>
                             <dt 
-                                v-if="reservationInfo.additionalService && reservationInfo.additionalService.useOfChiledSheet > 0"
+                                v-if="reservationInfo.additionalService && reservationInfo.additionalService.deliveryOption == 2"
                                 class="options-price-title"
                             >
-                                お子様用シート代
+                                那覇市内ホテル貸出
                             </dt>
                             <dd 
-                                v-if="reservationInfo.additionalService && reservationInfo.additionalService.useOfChiledSheet > 0"
+                                v-if="reservationInfo.additionalService && reservationInfo.additionalService.deliveryOption == 2"
                                 class="options-price"
                             >
-                                ¥{{ addCommas(reservationInfo.additionalService.useOfChiledSheet) }}
+                                ¥3,300
+                            </dd>
+                            <dt 
+                                v-if="reservationInfo.additionalService && reservationInfo.additionalService.returnOption == 1"
+                                class="options-price-title"
+                            >
+                                赤嶺駅返却
+                            </dt>
+                            <dd 
+                                v-if="reservationInfo.additionalService && reservationInfo.additionalService.returnOption == 1"
+                                class="options-price"
+                            >
+                                ¥3,300
+                            </dd>
+                            <dt 
+                                v-if="reservationInfo.additionalService && reservationInfo.additionalService.returnOption == 2"
+                                class="options-price-title"
+                            >
+                                那覇市内ホテル返却
+                            </dt>
+                            <dd 
+                                v-if="reservationInfo.additionalService && reservationInfo.additionalService.returnOption == 2"
+                                class="options-price"
+                            >
+                                ¥3,300
+                            </dd>
+                            <dt 
+                                v-if="reservationInfo.additionalService && reservationInfo.additionalService.useOfBabySheet > 0"
+                                class="options-price-title"
+                            >
+                                ベビーシート代
+                            </dt>
+                            <dd 
+                                v-if="reservationInfo.additionalService && reservationInfo.additionalService.useOfBabySheet > 0"
+                                class="options-price"
+                            >
+                                ¥{{ addCommas(reservationInfo.additionalService.useOfBabySheet) }}
+                            </dd>
+                            <dt 
+                                v-if="reservationInfo.additionalService && reservationInfo.additionalService.useOfChildSheet > 0"
+                                class="options-price-title"
+                            >
+                                チャイルドシート代
+                            </dt>
+                            <dd 
+                                v-if="reservationInfo.additionalService && reservationInfo.additionalService.useOfChildSheet > 0"
+                                class="options-price"
+                            >
+                                ¥{{ addCommas(reservationInfo.additionalService.useOfChildSheet) }}
+                            </dd>
+                            <dt 
+                                v-if="reservationInfo.additionalService && reservationInfo.additionalService.useOfJuniorSheet > 0"
+                                class="options-price-title"
+                            >
+                                ジュニアシート代
+                            </dt>
+                            <dd 
+                                v-if="reservationInfo.additionalService && reservationInfo.additionalService.useOfJuniorSheet > 0"
+                                class="options-price"
+                            >
+                                ¥{{ addCommas(reservationInfo.additionalService.useOfJuniorSheet) }}
                             </dd>
                         </dl>
                     </div>
@@ -169,8 +229,10 @@ export default {
             color: var(--color-steelblue);
             letter-spacing: 0.15em;
             font-size: 2rem;
-            font-family: var(--font-istok-web);
-            font-weight: normal;
+            font-family: var(--font-noto-sans);
+            font-optical-sizing: var(--font-default-optical-sizing);
+            font-style: var(--font-default-style);
+            
             margin: unset;
         }
     
@@ -178,8 +240,9 @@ export default {
             color: var(--color-steelblue);
             letter-spacing: 0.15em;
             font-size: 1rem;
-            font-family: var(--font-istok-web);
-            font-weight: normal;
+            font-family: var(--font-noto-sans);
+            font-optical-sizing: var(--font-default-optical-sizing);
+            font-style: var(--font-default-style);
             margin: unset;
         }
     }
@@ -218,21 +281,22 @@ export default {
                 @media screen and (max-width: 390px) {
                     width: 14rem;
                 }
+                .total-price {
+                    text-align: right;
+                }
                 .price-detail {
                     display: flex;
                     flex-wrap: wrap;
                     align-items: center;
-                    @media screen and (max-width: 390px) {
-                        height: 4rem
-                    }
                     dt {
                         margin: 0;
-                        width: 50%;
+                        width: 60%;
                     }
                     dd {
                         margin: 0;
-                        padding-left: 2rem;
-                        width: 50%;
+                        padding-left: 1.5rem;
+                        width: 40%;
+                        text-align: right;
                     }
                     .additional-note {
                         font-size: .7rem;

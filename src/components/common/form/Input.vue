@@ -20,8 +20,14 @@
                 <span v-if="required" class="required-notice">※必須</span>
             </label>
             <div class="airport-timpicker__headline--pickup">
-                <input type="radio" :name="name" value="true" @input="handleAirportTimpicker">あり
-                <input type="radio" :name="name" value="false" @input="handleAirportTimpicker">なし
+                <label>
+                    <input type="radio" :name="name" value="true" @input="handleAirportTimpicker">
+                    <span>あり</span>
+                </label>
+                <label>
+                    <input type="radio" :name="name" value="false" @input="handleAirportTimpicker">
+                    <span>なし</span>
+                </label>
             </div>
         </div>
         <input 
@@ -69,8 +75,8 @@
             {{ label }}
             <span v-if="required" class="required-notice">※必須</span>
         </label>
-        <select>
-            <option v-for="option in options" :key="option">{{ option }}</option>
+        <select v-model="selectedValue">
+            <option v-for="option in options" :key="option" :value=option.value>{{ option.label }}</option>
         </select>
     </div>
     <div v-else-if="type==='textarea'" :class="`input-area ${classes}`">
@@ -281,10 +287,11 @@ export default {
 }
 .airport-timpicker {
     &__headline {
-        display: flex;
-        justify-content: space-between;
-        width: 14.5rem;
         &--pickup {
+            display: flex;
+            label {
+                width: 50%;
+            }
             input[type=radio] {
                 width: auto;
                 box-shadow: initial;
@@ -294,7 +301,7 @@ export default {
         }
     }
     input[type=time] {
-        width: 7.8rem;
+        width: 10.8rem;
     }
 }
 .file-input {
