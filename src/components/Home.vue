@@ -19,7 +19,8 @@
                 name="startDate"
                 showIcon
                 showTime
-                hourFormat="12" 
+                hourFormat="12"
+                :stepMinute=30
                 iconDisplay="input" 
                 dateFormat="yy/mm/dd"
                 v-model="search.departDate.rawValue"
@@ -34,7 +35,8 @@
                 name="endDate"
                 showIcon
                 showTime
-                hourFormat="12" 
+                hourFormat="12"
+                :stepMinute=30
                 iconDisplay="input" 
                 dateFormat="yy/mm/dd"
                 v-model="search.returnDate.rawValue"
