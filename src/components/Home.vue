@@ -511,7 +511,7 @@ export default {
             let departTime = new Date(this.search.departDate.rawValue);
             if (departTime.getHours() >= salesStartTime && departTime.getHours() <= salesEndTime) {
               this.search.departDate.isValid = true;
-              this.search.departDate.value = departTime.toISOString().slice(0, 10)+" "+departTime.toISOString().slice(11, 16)
+              this.search.departDate.value = departTime.toISOString().slice(0, 10)+" "+departTime.toString().slice(16, 21)
             } else {
               this.search.departDate.isValid = false;
             }
@@ -524,7 +524,7 @@ export default {
             let returnTime = new Date(this.search.returnDate.rawValue);
             if (returnTime.getHours() >= salesStartTime && returnTime.getHours() <= salesEndTime) {
               this.search.returnDate.isValid = true;
-              this.search.returnDate.value = returnTime.toISOString().slice(0, 10)+" "+returnTime.toISOString().slice(11, 16)
+              this.search.returnDate.value = returnTime.toISOString().slice(0, 10)+" "+returnTime.toString().slice(16, 21)
             } else {
               this.search.returnDate.isValid = false;
             }
