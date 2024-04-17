@@ -244,6 +244,7 @@ export default {
             font-optical-sizing: var(--font-default-optical-sizing);
             font-style: var(--font-default-style);
             margin: unset;
+            margin-bottom: 0.8rem;
         }
     }
     
