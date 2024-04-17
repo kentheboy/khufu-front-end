@@ -97,7 +97,7 @@ export default {
 
                     .vectorIcon1 {
                         position: absolute;
-                        top: 0.5rem;
+                        top: 0.6rem;
                         left: 0.79rem;
                         width: 0.32rem;
                         height: 0.35rem;
@@ -105,7 +105,7 @@ export default {
 
                     .vectorIcon2 {
                         position: absolute;
-                        top: 0.04rem;
+                        top: 0.14rem;
                         left: 0.2rem;
                         width: 0.41rem;
                         height: 0.41rem;
@@ -113,7 +113,7 @@ export default {
 
                     .vectorIcon3 {
                         position: absolute;
-                        top: 0.04rem;
+                        top: 0.14rem;
                         left: 0.64rem;
                         width: 0.27rem;
                         height: 0.41rem;
@@ -121,7 +121,7 @@ export default {
 
                     .vectorIcon4 {
                         position: absolute;
-                        top: 0.49rem;
+                        top: 0.59rem;
                         left: 0rem;
                         width: 0.81rem;
                         height: 0.35rem;
@@ -165,7 +165,7 @@ export default {
 
                 .no-smoking {
                     position: absolute;
-                    top: 0.5rem;
+                    top: 0.7rem;
                     left: 5.63rem;
                     width: 1.07rem;
                     height: 1.07rem;
