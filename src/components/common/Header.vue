@@ -11,7 +11,7 @@
           <div class="toReservation">
             <Button label="今すぐ予約する" @click="scrollToEearchAndReservation"/>
           </div>
-          <div class="hamburgerMenu">
+          <div class="hamburgerMenu" v-if="!isValiosaPage">
             <Button icon="pi pi-align-justify" @click="openSideNav = true" />
           </div>
           <Sidebar v-model:visible="openSideNav" header="" position="right">
@@ -107,7 +107,7 @@ export default {
   },
   methods: {
     scrollToEearchAndReservation() {
-      if(this.$router.currentRoute.value.path !== "/") {
+      if(this.$router.currentRoute.value.path !== "/" && !this.isValiosaPage) {
         this.$router.push({name: "Home"})
         setTimeout(() => {
           this.openSideNav = false;
@@ -123,6 +123,11 @@ export default {
           behavior: 'smooth'
         });
       }
+    }
+  },
+  computed: {
+    isValiosaPage() {
+      return this.$router.currentRoute.value.path === "/valiosa"
     }
   }
 }
