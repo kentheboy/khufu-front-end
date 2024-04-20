@@ -33,6 +33,10 @@
                 v-if="information.images[3]"
                 :src="information.images[3]"
             >
+            <img
+                v-if="information.images[4]"
+                :src="information.images[4]"
+            >
         </div>
     </div>
 </template>
