@@ -105,31 +105,38 @@
                 </Input>
                 <Input
                     type="file"
-                    label="画像1"
-                    name="image1"
+                    label="メイン画像"
+                    name="main-image"
                     :dataUrl="submitData.images[0]"
                     @update:dataUrl="(event) => {updateImage(event, 0)}"
                 ></Input>
                 <Input
                     type="file"
-                    label="画像2"
-                    name="image2"
+                    label="サブ画像1"
+                    name="sub-image1"
                     :dataUrl="submitData.images[1]"
                     @update:dataUrl="(event) => {updateImage(event, 1)}"
                 ></Input>
                 <Input
                     type="file"
-                    label="画像3"
-                    name="image3"
+                    label="サブ画像2"
+                    name="sub-image2"
                     :dataUrl="submitData.images[2]"
                     @update:dataUrl="(event) => {updateImage(event, 2)}"
                 ></Input>
                 <Input
                     type="file"
-                    label="画像4"
-                    name="image4"
+                    label="サブ画像3"
+                    name="sub-image3"
                     :dataUrl="submitData.images[3]"
                     @update:dataUrl="(event) => {updateImage(event, 3)}"
+                ></Input>
+                <Input
+                    type="file"
+                    label="サブ画像4"
+                    name="sub-image4"
+                    :dataUrl="submitData.images[4]"
+                    @update:dataUrl="(event) => {updateImage(event, 4)}"
                 ></Input>
             </div>
             <template #footer>
