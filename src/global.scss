@@ -1,14 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap');
+
 html {
   font-size: 16px;
+
   @media screen and (max-width: 390px) {
     font-size: 14px;
   }
 }
+
 body {
   margin: 0;
   line-height: normal;
 }
+
 :root {
   /* fonts */
   --font-noto-sans: "Noto Sans JP", sans-serif;
@@ -53,26 +57,31 @@ body {
   --br-10xs-5: 2.5px;
   --br-10xs: 3px;
 }
+
 * {
   font-family: var(--font-noto-sans);
   letter-spacing: 0.05em;
 }
+
 .div {
   left: 4.1rem;
   letter-spacing: 0.05em;
 }
+
 .div1 {
   position: absolute;
   top: 7.4rem;
   left: 4.1rem;
   letter-spacing: 0.05em;
 }
+
 .div2 {
   position: absolute;
   top: 7.4rem;
   left: 16rem;
   letter-spacing: 0.05em;
 }
+
 .classLogo31 {
   position: absolute;
   top: 1.8rem;
@@ -82,6 +91,7 @@ body {
   object-fit: cover;
   cursor: pointer;
 }
+
 .footerChild {
   position: absolute;
   top: 6.5rem;
@@ -90,6 +100,7 @@ body {
   height: 2.3rem;
   object-fit: cover;
 }
+
 .child {
   position: absolute;
   height: 100%;
@@ -101,6 +112,7 @@ body {
   border-radius: 24.94px;
   background-color: var(--color-steelblue);
 }
+
 .div4 {
   position: absolute;
   height: 57.46%;
@@ -116,6 +128,7 @@ body {
   text-align: left;
   display: inline-block;
 }
+
 .button1 {
   cursor: pointer;
   border: none;
@@ -124,77 +137,88 @@ body {
   position: absolute;
   top: 50.82rem;
   left: 18.05rem;
-  box-shadow: 0.9974358677864075px 1.994871735572815px 1.99px
-    rgba(0, 0, 0, 0.25);
+  box-shadow: 0.9974358677864075px 1.994871735572815px 1.99px rgba(0, 0, 0, 0.25);
   width: 10.91rem;
   height: 2.5rem;
 }
+
 .div7 {
   position: absolute;
   top: 0.9rem;
   left: 1rem;
   letter-spacing: 0.05em;
 }
+
 .div8 {
   position: absolute;
   top: 3.39rem;
   left: 1rem;
   letter-spacing: 0.05em;
 }
+
 .div9 {
   position: absolute;
   top: 4.89rem;
   left: 1rem;
   letter-spacing: 0.05em;
 }
+
 .div10 {
   position: absolute;
   top: 6.38rem;
   left: 1rem;
   letter-spacing: 0.05em;
 }
+
 .div11 {
   position: absolute;
   top: 6.38rem;
   left: 10.97rem;
   letter-spacing: 0.05em;
 }
+
 .div12 {
   position: absolute;
   top: 7.88rem;
   left: 1rem;
   letter-spacing: 0.05em;
 }
+
 .div13 {
   position: absolute;
   top: 9.38rem;
   left: 1rem;
   letter-spacing: 0.05em;
 }
+
 .div14 {
   position: absolute;
   top: 9.38rem;
   left: 10.97rem;
   letter-spacing: 0.05em;
 }
+
 .div15 {
   position: absolute;
   top: 7.88rem;
   left: 10.97rem;
   letter-spacing: 0.05em;
 }
+
 .exampleclassokinawa {
   position: absolute;
   top: 4.89rem;
   left: 10.97rem;
   letter-spacing: 0.05em;
 }
+
 .div16 {
   position: absolute;
   top: 3.39rem;
   left: 10.97rem;
   letter-spacing: 0.05em;
 }
+
 .div6 {
   position: absolute;
   top: 36.71rem;
@@ -204,6 +228,7 @@ body {
   width: 32.02rem;
   height: 11.52rem;
 }
+
 .inner {
   position: absolute;
   top: 4.22rem;
@@ -211,6 +236,7 @@ body {
   width: 15.5rem;
   height: 0.14rem;
 }
+
 .icon {
   position: absolute;
   top: 0rem;
@@ -219,12 +245,14 @@ body {
   height: 0.7rem;
   object-fit: cover;
 }
+
 .div19 {
   position: absolute;
   top: 0rem;
   left: 0.71rem;
   letter-spacing: 0.05em;
 }
+
 .div18 {
   position: absolute;
   top: 5.99rem;
@@ -233,24 +261,28 @@ body {
   height: 0.7rem;
   font-size: 0.5rem;
 }
+
 .div21 {
   position: absolute;
   top: 4.89rem;
   left: 15.46rem;
   letter-spacing: 0.05em;
 }
+
 .div22 {
   position: absolute;
   top: 5.89rem;
   left: 10.97rem;
   letter-spacing: 0.05em;
 }
+
 .div23 {
   position: absolute;
   top: 5.89rem;
   left: 15.91rem;
   letter-spacing: 0.05em;
 }
+
 .div24 {
   position: absolute;
   top: 2.89rem;
@@ -258,6 +290,7 @@ body {
   font-size: 0.8rem;
   letter-spacing: 0.05em;
 }
+
 .div25 {
   position: absolute;
   top: 0.9rem;
@@ -265,6 +298,7 @@ body {
   font-size: 0.8rem;
   letter-spacing: 0.05em;
 }
+
 .div26 {
   position: absolute;
   top: 2.89rem;
@@ -272,6 +306,7 @@ body {
   font-size: 0.8rem;
   letter-spacing: 0.05em;
 }
+
 .div27 {
   position: absolute;
   top: 0.9rem;
@@ -279,6 +314,7 @@ body {
   font-size: 0.8rem;
   letter-spacing: 0.05em;
 }
+
 .div17 {
   position: absolute;
   top: 27.73rem;
@@ -289,6 +325,7 @@ body {
   height: 7.63rem;
   font-size: 0.65rem;
 }
+
 .at1 {
   position: absolute;
   top: 0rem;
@@ -298,6 +335,7 @@ body {
   width: 1.2rem;
   height: 1rem;
 }
+
 .at {
   position: absolute;
   top: 0rem;
@@ -307,6 +345,7 @@ body {
   width: 1.46rem;
   height: 0.89rem;
 }
+
 .vectorIcon {
   position: absolute;
   top: 0.5rem;
@@ -314,6 +353,7 @@ body {
   width: 0.32rem;
   height: 0.35rem;
 }
+
 .vectorIcon1 {
   position: absolute;
   top: 0.04rem;
@@ -321,6 +361,7 @@ body {
   width: 0.41rem;
   height: 0.41rem;
 }
+
 .vectorIcon2 {
   position: absolute;
   top: 0.04rem;
@@ -328,6 +369,7 @@ body {
   width: 0.27rem;
   height: 0.41rem;
 }
+
 .vectorIcon3 {
   position: absolute;
   top: 0.49rem;
@@ -335,6 +377,7 @@ body {
   width: 0.81rem;
   height: 0.35rem;
 }
+
 .div30 {
   position: absolute;
   top: 0rem;
@@ -344,6 +387,7 @@ body {
   width: 1.8rem;
   height: 1.1rem;
 }
+
 .div29 {
   position: absolute;
   top: 0rem;
@@ -352,6 +396,7 @@ body {
   height: 1.1rem;
   color: var(--color-steelblue);
 }
+
 .maskGroupIcon {
   position: absolute;
   top: 0rem;
@@ -360,6 +405,7 @@ body {
   height: 1.07rem;
   object-fit: cover;
 }
+
 .div28 {
   position: absolute;
   top: 24.44rem;
@@ -368,6 +414,7 @@ body {
   height: 1.1rem;
   color: var(--color-white);
 }
+
 .main1 {
   position: absolute;
   top: 0rem;
@@ -379,6 +426,7 @@ body {
   background-repeat: no-repeat;
   background-position: top;
 }
+
 .main2 {
   position: absolute;
   top: 6.86rem;
@@ -390,6 +438,7 @@ body {
   background-repeat: no-repeat;
   background-position: top;
 }
+
 .main3 {
   position: absolute;
   top: 0rem;
@@ -401,6 +450,7 @@ body {
   background-repeat: no-repeat;
   background-position: top;
 }
+
 .main4 {
   position: absolute;
   top: 6.86rem;
@@ -412,6 +462,7 @@ body {
   background-repeat: no-repeat;
   background-position: top;
 }
+
 .div31 {
   position: absolute;
   top: 11.87rem;
@@ -419,6 +470,7 @@ body {
   width: 15.18rem;
   height: 13.72rem;
 }
+
 .main5 {
   position: absolute;
   top: 11.87rem;
@@ -430,6 +482,7 @@ body {
   background-repeat: no-repeat;
   background-position: top;
 }
+
 .div32 {
   position: absolute;
   top: 7.98rem;
@@ -437,12 +490,14 @@ body {
   font-size: 1rem;
   letter-spacing: 0.05em;
 }
+
 .toyota {
   position: absolute;
   top: 9.48rem;
   left: 1.45rem;
   letter-spacing: 0.05em;
 }
+
 .bookingInformation {
   position: absolute;
   top: 0rem;
@@ -452,6 +507,7 @@ body {
   width: 28.48rem;
   height: 2.89rem;
 }
+
 .div34 {
   position: absolute;
   top: 2.43rem;
@@ -462,6 +518,7 @@ body {
   width: 6.33rem;
   height: 1.15rem;
 }
+
 .scheduleIcon {
   position: absolute;
   top: 4.55rem;
@@ -469,6 +526,7 @@ body {
   width: 35.12rem;
   height: 0.15rem;
 }
+
 .div33 {
   position: absolute;
   top: 0rem;
@@ -477,6 +535,7 @@ body {
   height: 4.63rem;
   font-size: 2rem;
 }
+
 .div3 {
   position: absolute;
   top: 490.46rem;
@@ -484,6 +543,7 @@ body {
   width: 34.97rem;
   height: 53.31rem;
 }
+
 .button2 {
   cursor: pointer;
   border: none;
@@ -492,11 +552,11 @@ body {
   position: absolute;
   top: 202.58rem;
   left: 12.02rem;
-  box-shadow: 0.9974358677864075px 1.994871735572815px 1.99px
-    rgba(0, 0, 0, 0.25);
+  box-shadow: 0.9974358677864075px 1.994871735572815px 1.99px rgba(0, 0, 0, 0.25);
   width: 10.91rem;
   height: 2.5rem;
 }
+
 .div38 {
   position: absolute;
   top: 0.05rem;
@@ -506,6 +566,7 @@ body {
   width: 5.29rem;
   height: 0.95rem;
 }
+
 .div40 {
   position: absolute;
   top: 0.05rem;
@@ -515,6 +576,7 @@ body {
   width: 3.59rem;
   height: 0.95rem;
 }
+
 .vectorIcon4 {
   position: absolute;
   top: 0rem;
@@ -522,6 +584,7 @@ body {
   width: 1.04rem;
   height: 1.04rem;
 }
+
 .div39 {
   position: absolute;
   top: 0rem;
@@ -529,6 +592,7 @@ body {
   width: 4.98rem;
   height: 1.04rem;
 }
+
 .div42 {
   position: absolute;
   top: 0.05rem;
@@ -538,6 +602,7 @@ body {
   width: 4.39rem;
   height: 0.95rem;
 }
+
 .div41 {
   position: absolute;
   top: 0rem;
@@ -545,6 +610,7 @@ body {
   width: 5.69rem;
   height: 1.04rem;
 }
+
 .div37 {
   position: absolute;
   top: 199.04rem;
@@ -552,6 +618,7 @@ body {
   width: 17.85rem;
   height: 1.04rem;
 }
+
 .rectangleInput {
   border: none;
   background-color: var(--color-aliceblue);
@@ -563,6 +630,7 @@ body {
   width: 24.19rem;
   height: 2.09rem;
 }
+
 .div44 {
   position: absolute;
   top: 0rem;
@@ -572,6 +640,7 @@ body {
   width: 6.58rem;
   height: 1.45rem;
 }
+
 .div43 {
   position: absolute;
   top: 193.6rem;
@@ -579,6 +648,7 @@ body {
   width: 24.19rem;
   height: 3.54rem;
 }
+
 .child1 {
   position: absolute;
   top: 1.3rem;
@@ -589,6 +659,7 @@ body {
   width: 24.19rem;
   height: 9.57rem;
 }
+
 .div46 {
   position: absolute;
   top: 0rem;
@@ -598,6 +669,7 @@ body {
   width: 2.79rem;
   height: 1.45rem;
 }
+
 .div45 {
   position: absolute;
   top: 181.28rem;
@@ -605,6 +677,7 @@ body {
   width: 24.19rem;
   height: 10.87rem;
 }
+
 .input {
   border: none;
   font-family: var(--font-noto-sans);
@@ -618,6 +691,7 @@ body {
   width: 24.19rem;
   height: 10.57rem;
 }
+
 .input1 {
   border: none;
   font-family: var(--font-noto-sans);
@@ -631,6 +705,7 @@ body {
   width: 24.19rem;
   height: 10.57rem;
 }
+
 .input2 {
   position: absolute;
   top: 13.47rem;
@@ -638,6 +713,7 @@ body {
   width: 24.19rem;
   height: 10.57rem;
 }
+
 .input3 {
   position: absolute;
   top: 2rem;
@@ -645,6 +721,7 @@ body {
   width: 24.19rem;
   height: 10.57rem;
 }
+
 .div48 {
   position: absolute;
   top: 0.05rem;
@@ -654,6 +731,7 @@ body {
   width: 10.57rem;
   height: 1.45rem;
 }
+
 .div50 {
   position: absolute;
   top: 0.05rem;
@@ -663,6 +741,7 @@ body {
   width: 1.8rem;
   height: 0.95rem;
 }
+
 .div49 {
   position: absolute;
   top: 0rem;
@@ -670,6 +749,7 @@ body {
   width: 3.19rem;
   height: 1.04rem;
 }
+
 .div52 {
   position: absolute;
   top: 0.05rem;
@@ -679,6 +759,7 @@ body {
   width: 1.8rem;
   height: 0.95rem;
 }
+
 .div51 {
   position: absolute;
   top: 0rem;
@@ -686,6 +767,7 @@ body {
   width: 3.09rem;
   height: 1.04rem;
 }
+
 .div47 {
   position: absolute;
   top: 132.21rem;
@@ -693,6 +775,7 @@ body {
   width: 24.19rem;
   height: 46.98rem;
 }
+
 .input4 {
   border: none;
   font-family: var(--font-noto-sans);
@@ -706,6 +789,7 @@ body {
   width: 24.19rem;
   height: 10.57rem;
 }
+
 .input5 {
   border: none;
   font-family: var(--font-noto-sans);
@@ -719,6 +803,7 @@ body {
   width: 24.19rem;
   height: 10.57rem;
 }
+
 .input6 {
   position: absolute;
   top: 13.42rem;
@@ -726,6 +811,7 @@ body {
   width: 24.19rem;
   height: 10.57rem;
 }
+
 .input7 {
   border: none;
   background-color: transparent;
@@ -735,6 +821,7 @@ body {
   width: 24.19rem;
   height: 10.57rem;
 }
+
 .div54 {
   position: absolute;
   top: 0rem;
@@ -744,6 +831,7 @@ body {
   width: 10.57rem;
   height: 1.45rem;
 }
+
 .div53 {
   position: absolute;
   top: 82.39rem;
@@ -751,6 +839,7 @@ body {
   width: 24.19rem;
   height: 46.93rem;
 }
+
 .child2 {
   position: absolute;
   top: 1.45rem;
@@ -761,6 +850,7 @@ body {
   width: 3.89rem;
   height: 2.09rem;
 }
+
 .div57 {
   position: absolute;
   top: 0rem;
@@ -770,6 +860,7 @@ body {
   width: 7.93rem;
   height: 1.45rem;
 }
+
 .div58 {
   position: absolute;
   top: 1.85rem;
@@ -781,6 +872,7 @@ body {
   width: 2.64rem;
   height: 1.45rem;
 }
+
 .div56 {
   position: absolute;
   top: 10.97rem;
@@ -788,6 +880,7 @@ body {
   width: 8.18rem;
   height: 3.54rem;
 }
+
 .div60 {
   position: absolute;
   top: 0rem;
@@ -799,6 +892,7 @@ body {
   width: 6.23rem;
   height: 0.95rem;
 }
+
 .child3 {
   position: absolute;
   top: 0rem;
@@ -809,6 +903,7 @@ body {
   width: 4.49rem;
   height: 2.09rem;
 }
+
 .div62 {
   position: absolute;
   top: 0.4rem;
@@ -818,6 +913,7 @@ body {
   width: 3.29rem;
   height: 1.45rem;
 }
+
 .vectorIcon8 {
   position: absolute;
   top: 0.9rem;
@@ -825,6 +921,7 @@ body {
   width: 0.8rem;
   height: 0.5rem;
 }
+
 .div61 {
   position: absolute;
   top: 1.45rem;
@@ -833,6 +930,7 @@ body {
   height: 2.09rem;
   display: none;
 }
+
 .child4 {
   position: absolute;
   top: 0rem;
@@ -843,6 +941,7 @@ body {
   width: 5.89rem;
   height: 2.09rem;
 }
+
 .vectorIcon9 {
   position: absolute;
   top: 0.9rem;
@@ -850,6 +949,7 @@ body {
   width: 0.8rem;
   height: 0.5rem;
 }
+
 .div63 {
   position: absolute;
   top: 1.52rem;
@@ -858,10 +958,12 @@ body {
   height: 2.09rem;
   display: none;
 }
+
 .div66 {
   position: relative;
   letter-spacing: 0.1em;
 }
+
 .keyboardArrowDown {
   position: relative;
   width: 1.6rem;
@@ -869,6 +971,7 @@ body {
   overflow: hidden;
   flex-shrink: 0;
 }
+
 .div65 {
   position: absolute;
   top: 1.49rem;
@@ -880,13 +983,13 @@ body {
   height: 2.1rem;
   display: flex;
   flex-direction: row;
-  padding: var(--padding-5xs) var(--padding-3xs) var(--padding-5xs)
-    var(--padding-base);
+  padding: var(--padding-5xs) var(--padding-3xs) var(--padding-5xs) var(--padding-base);
   box-sizing: border-box;
   align-items: center;
   justify-content: center;
   gap: var(--gap-11xs);
 }
+
 .div67 {
   position: absolute;
   top: 1.49rem;
@@ -898,13 +1001,13 @@ body {
   height: 2.1rem;
   display: flex;
   flex-direction: row;
-  padding: var(--padding-5xs) var(--padding-3xs) var(--padding-5xs)
-    var(--padding-base);
+  padding: var(--padding-5xs) var(--padding-3xs) var(--padding-5xs) var(--padding-base);
   box-sizing: border-box;
   align-items: center;
   justify-content: center;
   gap: var(--gap-11xs);
 }
+
 .div69 {
   position: absolute;
   top: 1.45rem;
@@ -913,6 +1016,7 @@ body {
   height: 2.09rem;
   display: none;
 }
+
 .div71 {
   position: absolute;
   top: 1.85rem;
@@ -922,6 +1026,7 @@ body {
   width: 3.29rem;
   height: 1.45rem;
 }
+
 .div59 {
   position: absolute;
   top: 5.49rem;
@@ -931,6 +1036,7 @@ body {
   font-size: 1rem;
   color: var(--color-black);
 }
+
 .child6 {
   border: none;
   background-color: var(--color-aliceblue);
@@ -942,6 +1048,7 @@ body {
   width: 24.19rem;
   height: 2.09rem;
 }
+
 .div72 {
   position: absolute;
   top: 0rem;
@@ -951,6 +1058,7 @@ body {
   width: 8.78rem;
   height: 1.45rem;
 }
+
 .div73 {
   position: absolute;
   top: 1.85rem;
@@ -962,6 +1070,7 @@ body {
   width: 12.97rem;
   height: 1.45rem;
 }
+
 .div55 {
   position: absolute;
   top: 65.93rem;
@@ -969,6 +1078,7 @@ body {
   width: 24.22rem;
   height: 14.51rem;
 }
+
 .div75 {
   position: absolute;
   top: 0.05rem;
@@ -980,6 +1090,7 @@ body {
   width: 5.29rem;
   height: 0.95rem;
 }
+
 .div76 {
   position: absolute;
   top: 0rem;
@@ -989,6 +1100,7 @@ body {
   font-size: 0.8rem;
   color: var(--color-steelblue);
 }
+
 .div78 {
   position: absolute;
   top: 0rem;
@@ -998,6 +1110,7 @@ body {
   font-size: 0.8rem;
   color: var(--color-steelblue);
 }
+
 .div80 {
   position: absolute;
   top: 1.5rem;
@@ -1006,6 +1119,7 @@ body {
   height: 2.09rem;
   display: none;
 }
+
 .div82 {
   position: absolute;
   top: 1.5rem;
@@ -1014,6 +1128,7 @@ body {
   height: 2.09rem;
   display: none;
 }
+
 .input8 {
   border: none;
   font-family: var(--font-noto-sans);
@@ -1030,12 +1145,12 @@ body {
   height: 2.1rem;
   display: flex;
   flex-direction: row;
-  padding: var(--padding-5xs) var(--padding-3xs) var(--padding-5xs)
-    var(--padding-base);
+  padding: var(--padding-5xs) var(--padding-3xs) var(--padding-5xs) var(--padding-base);
   box-sizing: border-box;
   align-items: center;
   justify-content: center;
 }
+
 .input9 {
   border: none;
   font-family: var(--font-noto-sans);
@@ -1052,12 +1167,12 @@ body {
   height: 2.1rem;
   display: flex;
   flex-direction: row;
-  padding: var(--padding-5xs) var(--padding-3xs) var(--padding-5xs)
-    var(--padding-base);
+  padding: var(--padding-5xs) var(--padding-3xs) var(--padding-5xs) var(--padding-base);
   box-sizing: border-box;
   align-items: center;
   justify-content: center;
 }
+
 .div84 {
   position: absolute;
   top: 1.9rem;
@@ -1067,6 +1182,7 @@ body {
   width: 0.95rem;
   height: 1.45rem;
 }
+
 .div85 {
   position: absolute;
   top: 1.9rem;
@@ -1076,6 +1192,7 @@ body {
   width: 1rem;
   height: 1.45rem;
 }
+
 .div74 {
   position: absolute;
   top: 60.4rem;
@@ -1085,6 +1202,7 @@ body {
   font-size: 1rem;
   color: var(--color-black);
 }
+
 .child9 {
   position: absolute;
   top: 0rem;
@@ -1094,6 +1212,7 @@ body {
   width: 4.49rem;
   height: 2.09rem;
 }
+
 .div92 {
   position: absolute;
   top: 1.5rem;
@@ -1103,6 +1222,7 @@ body {
   height: 2.09rem;
   display: none;
 }
+
 .div94 {
   position: absolute;
   top: 1.5rem;
@@ -1112,6 +1232,7 @@ body {
   height: 2.09rem;
   display: none;
 }
+
 .div96 {
   position: absolute;
   top: 1.5rem;
@@ -1123,13 +1244,13 @@ body {
   height: 2.1rem;
   display: flex;
   flex-direction: row;
-  padding: var(--padding-5xs) var(--padding-3xs) var(--padding-5xs)
-    var(--padding-base);
+  padding: var(--padding-5xs) var(--padding-3xs) var(--padding-5xs) var(--padding-base);
   box-sizing: border-box;
   align-items: center;
   justify-content: center;
   gap: var(--gap-11xs);
 }
+
 .div98 {
   position: absolute;
   top: 1.5rem;
@@ -1141,13 +1262,13 @@ body {
   height: 2.1rem;
   display: flex;
   flex-direction: row;
-  padding: var(--padding-5xs) var(--padding-3xs) var(--padding-5xs)
-    var(--padding-base);
+  padding: var(--padding-5xs) var(--padding-3xs) var(--padding-5xs) var(--padding-base);
   box-sizing: border-box;
   align-items: center;
   justify-content: center;
   gap: var(--gap-11xs);
 }
+
 .div86 {
   position: absolute;
   top: 54.91rem;
@@ -1157,6 +1278,7 @@ body {
   font-size: 1rem;
   color: var(--color-black);
 }
+
 .div103 {
   position: absolute;
   top: 0rem;
@@ -1166,6 +1288,7 @@ body {
   width: 3.74rem;
   height: 0.95rem;
 }
+
 .input10 {
   border: none;
   font-family: var(--font-noto-sans);
@@ -1181,6 +1304,7 @@ body {
   width: 6.08rem;
   height: 2.09rem;
 }
+
 .frameChild {
   position: absolute;
   top: 0rem;
@@ -1191,6 +1315,7 @@ body {
   width: 6.08rem;
   height: 2.09rem;
 }
+
 .div105 {
   position: absolute;
   top: 0.55rem;
@@ -1200,6 +1325,7 @@ body {
   width: 5.29rem;
   height: 1.45rem;
 }
+
 .vectorIcon19 {
   position: absolute;
   top: 0.9rem;
@@ -1207,6 +1333,7 @@ body {
   width: 0.8rem;
   height: 0.5rem;
 }
+
 .rectangleParent {
   position: absolute;
   top: 2.49rem;
@@ -1215,6 +1342,7 @@ body {
   height: 2.09rem;
   display: none;
 }
+
 .select {
   position: absolute;
   top: 2.48rem;
@@ -1231,6 +1359,7 @@ body {
   align-items: center;
   justify-content: center;
 }
+
 .child11 {
   border: none;
   background-color: var(--color-aliceblue);
@@ -1242,6 +1371,7 @@ body {
   width: 16.26rem;
   height: 2.09rem;
 }
+
 .div104 {
   position: absolute;
   top: 1.45rem;
@@ -1250,6 +1380,7 @@ body {
   height: 4.59rem;
   color: var(--color-black);
 }
+
 .div106 {
   position: absolute;
   top: 1.85rem;
@@ -1260,6 +1391,7 @@ body {
   width: 3.74rem;
   height: 0.95rem;
 }
+
 .div102 {
   position: absolute;
   top: 46.48rem;
@@ -1267,6 +1399,7 @@ body {
   width: 23.99rem;
   height: 6.03rem;
 }
+
 .div109 {
   position: absolute;
   top: 0.03rem;
@@ -1275,6 +1408,7 @@ body {
   height: 2.09rem;
   display: none;
 }
+
 .div111 {
   position: absolute;
   top: 0rem;
@@ -1286,13 +1420,13 @@ body {
   height: 2.1rem;
   display: flex;
   flex-direction: row;
-  padding: var(--padding-5xs) var(--padding-3xs) var(--padding-5xs)
-    var(--padding-base);
+  padding: var(--padding-5xs) var(--padding-3xs) var(--padding-5xs) var(--padding-base);
   box-sizing: border-box;
   align-items: center;
   justify-content: center;
   gap: var(--gap-11xs);
 }
+
 .div113 {
   position: absolute;
   top: 0.03rem;
@@ -1303,6 +1437,7 @@ body {
   width: 4.49rem;
   height: 2.09rem;
 }
+
 .div115 {
   position: absolute;
   top: 0.43rem;
@@ -1312,6 +1447,7 @@ body {
   width: 3.29rem;
   height: 1.45rem;
 }
+
 .div116 {
   position: absolute;
   top: 0.43rem;
@@ -1321,6 +1457,7 @@ body {
   width: 3.29rem;
   height: 1.45rem;
 }
+
 .div108 {
   position: absolute;
   top: 1.42rem;
@@ -1329,6 +1466,7 @@ body {
   height: 2.12rem;
   display: none;
 }
+
 .div117 {
   position: absolute;
   top: 0rem;
@@ -1340,6 +1478,7 @@ body {
   width: 3.74rem;
   height: 0.95rem;
 }
+
 .child13 {
   border: none;
   background-color: var(--color-aliceblue);
@@ -1351,6 +1490,7 @@ body {
   width: 24.19rem;
   height: 2.09rem;
 }
+
 .div118 {
   position: absolute;
   top: 1.87rem;
@@ -1361,6 +1501,7 @@ body {
   width: 12.97rem;
   height: 1.45rem;
 }
+
 .div107 {
   position: absolute;
   top: 41.49rem;
@@ -1370,6 +1511,7 @@ body {
   font-size: 1rem;
   color: var(--color-black);
 }
+
 .div121 {
   position: absolute;
   top: 0.06rem;
@@ -1378,6 +1520,7 @@ body {
   height: 2.09rem;
   display: none;
 }
+
 .div123 {
   position: absolute;
   top: 0.14rem;
@@ -1386,6 +1529,7 @@ body {
   height: 2.09rem;
   display: none;
 }
+
 .div125 {
   position: absolute;
   top: 0.06rem;
@@ -1394,6 +1538,7 @@ body {
   height: 2.09rem;
   display: none;
 }
+
 .div129 {
   position: absolute;
   top: 0rem;
@@ -1405,13 +1550,13 @@ body {
   height: 2.1rem;
   display: flex;
   flex-direction: row;
-  padding: var(--padding-5xs) var(--padding-3xs) var(--padding-5xs)
-    var(--padding-base);
+  padding: var(--padding-5xs) var(--padding-3xs) var(--padding-5xs) var(--padding-base);
   box-sizing: border-box;
   align-items: center;
   justify-content: center;
   gap: var(--gap-11xs);
 }
+
 .div131 {
   position: absolute;
   top: 0rem;
@@ -1423,13 +1568,13 @@ body {
   height: 2.1rem;
   display: flex;
   flex-direction: row;
-  padding: var(--padding-5xs) var(--padding-3xs) var(--padding-5xs)
-    var(--padding-base);
+  padding: var(--padding-5xs) var(--padding-3xs) var(--padding-5xs) var(--padding-base);
   box-sizing: border-box;
   align-items: center;
   justify-content: center;
   gap: var(--gap-11xs);
 }
+
 .div133 {
   position: absolute;
   top: 0.34rem;
@@ -1439,6 +1584,7 @@ body {
   width: 3.29rem;
   height: 1.45rem;
 }
+
 .div134 {
   position: absolute;
   top: 0.34rem;
@@ -1448,6 +1594,7 @@ body {
   width: 3.29rem;
   height: 1.45rem;
 }
+
 .div120 {
   position: absolute;
   top: 1.5rem;
@@ -1456,6 +1603,7 @@ body {
   height: 2.1rem;
   display: none;
 }
+
 .div135 {
   position: absolute;
   top: 0rem;
@@ -1467,6 +1615,7 @@ body {
   width: 6.38rem;
   height: 0.95rem;
 }
+
 .child17 {
   border: none;
   background-color: var(--color-aliceblue);
@@ -1478,6 +1627,7 @@ body {
   width: 24.19rem;
   height: 2.09rem;
 }
+
 .div136 {
   position: absolute;
   top: 1.86rem;
@@ -1488,6 +1638,7 @@ body {
   width: 12.97rem;
   height: 1.45rem;
 }
+
 .div119 {
   position: absolute;
   top: 36.01rem;
@@ -1497,6 +1648,7 @@ body {
   font-size: 1rem;
   color: var(--color-black);
 }
+
 .div138 {
   position: absolute;
   top: 0rem;
@@ -1506,6 +1658,7 @@ body {
   width: 4.39rem;
   height: 1.45rem;
 }
+
 .div139 {
   position: absolute;
   top: 1.85rem;
@@ -1517,6 +1670,7 @@ body {
   width: 12.97rem;
   height: 1.45rem;
 }
+
 .div137 {
   position: absolute;
   top: 30.52rem;
@@ -1524,6 +1678,7 @@ body {
   width: 24.19rem;
   height: 3.54rem;
 }
+
 .div140 {
   position: absolute;
   top: 25.04rem;
@@ -1531,6 +1686,7 @@ body {
   width: 24.19rem;
   height: 3.54rem;
 }
+
 .div143 {
   position: absolute;
   top: 19.55rem;
@@ -1538,6 +1694,7 @@ body {
   width: 24.19rem;
   height: 3.54rem;
 }
+
 .div147 {
   position: absolute;
   top: 1.9rem;
@@ -1549,6 +1706,7 @@ body {
   width: 6.83rem;
   height: 1.45rem;
 }
+
 .div145 {
   position: absolute;
   top: 14.06rem;
@@ -1556,6 +1714,7 @@ body {
   width: 24.19rem;
   height: 3.54rem;
 }
+
 .div149 {
   position: absolute;
   top: 0rem;
@@ -1565,6 +1724,7 @@ body {
   width: 3.29rem;
   height: 1.45rem;
 }
+
 .div148 {
   position: absolute;
   top: 8.58rem;
@@ -1572,6 +1732,7 @@ body {
   width: 24.19rem;
   height: 3.54rem;
 }
+
 .yourInformation {
   position: absolute;
   top: 0rem;
@@ -1581,6 +1742,7 @@ body {
   width: 24.04rem;
   height: 2.89rem;
 }
+
 .div152 {
   position: absolute;
   top: 2.58rem;
@@ -1591,6 +1753,7 @@ body {
   width: 6.33rem;
   height: 1.15rem;
 }
+
 .scheduleIcon1 {
   position: absolute;
   top: 4.78rem;
@@ -1598,6 +1761,7 @@ body {
   width: 34.97rem;
   height: 0rem;
 }
+
 .div151 {
   position: absolute;
   top: 0rem;
@@ -1606,6 +1770,7 @@ body {
   height: 4.78rem;
   font-size: 2rem;
 }
+
 .scheduleIcon2 {
   position: absolute;
   top: 4.33rem;
@@ -1613,6 +1778,7 @@ body {
   width: 35.12rem;
   height: 0.15rem;
 }
+
 .div35 {
   position: absolute;
   top: 242.85rem;
@@ -1620,6 +1786,7 @@ body {
   width: 34.97rem;
   height: 205.07rem;
 }
+
 .scheduleChild {
   position: absolute;
   top: 20.91rem;
@@ -1630,6 +1797,7 @@ body {
   width: 18.15rem;
   height: 23.39rem;
 }
+
 .div154 {
   position: absolute;
   top: 0.71rem;
@@ -1639,6 +1807,7 @@ body {
   width: 6.3rem;
   height: 1.1rem;
 }
+
 .maskGroupIcon1 {
   position: absolute;
   top: 0rem;
@@ -1647,6 +1816,7 @@ body {
   height: 1.07rem;
   object-fit: cover;
 }
+
 .div153 {
   position: absolute;
   top: 35.47rem;
@@ -1655,6 +1825,7 @@ body {
   height: 1.81rem;
   color: var(--color-black);
 }
+
 .h {
   position: absolute;
   top: 38.11rem;
@@ -1663,6 +1834,7 @@ body {
   letter-spacing: 0.05em;
   color: var(--color-black);
 }
+
 .alphard {
   position: absolute;
   top: 35.47rem;
@@ -1671,6 +1843,7 @@ body {
   letter-spacing: 0.1em;
   color: var(--color-black);
 }
+
 .main6 {
   position: absolute;
   top: 20.91rem;
@@ -1683,6 +1856,7 @@ body {
   background-repeat: no-repeat;
   background-position: top;
 }
+
 .div156 {
   position: absolute;
   height: 57.46%;
@@ -1692,23 +1866,26 @@ body {
   letter-spacing: 0.1em;
   display: inline-block;
 }
+
 .div155 {
   position: absolute;
   top: 38.36rem;
   left: 19.95rem;
-  box-shadow: 0.9974358677864075px 1.994871735572815px 1.99px
-    rgba(0, 0, 0, 0.25);
+  box-shadow: 0.9974358677864075px 1.994871735572815px 1.99px rgba(0, 0, 0, 0.25);
   width: 6.13rem;
   height: 2rem;
   display: none;
 }
+
 .p {
   margin: 0;
 }
+
 .p1 {
   margin: 0;
   font-size: 0.5rem;
 }
+
 .div158 {
   position: absolute;
   height: 57.46%;
@@ -1719,26 +1896,27 @@ body {
   white-space: pre-wrap;
   display: none;
 }
+
 .div157 {
   position: absolute;
   top: 40.35rem;
   left: 9.96rem;
-  box-shadow: 0.9974358677864075px 1.994871735572815px 1.99px
-    rgba(0, 0, 0, 0.25);
+  box-shadow: 0.9974358677864075px 1.994871735572815px 1.99px rgba(0, 0, 0, 0.25);
   width: 7.1rem;
   height: 2.7rem;
   font-size: 0.85rem;
 }
+
 .div159 {
   position: absolute;
   top: 40.35rem;
   left: 17.96rem;
-  box-shadow: 0.9974358677864075px 1.994871735572815px 1.99px
-    rgba(0, 0, 0, 0.25);
+  box-shadow: 0.9974358677864075px 1.994871735572815px 1.99px rgba(0, 0, 0, 0.25);
   width: 7.2rem;
   height: 2.7rem;
   font-size: 0.85rem;
 }
+
 .div161 {
   position: absolute;
   top: 40.97rem;
@@ -1746,6 +1924,7 @@ body {
   font-size: var(--font-size-5xs);
   letter-spacing: 0.1em;
 }
+
 .div162 {
   position: absolute;
   top: 41.97rem;
@@ -1753,6 +1932,7 @@ body {
   font-size: var(--font-size-8xs);
   letter-spacing: 0.1em;
 }
+
 .div163 {
   position: absolute;
   top: 41.97rem;
@@ -1760,6 +1940,7 @@ body {
   font-size: var(--font-size-8xs);
   letter-spacing: 0.1em;
 }
+
 .div164 {
   position: absolute;
   top: 40.97rem;
@@ -1767,6 +1948,7 @@ body {
   font-size: var(--font-size-5xs);
   letter-spacing: 0.1em;
 }
+
 .scheduleItem {
   position: absolute;
   top: 37.52rem;
@@ -1774,6 +1956,7 @@ body {
   width: 16.35rem;
   height: 0.07rem;
 }
+
 .icon1 {
   position: absolute;
   top: 0rem;
@@ -1781,11 +1964,13 @@ body {
   width: 1rem;
   height: 1rem;
 }
+
 .div166 {
   position: absolute;
   top: 0rem;
   left: 1.3rem;
 }
+
 .div165 {
   position: absolute;
   top: 10.54rem;
@@ -1794,6 +1979,7 @@ body {
   height: 1.1rem;
   color: var(--color-steelblue);
 }
+
 .div169 {
   position: absolute;
   top: 0.35rem;
@@ -1803,6 +1989,7 @@ body {
   width: 5.79rem;
   height: 1.45rem;
 }
+
 .vectorIcon25 {
   position: absolute;
   top: 0.6rem;
@@ -1811,6 +1998,7 @@ body {
   height: 0.8rem;
   display: none;
 }
+
 .div168 {
   position: absolute;
   top: 0rem;
@@ -1821,6 +2009,7 @@ body {
   width: 8.73rem;
   height: 2rem;
 }
+
 .child26 {
   position: absolute;
   top: 0rem;
@@ -1831,6 +2020,7 @@ body {
   width: 5.24rem;
   height: 2rem;
 }
+
 .div171 {
   position: absolute;
   top: 0.35rem;
@@ -1840,6 +2030,7 @@ body {
   width: 2.24rem;
   height: 1.45rem;
 }
+
 .vectorIcon26 {
   position: absolute;
   top: 0.8rem;
@@ -1847,6 +2038,7 @@ body {
   width: 0.8rem;
   height: 0.5rem;
 }
+
 .div170 {
   position: absolute;
   top: 0rem;
@@ -1855,6 +2047,7 @@ body {
   height: 2rem;
   display: none;
 }
+
 .keyboardArrowDown8 {
   position: relative;
   width: 1.4rem;
@@ -1862,6 +2055,7 @@ body {
   overflow: hidden;
   flex-shrink: 0;
 }
+
 .div172 {
   position: absolute;
   top: 0.06rem;
@@ -1873,13 +2067,13 @@ body {
   height: 1.9rem;
   display: flex;
   flex-direction: row;
-  padding: var(--padding-5xs) var(--padding-3xs) var(--padding-5xs)
-    var(--padding-base);
+  padding: var(--padding-5xs) var(--padding-3xs) var(--padding-5xs) var(--padding-base);
   box-sizing: border-box;
   align-items: center;
   justify-content: center;
   gap: var(--gap-11xs);
 }
+
 .div174 {
   position: absolute;
   top: 0.4rem;
@@ -1890,6 +2084,7 @@ body {
   width: 4.29rem;
   height: 1.45rem;
 }
+
 .div167 {
   position: absolute;
   top: 11.19rem;
@@ -1899,6 +2094,7 @@ body {
   font-size: 1rem;
   color: var(--color-black);
 }
+
 .div176 {
   position: absolute;
   top: 0.35rem;
@@ -1909,6 +2105,7 @@ body {
   width: 4.29rem;
   height: 1.45rem;
 }
+
 .div177 {
   position: absolute;
   top: 0rem;
@@ -1919,11 +2116,13 @@ body {
   width: 8.73rem;
   height: 2rem;
 }
+
 .vectorIcon28 {
   position: relative;
   width: 0.48rem;
   height: 0.48rem;
 }
+
 .calendarOverlayButton {
   position: absolute;
   top: 0.46rem;
@@ -1936,6 +2135,7 @@ body {
   align-items: flex-start;
   justify-content: flex-start;
 }
+
 .calendarOverlayButton1 {
   position: absolute;
   top: 2.96rem;
@@ -1948,6 +2148,7 @@ body {
   align-items: flex-start;
   justify-content: flex-start;
 }
+
 .div175 {
   position: absolute;
   top: 8.69rem;
@@ -1957,6 +2158,7 @@ body {
   font-size: 1rem;
   color: var(--color-black);
 }
+
 .schedule1 {
   position: absolute;
   top: 0rem;
@@ -1966,6 +2168,7 @@ body {
   width: 12.42rem;
   height: 2.9rem;
 }
+
 .div184 {
   position: absolute;
   top: 2.55rem;
@@ -1976,6 +2179,7 @@ body {
   width: 6.33rem;
   height: 1.15rem;
 }
+
 .scheduleIcon3 {
   position: absolute;
   top: 4.67rem;
@@ -1983,6 +2187,7 @@ body {
   width: 35.12rem;
   height: 0.15rem;
 }
+
 .div183 {
   position: absolute;
   top: 0rem;
@@ -1992,6 +2197,7 @@ body {
   font-size: 2rem;
   color: var(--color-steelblue);
 }
+
 .button3 {
   cursor: pointer;
   border: none;
@@ -2000,11 +2206,11 @@ body {
   position: absolute;
   top: 16.27rem;
   left: 12.02rem;
-  box-shadow: 0.9974358677864075px 1.994871735572815px 1.99px
-    rgba(0, 0, 0, 0.25);
+  box-shadow: 0.9974358677864075px 1.994871735572815px 1.99px rgba(0, 0, 0, 0.25);
   width: 10.91rem;
   height: 2.5rem;
 }
+
 .schedule {
   position: absolute;
   top: 194.51rem;
@@ -2018,6 +2224,7 @@ body {
   font-optical-sizing: var(--font-default-optical-sizing);
   font-style: var(--font-default-style);
 }
+
 .h1 {
   margin: 0;
   position: absolute;
@@ -2029,6 +2236,7 @@ body {
   font-family: inherit;
   color: var(--color-steelblue);
 }
+
 .ellipseDiv {
   position: absolute;
   top: 0rem;
@@ -2038,6 +2246,7 @@ body {
   width: 27.48rem;
   height: 27.48rem;
 }
+
 .div187 {
   position: absolute;
   top: 18.32rem;
@@ -2047,6 +2256,7 @@ body {
   text-align: left;
   text-shadow: 4.46875px 8.9375px 8.94px rgba(0, 0, 0, 0.5);
 }
+
 .h11 {
   margin: 0;
   position: absolute;
@@ -2057,6 +2267,7 @@ body {
   font-weight: 700;
   font-family: inherit;
 }
+
 .div186 {
   position: absolute;
   top: 97.8rem;
@@ -2064,6 +2275,7 @@ body {
   width: 27.72rem;
   height: 38.8rem;
 }
+
 .h12 {
   margin: 0;
   position: absolute;
@@ -2075,6 +2287,7 @@ body {
   font-family: inherit;
   color: var(--color-steelblue);
 }
+
 .h13 {
   margin: 0;
   position: absolute;
@@ -2085,6 +2298,7 @@ body {
   font-weight: 700;
   font-family: inherit;
 }
+
 .div188 {
   position: absolute;
   top: 51.8rem;
@@ -2092,6 +2306,7 @@ body {
   width: 27.72rem;
   height: 37.5rem;
 }
+
 .h14 {
   margin: 0;
   position: absolute;
@@ -2103,6 +2318,7 @@ body {
   font-family: inherit;
   color: var(--color-steelblue);
 }
+
 .h15 {
   margin: 0;
   position: absolute;
@@ -2113,6 +2329,7 @@ body {
   font-weight: 700;
   font-family: inherit;
 }
+
 .div190 {
   position: absolute;
   top: 8.8rem;
@@ -2120,6 +2337,7 @@ body {
   width: 27.48rem;
   height: 38.5rem;
 }
+
 .classLogo {
   position: absolute;
   top: 0rem;
@@ -2131,6 +2349,7 @@ body {
   background-repeat: no-repeat;
   background-position: top;
 }
+
 .main {
   text-align: left;
   font-size: 0.8rem;
@@ -2139,12 +2358,14 @@ body {
   font-optical-sizing: var(--font-default-optical-sizing);
   font-style: var(--font-default-style);
 }
+
 .div192 {
   position: absolute;
   top: -3.24rem;
   left: 0rem;
   letter-spacing: 0.1em;
 }
+
 .menuIcon {
   position: absolute;
   top: 3.12rem;
@@ -2152,6 +2373,7 @@ body {
   width: 1.85rem;
   height: 1.6rem;
 }
+
 .child31 {
   position: absolute;
   height: 100%;
@@ -2165,6 +2387,7 @@ body {
   border: 0.3px solid var(--color-skyblue);
   box-sizing: border-box;
 }
+
 .b {
   position: absolute;
   top: 25.86%;
@@ -2177,6 +2400,7 @@ body {
   color: var(--color-skyblue);
   text-align: left;
 }
+
 .button4 {
   cursor: pointer;
   border: none;
@@ -2185,11 +2409,11 @@ body {
   position: absolute;
   top: 3.01rem;
   left: 26.9rem;
-  box-shadow: 0.5925926566123962px 1.1851853132247925px 1.19px
-    rgba(0, 0, 0, 0.25);
+  box-shadow: 0.5925926566123962px 1.1851853132247925px 1.19px rgba(0, 0, 0, 0.25);
   width: 6.4rem;
   height: 1.72rem;
 }
+
 .h31 {
   margin: 0;
   position: absolute;
@@ -2202,6 +2426,7 @@ body {
   color: var(--color-steelblue);
   text-align: center;
 }
+
 .topLp {
   position: relative;
   background-color: var(--color-white);
@@ -2215,10 +2440,12 @@ body {
   font-optical-sizing: var(--font-default-optical-sizing);
   font-style: var(--font-default-style);
 }
+
 a {
   text-decoration: none;
   color: var(--color-white);
 }
+
 .customTitle {
   color: #418EB8;
   text-align: center;
@@ -2233,11 +2460,62 @@ a {
     font-style: var(--font-default-style);
     margin: unset;
   }
+
   h3 {
     letter-spacing: 0.05em;
     font-family: var(--font-noto-sans);
     font-optical-sizing: var(--font-default-optical-sizing);
     font-style: var(--font-default-style);
     margin: unset;
+  }
+}
+
+.valiosa {
+  .header {
+    background-color: var(--color-black);
+
+    .toReservation button.p-button {
+      color: var(--color-black);
+    }
+  }
+
+  .main {
+    color: var(--color-black);
+
+    .p-button {
+      background-color: var(--color-black);
+    }
+
+    .product__card {
+      background-color: var(--color-black);
+      color: #fff;
+
+      &--stock {
+        background-color: #B5B5B5;
+      }
+
+      &--description {
+
+        &-title,
+        &-passenger,
+        &-price {
+          color: #fff;
+        }
+
+        &-select-buttons button{
+          background-color: #fff;
+          color: var(--color-black);;
+        }
+      }
+    }
+  }
+
+  .footer {
+    background-color: var(--color-black);
+  }
+
+  .p-scrolltop {
+    color: var(--color-black);
+    background-color: #B5B5B5;
   }
 }
