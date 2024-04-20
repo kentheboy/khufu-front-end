@@ -189,8 +189,8 @@
           </p>
           <Products v-else :products="availableCar" @selected="opneReservationForm">
           </Products>
-          <Dialog v-model:visible="openReservationForm" maximizable header="" class="reservation-form" :modal="true"
-            @after-hide="closeReservationForm">
+          <Dialog v-model:visible="openReservationForm" maximizable header="" class="reservation-form valiosa"
+            :modal="true" @after-hide="closeReservationForm">
             <div class="reservation-form__statuses">
               <div :class="`reservation-form__status ${reservationFormStatus === 'entry' ? 'active' : ''}`">入力</div>
               <div :class="`reservation-form__status ${reservationFormStatus === 'confirm' ? 'active' : ''}`">確認</div>
@@ -1039,6 +1039,11 @@ section {
           &.display-block {
             display: block;
           }
+
+          input,
+          select {
+            background-color: #B5B5B5;
+          }
         }
 
         .input-description {
@@ -1121,7 +1126,7 @@ section {
 
     &.active {
       font-weight: bold;
-      color: #428eb8;
+      color: var(--color-black);
       border-bottom: 1px solid;
     }
   }

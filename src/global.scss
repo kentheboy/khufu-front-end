@@ -2476,6 +2476,11 @@ a {
 
     .toReservation button.p-button {
       color: var(--color-black);
+      right: 3rem;
+
+      button.p-button {
+        right: 0rem;
+      }
     }
   }
 
@@ -2502,9 +2507,9 @@ a {
           color: #fff;
         }
 
-        &-select-buttons button{
+        &-select-buttons button {
           background-color: #fff;
-          color: var(--color-black);;
+          color: var(--color-black);
         }
       }
     }
