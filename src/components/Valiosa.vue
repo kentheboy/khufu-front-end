@@ -5,7 +5,7 @@
       <section class="section__valiosaImageArea">
         <ImageSlider :images="valiosaImages"></ImageSlider>
       </section>
-      <section class="section__features">
+      <section class="section__features" id="features">
         <div class="section__features--title">
           <h3>特徴</h3>
           <h1>FEATURE</h1>
@@ -62,7 +62,7 @@
           </div>
         </div>
       </section>
-      <section class="section__guide">
+      <section class="section__guide" id="guide">
         <div class="section__guide--title">
           <h1>GUIDE</h1>
           <h3>ご利用ガイド</h3>
