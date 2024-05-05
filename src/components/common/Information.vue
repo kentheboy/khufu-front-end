@@ -7,6 +7,7 @@
         <div class="section__information--car-info">
             <h4>■車両情報 <span v-if="isExample">（例）</span></h4>
             <h5>{{ reservationInfo.title }}</h5>
+            <h6>{{ reservationInfo.subInfo }}</h6>
             <CarInfo
                 :information="reservationInfo.carInfos"
             ></CarInfo>
@@ -165,6 +166,7 @@ export default {
             type: Object,
             default: () => ({
                 title: "TOYOTA　アルファード",
+                subInfo: "沖縄　301 わ　2609",
                 start_at: "2023/1/1 10:00",
                 end_at: "2023/1/2 18:00",
                 totalFee: 41000,
@@ -349,7 +351,7 @@ export default {
         font-weight: initial;   
         margin: 0rem;
     }
-    h5 {
+    h5, h6 {
         font-size: 0.8rem;
         letter-spacing: 0.15em;
         font-weight: initial;
