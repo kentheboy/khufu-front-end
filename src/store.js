@@ -5,5 +5,9 @@ export default new Vuex.Store({
         envVariable: {
             env: '0',
         },
+        businessHours: {
+            open: 9,
+            close: 18
+        }
     },
 });
