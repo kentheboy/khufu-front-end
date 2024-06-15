@@ -691,21 +691,22 @@ export default {
   },
   methods: {
     isValidSearch(inputName) {
-      let salesStartTime = this.businessHours.open; //9:00 AM
-      let salesEndTime = this.businessHours.close; //6:00 PM
+      let salesStartTime = `${this.businessHours.open}:00`; //9:00 AM
+      let salesEndTime = `${this.businessHours.close}:00`; //6:00 PM
       switch (inputName) {
         case "departDate":
           if (this.search.departDate.rawValue) {
             let departTime = new Date(this.search.departDate.rawValue);
+            let departTimeStr = departTime.toString().slice(16, 21);
             if (
-              departTime.getHours() >= salesStartTime &&
-              departTime.getHours() <= salesEndTime
+              departTimeStr >= salesStartTime &&
+              departTimeStr <= salesEndTime
             ) {
               this.search.departDate.isValid = true;
               this.search.departDate.value =
                 departTime.toISOString().slice(0, 10) +
                 " " +
-                departTime.toString().slice(16, 21);
+                departTimeStr;
             } else {
               this.search.departDate.isValid = false;
             }
@@ -716,16 +717,16 @@ export default {
         case "returnDate":
           if (this.search.returnDate.rawValue) {
             let returnTime = new Date(this.search.returnDate.rawValue);
+            let returnTimeStr = returnTime.toString().slice(16, 21);
             if (
-              returnTime.getHours() >= salesStartTime &&
-              returnTime.getHours() <= salesEndTime &&
-              returnTime.getMinutes() == 0
+              returnTimeStr >= salesStartTime &&
+              returnTimeStr <= salesEndTime
             ) {
               this.search.returnDate.isValid = true;
               this.search.returnDate.value =
                 returnTime.toISOString().slice(0, 10) +
                 " " +
-                returnTime.toString().slice(16, 21);
+                returnTimeStr;
             } else {
               this.search.returnDate.isValid = false;
             }
