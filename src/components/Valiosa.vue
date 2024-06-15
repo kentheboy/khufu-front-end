@@ -21,17 +21,13 @@
             <div class="ellipse-parent">
               <div class="ellipseDiv">
                 <div class="ellipseInside-number">01</div>
-                <h1 class="ellipseInside-text singleLine">
-                  <p class="p">VALIOSAの特典</p>
-                </h1>
               </div>
             </div>
             <div class="subtext">
+              <h1 class="title">VALIOSAの特典</h1>
               <h1>
                 <p class="p">
-                  CLASSレンタカーご利用者様限定で<br
-                    class="sp"
-                  />VALIOSAの特典がついてきます。
+                  CLASSレンタカーご利用者様限定で<br />レイトチェックアウトとスキンケアセット<br />がついてきます。
                 </p>
               </h1>
             </div>
@@ -40,20 +36,13 @@
             <div class="ellipse-parent">
               <div class="ellipseDiv">
                 <div class="ellipseInside-number">02</div>
-                <h1 class="ellipseInside-text">
-                  <p class="p">保険フルカバーで、</p>
-                  <p class="p">優雅なひとときを。</p>
-                </h1>
               </div>
             </div>
             <div class="subtext">
+              <h1 class="title">フルカバー補償付き</h1>
               <h1>
                 <p class="p">
-                  免責補償も、NOCも<br
-                    class="sp"
-                  />すべて込みのフルカバープランで<br
-                    class="sp"
-                  />ご用意させていただきます。
+                  免責補償も、NOCも<br />すべて込みのフルカバープランで<br />ご用意させていただきます。
                 </p>
               </h1>
             </div>
@@ -62,12 +51,10 @@
             <div class="ellipse-parent">
               <div class="ellipseDiv">
                 <div class="ellipseInside-number">03</div>
-                <h1 class="ellipseInside-text singleLine">
-                  <p class="p">車種・装備指定可能</p>
-                </h1>
               </div>
             </div>
             <div class="subtext">
+              <h1 class="title">車種・装備指定可能</h1>
               <h1>
                 <p class="p">お車の車種・装備・色の指定が可能です。</p>
               </h1>
@@ -1083,7 +1070,11 @@ section {
           color: var(--color-black);
 
           @media screen and (max-width: 390px) {
-            font-size: 1.3rem;
+            font-size: 1rem;
+          }
+          &.title {
+            font-size: 1.8rem;
+            font-weight: 500;
           }
         }
 
