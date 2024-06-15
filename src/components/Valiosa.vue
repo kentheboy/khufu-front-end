@@ -909,8 +909,9 @@ export default {
     },
     calculateTotalFeeByRentalSpan(startDateTime, endDateTime, pricePerDay) {
       // Calculate the difference in days and add 1 to include both start and end dates
-      let diffInDays = new Date(endDateTime) - new Date(startDateTime) / (1000 * 60 * 60 * 24);
-      
+      let diffInDays =
+        new Date(endDateTime) - new Date(startDateTime) / (1000 * 60 * 60 * 24);
+
       if (diffInDays < 1) {
         // if less than one full-day
         diffInDays = 1;
