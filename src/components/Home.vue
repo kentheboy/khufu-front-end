@@ -50,8 +50,8 @@
             </div>
             <div class="datetimepicker-rule">
               <span
-                >※営業時間(予約可能時間)は午前8:00 -
-                午後6:00となっております。</span
+                >※営業時間(予約可能時間)は{{ businessHours.open }}:00 -
+                {{ businessHours.close }}:00となっております。</span
               >
             </div>
           </div>
@@ -560,6 +560,9 @@ export default {
     backendDomain() {
       return process.env.VUE_APP_BACKEND_DOMAIN;
     },
+    businessHours() {
+      return this.$store.state.businessHours
+    },
     isReadyToSearch() {
       if (this.search.departDate.isValid && this.search.returnDate.isValid) {
         return true;
@@ -583,10 +586,10 @@ export default {
           );
           console.log(pickupTime);
           var minPickupTime = new Date(
-            `${this.search.departDate.value.slice(0, 10)} 09:00`
+            `${this.search.departDate.value.slice(0, 10)} ${this.businessHours.open + 1}:00`
           );
           var maxPickupTime = new Date(
-            `${this.search.departDate.value.slice(0, 10)} 17:00`
+            `${this.search.departDate.value.slice(0, 10)} ${this.businessHours.close - 1}:00`
           );
           if (pickupTime <= minPickupTime || pickupTime >= maxPickupTime) {
             return false;
@@ -600,10 +603,10 @@ export default {
           );
           console.log(dropoffTime);
           var minDropoffTime = new Date(
-            `${this.search.returnDate.value.slice(0, 10)} 09:00`
+            `${this.search.returnDate.value.slice(0, 10)} ${this.businessHours.open + 1}:00`
           );
           var maxDropoffTime = new Date(
-            `${this.search.returnDate.value.slice(0, 10)} 17:00`
+            `${this.search.returnDate.value.slice(0, 10)} ${this.businessHours.close - 1}:00`
           );
           if (dropoffTime <= minDropoffTime || dropoffTime >= maxDropoffTime) {
             return false;
@@ -617,8 +620,8 @@ export default {
   },
   methods: {
     isValidSearch(inputName) {
-      let salesStartTime = 8; //8:00 AM
-      let salesEndTime = 18; //6:00 PM
+      let salesStartTime = this.businessHours.open; //9:00 AM
+      let salesEndTime = this.businessHours.close; //6:00 PM
       switch (inputName) {
         case "departDate":
           if (this.search.departDate.rawValue) {
@@ -644,7 +647,8 @@ export default {
             let returnTime = new Date(this.search.returnDate.rawValue);
             if (
               returnTime.getHours() >= salesStartTime &&
-              returnTime.getHours() <= salesEndTime
+              returnTime.getHours() <= salesEndTime &&
+              returnTime.getMinutes() == 0
             ) {
               this.search.returnDate.isValid = true;
               this.search.returnDate.value =
@@ -841,7 +845,7 @@ export default {
     calculateTotalFeeByRentalSpan(startDateTime, endDateTime, pricePerDay) {
       // Calculate the difference in days and add 1 to include both start and end dates
       let diffInDays =
-        new Date(endDateTime) - new Date(startDateTime) / (1000 * 60 * 60 * 24);
+        (new Date(endDateTime) - new Date(startDateTime)) / (1000 * 60 * 60 * 24);
 
       if (diffInDays < 1) {
         // if less than one full-day
