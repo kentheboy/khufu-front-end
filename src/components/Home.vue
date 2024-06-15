@@ -150,6 +150,16 @@
                 <div class="section__form--content-input-area">
                   <Input
                     type="number"
+                    label="人数"
+                    name="passenger"
+                    placeholder="1"
+                    required
+                    v-model="scheduleInfo.passenger"
+                  ></Input>
+                </div>
+                <div class="section__form--content-input-area">
+                  <Input
+                    type="number"
                     label="免許番号"
                     name="license-number"
                     placeholder="1234567890"
@@ -541,6 +551,7 @@ export default {
         useOfJuniorSheet: 0,
         deliveryOption: 0,
         returnOption: 0,
+        passenger: 1,
       },
       totalFeeHolder: null,
       openReservationForm: false,
@@ -561,7 +572,7 @@ export default {
       return process.env.VUE_APP_BACKEND_DOMAIN;
     },
     businessHours() {
-      return this.$store.state.businessHours
+      return this.$store.state.businessHours;
     },
     isReadyToSearch() {
       if (this.search.departDate.isValid && this.search.returnDate.isValid) {
@@ -586,10 +597,14 @@ export default {
           );
           console.log(pickupTime);
           var minPickupTime = new Date(
-            `${this.search.departDate.value.slice(0, 10)} ${this.businessHours.open + 1}:00`
+            `${this.search.departDate.value.slice(0, 10)} ${
+              this.businessHours.open + 1
+            }:00`
           );
           var maxPickupTime = new Date(
-            `${this.search.departDate.value.slice(0, 10)} ${this.businessHours.close - 1}:00`
+            `${this.search.departDate.value.slice(0, 10)} ${
+              this.businessHours.close - 1
+            }:00`
           );
           if (pickupTime <= minPickupTime || pickupTime >= maxPickupTime) {
             return false;
@@ -603,10 +618,14 @@ export default {
           );
           console.log(dropoffTime);
           var minDropoffTime = new Date(
-            `${this.search.returnDate.value.slice(0, 10)} ${this.businessHours.open + 1}:00`
+            `${this.search.returnDate.value.slice(0, 10)} ${
+              this.businessHours.open + 1
+            }:00`
           );
           var maxDropoffTime = new Date(
-            `${this.search.returnDate.value.slice(0, 10)} ${this.businessHours.close - 1}:00`
+            `${this.search.returnDate.value.slice(0, 10)} ${
+              this.businessHours.close - 1
+            }:00`
           );
           if (dropoffTime <= minDropoffTime || dropoffTime >= maxDropoffTime) {
             return false;
@@ -633,9 +652,7 @@ export default {
             ) {
               this.search.departDate.isValid = true;
               this.search.departDate.value =
-                departTime.toISOString().slice(0, 10) +
-                " " +
-                departTimeStr;
+                departTime.toISOString().slice(0, 10) + " " + departTimeStr;
             } else {
               this.search.departDate.isValid = false;
             }
@@ -653,9 +670,7 @@ export default {
             ) {
               this.search.returnDate.isValid = true;
               this.search.returnDate.value =
-                returnTime.toISOString().slice(0, 10) +
-                " " +
-                returnTimeStr;
+                returnTime.toISOString().slice(0, 10) + " " + returnTimeStr;
             } else {
               this.search.returnDate.isValid = false;
             }
@@ -696,6 +711,7 @@ export default {
       }, 3000);
 
       const customfields = JSON.stringify({
+        passengerNumber: this.scheduleInfo.passenger,
         licenseNumber: this.scheduleInfo.licenseNumber,
         dob: this.scheduleInfo.dob,
         airportPickup: this.scheduleInfo.airportPickup,
@@ -846,7 +862,8 @@ export default {
     calculateTotalFeeByRentalSpan(startDateTime, endDateTime, pricePerDay) {
       // Calculate the difference in days and add 1 to include both start and end dates
       let diffInDays =
-        (new Date(endDateTime) - new Date(startDateTime)) / (1000 * 60 * 60 * 24);
+        (new Date(endDateTime) - new Date(startDateTime)) /
+        (1000 * 60 * 60 * 24);
 
       if (diffInDays < 1) {
         // if less than one full-day
