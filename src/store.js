@@ -6,8 +6,8 @@ export default new Vuex.Store({
             env: '0',
         },
         businessHours: {
-            open: 9,
-            close: 18
+            open: '09',
+            close: '18'
         }
     },
 });
