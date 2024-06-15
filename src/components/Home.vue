@@ -698,25 +698,20 @@ export default {
       this.reservationLoading = false;
     },
     calculateTotalFeeByRentalSpan(startDateTime, endDateTime, pricePerDay) {
-      const startDateTimeObj = new Date(startDateTime);
-      const endDateTimeObj = new Date(endDateTime);
-
-      const diffInMilliseconds = endDateTimeObj - startDateTimeObj;
-      const retalSpanInHours = diffInMilliseconds / 3600000;
-      const RoundedDate = Math.floor(retalSpanInHours / 24);
-      let totalFee = RoundedDate > 1 ? (RoundedDate * pricePerDay) : pricePerDay;
-
-      const unrandedRemainingHours = retalSpanInHours % 24;
-      if (RoundedDate > 1 && unrandedRemainingHours > 0) {
-        if (unrandedRemainingHours > 10) {
-          // if unrandedRemainingHours is more than 10hr, add extra fullday price
-          totalFee += pricePerDay;
-        } else {
-          // if unrandedRemainingHours is less than 10hr, add extra 2000yen per hour
-          totalFee += unrandedRemainingHours * 2000;
-        }
+      // Calculate the difference in days and add 1 to include both start and end dates
+      let diffInDays = new Date(endDateTime) - new Date(startDateTime) / (1000 * 60 * 60 * 24);
+      
+      if (diffInDays < 1) {
+        // if less than one full-day
+        diffInDays = 1;
+      } else if (diffInDays % 1 == 0) {
+        // if exactly one(or multiple) full-day (=returned on the next day the same time)
+        diffInDays = diffInDays + 1;
+      } else {
+        diffInDays = Math.ceil(diffInDays);
       }
-      return Math.ceil(totalFee);
+
+      return diffInDays * pricePerDay;
     },
     scrollToEearchAndReservation() {
       window.scrollTo({
