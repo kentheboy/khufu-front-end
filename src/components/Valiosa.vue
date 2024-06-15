@@ -9,9 +9,6 @@
         ></ImageSlider>
       </section>
       <section class="section__features" id="features">
-        <!-- <div class="half-bg">
-          <img src="/images/valiosa-images/half-bg.png" alt="">
-        </div> -->
         <div class="section__features--title">
           <h3>特徴</h3>
           <h1>FEATURE</h1>
