@@ -718,7 +718,8 @@ export default {
             let returnTime = new Date(this.search.returnDate.rawValue);
             if (
               returnTime.getHours() >= salesStartTime &&
-              returnTime.getHours() <= salesEndTime
+              returnTime.getHours() <= salesEndTime &&
+              returnTime.getMinutes() == 0
             ) {
               this.search.returnDate.isValid = true;
               this.search.returnDate.value =
