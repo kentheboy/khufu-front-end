@@ -3,7 +3,7 @@
     <Header></Header>
     <main class="main">
       <section class="section__valiosaImageArea">
-        <ImageSlider :images="valiosaImages"></ImageSlider>
+        <ImageSlider :images="valiosaImages" :mainLogo="specialLog"></ImageSlider>
       </section>
       <section class="section__features" id="features">
         <div class="section__features--title">
@@ -344,9 +344,9 @@ export default {
         "/images/valiosa-images/image1.jpeg",
         "/images/valiosa-images/image2.jpeg",
         "/images/valiosa-images/image3.jpeg",
-        "/images/valiosa-images/image4.jpeg",
-        "/images/valiosa-images/image5.jpeg"
+        "/images/valiosa-images/image4.jpeg"
       ],
+      specialLog: "/images/valiosa-images/special_logo.png",
       additionalDriverRadio: [
         { name: "additional-driver-radio", value: "yes", label: "あり" },
         { name: "additional-driver-radio", value: "no", label: "なし" },

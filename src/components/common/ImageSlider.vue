@@ -1,7 +1,7 @@
 <template>
     <div class="image-slider">
       <div class="logo">
-        <img src="/images/hero-mage-logo.png"/>
+        <img :src="mainLogo"/>
       </div>
       <transition-group name="fade" tag="div">
         <div v-for="i in [currentIndex]" :key="i" class="image-slider__image-parent">
@@ -30,6 +30,12 @@ export default {
           "https://cdn.pixabay.com/photo/2016/02/17/23/03/usa-1206240_1280.jpg",
           "https://cdn.pixabay.com/photo/2016/12/04/19/30/berlin-cathedral-1882397_1280.jpg"
         ]
+      }
+    },
+    mainLogo: {
+      type: String,
+      default: () => {
+        return '/images/hero-image-logo.png'
       }
     }
   },
