@@ -1021,7 +1021,6 @@ section {
         .ellipseDiv {
           position: relative;
           border-radius: 50%;
-          background-color: #b5b5b5;
           width: 27.48rem;
           height: 27.48rem;
 
@@ -1098,6 +1097,34 @@ section {
           @media screen and (max-width: 390px) {
             font-size: 1rem;
           }
+        }
+      }
+
+      &:nth-child(1) {
+        .ellipseDiv {
+          background: no-repeat
+            url(../../public/images/valiosa-images/feature1.jpeg);
+          background-size: 155%;
+          background-position-y: center;
+          background-position-x: 50%;
+        }
+      }
+      &:nth-child(2) {
+        .ellipseDiv {
+          background: no-repeat
+            url(../../public/images/valiosa-images/feature2.jpg);
+          background-size: 155%;
+          background-position-y: center;
+          background-position-x: 43%;
+        }
+      }
+      &:nth-child(3) {
+        .ellipseDiv {
+          background: no-repeat
+            url(../../public/images/valiosa-images/feature3.png);
+          background-size: 100%;
+          background-position-y: center;
+          background-position-x: 50%;
         }
       }
     }
