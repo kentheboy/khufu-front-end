@@ -164,7 +164,8 @@ export default {
   },
   computed: {
     isValiosaPage() {
-      return this.$router.currentRoute.value.path === "/valiosa"
+      let path = this.$router.currentRoute.value.path
+      return path.includes("valiosa")
     }
   }
 }

@@ -3,7 +3,10 @@
     <Header></Header>
     <main class="main">
       <section class="section__valiosaImageArea">
-        <ImageSlider :images="valiosaImages"></ImageSlider>
+        <ImageSlider
+          :images="valiosaImages"
+          :mainLogo="specialLog"
+        ></ImageSlider>
       </section>
       <section class="section__features" id="features">
         <div class="section__features--title">
@@ -15,14 +18,14 @@
             <div class="ellipse-parent">
               <div class="ellipseDiv">
                 <div class="ellipseInside-number">01</div>
-                <h1 class="ellipseInside-text singleLine">
-                  <p class="p">VALIOSAの特典</p>
-                </h1>
               </div>
             </div>
             <div class="subtext">
+              <h1 class="title">VALIOSAの特典</h1>
               <h1>
-                <p class="p">CLASSレンタカーご利用者様限定で<br class="sp">VALIOSAの特典がついてきます。</p>
+                <p class="p">
+                  CLASSレンタカーご利用者様限定で<br />レイトチェックアウトとスキンケアセット<br />がついてきます。
+                </p>
               </h1>
             </div>
           </div>
@@ -30,15 +33,14 @@
             <div class="ellipse-parent">
               <div class="ellipseDiv">
                 <div class="ellipseInside-number">02</div>
-                <h1 class="ellipseInside-text">
-                  <p class="p">保険フルカバーで、</p>
-                  <p class="p">優雅なひとときを。</p>
-                </h1>
               </div>
             </div>
             <div class="subtext">
+              <h1 class="title">フルカバー補償付き</h1>
               <h1>
-                <p class="p">免責補償も、NOCも<br class="sp">すべて込みのフルカバープランで<br class="sp">ご用意させていただきます。</p>
+                <p class="p">
+                  免責補償も、NOCも<br />すべて込みのフルカバープランで<br />ご用意させていただきます。
+                </p>
               </h1>
             </div>
           </div>
@@ -46,17 +48,19 @@
             <div class="ellipse-parent">
               <div class="ellipseDiv">
                 <div class="ellipseInside-number">03</div>
-                <h1 class="ellipseInside-text singleLine">
-                  <p class="p">車種・装備指定可能</p>
-                </h1>
               </div>
             </div>
             <div class="subtext">
+              <h1 class="title">車種・装備指定可能</h1>
               <h1>
                 <p class="p">お車の車種・装備・色の指定が可能です。</p>
               </h1>
               <h3>
-                <p class="p">※空き状況によって、<br class="sp">ご指定できない場合がございます。</p>
+                <p class="p">
+                  ※空き状況によって、<br
+                    class="sp"
+                  />ご指定できない場合がございます。
+                </p>
               </h3>
             </div>
           </div>
@@ -71,7 +75,7 @@
           <div class="steps__diagram">
             <div class="steps__diagram--card">
               <div class="step-number">01</div>
-              <hr>
+              <hr />
               <p class="step-title">ご予約</p>
             </div>
             <div class="steps__diagram--arrow">
@@ -79,7 +83,7 @@
             </div>
             <div class="steps__diagram--card">
               <div class="step-number">02</div>
-              <hr>
+              <hr />
               <p class="step-title">ご来店</p>
             </div>
             <div class="steps__diagram--arrow">
@@ -87,7 +91,7 @@
             </div>
             <div class="steps__diagram--card">
               <div class="step-number">03</div>
-              <hr>
+              <hr />
               <p class="step-title">ご出発</p>
             </div>
             <div class="steps__diagram--arrow">
@@ -95,15 +99,13 @@
             </div>
             <div class="steps__diagram--card">
               <div class="step-number">04</div>
-              <hr>
+              <hr />
               <p class="step-title">ご返却</p>
             </div>
           </div>
           <div class="steps__descriptions">
             <div class="step__description">
-              <div class="step__description--number">
-                01
-              </div>
+              <div class="step__description--number">01</div>
               <div class="step__description--text">
                 <h3 class="step-title">宿泊予約・レンタカー予約</h3>
                 <p class="step-description">
@@ -112,42 +114,36 @@
               </div>
             </div>
             <div class="step__description">
-              <div class="step__description--number">
-                02
-              </div>
+              <div class="step__description--number">02</div>
               <div class="step__description--text">
                 <h3 class="step-title">ご来店</h3>
                 <p class="step-description">
-                  ご予約いただいた店舗にご来店いただき、<br>
-                  下記必要なものをご掲示頂いた後、『貸渡契約書』にサイン頂きます。<br>
-                  <br>
-                  必要なもの<br>
-                  ・運転免許証<br>
-                  ・VALIOSAの宿泊予約情報<br>
+                  ご予約いただいた店舗にご来店いただき、<br />
+                  下記必要なものをご掲示頂いた後、『貸渡契約書』にサイン頂きます。<br />
+                  <br />
+                  必要なもの<br />
+                  ・運転免許証<br />
+                  ・VALIOSAの宿泊予約情報<br />
                 </p>
               </div>
             </div>
             <div class="step__description">
-              <div class="step__description--number">
-                03
-              </div>
+              <div class="step__description--number">03</div>
               <div class="step__description--text">
                 <h3 class="step-title">ご出発</h3>
                 <p class="step-description">
-                  ご出発前に、店舗スタッフからの『注意事項、事故補償説明』をお受けください。車両操作の説明並びに車体チェック終了後、ご出発いただきます。<br>
+                  ご出発前に、店舗スタッフからの『注意事項、事故補償説明』をお受けください。車両操作の説明並びに車体チェック終了後、ご出発いただきます。<br />
                   ※VALIOSAの受付にて、CLASSレンタカーの車の鍵の印字をご提示ください。
                 </p>
               </div>
             </div>
             <div class="step__description">
-              <div class="step__description--number">
-                04
-              </div>
+              <div class="step__description--number">04</div>
               <div class="step__description--text">
                 <h3 class="step-title">ご返却</h3>
                 <p class="step-description">
-                  ご契約の時間までにご返却ください。<br>
-                  ご返却店舗付近のガソリンスタンドで燃料を満タンにした上、ご返却ください。<br>
+                  ご契約の時間までにご返却ください。<br />
+                  ご返却店舗付近のガソリンスタンドで燃料を満タンにした上、ご返却ください。<br />
                   ※ガソリンを入れなくてもよい、距離計算も受け付けております。
                   　その際は、直接ご返却していただいて構いません。
                 </p>
@@ -165,107 +161,291 @@
           <div class="datetimepicker">
             <div class="datetimepicker-selector">
               <label>出発日時</label>
-              <Calendar type="date" name="startDate" showIcon showTime hourFormat="12" :stepMinute=30
-                iconDisplay="input" dateFormat="yy/mm/dd" v-model="search.departDate.rawValue"
-                @update:modelValue="isValidSearch('departDate')" :minDate="today" />
+              <Calendar
+                type="date"
+                name="startDate"
+                showIcon
+                showTime
+                hourFormat="12"
+                :stepMinute="30"
+                iconDisplay="input"
+                dateFormat="yy/mm/dd"
+                v-model="search.departDate.rawValue"
+                @update:modelValue="isValidSearch('departDate')"
+                :minDate="today"
+              />
             </div>
             <div class="datetimepicker-selector">
               <label>返却日時</label>
-              <Calendar type="date" name="endDate" showIcon showTime hourFormat="12" :stepMinute=30 iconDisplay="input"
-                dateFormat="yy/mm/dd" v-model="search.returnDate.rawValue"
+              <Calendar
+                type="date"
+                name="endDate"
+                showIcon
+                showTime
+                hourFormat="12"
+                :stepMinute="30"
+                iconDisplay="input"
+                dateFormat="yy/mm/dd"
+                v-model="search.returnDate.rawValue"
                 @update:modelValue="isValidSearch('returnDate')"
-                :minDate="search.departDate.rawValue ? search.departDate.rawValue : today" />
+                :minDate="
+                  search.departDate.rawValue
+                    ? search.departDate.rawValue
+                    : today
+                "
+              />
             </div>
             <div class="datetimepicker-rule">
-              <span>※営業時間(予約可能時間)は午前8:00 - 午後6:00となっております。</span>
+              <span
+                >※営業時間(予約可能時間)は午前8:00 -
+                午後6:00となっております。</span
+              >
             </div>
           </div>
-          <Button icon="pi pi-search" class="p-ripple" label="空き状況を検索" :disabled="!isReadyToSearch"
-            @click="searchAvailability"></Button>
-          <p v-if="availableCar.length <= 0 && isSearched" class="no-available-car">
-            大変申し訳ございません。<br>
-            現在、ご指定された時間にご利用可能の車両がありません。<br>
+          <Button
+            icon="pi pi-search"
+            class="p-ripple"
+            label="空き状況を検索"
+            :disabled="!isReadyToSearch"
+            @click="searchAvailability"
+          ></Button>
+          <p
+            v-if="availableCar.length <= 0 && isSearched"
+            class="no-available-car"
+          >
+            大変申し訳ございません。<br />
+            現在、ご指定された時間にご利用可能の車両がありません。<br />
             お手数ですが、再度別の時間帯で検索を行うか、店舗スタッフへお問合せください。
           </p>
-          <Products v-else :products="availableCar" @selected="opneReservationForm">
+          <Products
+            v-else
+            :products="availableCar"
+            @selected="opneReservationForm"
+          >
           </Products>
-          <Dialog v-model:visible="openReservationForm" maximizable header="" class="reservation-form valiosa"
-            :modal="true" @after-hide="closeReservationForm">
+          <Dialog
+            v-model:visible="openReservationForm"
+            maximizable
+            header=""
+            class="reservation-form valiosa"
+            :modal="true"
+            @after-hide="closeReservationForm"
+          >
             <div class="reservation-form__statuses">
-              <div :class="`reservation-form__status ${reservationFormStatus === 'entry' ? 'active' : ''}`">入力</div>
-              <div :class="`reservation-form__status ${reservationFormStatus === 'confirm' ? 'active' : ''}`">確認</div>
-              <div :class="`reservation-form__status ${reservationFormStatus === 'done' ? 'active' : ''}`">完了</div>
+              <div
+                :class="`reservation-form__status ${
+                  reservationFormStatus === 'entry' ? 'active' : ''
+                }`"
+              >
+                入力
+              </div>
+              <div
+                :class="`reservation-form__status ${
+                  reservationFormStatus === 'confirm' ? 'active' : ''
+                }`"
+              >
+                確認
+              </div>
+              <div
+                :class="`reservation-form__status ${
+                  reservationFormStatus === 'done' ? 'active' : ''
+                }`"
+              >
+                完了
+              </div>
             </div>
-            <section class="section__form" style="margin-bottom: 0;" v-if="reservationFormStatus === 'entry'">
+            <section
+              class="section__form"
+              style="margin-bottom: 0"
+              v-if="reservationFormStatus === 'entry'"
+            >
               <div class="section__form--title">
                 <h1>YOUR INFORMATION</h1>
                 <h3>お客様情報入力</h3>
               </div>
               <div class="section__form--content">
                 <div class="section__form--content-input-area">
-                  <Input type="text" label="お名前" name="name" placeholder="山田太郎" required
-                    v-model="scheduleInfo.customerName"></Input>
+                  <Input
+                    type="text"
+                    label="お名前"
+                    name="name"
+                    placeholder="山田太郎"
+                    required
+                    v-model="scheduleInfo.customerName"
+                  ></Input>
                 </div>
                 <div class="section__form--content-input-area">
-                  <Input type="email" label="メールアドレス" name="email" placeholder="example@class.okinawa" required
-                    v-model="scheduleInfo.customerEmail"></Input>
+                  <Input
+                    type="email"
+                    label="メールアドレス"
+                    name="email"
+                    placeholder="example@class.okinawa"
+                    required
+                    v-model="scheduleInfo.customerEmail"
+                  ></Input>
                 </div>
                 <div class="section__form--content-input-area">
-                  <Input type="tel" label="電話番号" name="phonenumber" placeholder="08000000000" required
-                    v-model="scheduleInfo.customerPhoneNumber"></Input>
+                  <Input
+                    type="tel"
+                    label="電話番号"
+                    name="phonenumber"
+                    placeholder="08000000000"
+                    required
+                    v-model="scheduleInfo.customerPhoneNumber"
+                  ></Input>
                 </div>
                 <div class="section__form--content-input-area">
-                  <Input type="number" label="免許番号" name="license-number" placeholder="1234567890"
-                    v-model="scheduleInfo.licenseNumber"></Input>
+                  <Input
+                    type="number"
+                    label="免許番号"
+                    name="license-number"
+                    placeholder="1234567890"
+                    v-model="scheduleInfo.licenseNumber"
+                  ></Input>
                 </div>
                 <div class="section__form--content-input-area">
-                  <Input type="date" label="生年月日" name="dob" v-model="scheduleInfo.dob"></Input>
+                  <Input
+                    type="date"
+                    label="生年月日"
+                    name="dob"
+                    v-model="scheduleInfo.dob"
+                  ></Input>
                 </div>
                 <div class="section__form--content-input-area">
-                  <Input type="airport-timpicker" label="空港お出迎え" name="airport-pickup"
-                    v-model="scheduleInfo.airportPickup"></Input>
+                  <Input
+                    type="airport-timpicker"
+                    label="空港お出迎え"
+                    name="airport-pickup"
+                    v-model="scheduleInfo.airportPickup"
+                  ></Input>
                 </div>
                 <div class="section__form--content-input-area">
-                  <Input type="airport-timpicker" label="空港お見送り" name="airport-dropoff"
-                    v-model="scheduleInfo.airportDropoff"></Input>
-                  <span class="input-description">空港送迎時間は午前9:00 - 午後5:00となっております。</span>
+                  <Input
+                    type="airport-timpicker"
+                    label="空港お見送り"
+                    name="airport-dropoff"
+                    v-model="scheduleInfo.airportDropoff"
+                  ></Input>
+                  <span class="input-description"
+                    >空港送迎時間は午前9:00 - 午後5:00となっております。</span
+                  >
                 </div>
                 <div class="section__form--content-input-area">
-                  <Input type="selectbox" label="貸出オプション" name="return-option"
-                    :options='[{ "name": "none", "label": "特になし", "value": 0 }, { "name": "akamineStaDelivery", "label": "赤嶺駅貸出", "value": 1 }, { "name": "nahaHotelDelivery", "label": "那覇市内ホテル貸出", "value": 2 }]'
-                    v-model="scheduleInfo.deliveryOption"></Input>
+                  <Input
+                    type="selectbox"
+                    label="貸出オプション"
+                    name="return-option"
+                    :options="[
+                      { name: 'none', label: '特になし', value: 0 },
+                      {
+                        name: 'akamineStaDelivery',
+                        label: '赤嶺駅貸出',
+                        value: 1,
+                      },
+                      {
+                        name: 'nahaHotelDelivery',
+                        label: '那覇市内ホテル貸出',
+                        value: 2,
+                      },
+                    ]"
+                    v-model="scheduleInfo.deliveryOption"
+                  ></Input>
                   <span class="input-description">追加料 ¥3,300</span>
                 </div>
                 <div class="section__form--content-input-area">
-                  <Input type="selectbox" label="返却オプション" name="return-option"
-                    :options='[{ "name": "none", "label": "特になし", "value": 0 }, { "name": "akamineStaReturn", "label": "赤嶺駅返却", "value": 1 }, { "name": "nahaHotelReturn", "label": "那覇市内ホテル返却", "value": 2 }]'
-                    v-model="scheduleInfo.returnOption"></Input>
+                  <Input
+                    type="selectbox"
+                    label="返却オプション"
+                    name="return-option"
+                    :options="[
+                      { name: 'none', label: '特になし', value: 0 },
+                      {
+                        name: 'akamineStaReturn',
+                        label: '赤嶺駅返却',
+                        value: 1,
+                      },
+                      {
+                        name: 'nahaHotelReturn',
+                        label: '那覇市内ホテル返却',
+                        value: 2,
+                      },
+                    ]"
+                    v-model="scheduleInfo.returnOption"
+                  ></Input>
                   <span class="input-description">追加料 ¥3,300</span>
                 </div>
                 <div class="section__form--content-input-area">
-                  <Input type="selectbox" label="ベビーシート数(0~1歳以下)" name="use-of-baby-sheet" classes="display-block"
-                    :options='[{ "name": "useOfBabySheet", "label": "希望しない", "value": 0 }, { "name": "useOfBabySheet", "label": "1台", "value": 1 }, { "name": "useOfBabySheet", "label": "2台", "value": 2 }, { "name": "useOfBabySheet", "label": "3台", "value": 3 }]'
-                    v-model="scheduleInfo.useOfBabySheet"></Input>
-                </div>
-                <div class="section__form--content-input-area">
-                  <Input type="selectbox" label="チャイルドシート(0~4歳以下)" name="use-of-child-sheet" classes="display-block"
-                    :options='[{ "name": "useOfChildSheet", "label": "希望しない", "value": 0 }, { "name": "useOfChildSheet", "label": "1台", "value": 1 }, { "name": "useOfChildSheet", "label": "2台", "value": 2 }, { "name": "useOfChildSheet", "label": "3台", "value": 3 }]'
-                    v-model="scheduleInfo.useOfChildSheet"></Input>
-                </div>
-                <div class="section__form--content-input-area">
-                  <Input type="selectbox" label="ジュニアシート数(4歳以上~10歳以下)" name="use-of-junior-sheet"
+                  <Input
+                    type="selectbox"
+                    label="ベビーシート数(0~1歳以下)"
+                    name="use-of-baby-sheet"
                     classes="display-block"
-                    :options='[{ "name": "useOfJuniorSheet", "label": "希望しない", "value": 0 }, { "name": "useOfJuniorSheet", "label": "1台", "value": 1 }, { "name": "useOfJuniorSheet", "label": "2台", "value": 2 }, { "name": "useOfBabySheet", "label": "3台", "value": 3 }]'
-                    v-model="scheduleInfo.useOfJuniorSheet"></Input>
-                  <span class="input-description">各種シート1台あたり追加料 ¥1,100（一律）</span>
+                    :options="[
+                      { name: 'useOfBabySheet', label: '希望しない', value: 0 },
+                      { name: 'useOfBabySheet', label: '1台', value: 1 },
+                      { name: 'useOfBabySheet', label: '2台', value: 2 },
+                      { name: 'useOfBabySheet', label: '3台', value: 3 },
+                    ]"
+                    v-model="scheduleInfo.useOfBabySheet"
+                  ></Input>
+                </div>
+                <div class="section__form--content-input-area">
+                  <Input
+                    type="selectbox"
+                    label="チャイルドシート(0~4歳以下)"
+                    name="use-of-child-sheet"
+                    classes="display-block"
+                    :options="[
+                      {
+                        name: 'useOfChildSheet',
+                        label: '希望しない',
+                        value: 0,
+                      },
+                      { name: 'useOfChildSheet', label: '1台', value: 1 },
+                      { name: 'useOfChildSheet', label: '2台', value: 2 },
+                      { name: 'useOfChildSheet', label: '3台', value: 3 },
+                    ]"
+                    v-model="scheduleInfo.useOfChildSheet"
+                  ></Input>
+                </div>
+                <div class="section__form--content-input-area">
+                  <Input
+                    type="selectbox"
+                    label="ジュニアシート数(4歳以上~10歳以下)"
+                    name="use-of-junior-sheet"
+                    classes="display-block"
+                    :options="[
+                      {
+                        name: 'useOfJuniorSheet',
+                        label: '希望しない',
+                        value: 0,
+                      },
+                      { name: 'useOfJuniorSheet', label: '1台', value: 1 },
+                      { name: 'useOfJuniorSheet', label: '2台', value: 2 },
+                      { name: 'useOfBabySheet', label: '3台', value: 3 },
+                    ]"
+                    v-model="scheduleInfo.useOfJuniorSheet"
+                  ></Input>
+                  <span class="input-description"
+                    >各種シート1台あたり追加料 ¥1,100（一律）</span
+                  >
                 </div>
               </div>
             </section>
-            <Information v-if="reservationFormStatus === 'confirm'" :isExample=false
-              :reservationInfo="confirmationInfo">
+            <Information
+              v-if="reservationFormStatus === 'confirm'"
+              :isExample="false"
+              :reservationInfo="confirmationInfo"
+            >
             </Information>
-            <div v-if="reservationFormStatus === 'done'" class="reservation-form__completed">
-              <img class="reservation-form__completed-img" src="/images/icons/mail.png">
+            <div
+              v-if="reservationFormStatus === 'done'"
+              class="reservation-form__completed"
+            >
+              <img
+                class="reservation-form__completed-img"
+                src="/images/icons/mail.png"
+              />
               <p>
                 予約が完了しました。<br />
                 ご入力いただいたメールアドレス宛に担当者から確認の連絡を差し上げます。
@@ -274,12 +454,28 @@
               </p>
             </div>
             <div class="reservation-form__button">
-              <Button class="p-ripple" v-if="reservationFormStatus === 'entry'" label="予約確認へ"
-                :disabled="!isValidScheduleInfo" @click="confirmForm"></Button>
-              <Button class="p-ripple" v-if="reservationFormStatus === 'confirm'" label="内容を修正する" severity="secondary"
-                @click="reservationFormStatus = 'entry'"></Button>
-              <Button class="p-ripple" v-if="reservationFormStatus === 'confirm'" icon="pi pi-send" label="予約する"
-                :loading="reservationLoading" @click="submitForm"></Button>
+              <Button
+                class="p-ripple"
+                v-if="reservationFormStatus === 'entry'"
+                label="予約確認へ"
+                :disabled="!isValidScheduleInfo"
+                @click="confirmForm"
+              ></Button>
+              <Button
+                class="p-ripple"
+                v-if="reservationFormStatus === 'confirm'"
+                label="内容を修正する"
+                severity="secondary"
+                @click="reservationFormStatus = 'entry'"
+              ></Button>
+              <Button
+                class="p-ripple"
+                v-if="reservationFormStatus === 'confirm'"
+                icon="pi pi-send"
+                label="予約する"
+                :loading="reservationLoading"
+                @click="submitForm"
+              ></Button>
             </div>
           </Dialog>
         </section>
@@ -308,17 +504,17 @@
 import Header from "/src/components/common/Header";
 import ImageSlider from "/src/components/common/ImageSlider";
 import Input from "/src/components/common/form/Input";
-import Calendar from 'primevue/calendar';
+import Calendar from "primevue/calendar";
 import Products from "/src/components/common/Products";
 import ProductCard from "/src/components/common/ProductCard";
 import Information from "/src/components/common/Information";
 import Footer from "/src/components/common/Footer";
 import Button from "primevue/button";
-import Dialog from 'primevue/dialog';
-import ScrollTop from 'primevue/scrolltop';
+import Dialog from "primevue/dialog";
+import ScrollTop from "primevue/scrolltop";
 import axios from "axios";
 export default {
-  name: 'Valiosa',
+  name: "Valiosa",
   components: {
     Header,
     ImageSlider,
@@ -330,13 +526,13 @@ export default {
     Footer,
     Button,
     Dialog,
-    ScrollTop
+    ScrollTop,
   },
   props: {
     msg: {
       type: String,
       default: "Hello world",
-    }
+    },
   },
   data() {
     return {
@@ -345,8 +541,8 @@ export default {
         "/images/valiosa-images/image2.jpeg",
         "/images/valiosa-images/image3.jpeg",
         "/images/valiosa-images/image4.jpeg",
-        "/images/valiosa-images/image5.jpeg"
       ],
+      specialLog: "/images/valiosa-images/special_logo.png",
       additionalDriverRadio: [
         { name: "additional-driver-radio", value: "yes", label: "あり" },
         { name: "additional-driver-radio", value: "no", label: "なし" },
@@ -360,12 +556,12 @@ export default {
         departDate: {
           rawValue: null,
           value: null,
-          isValid: false
+          isValid: false,
         },
         returnDate: {
           rawValue: null,
           value: null,
-          isValid: false
+          isValid: false,
         },
       },
       vehicle_list: [
@@ -373,26 +569,26 @@ export default {
           title: "ALPHARD",
           main_image: "/images/car-images/ALPHARD-1.jpg",
           passenger: 7,
-          stock: 7
+          stock: 7,
         },
         {
           title: "ALPHARD",
           main_image: "/images/car-images/ALPHARD-2.jpg",
           passenger: 8,
-          stock: 2
+          stock: 2,
         },
         {
           title: "VELLFIRE",
           main_image: "/images/car-images/VELLFIRE.jpg",
           passenger: 8,
-          stock: 1
+          stock: 1,
         },
         {
           title: "HIACE",
           main_image: "/images/car-images/HIACE.jpg",
           passenger: 10,
-          stock: 2
-        }
+          stock: 2,
+        },
       ],
       isSearched: false,
       availableCar: [],
@@ -420,8 +616,8 @@ export default {
       totalFeeHolder: null,
       openReservationForm: false,
       confirmationInfo: null,
-      reservationLoading: false
-    }
+      reservationLoading: false,
+    };
   },
   async created() {
     this.today = new Date();
@@ -429,8 +625,8 @@ export default {
   computed: {
     cssVars() {
       return {
-        '--comingSoon-height': this.comingSoonHeight
-      }
+        "--comingSoon-height": this.comingSoonHeight,
+      };
     },
     backendDomain() {
       return process.env.VUE_APP_BACKEND_DOMAIN;
@@ -451,19 +647,35 @@ export default {
         phoneRegex.test(this.scheduleInfo.customerPhoneNumber)
       ) {
         if (this.scheduleInfo.airportPickup) {
-          var pickupTime = new Date(`${this.search.departDate.value.slice(0, 10)} ${this.scheduleInfo.airportPickup}`);
-          console.log(pickupTime)
-          var minPickupTime = new Date(`${this.search.departDate.value.slice(0, 10)} 09:00`);
-          var maxPickupTime = new Date(`${this.search.departDate.value.slice(0, 10)} 17:00`);
+          var pickupTime = new Date(
+            `${this.search.departDate.value.slice(0, 10)} ${
+              this.scheduleInfo.airportPickup
+            }`
+          );
+          console.log(pickupTime);
+          var minPickupTime = new Date(
+            `${this.search.departDate.value.slice(0, 10)} 09:00`
+          );
+          var maxPickupTime = new Date(
+            `${this.search.departDate.value.slice(0, 10)} 17:00`
+          );
           if (pickupTime <= minPickupTime || pickupTime >= maxPickupTime) {
             return false;
           }
         }
         if (this.scheduleInfo.airportDropoff) {
-          var dropoffTime = new Date(`${this.search.returnDate.value.slice(0, 10)} ${this.scheduleInfo.airportDropoff}`);
-          console.log(dropoffTime)
-          var minDropoffTime = new Date(`${this.search.returnDate.value.slice(0, 10)} 09:00`);
-          var maxDropoffTime = new Date(`${this.search.returnDate.value.slice(0, 10)} 17:00`);
+          var dropoffTime = new Date(
+            `${this.search.returnDate.value.slice(0, 10)} ${
+              this.scheduleInfo.airportDropoff
+            }`
+          );
+          console.log(dropoffTime);
+          var minDropoffTime = new Date(
+            `${this.search.returnDate.value.slice(0, 10)} 09:00`
+          );
+          var maxDropoffTime = new Date(
+            `${this.search.returnDate.value.slice(0, 10)} 17:00`
+          );
           if (dropoffTime <= minDropoffTime || dropoffTime >= maxDropoffTime) {
             return false;
           }
@@ -472,7 +684,7 @@ export default {
       } else {
         return false;
       }
-    }
+    },
   },
   methods: {
     isValidSearch(inputName) {
@@ -482,9 +694,15 @@ export default {
         case "departDate":
           if (this.search.departDate.rawValue) {
             let departTime = new Date(this.search.departDate.rawValue);
-            if (departTime.getHours() >= salesStartTime && departTime.getHours() <= salesEndTime) {
+            if (
+              departTime.getHours() >= salesStartTime &&
+              departTime.getHours() <= salesEndTime
+            ) {
               this.search.departDate.isValid = true;
-              this.search.departDate.value = departTime.toISOString().slice(0, 10) + " " + departTime.toString().slice(16, 21)
+              this.search.departDate.value =
+                departTime.toISOString().slice(0, 10) +
+                " " +
+                departTime.toString().slice(16, 21);
             } else {
               this.search.departDate.isValid = false;
             }
@@ -495,9 +713,15 @@ export default {
         case "returnDate":
           if (this.search.returnDate.rawValue) {
             let returnTime = new Date(this.search.returnDate.rawValue);
-            if (returnTime.getHours() >= salesStartTime && returnTime.getHours() <= salesEndTime) {
+            if (
+              returnTime.getHours() >= salesStartTime &&
+              returnTime.getHours() <= salesEndTime
+            ) {
               this.search.returnDate.isValid = true;
-              this.search.returnDate.value = returnTime.toISOString().slice(0, 10) + " " + returnTime.toString().slice(16, 21)
+              this.search.returnDate.value =
+                returnTime.toISOString().slice(0, 10) +
+                " " +
+                returnTime.toString().slice(16, 21);
             } else {
               this.search.returnDate.isValid = false;
             }
@@ -509,67 +733,76 @@ export default {
     },
     async searchAvailability() {
       const param = {
-        "params": {
-          "start_at": `${this.search.departDate.value}`,
-          "end_at": `${this.search.returnDate.value}`,
-        }
+        params: {
+          start_at: `${this.search.departDate.value}`,
+          end_at: `${this.search.returnDate.value}`,
+        },
       };
 
-      await axios.get(`${this.backendDomain}/api/schedule/search`, param).then((response) => {
-        let tmpProducts = response.data.data;
-        for (let i in tmpProducts) {
-          tmpProducts[i].main_image = tmpProducts[i].images[0];
-          let customfields = JSON.parse(tmpProducts[i].customfields);
-          tmpProducts[i].isSmokingAllowed = customfields.isSmokingAllowed;
-          tmpProducts[i].passenger = customfields.passenger;
-          delete tmpProducts[i].customfields;
-        }
-        this.availableCar = tmpProducts;
-        this.isSearched = true;
-      })
+      await axios
+        .get(`${this.backendDomain}/api/schedule/search`, param)
+        .then((response) => {
+          let tmpProducts = response.data.data;
+          for (let i in tmpProducts) {
+            tmpProducts[i].main_image = tmpProducts[i].images[0];
+            let customfields = JSON.parse(tmpProducts[i].customfields);
+            tmpProducts[i].isSmokingAllowed = customfields.isSmokingAllowed;
+            tmpProducts[i].passenger = customfields.passenger;
+            delete tmpProducts[i].customfields;
+          }
+          this.availableCar = tmpProducts;
+          this.isSearched = true;
+        });
     },
     async submitForm() {
       this.reservationLoading = true;
       await setTimeout(() => {
         // this timeOut add loading effect for minimum 3 sec
-      }, 3000)
+      }, 3000);
 
       const customfields = JSON.stringify({
-        'licenseNumber': this.scheduleInfo.licenseNumber,
-        'dob': this.scheduleInfo.dob,
-        'airportPickup': this.scheduleInfo.airportPickup,
-        'airportDropoff': this.scheduleInfo.airportDropoff,
-        'deliveryOption': this.scheduleInfo.deliveryOption,
-        'returnOption': this.scheduleInfo.returnOption,
-        'useOfBabySheet': this.scheduleInfo.useOfBabySheet,
-        'useOfChildSheet': this.scheduleInfo.useOfChildSheet,
-        'useOfJuniorSheet': this.scheduleInfo.useOfJuniorSheet
+        licenseNumber: this.scheduleInfo.licenseNumber,
+        dob: this.scheduleInfo.dob,
+        airportPickup: this.scheduleInfo.airportPickup,
+        airportDropoff: this.scheduleInfo.airportDropoff,
+        deliveryOption: this.scheduleInfo.deliveryOption,
+        returnOption: this.scheduleInfo.returnOption,
+        useOfBabySheet: this.scheduleInfo.useOfBabySheet,
+        useOfChildSheet: this.scheduleInfo.useOfChildSheet,
+        useOfJuniorSheet: this.scheduleInfo.useOfJuniorSheet,
       });
       const data = {
-        'product_id': this.scheduleInfo.reservationCarId,
-        'name': this.scheduleInfo.customerName,
-        'email': this.scheduleInfo.customerEmail,
-        'tel': this.scheduleInfo.customerPhoneNumber,
-        'start_at': this.scheduleInfo.start_at,
-        'end_at': this.scheduleInfo.end_at,
-        'total_fee': this.totalFeeHolder,
-        'customfields': customfields
+        product_id: this.scheduleInfo.reservationCarId,
+        name: this.scheduleInfo.customerName,
+        email: this.scheduleInfo.customerEmail,
+        tel: this.scheduleInfo.customerPhoneNumber,
+        start_at: this.scheduleInfo.start_at,
+        end_at: this.scheduleInfo.end_at,
+        total_fee: this.totalFeeHolder,
+        customfields: customfields,
       };
-      await axios.post(`${this.backendDomain}/api/schedule/create`, data).then((response) => {
-        this.reservationFormStatus = 'done';
-        console.log(response);
-        setTimeout(() => {
-          this.reservationLoading = false;
-          this.closeReservationForm();
-        }, 10000)
-      })
-
+      await axios
+        .post(`${this.backendDomain}/api/schedule/create`, data)
+        .then((response) => {
+          this.reservationFormStatus = "done";
+          console.log(response);
+          setTimeout(() => {
+            this.reservationLoading = false;
+            this.closeReservationForm();
+          }, 10000);
+        });
     },
     opneReservationForm(carId) {
       this.scheduleInfo.reservationCarId = carId;
 
       // calculate basic totalFee (fees without options)
-      this.scheduleInfo.totalFee = this.calculateTotalFeeByRentalSpan(`${this.search.departDate.value}`, `${this.search.returnDate.value}`, this.availableCar.find(car => car.id === this.scheduleInfo.reservationCarId).price)
+      this.scheduleInfo.totalFee = this.calculateTotalFeeByRentalSpan(
+        `${this.search.departDate.value}`,
+        `${this.search.returnDate.value}`,
+        this.availableCar.find(
+          (car) => car.id === this.scheduleInfo.reservationCarId
+        ).price
+      );
 
       this.scheduleInfo.start_at = `${this.search.departDate.value}`;
       this.scheduleInfo.end_at = `${this.search.returnDate.value}`;
@@ -577,7 +810,9 @@ export default {
       this.reservationFormStatus = "entry";
     },
     confirmForm() {
-      let selectedCarInfo = this.availableCar.find(car => car.id === this.scheduleInfo.reservationCarId)
+      let selectedCarInfo = this.availableCar.find(
+        (car) => car.id === this.scheduleInfo.reservationCarId
+      );
       const deriveryReturnFee = 3300;
       const generalChildSheetFee = 1100;
 
@@ -592,13 +827,16 @@ export default {
       }
       // if any childSheet requested, charge extra fee depending on the sheet type
       if (this.scheduleInfo.useOfBabySheet) {
-        this.totalFeeHolder += this.scheduleInfo.useOfBabySheet * generalChildSheetFee;
+        this.totalFeeHolder +=
+          this.scheduleInfo.useOfBabySheet * generalChildSheetFee;
       }
       if (this.scheduleInfo.useOfChildSheet) {
-        this.totalFeeHolder += this.scheduleInfo.useOfChildSheet * generalChildSheetFee;
+        this.totalFeeHolder +=
+          this.scheduleInfo.useOfChildSheet * generalChildSheetFee;
       }
       if (this.scheduleInfo.useOfJuniorSheet) {
-        this.totalFeeHolder += this.scheduleInfo.useOfJuniorSheet * generalChildSheetFee;
+        this.totalFeeHolder +=
+          this.scheduleInfo.useOfJuniorSheet * generalChildSheetFee;
       }
 
       this.confirmationInfo = {
@@ -618,15 +856,18 @@ export default {
           images: selectedCarInfo.images,
           maxmumPassenger: selectedCarInfo.passenger,
           isSmokingAllowed: selectedCarInfo.isSmokingAllowed,
-          basicFee: selectedCarInfo.price
+          basicFee: selectedCarInfo.price,
         },
         additionalService: {
           deliveryOption: this.scheduleInfo.deliveryOption,
           returnOption: this.scheduleInfo.returnOption,
-          useOfBabySheet: this.scheduleInfo.useOfBabySheet * generalChildSheetFee,
-          useOfChildSheet: this.scheduleInfo.useOfChildSheet * generalChildSheetFee,
-          useOfJuniorSheet: this.scheduleInfo.useOfJuniorSheet * generalChildSheetFee
-        }
+          useOfBabySheet:
+            this.scheduleInfo.useOfBabySheet * generalChildSheetFee,
+          useOfChildSheet:
+            this.scheduleInfo.useOfChildSheet * generalChildSheetFee,
+          useOfJuniorSheet:
+            this.scheduleInfo.useOfJuniorSheet * generalChildSheetFee,
+        },
       };
       this.reservationFormStatus = "confirm";
     },
@@ -673,7 +914,7 @@ export default {
       const diffInMilliseconds = endDateTimeObj - startDateTimeObj;
       const retalSpanInHours = diffInMilliseconds / 3600000;
       const RoundedDate = Math.floor(retalSpanInHours / 24);
-      let totalFee = RoundedDate > 1 ? (RoundedDate * pricePerDay) : pricePerDay;
+      let totalFee = RoundedDate > 1 ? RoundedDate * pricePerDay : pricePerDay;
 
       const unrandedRemainingHours = retalSpanInHours % 24;
       if (RoundedDate > 1 && unrandedRemainingHours > 0) {
@@ -689,12 +930,12 @@ export default {
     },
     scrollToEearchAndReservation() {
       window.scrollTo({
-        top: document.getElementById('searchAndReservation').offsetTop,
-        behavior: 'smooth'
+        top: document.getElementById("searchAndReservation").offsetTop,
+        behavior: "smooth",
       });
-    }
-  }
-}
+    },
+  },
+};
 </script>
 <style lang="scss" scoped>
 .home.valosa {
@@ -719,7 +960,10 @@ section {
     text-align: center;
     font-size: var(--font-size-base);
     color: var(--color-white);
-    margin: 0 6% 8rem;
+    margin: initial;
+    padding: 8rem 6% 8rem;
+    background: no-repeat url(../../public/images/valiosa-images/half-bg.png);
+    background-size: 50% 100%;
 
     &--title {
       h3 {
@@ -751,7 +995,7 @@ section {
       margin: 4rem;
 
       @media screen and (max-width: 390px) {
-        margin: 4rem .5rem;
+        margin: 4rem 0.5rem;
       }
 
       .ellipse-parent {
@@ -761,7 +1005,6 @@ section {
         .ellipseDiv {
           position: relative;
           border-radius: 50%;
-          background-color: #B5B5B5;
           width: 27.48rem;
           height: 27.48rem;
 
@@ -824,7 +1067,11 @@ section {
           color: var(--color-black);
 
           @media screen and (max-width: 390px) {
-            font-size: 1.3rem;
+            font-size: 1rem;
+          }
+          &.title {
+            font-size: 1.8rem;
+            font-weight: 500;
           }
         }
 
@@ -838,6 +1085,34 @@ section {
           @media screen and (max-width: 390px) {
             font-size: 1rem;
           }
+        }
+      }
+
+      &:nth-child(1) {
+        .ellipseDiv {
+          background: no-repeat
+            url(../../public/images/valiosa-images/feature1.jpeg);
+          background-size: 155%;
+          background-position-y: center;
+          background-position-x: 50%;
+        }
+      }
+      &:nth-child(2) {
+        .ellipseDiv {
+          background: no-repeat
+            url(../../public/images/valiosa-images/feature2.jpg);
+          background-size: 156%;
+          background-position-y: center;
+          background-position-x: 43%;
+        }
+      }
+      &:nth-child(3) {
+        .ellipseDiv {
+          background: no-repeat
+            url(../../public/images/valiosa-images/feature3.png);
+          background-size: 100%;
+          background-position-y: center;
+          background-position-x: 50%;
         }
       }
     }
@@ -921,7 +1196,7 @@ section {
         .pi {
           font-size: 3rem;
           margin-top: 2.7rem;
-          color: var(--color-black)
+          color: var(--color-black);
         }
       }
     }
@@ -962,7 +1237,7 @@ section {
     @media screen and (max-width: 390px) {
       &--title {
         h3 {
-          font-size: .8rem;
+          font-size: 0.8rem;
         }
       }
 
@@ -1042,13 +1317,13 @@ section {
 
           input,
           select {
-            background-color: #B5B5B5;
+            background-color: #b5b5b5;
           }
         }
 
         .input-description {
           display: block;
-          font-size: .8rem;
+          font-size: 0.8rem;
           font-weight: bold;
         }
       }
@@ -1107,7 +1382,7 @@ section {
 
 .reservation-form {
   section {
-    margin: 0rem 2.4rem
+    margin: 0rem 2.4rem;
   }
 
   &__statuses {
@@ -1145,7 +1420,7 @@ section {
 
   &__button {
     text-align: center;
-    display: flex
+    display: flex;
   }
 }
 
@@ -1164,7 +1439,7 @@ section {
     margin-bottom: 0.6rem;
     flex-direction: initial;
 
-    input[type=date] {
+    input[type="date"] {
       border-radius: 24.94px;
       background-color: var(--color-aliceblue);
       box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
@@ -1175,7 +1450,7 @@ section {
       letter-spacing: 0.05em;
     }
 
-    input[type=time] {
+    input[type="time"] {
       border-radius: 24.94px;
       background-color: var(--color-aliceblue);
       box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
