@@ -979,10 +979,7 @@ section {
     margin: initial;
     padding: 8rem 6% 8rem;
     background: no-repeat url(../../public/images/valiosa-images/half-bg.png);
-    background-size: 50%;
-    @media screen and (max-width: 390px) {
-      font-size: 1rem;
-    }
+    background-size: 50% 100%;
 
     &--title {
       h3 {
