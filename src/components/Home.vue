@@ -50,7 +50,7 @@
             </div>
             <div class="datetimepicker-rule">
               <span
-                >※営業時間(予約可能時間)は午前8:00 -
+                >※営業時間(予約可能時間)は午前9:00 -
                 午後6:00となっております。</span
               >
             </div>
@@ -617,7 +617,7 @@ export default {
   },
   methods: {
     isValidSearch(inputName) {
-      let salesStartTime = 8; //8:00 AM
+      let salesStartTime = 9; //9:00 AM
       let salesEndTime = 18; //6:00 PM
       switch (inputName) {
         case "departDate":

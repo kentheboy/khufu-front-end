@@ -12,7 +12,7 @@
                         <img src="/images/icons/line.png" alt="">
                     </a>
                 </div>
-                <div class="hours">営業時間　8:00-18:00</div>
+                <div class="hours">営業時間　9:00-18:00</div>
                 <a href="tel:098-996-7266">098-996-7266</a>
             </div>
         </div>
