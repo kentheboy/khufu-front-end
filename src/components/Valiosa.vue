@@ -1104,7 +1104,7 @@ section {
         .ellipseDiv {
           background: no-repeat
             url(../../public/images/valiosa-images/feature2.jpg);
-          background-size: 155%;
+          background-size: 156%;
           background-position-y: center;
           background-position-x: 43%;
         }
