@@ -1,5 +1,5 @@
 <template>
-    <div class="image-slider">
+    <div :class="['image-slider', isValiosaPage ? 'valiosa' : '']">
       <div class="logo">
         <img :src="mainLogo"/>
       </div>
@@ -8,8 +8,6 @@
           <img :src="currentImg" />
         </div>
       </transition-group>
-      <a class="prev" @click="prev" href="#">&#10094;</a>
-      <a class="next" @click="next" href="#">&#10095;</a>
     </div>
   </template>
 <script>
@@ -56,7 +54,11 @@ export default {
   computed: {
     currentImg: function() {
       return this.images[Math.abs(this.currentIndex) % this.images.length];
-    }
+    },
+    isValiosaPage() {
+      let path = this.$router.currentRoute.value.path;
+      return path.includes("valiosa");
+    },
   }
 };
 </script>
@@ -64,6 +66,12 @@ export default {
 .image-slider {
   height: 45rem;
   position: relative;
+
+  &.valiosa {
+    .logo {
+      margin: 13rem auto;
+    }
+  }
 
   .logo {
     position: absolute;
