@@ -197,8 +197,8 @@
             </div>
             <div class="datetimepicker-rule">
               <span
-                >※営業時間(予約可能時間)は午前8:00 -
-                午後6:00となっております。</span
+                >※営業時間(予約可能時間)は{{ businessHours.open }}:00 -
+                {{ businessHours.close }}:00となっております。</span
               >
             </div>
           </div>
@@ -292,6 +292,16 @@
                     placeholder="08000000000"
                     required
                     v-model="scheduleInfo.customerPhoneNumber"
+                  ></Input>
+                </div>
+                <div class="section__form--content-input-area">
+                  <Input
+                    type="number"
+                    label="人数"
+                    name="passenger"
+                    placeholder="1"
+                    required
+                    v-model="scheduleInfo.passenger"
                   ></Input>
                 </div>
                 <div class="section__form--content-input-area">
@@ -612,6 +622,7 @@ export default {
         useOfJuniorSheet: 0,
         deliveryOption: 0,
         returnOption: 0,
+        passenger: 1,
       },
       totalFeeHolder: null,
       openReservationForm: false,
@@ -630,6 +641,9 @@ export default {
     },
     backendDomain() {
       return process.env.VUE_APP_BACKEND_DOMAIN;
+    },
+    businessHours() {
+      return this.$store.state.businessHours;
     },
     isReadyToSearch() {
       if (this.search.departDate.isValid && this.search.returnDate.isValid) {
@@ -654,10 +668,14 @@ export default {
           );
           console.log(pickupTime);
           var minPickupTime = new Date(
-            `${this.search.departDate.value.slice(0, 10)} 09:00`
+            `${this.search.departDate.value.slice(0, 10)} ${
+              this.businessHours.open + 1
+            }:00`
           );
           var maxPickupTime = new Date(
-            `${this.search.departDate.value.slice(0, 10)} 17:00`
+            `${this.search.departDate.value.slice(0, 10)} ${
+              this.businessHours.close - 1
+            }:00`
           );
           if (pickupTime <= minPickupTime || pickupTime >= maxPickupTime) {
             return false;
@@ -671,10 +689,14 @@ export default {
           );
           console.log(dropoffTime);
           var minDropoffTime = new Date(
-            `${this.search.returnDate.value.slice(0, 10)} 09:00`
+            `${this.search.returnDate.value.slice(0, 10)} ${
+              this.businessHours.open + 1
+            }:00`
           );
           var maxDropoffTime = new Date(
-            `${this.search.returnDate.value.slice(0, 10)} 17:00`
+            `${this.search.returnDate.value.slice(0, 10)} ${
+              this.businessHours.close - 1
+            }:00`
           );
           if (dropoffTime <= minDropoffTime || dropoffTime >= maxDropoffTime) {
             return false;
@@ -688,21 +710,20 @@ export default {
   },
   methods: {
     isValidSearch(inputName) {
-      let salesStartTime = 8; //8:00 AM
-      let salesEndTime = 18; //6:00 PM
+      let salesStartTime = `${this.businessHours.open}:00`; //9:00 AM
+      let salesEndTime = `${this.businessHours.close}:00`; //6:00 PM
       switch (inputName) {
         case "departDate":
           if (this.search.departDate.rawValue) {
             let departTime = new Date(this.search.departDate.rawValue);
+            let departTimeStr = departTime.toString().slice(16, 21);
             if (
-              departTime.getHours() >= salesStartTime &&
-              departTime.getHours() <= salesEndTime
+              departTimeStr >= salesStartTime &&
+              departTimeStr <= salesEndTime
             ) {
               this.search.departDate.isValid = true;
               this.search.departDate.value =
-                departTime.toISOString().slice(0, 10) +
-                " " +
-                departTime.toString().slice(16, 21);
+                departTime.toISOString().slice(0, 10) + " " + departTimeStr;
             } else {
               this.search.departDate.isValid = false;
             }
@@ -713,15 +734,14 @@ export default {
         case "returnDate":
           if (this.search.returnDate.rawValue) {
             let returnTime = new Date(this.search.returnDate.rawValue);
+            let returnTimeStr = returnTime.toString().slice(16, 21);
             if (
-              returnTime.getHours() >= salesStartTime &&
-              returnTime.getHours() <= salesEndTime
+              returnTimeStr >= salesStartTime &&
+              returnTimeStr <= salesEndTime
             ) {
               this.search.returnDate.isValid = true;
               this.search.returnDate.value =
-                returnTime.toISOString().slice(0, 10) +
-                " " +
-                returnTime.toString().slice(16, 21);
+                returnTime.toISOString().slice(0, 10) + " " + returnTimeStr;
             } else {
               this.search.returnDate.isValid = false;
             }
@@ -761,6 +781,7 @@ export default {
       }, 3000);
 
       const customfields = JSON.stringify({
+        passengerNumber: this.scheduleInfo.passenger,
         licenseNumber: this.scheduleInfo.licenseNumber,
         dob: this.scheduleInfo.dob,
         airportPickup: this.scheduleInfo.airportPickup,
@@ -770,6 +791,7 @@ export default {
         useOfBabySheet: this.scheduleInfo.useOfBabySheet,
         useOfChildSheet: this.scheduleInfo.useOfChildSheet,
         useOfJuniorSheet: this.scheduleInfo.useOfJuniorSheet,
+        reservationMethod: 'valiosa'
       });
       const data = {
         product_id: this.scheduleInfo.reservationCarId,
@@ -908,25 +930,22 @@ export default {
       this.reservationLoading = false;
     },
     calculateTotalFeeByRentalSpan(startDateTime, endDateTime, pricePerDay) {
-      const startDateTimeObj = new Date(startDateTime);
-      const endDateTimeObj = new Date(endDateTime);
+      // Calculate the difference in days and add 1 to include both start and end dates
+      let diffInDays =
+        (new Date(endDateTime) - new Date(startDateTime)) /
+        (1000 * 60 * 60 * 24);
 
-      const diffInMilliseconds = endDateTimeObj - startDateTimeObj;
-      const retalSpanInHours = diffInMilliseconds / 3600000;
-      const RoundedDate = Math.floor(retalSpanInHours / 24);
-      let totalFee = RoundedDate > 1 ? RoundedDate * pricePerDay : pricePerDay;
-
-      const unrandedRemainingHours = retalSpanInHours % 24;
-      if (RoundedDate > 1 && unrandedRemainingHours > 0) {
-        if (unrandedRemainingHours > 10) {
-          // if unrandedRemainingHours is more than 10hr, add extra fullday price
-          totalFee += pricePerDay;
-        } else {
-          // if unrandedRemainingHours is less than 10hr, add extra 2000yen per hour
-          totalFee += unrandedRemainingHours * 2000;
-        }
+      if (diffInDays < 1) {
+        // if less than one full-day
+        diffInDays = 1;
+      } else if (diffInDays % 1 == 0) {
+        // if exactly one(or multiple) full-day (=returned on the next day the same time)
+        diffInDays = diffInDays + 1;
+      } else {
+        diffInDays = Math.ceil(diffInDays);
       }
-      return Math.ceil(totalFee);
+
+      return diffInDays * pricePerDay;
     },
     scrollToEearchAndReservation() {
       window.scrollTo({
