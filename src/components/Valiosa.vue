@@ -791,6 +791,7 @@ export default {
         useOfBabySheet: this.scheduleInfo.useOfBabySheet,
         useOfChildSheet: this.scheduleInfo.useOfChildSheet,
         useOfJuniorSheet: this.scheduleInfo.useOfJuniorSheet,
+        reservationMethod: 'valiosa'
       });
       const data = {
         product_id: this.scheduleInfo.reservationCarId,
