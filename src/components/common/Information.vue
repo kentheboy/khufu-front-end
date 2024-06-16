@@ -1,5 +1,5 @@
 <template>
-    <section class="section__information">
+    <section :class="['section__information', isValiosaPage ? 'valiosa' : '']">
         <div class="section__information--title">
             <h1>BOOKING INFORMATION</h1>
             <h3>ご予約内容</h3>
@@ -214,14 +214,41 @@ export default {
             }
             return result.split('').reverse().join('');
         }
+    },
+    computed: {
+    isValiosaPage() {
+      let path = this.$router.currentRoute.value.path
+      return path.includes("valiosa")
     }
+  }
 }
 </script>
 <style lang="scss" scoped>
 .section__information {
     text-align: center;
     color: var(--color-steelblue);
-    
+
+    &.valiosa {
+        color: ar(--color-black);
+        .section__information {
+            &--title {
+                border-bottom: 1.5px solid var(--color-black);
+                h1 {
+                    color: var(--color-black);
+                }
+                h3 {
+                    color: var(--color-black);
+                }
+            }
+            &--car-info {
+                color: var(--color-black);
+            }
+        }
+        .info-detail-area {
+            background-color: #b5b5b5;
+        }
+    }
+
     &--title {
         text-align: center;
         margin: 2.3rem;
