@@ -70,6 +70,12 @@ export default {
   &.valiosa {
     .logo {
       margin: 13rem auto;
+      @media screen and (max-width: 390px) {
+        margin: 15rem auto;
+        img {
+          max-width: 20rem;
+      }
+      }
     }
   }
 
