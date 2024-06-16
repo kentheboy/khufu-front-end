@@ -75,7 +75,7 @@ export default {
         {
           label: '料金表',
           icon: 'pi pi-dollar',
-          url: "./files/prices.pdf",
+          url: "/files/prices.pdf",
           target: "_blank"
         },
         {
@@ -96,7 +96,7 @@ export default {
         {
           label: 'プライバシーポリシー',
           icon: 'pi pi-link',
-          url: "./files/privacy_policy.pdf",
+          url: "/files/privacy_policy.pdf",
           target: "_blank"
         }
       ],
@@ -111,6 +111,12 @@ export default {
               behavior: 'smooth'
             });
           }
+        },
+        {
+          label: '料金表',
+          icon: 'pi pi-dollar',
+          url: "/files/prices.pdf",
+          target: "_blank"
         },
         { 
           label: '特徴',
@@ -164,7 +170,8 @@ export default {
   },
   computed: {
     isValiosaPage() {
-      return this.$router.currentRoute.value.path === "/valiosa"
+      let path = this.$router.currentRoute.value.path
+      return path.includes("valiosa")
     }
   }
 }

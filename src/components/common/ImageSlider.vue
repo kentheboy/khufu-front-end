@@ -1,15 +1,13 @@
 <template>
-    <div class="image-slider">
+    <div :class="['image-slider', isValiosaPage ? 'valiosa' : '']">
       <div class="logo">
-        <img src="/images/hero-mage-logo.png"/>
+        <img :src="mainLogo"/>
       </div>
       <transition-group name="fade" tag="div">
         <div v-for="i in [currentIndex]" :key="i" class="image-slider__image-parent">
           <img :src="currentImg" />
         </div>
       </transition-group>
-      <a class="prev" @click="prev" href="#">&#10094;</a>
-      <a class="next" @click="next" href="#">&#10095;</a>
     </div>
   </template>
 <script>
@@ -31,6 +29,12 @@ export default {
           "https://cdn.pixabay.com/photo/2016/12/04/19/30/berlin-cathedral-1882397_1280.jpg"
         ]
       }
+    },
+    mainLogo: {
+      type: String,
+      default: () => {
+        return '/images/hero-image-logo.png'
+      }
     }
   },
   mounted: function() {
@@ -50,7 +54,11 @@ export default {
   computed: {
     currentImg: function() {
       return this.images[Math.abs(this.currentIndex) % this.images.length];
-    }
+    },
+    isValiosaPage() {
+      let path = this.$router.currentRoute.value.path;
+      return path.includes("valiosa");
+    },
   }
 };
 </script>
@@ -58,6 +66,18 @@ export default {
 .image-slider {
   height: 45rem;
   position: relative;
+
+  &.valiosa {
+    .logo {
+      margin: 13rem auto;
+      @media screen and (max-width: 390px) {
+        margin: 15rem auto;
+        img {
+          max-width: 20rem;
+      }
+      }
+    }
+  }
 
   .logo {
     position: absolute;

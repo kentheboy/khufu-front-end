@@ -20,8 +20,8 @@
                 showIcon
                 showTime
                 hourFormat="12"
-                :stepMinute=30
-                iconDisplay="input" 
+                :stepMinute="30"
+                iconDisplay="input"
                 dateFormat="yy/mm/dd"
                 v-model="search.departDate.rawValue"
                 @update:modelValue="isValidSearch('departDate')"
@@ -36,16 +36,23 @@
                 showIcon
                 showTime
                 hourFormat="12"
-                :stepMinute=30
-                iconDisplay="input" 
+                :stepMinute="30"
+                iconDisplay="input"
                 dateFormat="yy/mm/dd"
                 v-model="search.returnDate.rawValue"
                 @update:modelValue="isValidSearch('returnDate')"
-                :minDate="search.departDate.rawValue?search.departDate.rawValue:today"
+                :minDate="
+                  search.departDate.rawValue
+                    ? search.departDate.rawValue
+                    : today
+                "
               />
             </div>
             <div class="datetimepicker-rule">
-              <span>※営業時間(予約可能時間)は午前8:00 - 午後6:00となっております。</span>
+              <span
+                >※営業時間(予約可能時間)は{{ businessHours.open }}:00 -
+                {{ businessHours.close }}:00となっております。</span
+              >
             </div>
           </div>
           <Button
@@ -55,11 +62,12 @@
             :disabled="!isReadyToSearch"
             @click="searchAvailability"
           ></Button>
-          <p 
+          <p
             v-if="availableCar.length <= 0 && isSearched"
-            class="no-available-car">
-            大変申し訳ございません。<br>
-            現在、ご指定された時間にご利用可能の車両がありません。<br>
+            class="no-available-car"
+          >
+            大変申し訳ございません。<br />
+            現在、ご指定された時間にご利用可能の車両がありません。<br />
             お手数ですが、再度別の時間帯で検索を行うか、店舗スタッフへお問合せください。
           </p>
           <Products
@@ -77,147 +85,229 @@
             @after-hide="closeReservationForm"
           >
             <div class="reservation-form__statuses">
-              <div :class="`reservation-form__status ${reservationFormStatus==='entry'?'active':''}`">入力</div>
-              <div :class="`reservation-form__status ${reservationFormStatus==='confirm'?'active':''}`">確認</div>
-              <div :class="`reservation-form__status ${reservationFormStatus==='done'?'active':''}`">完了</div>
+              <div
+                :class="`reservation-form__status ${
+                  reservationFormStatus === 'entry' ? 'active' : ''
+                }`"
+              >
+                入力
+              </div>
+              <div
+                :class="`reservation-form__status ${
+                  reservationFormStatus === 'confirm' ? 'active' : ''
+                }`"
+              >
+                確認
+              </div>
+              <div
+                :class="`reservation-form__status ${
+                  reservationFormStatus === 'done' ? 'active' : ''
+                }`"
+              >
+                完了
+              </div>
             </div>
             <section
               class="section__form"
-              style="margin-bottom: 0;"
-              v-if="reservationFormStatus==='entry'"
+              style="margin-bottom: 0"
+              v-if="reservationFormStatus === 'entry'"
             >
-                <div class="section__form--title">
-                  <h1>YOUR INFORMATION</h1>
-                  <h3>お客様情報入力</h3>
+              <div class="section__form--title">
+                <h1>YOUR INFORMATION</h1>
+                <h3>お客様情報入力</h3>
+              </div>
+              <div class="section__form--content">
+                <div class="section__form--content-input-area">
+                  <Input
+                    type="text"
+                    label="お名前"
+                    name="name"
+                    placeholder="山田太郎"
+                    required
+                    v-model="scheduleInfo.customerName"
+                  ></Input>
                 </div>
-                <div class="section__form--content">
-                  <div class="section__form--content-input-area">
-                    <Input
-                      type="text"
-                      label="お名前"
-                      name="name"
-                      placeholder="山田太郎"
-                      required
-                      v-model="scheduleInfo.customerName"
-                    ></Input>
-                  </div>
-                  <div class="section__form--content-input-area">
-                    <Input
-                      type="email"
-                      label="メールアドレス"
-                      name="email"
-                      placeholder="example@class.okinawa"
-                      required
-                      v-model="scheduleInfo.customerEmail"
-                    ></Input>
-                  </div>
-                  <div class="section__form--content-input-area">
-                    <Input
-                      type="tel"
-                      label="電話番号"
-                      name="phonenumber"
-                      placeholder="08000000000"
-                      required
-                      v-model="scheduleInfo.customerPhoneNumber"
-                    ></Input>
-                  </div>
-                  <div class="section__form--content-input-area">
-                    <Input
-                      type="number"
-                      label="免許番号"
-                      name="license-number"
-                      placeholder="1234567890"
-                      v-model="scheduleInfo.licenseNumber"
-                    ></Input>
-                  </div>
-                  <div class="section__form--content-input-area">
-                    <Input
-                      type="date"
-                      label="生年月日"
-                      name="dob"
-                      v-model="scheduleInfo.dob"
-                    ></Input>
-                  </div>
-                  <div class="section__form--content-input-area">
-                    <Input
-                      type="airport-timpicker"
-                      label="空港お出迎え"
-                      name="airport-pickup"
-                      v-model="scheduleInfo.airportPickup"
-                    ></Input>
-                  </div>
-                  <div class="section__form--content-input-area">
-                    <Input
-                      type="airport-timpicker"
-                      label="空港お見送り"
-                      name="airport-dropoff"
-                      v-model="scheduleInfo.airportDropoff"
-                    ></Input>
-                    <span class="input-description">空港送迎時間は午前9:00 - 午後5:00となっております。</span>
-                  </div>
-                  <div class="section__form--content-input-area">
-                    <Input
-                      type="selectbox"
-                      label="貸出オプション"
-                      name="return-option"
-                      :options='[{"name": "none", "label": "特になし", "value": 0}, {"name": "akamineStaDelivery", "label": "赤嶺駅貸出", "value": 1}, {"name": "nahaHotelDelivery", "label": "那覇市内ホテル貸出", "value": 2}]'
-                      v-model="scheduleInfo.deliveryOption"
-                    ></Input>
-                    <span class="input-description">追加料 ¥3,300</span>
-                  </div>
-                  <div class="section__form--content-input-area">
-                    <Input
-                      type="selectbox"
-                      label="返却オプション"
-                      name="return-option"
-                      :options='[{"name": "none", "label": "特になし", "value": 0}, {"name": "akamineStaReturn", "label": "赤嶺駅返却", "value": 1}, {"name": "nahaHotelReturn", "label": "那覇市内ホテル返却", "value": 2}]'
-                      v-model="scheduleInfo.returnOption"
-                    ></Input>
-                    <span class="input-description">追加料 ¥3,300</span>
-                  </div>
-                  <div class="section__form--content-input-area">
-                    <Input
-                      type="selectbox"
-                      label="ベビーシート数(0~1歳以下)"
-                      name="use-of-baby-sheet"
-                      classes="display-block"
-                      :options='[{"name": "useOfBabySheet", "label": "希望しない", "value": 0}, {"name": "useOfBabySheet", "label": "1台", "value": 1}, {"name": "useOfBabySheet", "label": "2台", "value": 2}, {"name": "useOfBabySheet", "label": "3台", "value": 3}]'
-                      v-model="scheduleInfo.useOfBabySheet"
-                    ></Input>
-                  </div>
-                  <div class="section__form--content-input-area">
-                    <Input
-                      type="selectbox"
-                      label="チャイルドシート(0~4歳以下)"
-                      name="use-of-child-sheet"
-                      classes="display-block"
-                      :options='[{"name": "useOfChildSheet", "label": "希望しない", "value": 0}, {"name": "useOfChildSheet", "label": "1台", "value": 1}, {"name": "useOfChildSheet", "label": "2台", "value": 2}, {"name": "useOfChildSheet", "label": "3台", "value": 3}]'
-                      v-model="scheduleInfo.useOfChildSheet"
-                    ></Input>
-                  </div>
-                  <div class="section__form--content-input-area">
-                    <Input
-                      type="selectbox"
-                      label="ジュニアシート数(4歳以上~10歳以下)"
-                      name="use-of-junior-sheet"
-                      classes="display-block"
-                      :options='[{"name": "useOfJuniorSheet", "label": "希望しない", "value": 0}, {"name": "useOfJuniorSheet", "label": "1台", "value": 1}, {"name": "useOfJuniorSheet", "label": "2台", "value": 2}, {"name": "useOfBabySheet", "label": "3台", "value": 3}]'
-                      v-model="scheduleInfo.useOfJuniorSheet"
-                    ></Input>
-                    <span class="input-description">各種シート1台あたり追加料 ¥1,100（一律）</span>
-                  </div>
+                <div class="section__form--content-input-area">
+                  <Input
+                    type="email"
+                    label="メールアドレス"
+                    name="email"
+                    placeholder="example@class.okinawa"
+                    required
+                    v-model="scheduleInfo.customerEmail"
+                  ></Input>
                 </div>
+                <div class="section__form--content-input-area">
+                  <Input
+                    type="tel"
+                    label="電話番号"
+                    name="phonenumber"
+                    placeholder="08000000000"
+                    required
+                    v-model="scheduleInfo.customerPhoneNumber"
+                  ></Input>
+                </div>
+                <div class="section__form--content-input-area">
+                  <Input
+                    type="number"
+                    label="人数"
+                    name="passenger"
+                    placeholder="1"
+                    required
+                    v-model="scheduleInfo.passenger"
+                  ></Input>
+                </div>
+                <div class="section__form--content-input-area">
+                  <Input
+                    type="number"
+                    label="免許番号"
+                    name="license-number"
+                    placeholder="1234567890"
+                    v-model="scheduleInfo.licenseNumber"
+                  ></Input>
+                </div>
+                <div class="section__form--content-input-area">
+                  <Input
+                    type="date"
+                    label="生年月日"
+                    name="dob"
+                    v-model="scheduleInfo.dob"
+                  ></Input>
+                </div>
+                <div class="section__form--content-input-area">
+                  <Input
+                    type="airport-timpicker"
+                    label="空港お出迎え"
+                    name="airport-pickup"
+                    v-model="scheduleInfo.airportPickup"
+                  ></Input>
+                </div>
+                <div class="section__form--content-input-area">
+                  <Input
+                    type="airport-timpicker"
+                    label="空港お見送り"
+                    name="airport-dropoff"
+                    v-model="scheduleInfo.airportDropoff"
+                  ></Input>
+                  <span class="input-description"
+                    >空港送迎時間は午前9:00 - 午後5:00となっております。</span
+                  >
+                </div>
+                <div class="section__form--content-input-area">
+                  <Input
+                    type="selectbox"
+                    label="貸出オプション"
+                    name="return-option"
+                    :options="[
+                      { name: 'none', label: '特になし', value: 0 },
+                      {
+                        name: 'akamineStaDelivery',
+                        label: '赤嶺駅貸出',
+                        value: 1,
+                      },
+                      {
+                        name: 'nahaHotelDelivery',
+                        label: '那覇市内ホテル貸出',
+                        value: 2,
+                      },
+                    ]"
+                    v-model="scheduleInfo.deliveryOption"
+                  ></Input>
+                  <span class="input-description">追加料 ¥3,300</span>
+                </div>
+                <div class="section__form--content-input-area">
+                  <Input
+                    type="selectbox"
+                    label="返却オプション"
+                    name="return-option"
+                    :options="[
+                      { name: 'none', label: '特になし', value: 0 },
+                      {
+                        name: 'akamineStaReturn',
+                        label: '赤嶺駅返却',
+                        value: 1,
+                      },
+                      {
+                        name: 'nahaHotelReturn',
+                        label: '那覇市内ホテル返却',
+                        value: 2,
+                      },
+                    ]"
+                    v-model="scheduleInfo.returnOption"
+                  ></Input>
+                  <span class="input-description">追加料 ¥3,300</span>
+                </div>
+                <div class="section__form--content-input-area">
+                  <Input
+                    type="selectbox"
+                    label="ベビーシート数(0~1歳以下)"
+                    name="use-of-baby-sheet"
+                    classes="display-block"
+                    :options="[
+                      { name: 'useOfBabySheet', label: '希望しない', value: 0 },
+                      { name: 'useOfBabySheet', label: '1台', value: 1 },
+                      { name: 'useOfBabySheet', label: '2台', value: 2 },
+                      { name: 'useOfBabySheet', label: '3台', value: 3 },
+                    ]"
+                    v-model="scheduleInfo.useOfBabySheet"
+                  ></Input>
+                </div>
+                <div class="section__form--content-input-area">
+                  <Input
+                    type="selectbox"
+                    label="チャイルドシート(0~4歳以下)"
+                    name="use-of-child-sheet"
+                    classes="display-block"
+                    :options="[
+                      {
+                        name: 'useOfChildSheet',
+                        label: '希望しない',
+                        value: 0,
+                      },
+                      { name: 'useOfChildSheet', label: '1台', value: 1 },
+                      { name: 'useOfChildSheet', label: '2台', value: 2 },
+                      { name: 'useOfChildSheet', label: '3台', value: 3 },
+                    ]"
+                    v-model="scheduleInfo.useOfChildSheet"
+                  ></Input>
+                </div>
+                <div class="section__form--content-input-area">
+                  <Input
+                    type="selectbox"
+                    label="ジュニアシート数(4歳以上~10歳以下)"
+                    name="use-of-junior-sheet"
+                    classes="display-block"
+                    :options="[
+                      {
+                        name: 'useOfJuniorSheet',
+                        label: '希望しない',
+                        value: 0,
+                      },
+                      { name: 'useOfJuniorSheet', label: '1台', value: 1 },
+                      { name: 'useOfJuniorSheet', label: '2台', value: 2 },
+                      { name: 'useOfBabySheet', label: '3台', value: 3 },
+                    ]"
+                    v-model="scheduleInfo.useOfJuniorSheet"
+                  ></Input>
+                  <span class="input-description"
+                    >各種シート1台あたり追加料 ¥1,100（一律）</span
+                  >
+                </div>
+              </div>
             </section>
             <Information
-              v-if="reservationFormStatus==='confirm'"
-              :isExample=false
+              v-if="reservationFormStatus === 'confirm'"
+              :isExample="false"
               :reservationInfo="confirmationInfo"
             ></Information>
-            <div 
-              v-if="reservationFormStatus==='done'"
+            <div
+              v-if="reservationFormStatus === 'done'"
               class="reservation-form__completed"
             >
-              <img class="reservation-form__completed-img" src="/images/icons/mail.png">
+              <img
+                class="reservation-form__completed-img"
+                src="/images/icons/mail.png"
+              />
               <p>
                 予約が完了しました。<br />
                 ご入力いただいたメールアドレス宛に担当者から確認の連絡を差し上げます。
@@ -228,21 +318,21 @@
             <div class="reservation-form__button">
               <Button
                 class="p-ripple"
-                v-if="reservationFormStatus==='entry'"
+                v-if="reservationFormStatus === 'entry'"
                 label="予約確認へ"
                 :disabled="!isValidScheduleInfo"
                 @click="confirmForm"
               ></Button>
               <Button
                 class="p-ripple"
-                v-if="reservationFormStatus==='confirm'"
+                v-if="reservationFormStatus === 'confirm'"
                 label="内容を修正する"
                 severity="secondary"
-                @click="reservationFormStatus='entry'"
+                @click="reservationFormStatus = 'entry'"
               ></Button>
               <Button
                 class="p-ripple"
-                v-if="reservationFormStatus==='confirm'"
+                v-if="reservationFormStatus === 'confirm'"
                 icon="pi pi-send"
                 label="予約する"
                 :loading="reservationLoading"
@@ -284,7 +374,11 @@
             </div>
             <div class="subtext">
               <h1>
-                <p class="p">必要書類はメールにて送信。<br class="sp">かんたんに手続きが済みます。</p>
+                <p class="p">
+                  必要書類はメールにて送信。<br
+                    class="sp"
+                  />かんたんに手続きが済みます。
+                </p>
               </h1>
             </div>
           </div>
@@ -300,10 +394,18 @@
             </div>
             <div class="subtext">
               <h1>
-                <p class="p">混みにくいインターチェンジへ<br class="sp">最短アクセスが可能です。</p>
+                <p class="p">
+                  混みにくいインターチェンジへ<br
+                    class="sp"
+                  />最短アクセスが可能です。
+                </p>
               </h1>
               <h3>
-                <p class="p">※空港近辺では使用インターが重なり、<br class="sp">度々渋滞になります。</p>
+                <p class="p">
+                  ※空港近辺では使用インターが重なり、<br
+                    class="sp"
+                  />度々渋滞になります。
+                </p>
               </h3>
             </div>
           </div>
@@ -318,7 +420,11 @@
             </div>
             <div class="subtext">
               <h1>
-                <p class="p">免責補償込みで予約可能。<br class="sp">余計なオプションも、<br class="sp">追加保険料も必要なし。</p>
+                <p class="p">
+                  免責補償込みで予約可能。<br
+                    class="sp"
+                  />余計なオプションも、<br class="sp" />追加保険料も必要なし。
+                </p>
               </h1>
             </div>
           </div>
@@ -329,22 +435,22 @@
     <Footer></Footer>
   </div>
 </template>
-  
+
 <script>
 import Header from "/src/components/common/Header";
 import ImageSlider from "/src/components/common/ImageSlider";
 import Input from "/src/components/common/form/Input";
-import Calendar from 'primevue/calendar';
+import Calendar from "primevue/calendar";
 import Products from "/src/components/common/Products";
 import ProductCard from "/src/components/common/ProductCard";
 import Information from "/src/components/common/Information";
 import Footer from "/src/components/common/Footer";
 import Button from "primevue/button";
-import Dialog from 'primevue/dialog';
-import ScrollTop from 'primevue/scrolltop';
+import Dialog from "primevue/dialog";
+import ScrollTop from "primevue/scrolltop";
 import axios from "axios";
 export default {
-  name: 'Home',
+  name: "Home",
   components: {
     Header,
     ImageSlider,
@@ -356,13 +462,13 @@ export default {
     Footer,
     Button,
     Dialog,
-    ScrollTop
+    ScrollTop,
   },
   props: {
     msg: {
       type: String,
       default: "Hello world",
-    }
+    },
   },
   data() {
     return {
@@ -374,27 +480,27 @@ export default {
         "/images/hero-images/image5.jpg",
         "/images/hero-images/image6.jpg",
         "/images/hero-images/image7.jpg",
-        "/images/hero-images/image8.png"
+        "/images/hero-images/image8.png",
       ],
       additionalDriverRadio: [
-        { name: "additional-driver-radio", value: "yes", label: "あり"},
-        { name: "additional-driver-radio", value: "no", label: "なし"},
+        { name: "additional-driver-radio", value: "yes", label: "あり" },
+        { name: "additional-driver-radio", value: "no", label: "なし" },
       ],
       signUp: [
-        { name: "sign-up", value: "yes", label: "希望する"},
-        { name: "sign-up", value: "no", label: "希望しない"},
+        { name: "sign-up", value: "yes", label: "希望する" },
+        { name: "sign-up", value: "no", label: "希望しない" },
       ],
       today: null,
       search: {
         departDate: {
           rawValue: null,
           value: null,
-          isValid: false
+          isValid: false,
         },
         returnDate: {
           rawValue: null,
           value: null,
-          isValid: false
+          isValid: false,
         },
       },
       vehicle_list: [
@@ -402,26 +508,26 @@ export default {
           title: "ALPHARD",
           main_image: "/images/car-images/ALPHARD-1.jpg",
           passenger: 7,
-          stock: 7
+          stock: 7,
         },
         {
           title: "ALPHARD",
           main_image: "/images/car-images/ALPHARD-2.jpg",
           passenger: 8,
-          stock: 2
+          stock: 2,
         },
         {
           title: "VELLFIRE",
           main_image: "/images/car-images/VELLFIRE.jpg",
           passenger: 8,
-          stock: 1
+          stock: 1,
         },
         {
           title: "HIACE",
           main_image: "/images/car-images/HIACE.jpg",
           passenger: 10,
-          stock: 2
-        }
+          stock: 2,
+        },
       ],
       isSearched: false,
       availableCar: [],
@@ -445,12 +551,13 @@ export default {
         useOfJuniorSheet: 0,
         deliveryOption: 0,
         returnOption: 0,
+        passenger: 1,
       },
       totalFeeHolder: null,
       openReservationForm: false,
       confirmationInfo: null,
-      reservationLoading: false
-    }
+      reservationLoading: false,
+    };
   },
   async created() {
     this.today = new Date();
@@ -458,11 +565,14 @@ export default {
   computed: {
     cssVars() {
       return {
-        '--comingSoon-height': this.comingSoonHeight
-      }
+        "--comingSoon-height": this.comingSoonHeight,
+      };
     },
     backendDomain() {
       return process.env.VUE_APP_BACKEND_DOMAIN;
+    },
+    businessHours() {
+      return this.$store.state.businessHours;
     },
     isReadyToSearch() {
       if (this.search.departDate.isValid && this.search.returnDate.isValid) {
@@ -480,19 +590,43 @@ export default {
         phoneRegex.test(this.scheduleInfo.customerPhoneNumber)
       ) {
         if (this.scheduleInfo.airportPickup) {
-          var pickupTime = new Date(`${this.search.departDate.value.slice(0, 10)} ${this.scheduleInfo.airportPickup}`);
-          console.log(pickupTime)
-          var minPickupTime = new Date(`${this.search.departDate.value.slice(0, 10)} 09:00`);
-          var maxPickupTime = new Date(`${this.search.departDate.value.slice(0, 10)} 17:00`);
+          var pickupTime = new Date(
+            `${this.search.departDate.value.slice(0, 10)} ${
+              this.scheduleInfo.airportPickup
+            }`
+          );
+          console.log(pickupTime);
+          var minPickupTime = new Date(
+            `${this.search.departDate.value.slice(0, 10)} ${
+              this.businessHours.open + 1
+            }:00`
+          );
+          var maxPickupTime = new Date(
+            `${this.search.departDate.value.slice(0, 10)} ${
+              this.businessHours.close - 1
+            }:00`
+          );
           if (pickupTime <= minPickupTime || pickupTime >= maxPickupTime) {
             return false;
           }
         }
         if (this.scheduleInfo.airportDropoff) {
-          var dropoffTime = new Date(`${this.search.returnDate.value.slice(0, 10)} ${this.scheduleInfo.airportDropoff}`);
-          console.log(dropoffTime)
-          var minDropoffTime = new Date(`${this.search.returnDate.value.slice(0, 10)} 09:00`);
-          var maxDropoffTime = new Date(`${this.search.returnDate.value.slice(0, 10)} 17:00`);
+          var dropoffTime = new Date(
+            `${this.search.returnDate.value.slice(0, 10)} ${
+              this.scheduleInfo.airportDropoff
+            }`
+          );
+          console.log(dropoffTime);
+          var minDropoffTime = new Date(
+            `${this.search.returnDate.value.slice(0, 10)} ${
+              this.businessHours.open + 1
+            }:00`
+          );
+          var maxDropoffTime = new Date(
+            `${this.search.returnDate.value.slice(0, 10)} ${
+              this.businessHours.close - 1
+            }:00`
+          );
           if (dropoffTime <= minDropoffTime || dropoffTime >= maxDropoffTime) {
             return false;
           }
@@ -501,19 +635,24 @@ export default {
       } else {
         return false;
       }
-    }
+    },
   },
   methods: {
     isValidSearch(inputName) {
-      let salesStartTime = 8; //8:00 AM
-      let salesEndTime = 18; //6:00 PM
-      switch(inputName) {
+      let salesStartTime = `${this.businessHours.open}:00`; //9:00 AM
+      let salesEndTime = `${this.businessHours.close}:00`; //6:00 PM
+      switch (inputName) {
         case "departDate":
           if (this.search.departDate.rawValue) {
             let departTime = new Date(this.search.departDate.rawValue);
-            if (departTime.getHours() >= salesStartTime && departTime.getHours() <= salesEndTime) {
+            let departTimeStr = departTime.toString().slice(16, 21);
+            if (
+              departTimeStr >= salesStartTime &&
+              departTimeStr <= salesEndTime
+            ) {
               this.search.departDate.isValid = true;
-              this.search.departDate.value = departTime.toISOString().slice(0, 10)+" "+departTime.toString().slice(16, 21)
+              this.search.departDate.value =
+                departTime.toISOString().slice(0, 10) + " " + departTimeStr;
             } else {
               this.search.departDate.isValid = false;
             }
@@ -524,9 +663,14 @@ export default {
         case "returnDate":
           if (this.search.returnDate.rawValue) {
             let returnTime = new Date(this.search.returnDate.rawValue);
-            if (returnTime.getHours() >= salesStartTime && returnTime.getHours() <= salesEndTime) {
+            let returnTimeStr = returnTime.toString().slice(16, 21);
+            if (
+              returnTimeStr >= salesStartTime &&
+              returnTimeStr <= salesEndTime
+            ) {
               this.search.returnDate.isValid = true;
-              this.search.returnDate.value = returnTime.toISOString().slice(0, 10)+" "+returnTime.toString().slice(16, 21)
+              this.search.returnDate.value =
+                returnTime.toISOString().slice(0, 10) + " " + returnTimeStr;
             } else {
               this.search.returnDate.isValid = false;
             }
@@ -538,68 +682,78 @@ export default {
     },
     async searchAvailability() {
       const param = {
-        "params": {
-          "start_at": `${this.search.departDate.value}`,
-          "end_at": `${this.search.returnDate.value}`,
-        }
+        params: {
+          start_at: `${this.search.departDate.value}`,
+          end_at: `${this.search.returnDate.value}`,
+        },
       };
 
-      await axios.get(`${this.backendDomain}/api/schedule/search`, param).then((response) => {
-        let tmpProducts = response.data.data;
-        for (let i in tmpProducts) {
-          tmpProducts[i].main_image = tmpProducts[i].images[0];
-          let customfields = JSON.parse(tmpProducts[i].customfields);
-          tmpProducts[i].isSmokingAllowed = customfields.isSmokingAllowed;
-          tmpProducts[i].passenger = customfields.passenger;
-          tmpProducts[i].subInfo = customfields.licenseNumber;
-          delete tmpProducts[i].customfields;
-        }
-        this.availableCar = tmpProducts;
-        this.isSearched = true;
-      })
+      await axios
+        .get(`${this.backendDomain}/api/schedule/search`, param)
+        .then((response) => {
+          let tmpProducts = response.data.data;
+          for (let i in tmpProducts) {
+            tmpProducts[i].main_image = tmpProducts[i].images[0];
+            let customfields = JSON.parse(tmpProducts[i].customfields);
+            tmpProducts[i].isSmokingAllowed = customfields.isSmokingAllowed;
+            tmpProducts[i].passenger = customfields.passenger;
+            tmpProducts[i].subInfo = customfields.licenseNumber;
+            delete tmpProducts[i].customfields;
+          }
+          this.availableCar = tmpProducts;
+          this.isSearched = true;
+        });
     },
     async submitForm() {
       this.reservationLoading = true;
       await setTimeout(() => {
-      // this timeOut add loading effect for minimum 3 sec
-      }, 3000)
-  
+        // this timeOut add loading effect for minimum 3 sec
+      }, 3000);
+
       const customfields = JSON.stringify({
-        'licenseNumber': this.scheduleInfo.licenseNumber,
-        'dob': this.scheduleInfo.dob,
-        'airportPickup': this.scheduleInfo.airportPickup,
-        'airportDropoff': this.scheduleInfo.airportDropoff,
-        'deliveryOption': this.scheduleInfo.deliveryOption,
-        'returnOption': this.scheduleInfo.returnOption,
-        'useOfBabySheet': this.scheduleInfo.useOfBabySheet,
-        'useOfChildSheet': this.scheduleInfo.useOfChildSheet,
-        'useOfJuniorSheet': this.scheduleInfo.useOfJuniorSheet
+        passengerNumber: this.scheduleInfo.passenger,
+        licenseNumber: this.scheduleInfo.licenseNumber,
+        dob: this.scheduleInfo.dob,
+        airportPickup: this.scheduleInfo.airportPickup,
+        airportDropoff: this.scheduleInfo.airportDropoff,
+        deliveryOption: this.scheduleInfo.deliveryOption,
+        returnOption: this.scheduleInfo.returnOption,
+        useOfBabySheet: this.scheduleInfo.useOfBabySheet,
+        useOfChildSheet: this.scheduleInfo.useOfChildSheet,
+        useOfJuniorSheet: this.scheduleInfo.useOfJuniorSheet,
       });
       const data = {
-        'product_id': this.scheduleInfo.reservationCarId,
-        'name': this.scheduleInfo.customerName,
-        'email': this.scheduleInfo.customerEmail,
-        'tel': this.scheduleInfo.customerPhoneNumber,
-        'start_at': this.scheduleInfo.start_at,
-        'end_at': this.scheduleInfo.end_at,
-        'total_fee': this.totalFeeHolder,
-        'customfields': customfields
+        product_id: this.scheduleInfo.reservationCarId,
+        name: this.scheduleInfo.customerName,
+        email: this.scheduleInfo.customerEmail,
+        tel: this.scheduleInfo.customerPhoneNumber,
+        start_at: this.scheduleInfo.start_at,
+        end_at: this.scheduleInfo.end_at,
+        total_fee: this.totalFeeHolder,
+        customfields: customfields,
       };
-      await axios.post(`${this.backendDomain}/api/schedule/create`, data).then((response) => {
-        this.reservationFormStatus = 'done';
-        console.log(response);
-        setTimeout(() => {
-          this.reservationLoading = false;
-          this.closeReservationForm();
-        }, 10000)
-      })
-      
+      await axios
+        .post(`${this.backendDomain}/api/schedule/create`, data)
+        .then((response) => {
+          this.reservationFormStatus = "done";
+          console.log(response);
+          setTimeout(() => {
+            this.reservationLoading = false;
+            this.closeReservationForm();
+          }, 10000);
+        });
     },
     opneReservationForm(carId) {
       this.scheduleInfo.reservationCarId = carId;
 
       // calculate basic totalFee (fees without options)
-      this.scheduleInfo.totalFee = this.calculateTotalFeeByRentalSpan(`${this.search.departDate.value}`, `${this.search.returnDate.value}`, this.availableCar.find(car => car.id === this.scheduleInfo.reservationCarId).price) 
+      this.scheduleInfo.totalFee = this.calculateTotalFeeByRentalSpan(
+        `${this.search.departDate.value}`,
+        `${this.search.returnDate.value}`,
+        this.availableCar.find(
+          (car) => car.id === this.scheduleInfo.reservationCarId
+        ).price
+      );
 
       this.scheduleInfo.start_at = `${this.search.departDate.value}`;
       this.scheduleInfo.end_at = `${this.search.returnDate.value}`;
@@ -607,30 +761,35 @@ export default {
       this.reservationFormStatus = "entry";
     },
     confirmForm() {
-      let selectedCarInfo = this.availableCar.find(car => car.id === this.scheduleInfo.reservationCarId)
+      let selectedCarInfo = this.availableCar.find(
+        (car) => car.id === this.scheduleInfo.reservationCarId
+      );
       const deriveryReturnFee = 3300;
       const generalChildSheetFee = 1100;
-      
+
       // add basic totalFee inside temporal variable holder
       this.totalFeeHolder = this.scheduleInfo.totalFee;
       // if any delivery/return area is requested, charge extra 3000yen
-      if(this.scheduleInfo.deliveryOption) {
+      if (this.scheduleInfo.deliveryOption) {
         this.totalFeeHolder += deriveryReturnFee;
       }
-      if(this.scheduleInfo.returnOption) {
+      if (this.scheduleInfo.returnOption) {
         this.totalFeeHolder += deriveryReturnFee;
       }
       // if any childSheet requested, charge extra fee depending on the sheet type
       if (this.scheduleInfo.useOfBabySheet) {
-        this.totalFeeHolder += this.scheduleInfo.useOfBabySheet * generalChildSheetFee;
+        this.totalFeeHolder +=
+          this.scheduleInfo.useOfBabySheet * generalChildSheetFee;
       }
       if (this.scheduleInfo.useOfChildSheet) {
-        this.totalFeeHolder += this.scheduleInfo.useOfChildSheet * generalChildSheetFee;
+        this.totalFeeHolder +=
+          this.scheduleInfo.useOfChildSheet * generalChildSheetFee;
       }
       if (this.scheduleInfo.useOfJuniorSheet) {
-        this.totalFeeHolder += this.scheduleInfo.useOfJuniorSheet * generalChildSheetFee;
+        this.totalFeeHolder +=
+          this.scheduleInfo.useOfJuniorSheet * generalChildSheetFee;
       }
-      
+
       this.confirmationInfo = {
         title: selectedCarInfo.title,
         subInfo: selectedCarInfo.subInfo,
@@ -649,15 +808,18 @@ export default {
           images: selectedCarInfo.images,
           maxmumPassenger: selectedCarInfo.passenger,
           isSmokingAllowed: selectedCarInfo.isSmokingAllowed,
-          basicFee: selectedCarInfo.price
+          basicFee: selectedCarInfo.price,
         },
         additionalService: {
           deliveryOption: this.scheduleInfo.deliveryOption,
           returnOption: this.scheduleInfo.returnOption,
-          useOfBabySheet: this.scheduleInfo.useOfBabySheet * generalChildSheetFee,
-          useOfChildSheet: this.scheduleInfo.useOfChildSheet * generalChildSheetFee,
-          useOfJuniorSheet: this.scheduleInfo.useOfJuniorSheet * generalChildSheetFee
-        }
+          useOfBabySheet:
+            this.scheduleInfo.useOfBabySheet * generalChildSheetFee,
+          useOfChildSheet:
+            this.scheduleInfo.useOfChildSheet * generalChildSheetFee,
+          useOfJuniorSheet:
+            this.scheduleInfo.useOfJuniorSheet * generalChildSheetFee,
+        },
       };
       this.reservationFormStatus = "confirm";
     },
@@ -665,7 +827,7 @@ export default {
       let date1 = new Date(startDate);
       let date2 = new Date(endDate);
       let timeDiff = Math.abs(date2.getTime() - date1.getTime());
-      let diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24)); 
+      let diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
       return diffDays;
     },
     closeReservationForm() {
@@ -698,34 +860,31 @@ export default {
       this.reservationLoading = false;
     },
     calculateTotalFeeByRentalSpan(startDateTime, endDateTime, pricePerDay) {
-      const startDateTimeObj = new Date(startDateTime);
-      const endDateTimeObj = new Date(endDateTime);
+      // Calculate the difference in days and add 1 to include both start and end dates
+      let diffInDays =
+        (new Date(endDateTime) - new Date(startDateTime)) /
+        (1000 * 60 * 60 * 24);
 
-      const diffInMilliseconds = endDateTimeObj - startDateTimeObj;
-      const retalSpanInHours = diffInMilliseconds / 3600000;
-      const RoundedDate = Math.floor(retalSpanInHours / 24);
-      let totalFee = RoundedDate > 1 ? (RoundedDate * pricePerDay) : pricePerDay;
-
-      const unrandedRemainingHours = retalSpanInHours % 24;
-      if (RoundedDate > 1 && unrandedRemainingHours > 0) {
-        if (unrandedRemainingHours > 10) {
-          // if unrandedRemainingHours is more than 10hr, add extra fullday price
-          totalFee += pricePerDay;
-        } else {
-          // if unrandedRemainingHours is less than 10hr, add extra 2000yen per hour
-          totalFee += unrandedRemainingHours * 2000;
-        }
+      if (diffInDays < 1) {
+        // if less than one full-day
+        diffInDays = 1;
+      } else if (diffInDays % 1 == 0) {
+        // if exactly one(or multiple) full-day (=returned on the next day the same time)
+        diffInDays = diffInDays + 1;
+      } else {
+        diffInDays = Math.ceil(diffInDays);
       }
-      return Math.ceil(totalFee);
+
+      return diffInDays * pricePerDay;
     },
     scrollToEearchAndReservation() {
       window.scrollTo({
-        top: document.getElementById('searchAndReservation').offsetTop,
-        behavior: 'smooth'
+        top: document.getElementById("searchAndReservation").offsetTop,
+        behavior: "smooth",
       });
-    }
-  }
-}
+    },
+  },
+};
 </script>
 <style lang="scss" scoped>
 .home {
@@ -780,7 +939,7 @@ section {
       margin: 4rem;
 
       @media screen and (max-width: 390px) {
-        margin: 4rem .5rem;
+        margin: 4rem 0.5rem;
       }
 
       .ellipse-parent {
@@ -922,7 +1081,7 @@ section {
         }
         .input-description {
           display: block;
-          font-size: .8rem;
+          font-size: 0.8rem;
           font-weight: bold;
         }
       }
@@ -966,7 +1125,7 @@ section {
       }
     }
 
-    &--lists{
+    &--lists {
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
@@ -978,7 +1137,7 @@ section {
 }
 .reservation-form {
   section {
-    margin: 0rem 2.4rem 
+    margin: 0rem 2.4rem;
   }
 
   &__statuses {
@@ -1014,7 +1173,7 @@ section {
 
   &__button {
     text-align: center;
-    display: flex
+    display: flex;
   }
 }
 .datetimepicker {
@@ -1032,7 +1191,7 @@ section {
     margin-bottom: 0.6rem;
     flex-direction: initial;
 
-    input[type=date] {
+    input[type="date"] {
       border-radius: 24.94px;
       background-color: var(--color-aliceblue);
       box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
@@ -1043,7 +1202,7 @@ section {
       letter-spacing: 0.05em;
     }
 
-    input[type=time] {
+    input[type="time"] {
       border-radius: 24.94px;
       background-color: var(--color-aliceblue);
       box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
@@ -1126,10 +1285,10 @@ section {
     }
     span {
       line-height: 4rem;
-      &:nth-child(1){
+      &:nth-child(1) {
         margin: 0 auto auto 0;
       }
-      &:nth-child(2){
+      &:nth-child(2) {
         margin: auto 0 0 auto;
       }
     }
@@ -1154,4 +1313,3 @@ section {
   }
 }
 </style>
-  
