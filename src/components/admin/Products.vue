@@ -16,14 +16,15 @@
             <Column field="syakenDate" header="車検期限" :sortable="true"></Column>
             <Column field="tenkenDate" header="点検期限" :sortable="true"></Column>
             <Column field="startDate" header="貸出開始日" :sortable="true"></Column>
-            <Column field="status" header="ステータス" :sortable="true">
+            <Column field="endDate" header="貸出終了日" :sortable="true"></Column>
+            <!-- <Column field="status" header="ステータス" :sortable="true">
                 <template #body="slotProps">
                     <Badge 
                         :value="productStatus[slotProps.data.status]" 
                         :severity="productStatusColor[slotProps.data.status]">
                     </Badge>
                 </template>
-            </Column>
+            </Column> -->
             <Column>
                 <template #body="slotProps">
                     <div class="product-list__table--action_buttons">
@@ -170,7 +171,7 @@ import DataTable from 'primevue/datatable';
 import Column from 'primevue/column';
 import Dialog from 'primevue/dialog';
 import Button from "primevue/button";
-import Badge from 'primevue/badge';
+// import Badge from 'primevue/badge';
 import Input from "/src/components/common/form/Input";
 import Toast from 'primevue/toast';
 import { useToast } from "primevue/usetoast";
@@ -182,7 +183,7 @@ export default {
         Column,
         Dialog,
         Button,
-        Badge,
+        // Badge,
         Input,
         Toast
     },
