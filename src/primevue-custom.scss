@@ -27,6 +27,20 @@ a.button {
     }
 
 }
+// toggle button
+.p-togglebutton {
+    &.published {
+        .p-button {
+            background-color: #418EB8;
+        }
+    }
+    .p-button {
+        width: 5rem;
+        font-size: small;
+        padding: .2rem 0;
+        background-color: #495057;
+    } 
+}
 
 // Availability Search Calendar picker
 .datetimepicker-selector {
