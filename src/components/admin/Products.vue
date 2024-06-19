@@ -17,14 +17,17 @@
             <Column field="tenkenDate" header="点検期限" :sortable="true"></Column>
             <Column field="startDate" header="貸出開始日" :sortable="true"></Column>
             <Column field="endDate" header="貸出終了日" :sortable="true"></Column>
-            <!-- <Column field="status" header="ステータス" :sortable="true">
+            <Column field="status" header="ステータス" :sortable="true">
                 <template #body="slotProps">
-                    <Badge 
-                        :value="productStatus[slotProps.data.status]" 
-                        :severity="productStatusColor[slotProps.data.status]">
-                    </Badge>
+                    <ToggleButton 
+                        v-model="slotProps.data.status" 
+                        :class="`${slotProps.data.status?'published':''}`" 
+                        onLabel="公開中" 
+                        offLabel="非公開中" 
+                        @change="toggleStatus(slotProps.data.id)"
+                    />
                 </template>
-            </Column> -->
+            </Column>
             <Column>
                 <template #body="slotProps">
                     <div class="product-list__table--action_buttons">
@@ -171,7 +174,7 @@ import DataTable from 'primevue/datatable';
 import Column from 'primevue/column';
 import Dialog from 'primevue/dialog';
 import Button from "primevue/button";
-// import Badge from 'primevue/badge';
+import ToggleButton from 'primevue/togglebutton';
 import Input from "/src/components/common/form/Input";
 import Toast from 'primevue/toast';
 import { useToast } from "primevue/usetoast";
@@ -183,7 +186,7 @@ export default {
         Column,
         Dialog,
         Button,
-        // Badge,
+        ToggleButton,
         Input,
         Toast
     },
@@ -207,7 +210,7 @@ export default {
             },
             products: [],
             deleteProductId: null,
-            productStatus: ["非公開","公開","車検中","点検中"],
+            productStatus: ["非公開中","公開中","車検中","点検中"],
             productStatusColor: ["danger","info","warning"],
             productDialog: false,
             deleteProductDialog: false,
@@ -387,6 +390,18 @@ export default {
                 isSmokingAllowed: false,
                 updatedImages: []
             };
+        },
+        async toggleStatus(productId) {
+            await axios.patch(`${this.backendDomain}/api/products/status/${productId}`).then((res) => {
+                let message = res.data ? '公開になりました' : '非公開になりました';
+                this.showToastMeassage('success', message);
+                this.getProducts();
+            })
+            .catch(error => {
+                console.log(error);
+                this.showToastMeassage('error', 'エラー', '車両ステータス更新に失敗しました。ページの再読み込みをお願いします。');
+                this.productDialog = false;
+            });
         }
     },
     created() {
