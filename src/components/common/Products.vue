@@ -13,7 +13,7 @@
                 <div class="product__card--description-title">{{product.title}}</div>
                 <div class="product__card--description-passenger">乗車定員　{{ product.passenger }}人</div>
                 <hr>
-                <div class="product__card--description-price">¥{{ addCommas(product.price) }}~/24h</div>
+                <div class="product__card--description-price">¥{{ addCommas(product.price) }}~/1day</div>
                 <div class="product__card--description-icons">
                     <img 
                         class="product__card--description-icon"
