@@ -768,6 +768,7 @@ export default {
             let customfields = JSON.parse(tmpProducts[i].customfields);
             tmpProducts[i].isSmokingAllowed = customfields.isSmokingAllowed;
             tmpProducts[i].passenger = customfields.passenger;
+            tmpProducts[i].subInfo = customfields.licenseNumber;
             delete tmpProducts[i].customfields;
           }
           this.availableCar = tmpProducts;
@@ -863,6 +864,7 @@ export default {
 
       this.confirmationInfo = {
         title: selectedCarInfo.title,
+        subInfo: selectedCarInfo.subInfo,
         start_at: this.scheduleInfo.start_at,
         end_at: this.scheduleInfo.end_at,
         totalFee: this.totalFeeHolder,
