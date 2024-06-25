@@ -587,7 +587,8 @@ export default {
       if (
         this.scheduleInfo.customerName.length > 0 &&
         emailRegex.test(this.scheduleInfo.customerEmail) &&
-        phoneRegex.test(this.scheduleInfo.customerPhoneNumber)
+        phoneRegex.test(this.scheduleInfo.customerPhoneNumber) &&
+        this.scheduleInfo.passenger
       ) {
         if (this.scheduleInfo.airportPickup) {
           var pickupTime = new Date(

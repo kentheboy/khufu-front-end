@@ -658,7 +658,8 @@ export default {
       if (
         this.scheduleInfo.customerName.length > 0 &&
         emailRegex.test(this.scheduleInfo.customerEmail) &&
-        phoneRegex.test(this.scheduleInfo.customerPhoneNumber)
+        phoneRegex.test(this.scheduleInfo.customerPhoneNumber) &&
+        this.scheduleInfo.passenger
       ) {
         if (this.scheduleInfo.airportPickup) {
           var pickupTime = new Date(
@@ -768,6 +769,7 @@ export default {
             let customfields = JSON.parse(tmpProducts[i].customfields);
             tmpProducts[i].isSmokingAllowed = customfields.isSmokingAllowed;
             tmpProducts[i].passenger = customfields.passenger;
+            tmpProducts[i].subInfo = customfields.licenseNumber;
             delete tmpProducts[i].customfields;
           }
           this.availableCar = tmpProducts;
@@ -863,6 +865,7 @@ export default {
 
       this.confirmationInfo = {
         title: selectedCarInfo.title,
+        subInfo: selectedCarInfo.subInfo,
         start_at: this.scheduleInfo.start_at,
         end_at: this.scheduleInfo.end_at,
         totalFee: this.totalFeeHolder,
