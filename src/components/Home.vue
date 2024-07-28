@@ -566,6 +566,8 @@ export default {
     } else {
       this.minDate.setDate(this.minDate.getDate() + 1);
     }
+    this.minDate.setHours(9);
+    this.minDate.setMinutes(0);
   },
   computed: {
     cssVars() {
