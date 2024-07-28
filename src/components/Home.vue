@@ -293,6 +293,18 @@
                     >各種シート1台あたり追加料 ¥1,100（一律）</span
                   >
                 </div>
+                <div class="section__form--content-input-area">
+                  <Input
+                    type="text"
+                    label="クーポンコード"
+                    name="name"
+                    v-model="scheduleInfo.coupnCode"
+                  ></Input>
+                  <span class="input-description"
+                    >クーポンが正しくない場合は確認画面へ進みません。<br>ご入力の際は今一度ご確認ください。</span
+                  >
+                </div>
+
               </div>
             </section>
             <Information
@@ -552,11 +564,13 @@ export default {
         deliveryOption: 0,
         returnOption: 0,
         passenger: 1,
+        coupnCode: null
       },
       totalFeeHolder: null,
       openReservationForm: false,
       confirmationInfo: null,
       reservationLoading: false,
+      availableCouponCodes: ["CLASSFB10", "CLASSIG10"]
     };
   },
   async created() {
@@ -589,6 +603,11 @@ export default {
       }
     },
     isValidScheduleInfo() {
+      if (this.scheduleInfo.coupnCode) {
+        if (!this.availableCouponCodes.includes(this.scheduleInfo.coupnCode)) {
+          return false;
+        }
+      }
       const emailRegex = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
       const phoneRegex = /^[+-]?[0-9]{7,13}$/;
       if (
@@ -718,6 +737,11 @@ export default {
         // this timeOut add loading effect for minimum 3 sec
       }, 3000);
 
+      let memos = "";
+      if (this.scheduleInfo.coupnCode) {
+        memos += `クーポン適応中: ${this.scheduleInfo.coupnCode}\n`; 
+      }
+
       const customfields = JSON.stringify({
         passengerNumber: this.scheduleInfo.passenger,
         licenseNumber: this.scheduleInfo.licenseNumber,
@@ -729,6 +753,7 @@ export default {
         useOfBabySheet: this.scheduleInfo.useOfBabySheet,
         useOfChildSheet: this.scheduleInfo.useOfChildSheet,
         useOfJuniorSheet: this.scheduleInfo.useOfJuniorSheet,
+        memos: memos
       });
       const data = {
         product_id: this.scheduleInfo.reservationCarId,
@@ -798,6 +823,11 @@ export default {
           this.scheduleInfo.useOfJuniorSheet * generalChildSheetFee;
       }
 
+      if (this.scheduleInfo.coupnCode) {
+        const discountPercentage = 10;
+        this.totalFeeHolder = this.totalFeeHolder * ((100 - discountPercentage) * 0.01)
+      }
+
       this.confirmationInfo = {
         title: selectedCarInfo.title,
         subInfo: selectedCarInfo.subInfo,
@@ -862,6 +892,7 @@ export default {
         useOfJuniorSheet: 0,
         deliveryOption: 0,
         returnOption: 0,
+        coupnCode: null
       };
       this.totalFeeHolder = null;
       this.confirmationInfo = null;
