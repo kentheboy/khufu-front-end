@@ -25,7 +25,7 @@
                 dateFormat="yy/mm/dd"
                 v-model="search.departDate.rawValue"
                 @update:modelValue="isValidSearch('departDate')"
-                :minDate="today"
+                :minDate="minDate"
               />
             </div>
             <div class="datetimepicker-selector">
@@ -44,7 +44,7 @@
                 :minDate="
                   search.departDate.rawValue
                     ? search.departDate.rawValue
-                    : today
+                    : minDate
                 "
               />
             </div>
@@ -490,7 +490,7 @@ export default {
         { name: "sign-up", value: "yes", label: "希望する" },
         { name: "sign-up", value: "no", label: "希望しない" },
       ],
-      today: null,
+      minDate: null,
       search: {
         departDate: {
           rawValue: null,
@@ -560,7 +560,12 @@ export default {
     };
   },
   async created() {
-    this.today = new Date();
+    this.minDate = new Date();
+    if (this.minDate.getHours() > 17) {
+      this.minDate.setDate(this.minDate.getDate() + 2);
+    } else {
+      this.minDate.setDate(this.minDate.getDate() + 1);
+    }
   },
   computed: {
     cssVars() {
