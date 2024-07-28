@@ -737,6 +737,11 @@ export default {
         // this timeOut add loading effect for minimum 3 sec
       }, 3000);
 
+      let memos = "";
+      if (this.scheduleInfo.coupnCode) {
+        memos += `クーポン適応中: ${this.scheduleInfo.coupnCode}\n`; 
+      }
+
       const customfields = JSON.stringify({
         passengerNumber: this.scheduleInfo.passenger,
         licenseNumber: this.scheduleInfo.licenseNumber,
@@ -748,6 +753,7 @@ export default {
         useOfBabySheet: this.scheduleInfo.useOfBabySheet,
         useOfChildSheet: this.scheduleInfo.useOfChildSheet,
         useOfJuniorSheet: this.scheduleInfo.useOfJuniorSheet,
+        memos: memos
       });
       const data = {
         product_id: this.scheduleInfo.reservationCarId,
