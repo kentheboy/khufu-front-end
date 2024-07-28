@@ -817,6 +817,11 @@ export default {
           this.scheduleInfo.useOfJuniorSheet * generalChildSheetFee;
       }
 
+      if (this.scheduleInfo.coupnCode) {
+        const discountPercentage = 10;
+        this.totalFeeHolder = this.totalFeeHolder * ((100 - discountPercentage) * 0.01)
+      }
+
       this.confirmationInfo = {
         title: selectedCarInfo.title,
         subInfo: selectedCarInfo.subInfo,
@@ -881,6 +886,7 @@ export default {
         useOfJuniorSheet: 0,
         deliveryOption: 0,
         returnOption: 0,
+        coupnCode: null
       };
       this.totalFeeHolder = null;
       this.confirmationInfo = null;
