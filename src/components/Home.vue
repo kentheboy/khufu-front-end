@@ -570,7 +570,14 @@ export default {
       openReservationForm: false,
       confirmationInfo: null,
       reservationLoading: false,
-      availableCouponCodes: ["CLASSFB10", "CLASSIG10"]
+      availableCouponCodes: {
+        "CLASSFB10": {
+          discountPercentage: 10
+        }, 
+        "CLASSIG10": {
+          discountPercentage: 10
+        }
+      }
     };
   },
   async created() {
@@ -604,7 +611,7 @@ export default {
     },
     isValidScheduleInfo() {
       if (this.scheduleInfo.coupnCode) {
-        if (!this.availableCouponCodes.includes(this.scheduleInfo.coupnCode)) {
+        if (!Object.prototype.hasOwnProperty.call(this.availableCouponCodes, this.scheduleInfo.coupnCode)) {
           return false;
         }
       }
@@ -858,6 +865,9 @@ export default {
           useOfJuniorSheet:
             this.scheduleInfo.useOfJuniorSheet * generalChildSheetFee,
         },
+        couponInfo: {
+          
+        }
       };
       this.reservationFormStatus = "confirm";
     },
