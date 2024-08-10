@@ -298,7 +298,7 @@
                     type="text"
                     label="クーポンコード"
                     name="name"
-                    v-model="scheduleInfo.coupnCode"
+                    v-model="scheduleInfo.couponCode"
                   ></Input>
                   <span class="input-description"
                     >クーポンが正しくない場合は確認画面へ進みません。<br>ご入力の際は今一度ご確認ください。</span
@@ -564,7 +564,7 @@ export default {
         deliveryOption: 0,
         returnOption: 0,
         passenger: 1,
-        coupnCode: null
+        couponCode: null
       },
       totalFeeHolder: null,
       openReservationForm: false,
@@ -610,8 +610,8 @@ export default {
       }
     },
     isValidScheduleInfo() {
-      if (this.scheduleInfo.coupnCode) {
-        if (!Object.prototype.hasOwnProperty.call(this.availableCouponCodes, this.scheduleInfo.coupnCode)) {
+      if (this.scheduleInfo.couponCode) {
+        if (!Object.prototype.hasOwnProperty.call(this.availableCouponCodes, this.scheduleInfo.couponCode)) {
           return false;
         }
       }
@@ -745,8 +745,8 @@ export default {
       }, 3000);
 
       let memos = "";
-      if (this.scheduleInfo.coupnCode) {
-        memos += `クーポン適応中: ${this.scheduleInfo.coupnCode}\n`; 
+      if (this.scheduleInfo.couponCode) {
+        memos += `クーポン適応中: ${this.scheduleInfo.couponCode}\n`; 
       }
 
       const customfields = JSON.stringify({
@@ -830,9 +830,16 @@ export default {
           this.scheduleInfo.useOfJuniorSheet * generalChildSheetFee;
       }
 
-      if (this.scheduleInfo.coupnCode) {
-        const discountPercentage = 10;
-        this.totalFeeHolder = this.totalFeeHolder * ((100 - discountPercentage) * 0.01)
+      let discount = null;
+      if (this.scheduleInfo.couponCode) {
+        console.log(this.scheduleInfo.couponCode)
+        const discountPercentage = this.availableCouponCodes[this.scheduleInfo.couponCode].discountPercentage;
+        const discountPrice = this.totalFeeHolder * (discountPercentage * 0.01);
+        this.totalFeeHolder = this.totalFeeHolder - discountPrice;
+        discount = {
+          percentage: discountPercentage,
+          price: discountPrice
+        };
       }
 
       this.confirmationInfo = {
@@ -865,9 +872,7 @@ export default {
           useOfJuniorSheet:
             this.scheduleInfo.useOfJuniorSheet * generalChildSheetFee,
         },
-        couponInfo: {
-          
-        }
+        discount: discount
       };
       this.reservationFormStatus = "confirm";
     },
@@ -902,7 +907,7 @@ export default {
         useOfJuniorSheet: 0,
         deliveryOption: 0,
         returnOption: 0,
-        coupnCode: null
+        couponCode: null
       };
       this.totalFeeHolder = null;
       this.confirmationInfo = null;
