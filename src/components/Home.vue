@@ -629,7 +629,7 @@ export default {
               this.scheduleInfo.airportPickup
             }`
           );
-          console.log(pickupTime);
+          // console.log(pickupTime);
           var minPickupTime = new Date(
             `${this.search.departDate.value.slice(0, 10)} ${
               this.businessHours.open + 1
@@ -650,7 +650,7 @@ export default {
               this.scheduleInfo.airportDropoff
             }`
           );
-          console.log(dropoffTime);
+          // console.log(dropoffTime);
           var minDropoffTime = new Date(
             `${this.search.returnDate.value.slice(0, 10)} ${
               this.businessHours.open + 1
@@ -832,7 +832,7 @@ export default {
 
       let discount = null;
       if (this.scheduleInfo.couponCode) {
-        console.log(this.scheduleInfo.couponCode)
+        // console.log(this.scheduleInfo.couponCode)
         const discountPercentage = this.availableCouponCodes[this.scheduleInfo.couponCode].discountPercentage;
         const discountPrice = this.totalFeeHolder * (discountPercentage * 0.01);
         this.totalFeeHolder = this.totalFeeHolder - discountPrice;
