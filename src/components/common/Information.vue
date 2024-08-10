@@ -377,6 +377,13 @@ export default {
         .total-price {
           text-align: right;
         }
+
+        hr {
+          height: 1px;
+          background-color: var(--color-steelblue);
+          border: none;
+        }
+        
         .price-detail {
           display: flex;
           flex-wrap: wrap;
