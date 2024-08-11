@@ -213,7 +213,7 @@
                     ]"
                     v-model="scheduleInfo.deliveryOption"
                   ></Input>
-                  <span class="input-description">追加料 ¥3,300</span>
+                  <span class="input-description">追加料 ¥{{addCommas(deriveryReturnFee)}}</span>
                 </div>
                 <div class="section__form--content-input-area">
                   <Input
@@ -235,7 +235,7 @@
                     ]"
                     v-model="scheduleInfo.returnOption"
                   ></Input>
-                  <span class="input-description">追加料 ¥3,300</span>
+                  <span class="input-description">追加料 ¥{{addCommas(deriveryReturnFee)}}</span>
                 </div>
                 <div class="section__form--content-input-area">
                   <Input
@@ -290,9 +290,21 @@
                     v-model="scheduleInfo.useOfJuniorSheet"
                   ></Input>
                   <span class="input-description"
-                    >各種シート1台あたり追加料 ¥1,100（一律）</span
+                    >各種シート1台あたり追加料 ¥{{addCommas(generalChildSheetFee)}}（一律）</span
                   >
                 </div>
+                <div class="section__form--content-input-area">
+                  <Input
+                    type="text"
+                    label="クーポンコード"
+                    name="name"
+                    v-model="scheduleInfo.couponCode"
+                  ></Input>
+                  <span class="input-description"
+                    >クーポンが正しくない場合は確認画面へ進みません。<br>ご入力の際は今一度ご確認ください。</span
+                  >
+                </div>
+
               </div>
             </section>
             <Information
@@ -552,11 +564,23 @@ export default {
         deliveryOption: 0,
         returnOption: 0,
         passenger: 1,
+        couponCode: null
       },
       totalFeeHolder: null,
       openReservationForm: false,
       confirmationInfo: null,
       reservationLoading: false,
+      // Fee consts
+      availableCouponCodes: {
+        "CLASSFB10": {
+          discountPercentage: 10
+        }, 
+        "CLASSIG10": {
+          discountPercentage: 10
+        }
+      },
+      deriveryReturnFee: 1100,
+      generalChildSheetFee: 1100,
     };
   },
   async created() {
@@ -589,6 +613,11 @@ export default {
       }
     },
     isValidScheduleInfo() {
+      if (this.scheduleInfo.couponCode) {
+        if (!Object.prototype.hasOwnProperty.call(this.availableCouponCodes, this.scheduleInfo.couponCode)) {
+          return false;
+        }
+      }
       const emailRegex = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
       const phoneRegex = /^[+-]?[0-9]{7,13}$/;
       if (
@@ -603,7 +632,7 @@ export default {
               this.scheduleInfo.airportPickup
             }`
           );
-          console.log(pickupTime);
+          // console.log(pickupTime);
           var minPickupTime = new Date(
             `${this.search.departDate.value.slice(0, 10)} ${
               this.businessHours.open + 1
@@ -624,7 +653,7 @@ export default {
               this.scheduleInfo.airportDropoff
             }`
           );
-          console.log(dropoffTime);
+          // console.log(dropoffTime);
           var minDropoffTime = new Date(
             `${this.search.returnDate.value.slice(0, 10)} ${
               this.businessHours.open + 1
@@ -718,6 +747,11 @@ export default {
         // this timeOut add loading effect for minimum 3 sec
       }, 3000);
 
+      let memos = "";
+      if (this.scheduleInfo.couponCode) {
+        memos += `クーポン適応中: ${this.scheduleInfo.couponCode}\n`; 
+      }
+
       const customfields = JSON.stringify({
         passengerNumber: this.scheduleInfo.passenger,
         licenseNumber: this.scheduleInfo.licenseNumber,
@@ -729,6 +763,7 @@ export default {
         useOfBabySheet: this.scheduleInfo.useOfBabySheet,
         useOfChildSheet: this.scheduleInfo.useOfChildSheet,
         useOfJuniorSheet: this.scheduleInfo.useOfJuniorSheet,
+        memos: memos
       });
       const data = {
         product_id: this.scheduleInfo.reservationCarId,
@@ -772,30 +807,40 @@ export default {
       let selectedCarInfo = this.availableCar.find(
         (car) => car.id === this.scheduleInfo.reservationCarId
       );
-      const deriveryReturnFee = 3300;
-      const generalChildSheetFee = 1100;
 
       // add basic totalFee inside temporal variable holder
       this.totalFeeHolder = this.scheduleInfo.totalFee;
       // if any delivery/return area is requested, charge extra 3000yen
       if (this.scheduleInfo.deliveryOption) {
-        this.totalFeeHolder += deriveryReturnFee;
+        this.totalFeeHolder += this.deriveryReturnFee;
       }
       if (this.scheduleInfo.returnOption) {
-        this.totalFeeHolder += deriveryReturnFee;
+        this.totalFeeHolder += this.deriveryReturnFee;
       }
       // if any childSheet requested, charge extra fee depending on the sheet type
       if (this.scheduleInfo.useOfBabySheet) {
         this.totalFeeHolder +=
-          this.scheduleInfo.useOfBabySheet * generalChildSheetFee;
+          this.scheduleInfo.useOfBabySheet * this.generalChildSheetFee;
       }
       if (this.scheduleInfo.useOfChildSheet) {
         this.totalFeeHolder +=
-          this.scheduleInfo.useOfChildSheet * generalChildSheetFee;
+          this.scheduleInfo.useOfChildSheet * this.generalChildSheetFee;
       }
       if (this.scheduleInfo.useOfJuniorSheet) {
         this.totalFeeHolder +=
-          this.scheduleInfo.useOfJuniorSheet * generalChildSheetFee;
+          this.scheduleInfo.useOfJuniorSheet * this.generalChildSheetFee;
+      }
+
+      let discount = null;
+      if (this.scheduleInfo.couponCode) {
+        // console.log(this.scheduleInfo.couponCode)
+        const discountPercentage = this.availableCouponCodes[this.scheduleInfo.couponCode].discountPercentage;
+        const discountPrice = this.totalFeeHolder * (discountPercentage * 0.01);
+        this.totalFeeHolder = this.totalFeeHolder - discountPrice;
+        discount = {
+          percentage: discountPercentage,
+          price: discountPrice
+        };
       }
 
       this.confirmationInfo = {
@@ -822,12 +867,13 @@ export default {
           deliveryOption: this.scheduleInfo.deliveryOption,
           returnOption: this.scheduleInfo.returnOption,
           useOfBabySheet:
-            this.scheduleInfo.useOfBabySheet * generalChildSheetFee,
+            this.scheduleInfo.useOfBabySheet * this.generalChildSheetFee,
           useOfChildSheet:
-            this.scheduleInfo.useOfChildSheet * generalChildSheetFee,
+            this.scheduleInfo.useOfChildSheet * this.generalChildSheetFee,
           useOfJuniorSheet:
-            this.scheduleInfo.useOfJuniorSheet * generalChildSheetFee,
+            this.scheduleInfo.useOfJuniorSheet * this.generalChildSheetFee,
         },
+        discount: discount
       };
       this.reservationFormStatus = "confirm";
     },
@@ -862,6 +908,7 @@ export default {
         useOfJuniorSheet: 0,
         deliveryOption: 0,
         returnOption: 0,
+        couponCode: null
       };
       this.totalFeeHolder = null;
       this.confirmationInfo = null;
@@ -890,6 +937,23 @@ export default {
         top: document.getElementById("searchAndReservation").offsetTop,
         behavior: "smooth",
       });
+    },
+    addCommas(num) {
+      let str = num.toString();
+      let result = "";
+      let insertComma = false;
+
+      for (let i = str.length - 1; i >= 0; i--) {
+        if (insertComma) {
+          result += ",";
+          insertComma = false;
+        }
+        result += str[i];
+        if ((str.length - i) % 3 === 0 && i > 0) {
+          insertComma = true;
+        }
+      }
+      return result.split("").reverse().join("");
     },
   },
 };

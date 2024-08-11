@@ -169,6 +169,24 @@
                   addCommas(reservationInfo.additionalService.useOfJuniorSheet)
                 }}
               </dd>
+              <dt
+                v-if="
+                  reservationInfo.discount
+                "
+                class="options-price-title"
+              >
+                クーポン割引({{ reservationInfo.discount.percentage }}%off)
+              </dt>
+              <dd
+                v-if="
+                  reservationInfo.discount
+                "
+                class="options-price"
+              >
+                -¥{{
+                  addCommas(reservationInfo.discount.price)
+                }}
+              </dd>
             </dl>
           </div>
         </div>
@@ -377,6 +395,13 @@ export default {
         .total-price {
           text-align: right;
         }
+
+        hr {
+          height: 1px;
+          background-color: var(--color-steelblue);
+          border: none;
+        }
+        
         .price-detail {
           display: flex;
           flex-wrap: wrap;
