@@ -213,7 +213,7 @@
                     ]"
                     v-model="scheduleInfo.deliveryOption"
                   ></Input>
-                  <span class="input-description">追加料 ¥3,300</span>
+                  <span class="input-description">追加料 ¥{{addCommas(deriveryReturnFee)}}</span>
                 </div>
                 <div class="section__form--content-input-area">
                   <Input
@@ -235,7 +235,7 @@
                     ]"
                     v-model="scheduleInfo.returnOption"
                   ></Input>
-                  <span class="input-description">追加料 ¥3,300</span>
+                  <span class="input-description">追加料 ¥{{addCommas(deriveryReturnFee)}}</span>
                 </div>
                 <div class="section__form--content-input-area">
                   <Input
@@ -290,7 +290,7 @@
                     v-model="scheduleInfo.useOfJuniorSheet"
                   ></Input>
                   <span class="input-description"
-                    >各種シート1台あたり追加料 ¥1,100（一律）</span
+                    >各種シート1台あたり追加料 ¥{{addCommas(generalChildSheetFee)}}（一律）</span
                   >
                 </div>
                 <div class="section__form--content-input-area">
@@ -570,6 +570,7 @@ export default {
       openReservationForm: false,
       confirmationInfo: null,
       reservationLoading: false,
+      // Fee consts
       availableCouponCodes: {
         "CLASSFB10": {
           discountPercentage: 10
@@ -577,7 +578,9 @@ export default {
         "CLASSIG10": {
           discountPercentage: 10
         }
-      }
+      },
+      deriveryReturnFee: 1100,
+      generalChildSheetFee: 1100,
     };
   },
   async created() {
@@ -804,30 +807,28 @@ export default {
       let selectedCarInfo = this.availableCar.find(
         (car) => car.id === this.scheduleInfo.reservationCarId
       );
-      const deriveryReturnFee = 3300;
-      const generalChildSheetFee = 1100;
 
       // add basic totalFee inside temporal variable holder
       this.totalFeeHolder = this.scheduleInfo.totalFee;
       // if any delivery/return area is requested, charge extra 3000yen
       if (this.scheduleInfo.deliveryOption) {
-        this.totalFeeHolder += deriveryReturnFee;
+        this.totalFeeHolder += this.deriveryReturnFee;
       }
       if (this.scheduleInfo.returnOption) {
-        this.totalFeeHolder += deriveryReturnFee;
+        this.totalFeeHolder += this.deriveryReturnFee;
       }
       // if any childSheet requested, charge extra fee depending on the sheet type
       if (this.scheduleInfo.useOfBabySheet) {
         this.totalFeeHolder +=
-          this.scheduleInfo.useOfBabySheet * generalChildSheetFee;
+          this.scheduleInfo.useOfBabySheet * this.generalChildSheetFee;
       }
       if (this.scheduleInfo.useOfChildSheet) {
         this.totalFeeHolder +=
-          this.scheduleInfo.useOfChildSheet * generalChildSheetFee;
+          this.scheduleInfo.useOfChildSheet * this.generalChildSheetFee;
       }
       if (this.scheduleInfo.useOfJuniorSheet) {
         this.totalFeeHolder +=
-          this.scheduleInfo.useOfJuniorSheet * generalChildSheetFee;
+          this.scheduleInfo.useOfJuniorSheet * this.generalChildSheetFee;
       }
 
       let discount = null;
@@ -866,11 +867,11 @@ export default {
           deliveryOption: this.scheduleInfo.deliveryOption,
           returnOption: this.scheduleInfo.returnOption,
           useOfBabySheet:
-            this.scheduleInfo.useOfBabySheet * generalChildSheetFee,
+            this.scheduleInfo.useOfBabySheet * this.generalChildSheetFee,
           useOfChildSheet:
-            this.scheduleInfo.useOfChildSheet * generalChildSheetFee,
+            this.scheduleInfo.useOfChildSheet * this.generalChildSheetFee,
           useOfJuniorSheet:
-            this.scheduleInfo.useOfJuniorSheet * generalChildSheetFee,
+            this.scheduleInfo.useOfJuniorSheet * this.generalChildSheetFee,
         },
         discount: discount
       };
@@ -936,6 +937,23 @@ export default {
         top: document.getElementById("searchAndReservation").offsetTop,
         behavior: "smooth",
       });
+    },
+    addCommas(num) {
+      let str = num.toString();
+      let result = "";
+      let insertComma = false;
+
+      for (let i = str.length - 1; i >= 0; i--) {
+        if (insertComma) {
+          result += ",";
+          insertComma = false;
+        }
+        result += str[i];
+        if ((str.length - i) % 3 === 0 && i > 0) {
+          insertComma = true;
+        }
+      }
+      return result.split("").reverse().join("");
     },
   },
 };
