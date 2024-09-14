@@ -2,7 +2,9 @@
   <footer class="footer">
     <div class="footer__content">
       <div class="sites">
-        <img alt="" src="/images/class-logo3-1@2x.png" :onClick="onCLASSLogo31Click" />
+        <div class="logo-container">
+          <img alt="" src="/images/class-logo3-1@2x.png" :onClick="onCLASSLogo31Click" />
+        </div>
         <a href="/company">会社概要</a>
         <a href="/terms">貸渡約款</a>
         <a href="/files/privacy_policy.pdf" target="_blank">プライバシーポリシー</a>
@@ -83,6 +85,7 @@ export default {
       display: flex;
       margin-bottom: 1.8rem;
       align-items: center;
+      flex-wrap: wrap;
 
       a {
         margin-left: 2rem;
@@ -91,6 +94,22 @@ export default {
         height: fit-content;
         i {
           font-size: .8rem;
+        }
+      }
+    }
+
+    @media screen and (max-width: 390px) {
+      .sites {
+        .logo-container {
+          flex-basis: 100%;
+          margin-bottom: 1rem;
+        }
+        a {
+          margin-left: initial;
+          border-left: initial;
+          padding-left: initial;
+          height: 1.6rem;
+          width: 50%;
         }
       }
     }
