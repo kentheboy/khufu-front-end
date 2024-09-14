@@ -1,22 +1,19 @@
 <template>
   <footer class="footer">
     <div class="footer__content">
-      <img
-        class="logo"
-        alt=""
-        src="/images/class-logo3-1@2x.png"
-        :onClick="onCLASSLogo31Click"
-      />
+      <div class="sites">
+        <img alt="" src="/images/class-logo3-1@2x.png" :onClick="onCLASSLogo31Click" />
+        <a href="/company">会社概要</a>
+        <a href="/terms">貸渡約款</a>
+        <a href="/files/privacy_policy.pdf" target="_blank">プライバシーポリシー</a>
+        <a href="https://column.class-rental-car.com/" target="_blank">コラムサイト <i class="pi pi-external-link"></i></a>
+      </div>
       <div class="footer__content--postal-code">
         〒901-0203　沖縄県豊見城市長堂67
       </div>
       <div class="footer__content--contact">
         <div class="sns-links">
-          <a
-            class="instagram"
-            href="https://www.instagram.com/class_rentalcar"
-            target="_blank"
-          >
+          <a class="instagram" href="https://www.instagram.com/class_rentalcar" target="_blank">
             <i class="pi pi-instagram"></i>
           </a>
           <a class="line" href="https://lin.ee/w5vv7ng" target="_blank">
@@ -55,13 +52,17 @@ export default {
   font-style: var(--font-default-style);
   overflow: hidden;
   padding: 1.9rem 0;
+
   .sns-links {
     float: right;
+
     a {
       margin-left: 1rem;
+
       &.instagram i {
         font-size: 2rem;
       }
+
       &.line {
         img {
           height: 2rem;
@@ -69,25 +70,45 @@ export default {
       }
     }
   }
+
   &__content {
     margin: 0 7rem;
     font-size: 0.9rem;
+
     @media screen and (max-width: 390px) {
       margin: 0 3rem;
     }
-    .logo {
+
+    .sites {
+      display: flex;
       margin-bottom: 1.8rem;
+      align-items: center;
+
+      a {
+        margin-left: 2rem;
+        border-left: 0.18rem solid var(--color-white);
+        padding-left: 2rem;
+        height: fit-content;
+        i {
+          font-size: .8rem;
+        }
+      }
     }
+
     &--postal-code {
-      margin-bottom: 1.8rem;
+      margin-bottom: 1rem;
     }
+
     &--contact {
       margin-bottom: 1.8rem;
+
       @media screen and (max-width: 390px) {
         flex-direction: column;
       }
+
       .phone-number {
         margin-left: 2rem;
+
         @media screen and (max-width: 390px) {
           margin-left: initial;
         }
