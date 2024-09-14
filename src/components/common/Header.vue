@@ -98,6 +98,12 @@ export default {
           icon: 'pi pi-link',
           url: "/files/privacy_policy.pdf",
           target: "_blank"
+        },
+        {
+          label: 'コラムサイト',
+          icon: 'pi pi-image',
+          url: "https://column.class-rental-car.com/",
+          target: "_blank"
         }
       ],
       valiosaItems: [
@@ -145,6 +151,12 @@ export default {
           icon: 'pi pi-arrow-up-right',
           route: '/'
         },
+        {
+          label: 'コラムサイト',
+          icon: 'pi pi-image',
+          url: "https://column.class-rental-car.com/",
+          target: "_blank"
+        }
       ]
     }
   },
