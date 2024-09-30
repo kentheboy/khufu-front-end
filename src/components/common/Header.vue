@@ -6,7 +6,9 @@
       </a>
       <div class="toReservation">
         <Button label="今すぐ予約する" @click="scrollToEearchAndReservation" />
+        <Button label="changeLocale" @click="changeLocale" />
       </div>
+      {{ $t("message.hello") }}
       <div class="hamburgerMenu">
         <Button icon="pi pi-align-justify" @click="openSideNav = true" />
       </div>
@@ -178,6 +180,9 @@ export default {
           behavior: 'smooth'
         });
       }
+    },
+    changeLocale() {
+      this.$i18n.locale = (this.$i18n.locale === 'ja') ? 'en' : 'ja';
     }
   },
   computed: {
