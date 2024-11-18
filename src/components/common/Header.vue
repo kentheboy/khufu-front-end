@@ -6,9 +6,12 @@
       </a>
       <div class="toReservation">
         <Button label="今すぐ予約する" @click="scrollToEearchAndReservation" />
-        <Button label="changeLocale" @click="changeLocale" />
       </div>
-      {{ $t("message.hello") }}
+      <div class="laguageMenu">
+        <Button class="language" icon="pi pi-globe" severity="info" text raised rounded aria-label="language" @click="toggleLaguageMenu" />
+        <Menu ref="openLaguageMenu" id="overlay_menu" :model="languages" :popup="true" />
+        <!-- {{ $t("message.hello") }} -->
+      </div>
       <div class="hamburgerMenu">
         <Button icon="pi pi-align-justify" @click="openSideNav = true" />
       </div>
@@ -16,8 +19,7 @@
         <Menu :model="isValiosaPage ? valiosaItems : items">
           <template #item="{ item, props }">
             <router-link v-if="item.route" v-slot="{ href, navigate }" :to="item.route" custom>
-              <a :href="href" v-bind="props.action" @click="navigate"
-                :class="href === $router.currentRoute.value.path ? 'active' : ''">
+              <a :href="href" v-bind="props.action" @click="navigate" :class="href === $router.currentRoute.value.path ? 'active' : ''">
                 <span :class="item.icon" />
                 <span class="label">{{ item.label }}</span>
               </a>
@@ -41,7 +43,7 @@ export default {
   components: {
     Button,
     Sidebar,
-    Menu
+    Menu,
   },
   data() {
     return {
@@ -126,7 +128,7 @@ export default {
           url: "/files/prices.pdf",
           target: "_blank"
         },
-        { 
+        {
           label: '特徴',
           icon: 'pi pi-star',
           command: () => {
@@ -137,7 +139,7 @@ export default {
             });
           }
         },
-        { 
+        {
           label: 'ご利用ガイド',
           icon: 'pi pi-car',
           command: () => {
@@ -148,7 +150,7 @@ export default {
             });
           }
         },
-        { 
+        {
           label: '本体サイト',
           icon: 'pi pi-arrow-up-right',
           route: '/'
@@ -159,6 +161,20 @@ export default {
           url: "https://column.class-rental-car.com/",
           target: "_blank"
         }
+      ],
+      languages: [
+        {
+          label: '日本語',
+        },
+        {
+          label: '한국어',
+        },
+        // {
+        //   label: '简体中文(Coming...)',
+        // },
+        // {
+        //   label: 'English(Coming...)',
+        // }
       ]
     }
   },
@@ -181,6 +197,9 @@ export default {
         });
       }
     },
+    toggleLaguageMenu(event) {
+      this.$refs.openLaguageMenu.toggle(event);
+    },
     changeLocale() {
       this.$i18n.locale = (this.$i18n.locale === 'ja') ? 'en' : 'ja';
     }
@@ -201,7 +220,7 @@ export default {
 
   .toReservation {
     position: absolute;
-    right: 7rem;
+    right: 10rem;
     top: 1.2rem;
 
     button.p-button {
@@ -216,6 +235,22 @@ export default {
 
     @media screen and (max-width: 390px) {
       display: none;
+    }
+  }
+
+  button.language.p-button-icon-only {
+    position: absolute;
+    right: 7.4rem;
+    top: 2.5rem;
+    padding: initial;
+    background-color: initial;
+    color: white;
+    box-shadow: initial;
+    width: 2rem;
+    margin: 0 -0.4rem 0 1rem;
+
+    &::v-deep span.p-button-icon {
+      font-size: 1.5rem;
     }
   }
 
