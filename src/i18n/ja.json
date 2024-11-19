@@ -1,5 +1,7 @@
 {
   "message": {
-    "hello": "こんにちは"
+    "hello": "こんにちは",
+    "reserve a car": "今すぐ予約する",
+    "reservation": "ご予約"
   }
 }

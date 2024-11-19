@@ -5,12 +5,11 @@
         <img class="logo" alt="" src="/images/class-logo-main@2x.png" />
       </a>
       <div class="toReservation">
-        <Button label="今すぐ予約する" @click="scrollToEearchAndReservation" />
+        <Button :label="$t('message.reserve a car')" @click="scrollToEearchAndReservation" />
       </div>
       <div class="laguageMenu">
         <Button class="language" icon="pi pi-globe" severity="info" text raised rounded aria-label="language" @click="toggleLaguageMenu" />
         <Menu ref="openLaguageMenu" id="overlay_menu" :model="languages" :popup="true" />
-        <!-- {{ $t("message.hello") }} -->
       </div>
       <div class="hamburgerMenu">
         <Button icon="pi pi-align-justify" @click="openSideNav = true" />
@@ -55,7 +54,7 @@ export default {
           route: '/'
         },
         {
-          label: 'ご予約',
+          label: this.$t('message.reservation'),
           icon: 'pi pi-pencil',
           command: () => {
             if (this.$router.currentRoute.value.path !== "/") {
@@ -165,9 +164,19 @@ export default {
       languages: [
         {
           label: '日本語',
+          command: () => {
+            this.$i18n.locale = 'ja';
+            localStorage.setItem('lang', 'ja');
+            window.location.reload();
+          }
         },
         {
           label: '한국어',
+          command: () => {
+            this.$i18n.locale = 'ko';
+            localStorage.setItem('lang', 'ko');
+            window.location.reload();
+          }
         },
         // {
         //   label: '简体中文(Coming...)',
@@ -176,6 +185,12 @@ export default {
         //   label: 'English(Coming...)',
         // }
       ]
+    }
+  },
+  async created() {
+    const lang = localStorage.getItem('lang') || 'ja';
+    if (lang !== 'ja') {
+      this.$i18n.locale = lang;
     }
   },
   methods: {
@@ -200,9 +215,6 @@ export default {
     toggleLaguageMenu(event) {
       this.$refs.openLaguageMenu.toggle(event);
     },
-    changeLocale() {
-      this.$i18n.locale = (this.$i18n.locale === 'ja') ? 'en' : 'ja';
-    }
   },
   computed: {
     isValiosaPage() {

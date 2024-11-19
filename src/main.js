@@ -12,12 +12,14 @@ import "./primevue-custom.scss";
 
 import { createI18n } from "vue-i18n";
 import ja from "./i18n/ja";
+import ko from "./i18n/ko";
 import en from "./i18n/en";
 const i18n = createI18n({
     legacy: false,
     locale: "ja",
     messages: {
       ja: ja,
+      ko: ko,
       en: en,
     },
   });
