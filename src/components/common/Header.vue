@@ -5,7 +5,7 @@
         <img class="logo" alt="" src="/images/class-logo-main@2x.png" />
       </a>
       <div class="toReservation">
-        <Button :label="$t('message.reserve a car')" @click="scrollToEearchAndReservation" />
+        <Button :label="$t('home.reserve a car')" @click="scrollToEearchAndReservation" />
       </div>
       <div class="laguageMenu">
         <Button class="language" icon="pi pi-globe" severity="info" text raised rounded aria-label="language" @click="toggleLaguageMenu" />
@@ -54,7 +54,7 @@ export default {
           route: '/'
         },
         {
-          label: this.$t('message.reservation'),
+          label: this.$t('home.reservation'),
           icon: 'pi pi-pencil',
           command: () => {
             if (this.$router.currentRoute.value.path !== "/") {
@@ -76,34 +76,34 @@ export default {
           }
         },
         {
-          label: '料金表',
+          label: this.$t('home.Fees'),
           icon: 'pi pi-dollar',
           url: "/files/prices.pdf",
           target: "_blank"
         },
         {
-          label: 'ご利用ガイド',
+          label: this.$t('home.Guid'),
           icon: 'pi pi-car',
           route: '/guide'
         },
         {
-          label: '会社概要',
+          label: this.$t('home.Company info'),
           icon: 'pi pi-folder-open',
           route: '/company'
         },
         {
-          label: '貸渡約款',
+          label: this.$t('home.Terms and Conditions of Lease'),
           icon: 'pi pi-book',
           route: '/terms'
         },
         {
-          label: 'プライバシーポリシー',
+          label: this.$t('home.Privacy Policy'),
           icon: 'pi pi-link',
           url: "/files/privacy_policy.pdf",
           target: "_blank"
         },
         {
-          label: 'コラムサイト',
+          label: this.$t('home.Articles'),
           icon: 'pi pi-image',
           url: "https://column.class-rental-car.com/",
           target: "_blank"
@@ -178,9 +178,14 @@ export default {
             window.location.reload();
           }
         },
-        // {
-        //   label: '简体中文(Coming...)',
-        // },
+        {
+          label: '中文繁體（廣東話）',
+          command: () => {
+            this.$i18n.locale = 'cmn-hant';
+            localStorage.setItem('lang', 'cmn_hant');
+            window.location.reload();
+          }
+        },
         // {
         //   label: 'English(Coming...)',
         // }
