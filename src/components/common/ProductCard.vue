@@ -4,7 +4,7 @@
         <img :src="product.main_image">
         <div class="product__card--description">
             <div class="product__card--description-title">{{ product.title }}</div>
-            <div class="product__card--description-passenger">乗車定員　{{ product.passenger }}人</div>
+            <div class="product__card--description-passenger">乗車定員　{{ product.passenger }}</div>
         </div>
     </div>
 </template>
