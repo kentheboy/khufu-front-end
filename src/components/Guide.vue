@@ -47,10 +47,10 @@
                             <div class="step__description--text">
                                 <h3 class="step-title">ご予約</h3>
                                 <p class="step-description">
-                                    予約後に、予約完了通知メールとご案内<br>
-                                    （LINE公式アカウントまたはカカオトークのQRコード）を送付いたしますので、<br>
-                                    空港送迎時間やホテル送迎時間等を<br>
-                                    LINE公式アカウントまたはカカオトークにてお知らせくださいませ。<br>
+                                    予約後に、予約完了通知メールとご案内
+                                    （LINE公式アカウントまたはカカオトークのQRコード）を送付いたしますので、
+                                    空港送迎時間やホテル送迎時間等を
+                                    LINE公式アカウントまたはカカオトークにてお知らせくださいませ。
                                     ※メールでのお問い合わせは行なっておりません。
                                 </p>
                             </div>
@@ -62,9 +62,10 @@
                             <div class="step__description--text">
                                 <h3 class="step-title">ご来店</h3>
                                 <p class="step-description">
-                                    ご予約いただいた店舗にご来店いただき、<br>
+                                    ご予約いただいた店舗にご来店いただき、
                                     下記必要なものをご掲示頂いた後、『貸渡契約書』にサイン頂きます。<br>
-                                    <br>
+                                </p>
+                                <p class="step-description">
                                     必要なもの<br>
                                     ・運転免許証<br>
                                     ・免許証以外の現住所が確認できるもの（クレジットカード決済の場合は不要）<br>
@@ -78,7 +79,7 @@
                             <div class="step__description--text">
                                 <h3 class="step-title">ご出発</h3>
                                 <p class="step-description">
-                                    ご出発前に、店舗スタッフからの『注意事項、事故補償説明』をお受けください。<br>
+                                    ご出発前に、店舗スタッフからの『注意事項、事故補償説明』をお受けください。
                                     車両操作の説明並びに車体チェック終了後、ご出発いただきます。
                                 </p>
                             </div>
@@ -90,7 +91,7 @@
                             <div class="step__description--text">
                                 <h3 class="step-title">ご返却</h3>
                                 <p class="step-description">
-                                    ご契約の時間までにご返却ください。<br>
+                                    ご契約の時間までにご返却ください。
                                     ご返却店舗付近のガソリンスタンドで燃料を満タンにした上、ご返却ください。
                                 </p>
                             </div>
