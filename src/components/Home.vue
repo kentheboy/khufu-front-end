@@ -9,11 +9,11 @@
         <section class="section__form" id="searchAndReservation">
           <div class="section__form--title">
             <h1>SCHEDULE</h1>
-            <h3>旅行日程で探す</h3>
+            <h3>{{$t('home.Search by dates')}}</h3>
           </div>
           <div class="datetimepicker">
             <div class="datetimepicker-selector">
-              <label>出発日時</label>
+              <label>{{$t('home.Depature')}}</label>
               <Calendar
                 type="date"
                 name="startDate"
@@ -29,7 +29,7 @@
               />
             </div>
             <div class="datetimepicker-selector">
-              <label>返却日時</label>
+              <label>{{$t('home.Returning')}}</label>
               <Calendar
                 type="date"
                 name="endDate"
@@ -50,15 +50,14 @@
             </div>
             <div class="datetimepicker-rule">
               <span
-                >※営業時間(予約可能時間)は{{ businessHours.open }}:00 -
-                {{ businessHours.close }}:00となっております。</span
+                >※{{$t('home.Sales hour notice')}}</span
               >
             </div>
           </div>
           <Button
             icon="pi pi-search"
             class="p-ripple"
-            label="空き状況を検索"
+            :label="$t('home.Search availability')"
             :disabled="!isReadyToSearch"
             @click="searchAvailability"
           ></Button>
@@ -66,9 +65,9 @@
             v-if="availableCar.length <= 0 && isSearched"
             class="no-available-car"
           >
-            大変申し訳ございません。<br />
-            現在、ご指定された時間にご利用可能の車両がありません。<br />
-            お手数ですが、再度別の時間帯で検索を行うか、店舗スタッフへお問合せください。
+            {{$t('home.We are very sorry.')}}<br />
+            {{$t('home.There are currently no vehicles available at the time you have specified.')}}<br />
+            {{$t('home.Please try searching again at a different time or contact the store staff.')}}
           </p>
           <Products
             v-else
@@ -90,21 +89,21 @@
                   reservationFormStatus === 'entry' ? 'active' : ''
                 }`"
               >
-                入力
+                {{ $t('home.Entry') }}
               </div>
               <div
                 :class="`reservation-form__status ${
                   reservationFormStatus === 'confirm' ? 'active' : ''
                 }`"
               >
-                確認
+              {{ $t('home.Confirm') }}
               </div>
               <div
                 :class="`reservation-form__status ${
                   reservationFormStatus === 'done' ? 'active' : ''
                 }`"
               >
-                完了
+              {{ $t('home.Complete') }}
               </div>
             </div>
             <section
@@ -114,15 +113,15 @@
             >
               <div class="section__form--title">
                 <h1>YOUR INFORMATION</h1>
-                <h3>お客様情報入力</h3>
+                <h3>{{ $t('home.Your Information') }}</h3>
               </div>
               <div class="section__form--content">
                 <div class="section__form--content-input-area">
                   <Input
                     type="text"
-                    label="お名前"
+                    :label="$t('home.Name')"
                     name="name"
-                    placeholder="山田太郎"
+                    :placeholder="$t('home.Taro Yamada')"
                     required
                     v-model="scheduleInfo.customerName"
                   ></Input>
@@ -130,7 +129,7 @@
                 <div class="section__form--content-input-area">
                   <Input
                     type="email"
-                    label="メールアドレス"
+                    :label="$t('home.Email')"
                     name="email"
                     placeholder="example@class.okinawa"
                     required
@@ -140,7 +139,7 @@
                 <div class="section__form--content-input-area">
                   <Input
                     type="tel"
-                    label="電話番号"
+                    :label="$t('home.Phone number')"
                     name="phonenumber"
                     placeholder="08000000000"
                     required
@@ -150,7 +149,7 @@
                 <div class="section__form--content-input-area">
                   <Input
                     type="number"
-                    label="人数"
+                    :label="$t('home.Amt of passanger')"
                     name="passenger"
                     placeholder="1"
                     required
@@ -160,7 +159,7 @@
                 <div class="section__form--content-input-area">
                   <Input
                     type="number"
-                    label="免許番号"
+                    :label="$t('home.License number')"
                     name="license-number"
                     placeholder="1234567890"
                     v-model="scheduleInfo.licenseNumber"
@@ -169,7 +168,7 @@
                 <div class="section__form--content-input-area">
                   <Input
                     type="date"
-                    label="生年月日"
+                    :label="$t('home.Date of birth')"
                     name="dob"
                     v-model="scheduleInfo.dob"
                   ></Input>
@@ -177,7 +176,7 @@
                 <div class="section__form--content-input-area">
                   <Input
                     type="airport-timpicker"
-                    label="空港お出迎え"
+                    :label="$t('home.Airport Pickup')"
                     name="airport-pickup"
                     v-model="scheduleInfo.airportPickup"
                   ></Input>
@@ -185,29 +184,30 @@
                 <div class="section__form--content-input-area">
                   <Input
                     type="airport-timpicker"
-                    label="空港お見送り"
+                    :label="$t('home.Airport Dropoff')"
                     name="airport-dropoff"
                     v-model="scheduleInfo.airportDropoff"
                   ></Input>
-                  <span class="input-description"
-                    >空港送迎時間は午前9:00 - 午後5:00となっております。</span
+                  <span class="input-description">
+                    {{ $t('home.Airport pick-up hours notation') }}
+                  </span
                   >
                 </div>
                 <div class="section__form--content-input-area">
                   <Input
                     type="selectbox"
-                    label="貸出オプション"
+                    :label="$t('home.Lending option')"
                     name="return-option"
                     :options="[
-                      { name: 'none', label: '特になし', value: 0 },
+                      { name: 'none', label: $t('home.none'), value: 0 },
                       {
                         name: 'akamineStaDelivery',
-                        label: '赤嶺駅貸出',
+                        label: $t('home.Rental at Akamine Sta'),
                         value: 1,
                       },
                       {
                         name: 'nahaHotelDelivery',
-                        label: '那覇市内ホテル貸出',
+                        label: $t('home.Rental at Hotel(Hotels in Naha City)'),
                         value: 2,
                       },
                     ]"
