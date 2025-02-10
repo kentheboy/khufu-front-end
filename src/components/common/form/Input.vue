@@ -17,16 +17,16 @@
         <div class="airport-timpicker__headline">
             <label v-if="label">
                 {{ label }}
-                <span v-if="required" class="required-notice">※必須</span>
+                <span v-if="required" class="required-notice">※{{$t('home.required')}}</span>
             </label>
             <div class="airport-timpicker__headline--pickup">
                 <label>
                     <input type="radio" :name="name" value="true" @input="handleAirportTimpicker">
-                    <span>あり</span>
+                    <span>{{ $t('home.needed') }}</span>
                 </label>
                 <label>
                     <input type="radio" :name="name" value="false" @input="handleAirportTimpicker">
-                    <span>なし</span>
+                    <span>{{ $t('home.not needed') }}</span>
                 </label>
             </div>
         </div>
@@ -41,7 +41,7 @@
     <div v-else-if="type==='file'" :class="`input-area ${classes}`">
         <label v-if="label">
             {{ label }}
-            <span v-if="required" class="required-notice">※必須</span>
+            <span v-if="required" class="required-notice">※{{$t('home.required')}}</span>
         </label>
         <input 
             @change="handleFileUpload($event)"
@@ -61,7 +61,7 @@
     <div v-else-if="type==='radio'" :class="`input-area radio-input ${classes}`">
         <label v-if="label">
             {{ label }}
-            <span v-if="required" class="required-notice">※必須</span>
+            <span v-if="required" class="required-notice">※{{$t('home.required')}}</span>
         </label>
         <div class="radio-input__options">
             <div v-for="option in options" :key="option" class="radio-input__options--input">
@@ -73,7 +73,7 @@
     <div v-else-if="type==='selectbox'" :class="`input-area ${classes}`">
         <label v-if="label">
             {{ label }}
-            <span v-if="required" class="required-notice">※必須</span>
+            <span v-if="required" class="required-notice">※{{$t('home.required')}}</span>
         </label>
         <select v-model="selectedValue">
             <option v-for="option in options" :key="option" :value=option.value>{{ option.label }}</option>
@@ -82,7 +82,7 @@
     <div v-else-if="type==='textarea'" :class="`input-area ${classes}`">
         <label v-if="label">
             {{ label }}
-            <span v-if="required" class="required-notice">※必須</span>
+            <span v-if="required" class="required-notice">※{{$t('home.required')}}</span>
         </label>
         <textarea
             :value="modelValue"
@@ -92,7 +92,7 @@
     <div v-else :class="`input-area ${classes}`">
         <label v-if="label">
             {{ label }}
-            <span v-if="required" class="required-notice">※必須</span>
+            <span v-if="required" class="required-notice">※{{$t('home.required')}}</span>
         </label>
         <input
             :type="type"

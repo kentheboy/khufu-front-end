@@ -11,7 +11,7 @@
             <img :src="product.main_image">
             <div class="product__card--description">
                 <div class="product__card--description-title">{{product.title}}</div>
-                <div class="product__card--description-passenger">乗車定員　{{ product.passenger }}人</div>
+                <div class="product__card--description-passenger">{{$t('home.Maximu capacity')}} {{ product.passenger }}</div>
                 <hr>
                 <div class="product__card--description-price">¥{{ addCommas(product.price) }}~/1day</div>
                 <div class="product__card--description-icons">
@@ -23,7 +23,7 @@
                 </div>
                 <div class="product__card--description-select-buttons">
                     <Button
-                        text="すぐ予約する"
+                        :text="$t('home.Select and reserve')"
                         @click="selected(product.id)"
                     ></Button>
                 </div>
