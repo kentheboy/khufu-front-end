@@ -1455,7 +1455,7 @@ section {
     font-size: 1rem;
     letter-spacing: 0.05em;
     display: inline-flex;
-    width: 22.5rem;
+    width: 21.5rem;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 0.6rem;

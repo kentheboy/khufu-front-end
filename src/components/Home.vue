@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <Header></Header>
-    <main class="main">
+    <main :class="['main', $i18n.locale]">
       <section class="section__heroImageArea">
         <ImageSlider :images="heroImages"></ImageSlider>
       </section>
@@ -1251,7 +1251,7 @@ section {
     font-size: 1rem;
     letter-spacing: 0.05em;
     display: inline-flex;
-    width: 22.5rem;
+    width: 21.5rem;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 0.6rem;
@@ -1376,6 +1376,13 @@ section {
   display: none;
   @media screen and (max-width: 390px) {
     display: initial;
+  }
+}
+
+.cmn_hant {
+  .datetimepicker-selector {
+    font-size: .95rem;
+    width: 22.5rem;
   }
 }
 </style>
