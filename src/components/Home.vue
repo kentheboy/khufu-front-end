@@ -57,6 +57,7 @@
           <Button
             icon="pi pi-search"
             class="p-ripple"
+            id="searchAvailability"
             :label="$t('home.Search availability')"
             :disabled="!isReadyToSearch"
             @click="searchAvailability"
@@ -1150,6 +1151,10 @@ section {
 
     &--submit {
       text-align: center;
+    }
+
+    #searchAvailability {
+      width: 12rem;
     }
   }
 
