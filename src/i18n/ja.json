@@ -11,7 +11,7 @@
     "Search by dates": "旅行日程で探す",
     "Depature": "出発日時",
     "Returning": "返却日時",
-    "Business hours notice": "営業時間(予約可能時間)は09:00 - 18:00となっております。",
+    "Business hours notice": "営業時間(予約可能時間)は{open}:00 - {close}:00となっております。",
     "Search availability": "空き状況を検索",
     "Car list": "車両一覧",
     "Maximu capacity": "乗車定員",

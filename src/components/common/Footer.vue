@@ -3,7 +3,7 @@
     <div class="footer__content">
       <div class="sites">
         <div class="logo-container">
-          <img alt="" src="/images/class-logo3-1@2x.png" :onClick="onCLASSLogo31Click" />
+          <img alt="" src="/images/class-logo3-1@2x.png" />
         </div>
         <a href="/company">{{ $t('home.Company info') }}</a>
         <a href="/terms">{{ $t('home.Terms and Conditions of Lease') }}</a>
