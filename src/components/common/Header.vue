@@ -5,7 +5,11 @@
         <img class="logo" alt="" src="/images/class-logo-main@2x.png" />
       </a>
       <div class="toReservation">
-        <Button label="今すぐ予約する" @click="scrollToEearchAndReservation" />
+        <Button :label="$t('home.reserve a car')" @click="scrollToEearchAndReservation" />
+      </div>
+      <div class="laguageMenu" v-if="!isValiosaPage">
+        <Button class="language" icon="pi pi-globe" severity="info" text raised rounded aria-label="language" @click="toggleLaguageMenu" />
+        <Menu ref="openLaguageMenu" id="overlay_menu" :model="languages" :popup="true" />
       </div>
       <div class="hamburgerMenu">
         <Button icon="pi pi-align-justify" @click="openSideNav = true" />
@@ -14,8 +18,7 @@
         <Menu :model="isValiosaPage ? valiosaItems : items">
           <template #item="{ item, props }">
             <router-link v-if="item.route" v-slot="{ href, navigate }" :to="item.route" custom>
-              <a :href="href" v-bind="props.action" @click="navigate"
-                :class="href === $router.currentRoute.value.path ? 'active' : ''">
+              <a :href="href" v-bind="props.action" @click="navigate" :class="href === $router.currentRoute.value.path ? 'active' : ''">
                 <span :class="item.icon" />
                 <span class="label">{{ item.label }}</span>
               </a>
@@ -39,7 +42,7 @@ export default {
   components: {
     Button,
     Sidebar,
-    Menu
+    Menu,
   },
   data() {
     return {
@@ -51,7 +54,7 @@ export default {
           route: '/'
         },
         {
-          label: 'ご予約',
+          label: this.$t('home.reservation'),
           icon: 'pi pi-pencil',
           command: () => {
             if (this.$router.currentRoute.value.path !== "/") {
@@ -73,34 +76,34 @@ export default {
           }
         },
         {
-          label: '料金表',
+          label: this.$t('home.Fees'),
           icon: 'pi pi-dollar',
           url: "/files/prices.pdf",
           target: "_blank"
         },
         {
-          label: 'ご利用ガイド',
+          label: this.$t('home.Guid'),
           icon: 'pi pi-car',
           route: '/guide'
         },
         {
-          label: '会社概要',
+          label: this.$t('home.Company info'),
           icon: 'pi pi-folder-open',
           route: '/company'
         },
         {
-          label: '貸渡約款',
+          label: this.$t('home.Terms and Conditions of Lease'),
           icon: 'pi pi-book',
           route: '/terms'
         },
         {
-          label: 'プライバシーポリシー',
+          label: this.$t('home.Privacy Policy'),
           icon: 'pi pi-link',
           url: "/files/privacy_policy.pdf",
           target: "_blank"
         },
         {
-          label: 'コラムサイト',
+          label: this.$t('home.Articles'),
           icon: 'pi pi-image',
           url: "https://column.class-rental-car.com/",
           target: "_blank"
@@ -124,7 +127,7 @@ export default {
           url: "/files/prices.pdf",
           target: "_blank"
         },
-        { 
+        {
           label: '特徴',
           icon: 'pi pi-star',
           command: () => {
@@ -135,7 +138,7 @@ export default {
             });
           }
         },
-        { 
+        {
           label: 'ご利用ガイド',
           icon: 'pi pi-car',
           command: () => {
@@ -146,7 +149,7 @@ export default {
             });
           }
         },
-        { 
+        {
           label: '本体サイト',
           icon: 'pi pi-arrow-up-right',
           route: '/'
@@ -157,8 +160,44 @@ export default {
           url: "https://column.class-rental-car.com/",
           target: "_blank"
         }
+      ],
+      languages: [
+        {
+          label: '日本語',
+          command: () => {
+            this.$i18n.locale = 'ja';
+            localStorage.setItem('lang', 'ja');
+            this.switchMenuLanguage();
+          }
+        },
+        {
+          label: '한국어',
+          command: () => {
+            this.$i18n.locale = 'ko';
+            localStorage.setItem('lang', 'ko');
+            this.switchMenuLanguage();
+          }
+        },
+        {
+          label: '中文繁體（廣東話）',
+          command: () => {
+            this.$i18n.locale = 'cmn_hant';
+            localStorage.setItem('lang', 'cmn_hant');
+            this.switchMenuLanguage();
+          }
+        },
+        // {
+        //   label: 'English(Coming...)',
+        // }
       ]
     }
+  },
+  async created() {
+    var lang = 'ja';
+    if (!this.$router.currentRoute.value.path.includes("valiosa")) {
+      lang = localStorage.getItem('lang') || 'ja';
+    }
+    this.$i18n.locale = lang;
   },
   methods: {
     scrollToEearchAndReservation() {
@@ -178,6 +217,18 @@ export default {
           behavior: 'smooth'
         });
       }
+    },
+    toggleLaguageMenu(event) {
+      this.$refs.openLaguageMenu.toggle(event);
+    },
+    switchMenuLanguage() {
+      this.items[1].label = this.$t('home.reservation');
+      this.items[2].label = this.$t('home.Fees');
+      this.items[3].label = this.$t('home.Guid');
+      this.items[4].label = this.$t('home.Company info');
+      this.items[5].label = this.$t('home.Terms and Conditions of Lease');
+      this.items[6].label = this.$t('home.Privacy Policy');
+      this.items[7].label = this.$t('home.Articles');
     }
   },
   computed: {
@@ -196,7 +247,7 @@ export default {
 
   .toReservation {
     position: absolute;
-    right: 7rem;
+    right: 10rem;
     top: 1.2rem;
 
     button.p-button {
@@ -211,6 +262,22 @@ export default {
 
     @media screen and (max-width: 390px) {
       display: none;
+    }
+  }
+
+  button.language.p-button-icon-only {
+    position: absolute;
+    right: 7.4rem;
+    top: 2.5rem;
+    padding: initial;
+    background-color: initial;
+    color: white;
+    box-shadow: initial;
+    width: 2rem;
+    margin: 0 -0.4rem 0 1rem;
+
+    &::v-deep span.p-button-icon {
+      font-size: 1.5rem;
     }
   }
 

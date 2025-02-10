@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <Header></Header>
-    <main class="main">
+    <main :class="['main', $i18n.locale]">
       <section class="section__heroImageArea">
         <ImageSlider :images="heroImages"></ImageSlider>
       </section>
@@ -9,11 +9,11 @@
         <section class="section__form" id="searchAndReservation">
           <div class="section__form--title">
             <h1>SCHEDULE</h1>
-            <h3>旅行日程で探す</h3>
+            <h3>{{$t('home.Search by dates')}}</h3>
           </div>
           <div class="datetimepicker">
             <div class="datetimepicker-selector">
-              <label>出発日時</label>
+              <label>{{$t('home.Depature')}}</label>
               <Calendar
                 type="date"
                 name="startDate"
@@ -29,7 +29,7 @@
               />
             </div>
             <div class="datetimepicker-selector">
-              <label>返却日時</label>
+              <label>{{$t('home.Returning')}}</label>
               <Calendar
                 type="date"
                 name="endDate"
@@ -50,15 +50,15 @@
             </div>
             <div class="datetimepicker-rule">
               <span
-                >※営業時間(予約可能時間)は{{ businessHours.open }}:00 -
-                {{ businessHours.close }}:00となっております。</span
+                >※{{$t('home.Business hours notice', { open: businessHours.open, close: businessHours.close })}}</span
               >
             </div>
           </div>
           <Button
             icon="pi pi-search"
             class="p-ripple"
-            label="空き状況を検索"
+            id="searchAvailability"
+            :label="$t('home.Search availability')"
             :disabled="!isReadyToSearch"
             @click="searchAvailability"
           ></Button>
@@ -66,9 +66,9 @@
             v-if="availableCar.length <= 0 && isSearched"
             class="no-available-car"
           >
-            大変申し訳ございません。<br />
-            現在、ご指定された時間にご利用可能の車両がありません。<br />
-            お手数ですが、再度別の時間帯で検索を行うか、店舗スタッフへお問合せください。
+            {{$t('home.We are very sorry')}}<br />
+            {{$t('home.There are currently no vehicles available at the time you have specified')}}<br />
+            {{$t('home.Please try searching again at a different time or contact the store staff')}}
           </p>
           <Products
             v-else
@@ -90,21 +90,21 @@
                   reservationFormStatus === 'entry' ? 'active' : ''
                 }`"
               >
-                入力
+                {{ $t('home.Entry') }}
               </div>
               <div
                 :class="`reservation-form__status ${
                   reservationFormStatus === 'confirm' ? 'active' : ''
                 }`"
               >
-                確認
+              {{ $t('home.Confirm') }}
               </div>
               <div
                 :class="`reservation-form__status ${
                   reservationFormStatus === 'done' ? 'active' : ''
                 }`"
               >
-                完了
+              {{ $t('home.Complete') }}
               </div>
             </div>
             <section
@@ -114,15 +114,15 @@
             >
               <div class="section__form--title">
                 <h1>YOUR INFORMATION</h1>
-                <h3>お客様情報入力</h3>
+                <h3>{{ $t('home.Your Information') }}</h3>
               </div>
               <div class="section__form--content">
                 <div class="section__form--content-input-area">
                   <Input
                     type="text"
-                    label="お名前"
+                    :label="$t('home.Name')"
                     name="name"
-                    placeholder="山田太郎"
+                    :placeholder="$t('home.Taro Yamada')"
                     required
                     v-model="scheduleInfo.customerName"
                   ></Input>
@@ -130,7 +130,7 @@
                 <div class="section__form--content-input-area">
                   <Input
                     type="email"
-                    label="メールアドレス"
+                    :label="$t('home.Email')"
                     name="email"
                     placeholder="example@class.okinawa"
                     required
@@ -140,7 +140,7 @@
                 <div class="section__form--content-input-area">
                   <Input
                     type="tel"
-                    label="電話番号"
+                    :label="$t('home.Phone number')"
                     name="phonenumber"
                     placeholder="08000000000"
                     required
@@ -150,7 +150,7 @@
                 <div class="section__form--content-input-area">
                   <Input
                     type="number"
-                    label="人数"
+                    :label="$t('home.Amt of passanger')"
                     name="passenger"
                     placeholder="1"
                     required
@@ -160,7 +160,7 @@
                 <div class="section__form--content-input-area">
                   <Input
                     type="number"
-                    label="免許番号"
+                    :label="$t('home.License number')"
                     name="license-number"
                     placeholder="1234567890"
                     v-model="scheduleInfo.licenseNumber"
@@ -169,7 +169,7 @@
                 <div class="section__form--content-input-area">
                   <Input
                     type="date"
-                    label="生年月日"
+                    :label="$t('home.Date of birth')"
                     name="dob"
                     v-model="scheduleInfo.dob"
                   ></Input>
@@ -177,7 +177,7 @@
                 <div class="section__form--content-input-area">
                   <Input
                     type="airport-timpicker"
-                    label="空港お出迎え"
+                    :label="$t('home.Airport Pickup')"
                     name="airport-pickup"
                     v-model="scheduleInfo.airportPickup"
                   ></Input>
@@ -185,69 +185,70 @@
                 <div class="section__form--content-input-area">
                   <Input
                     type="airport-timpicker"
-                    label="空港お見送り"
+                    :label="$t('home.Airport Dropoff')"
                     name="airport-dropoff"
                     v-model="scheduleInfo.airportDropoff"
                   ></Input>
-                  <span class="input-description"
-                    >空港送迎時間は午前9:00 - 午後5:00となっております。</span
+                  <span class="input-description">
+                    {{ $t('home.Airport pick-up hours notation') }}
+                  </span
                   >
                 </div>
                 <div class="section__form--content-input-area">
                   <Input
                     type="selectbox"
-                    label="貸出オプション"
+                    :label="$t('home.Lending option')"
                     name="return-option"
                     :options="[
-                      { name: 'none', label: '特になし', value: 0 },
+                      { name: 'none', label: $t('home.none'), value: 0 },
                       {
                         name: 'akamineStaDelivery',
-                        label: '赤嶺駅貸出',
+                        label: $t('home.Rental at Akamine Sta'),
                         value: 1,
                       },
                       {
                         name: 'nahaHotelDelivery',
-                        label: '那覇市内ホテル貸出',
+                        label: $t('home.Rental at Hotel(Hotels in Naha City)'),
                         value: 2,
                       },
                     ]"
                     v-model="scheduleInfo.deliveryOption"
                   ></Input>
-                  <span class="input-description">追加料 ¥{{addCommas(deriveryReturnFee)}}</span>
+                  <span class="input-description">{{ $t('home.Additional fee ¥1,100') }}</span>
                 </div>
                 <div class="section__form--content-input-area">
                   <Input
                     type="selectbox"
-                    label="返却オプション"
+                    :label="$t('home.Return option')"
                     name="return-option"
                     :options="[
-                      { name: 'none', label: '特になし', value: 0 },
+                      { name: 'none', label: $t('home.none'), value: 0 },
                       {
                         name: 'akamineStaReturn',
-                        label: '赤嶺駅返却',
+                        label: $t('home.Return at Akamine Sta'),
                         value: 1,
                       },
                       {
                         name: 'nahaHotelReturn',
-                        label: '那覇市内ホテル返却',
+                        label: $t('home.Return at Hotel(Hotels in Naha City)'),
                         value: 2,
                       },
                     ]"
                     v-model="scheduleInfo.returnOption"
                   ></Input>
-                  <span class="input-description">追加料 ¥{{addCommas(deriveryReturnFee)}}</span>
+                  <span class="input-description">{{ $t('home.Additional fee ¥1,100') }}</span>
                 </div>
                 <div class="section__form--content-input-area">
                   <Input
                     type="selectbox"
-                    label="ベビーシート数(0~1歳以下)"
+                    :label="$t('home.Number of baby seats (0~2 year old and under)')"
                     name="use-of-baby-sheet"
                     classes="display-block"
                     :options="[
-                      { name: 'useOfBabySheet', label: '希望しない', value: 0 },
-                      { name: 'useOfBabySheet', label: '1台', value: 1 },
-                      { name: 'useOfBabySheet', label: '2台', value: 2 },
-                      { name: 'useOfBabySheet', label: '3台', value: 3 },
+                      { name: 'useOfBabySheet', label: $t('home.none'), value: 0 },
+                      { name: 'useOfBabySheet', label: '1', value: 1 },
+                      { name: 'useOfBabySheet', label: '2', value: 2 },
+                      { name: 'useOfBabySheet', label: '3', value: 3 },
                     ]"
                     v-model="scheduleInfo.useOfBabySheet"
                   ></Input>
@@ -255,18 +256,14 @@
                 <div class="section__form--content-input-area">
                   <Input
                     type="selectbox"
-                    label="チャイルドシート(0~4歳以下)"
+                    :label="$t('home.Number of child seats (0~5 year old and under)')"
                     name="use-of-child-sheet"
                     classes="display-block"
                     :options="[
-                      {
-                        name: 'useOfChildSheet',
-                        label: '希望しない',
-                        value: 0,
-                      },
-                      { name: 'useOfChildSheet', label: '1台', value: 1 },
-                      { name: 'useOfChildSheet', label: '2台', value: 2 },
-                      { name: 'useOfChildSheet', label: '3台', value: 3 },
+                      { name: 'useOfChildSheet',label: $t('home.none'), value: 0 },
+                      { name: 'useOfChildSheet', label: '1', value: 1 },
+                      { name: 'useOfChildSheet', label: '2', value: 2 },
+                      { name: 'useOfChildSheet', label: '3', value: 3 },
                     ]"
                     v-model="scheduleInfo.useOfChildSheet"
                   ></Input>
@@ -274,35 +271,31 @@
                 <div class="section__form--content-input-area">
                   <Input
                     type="selectbox"
-                    label="ジュニアシート数(4歳以上~10歳以下)"
+                    :label="$t('home.Number of Junior seats (5~10 year old and under)')"
                     name="use-of-junior-sheet"
                     classes="display-block"
                     :options="[
-                      {
-                        name: 'useOfJuniorSheet',
-                        label: '希望しない',
-                        value: 0,
-                      },
-                      { name: 'useOfJuniorSheet', label: '1台', value: 1 },
-                      { name: 'useOfJuniorSheet', label: '2台', value: 2 },
-                      { name: 'useOfBabySheet', label: '3台', value: 3 },
+                      { name: 'useOfJuniorSheet',label: $t('home.none'), value: 0 },
+                      { name: 'useOfJuniorSheet', label: '1', value: 1 },
+                      { name: 'useOfJuniorSheet', label: '2', value: 2 },
+                      { name: 'useOfBabySheet', label: '3', value: 3 },
                     ]"
                     v-model="scheduleInfo.useOfJuniorSheet"
                   ></Input>
-                  <span class="input-description"
-                    >各種シート1台あたり追加料 ¥{{addCommas(generalChildSheetFee)}}（一律）</span
+                  <span class="input-description">{{ $t('home.Additional fee per seat ¥1,100 (flat rate)') }}</span
                   >
                 </div>
                 <div class="section__form--content-input-area">
                   <Input
                     type="text"
-                    label="クーポンコード"
+                    :label="$t('home.Coupon Codes')"
                     name="name"
                     v-model="scheduleInfo.couponCode"
                   ></Input>
-                  <span class="input-description"
-                    >クーポンが正しくない場合は確認画面へ進みません。<br>ご入力の際は今一度ご確認ください。</span
-                  >
+                  <span class="input-description">
+                    {{$t('home.If the coupon is not correct, you will not proceed to the confirmation screen')}}<br>
+                    {{ $t('home.Please double check the code again when entering') }}
+                  </span>
                 </div>
 
               </div>
@@ -321,24 +314,24 @@
                 src="/images/icons/mail.png"
               />
               <p>
-                予約が完了しました。<br />
-                ご入力いただいたメールアドレス宛に担当者から確認の連絡を差し上げます。
-                今しばらくお待ちください。
-                （このウィンドウは10秒後に自動で閉じられます。）
+                {{ $t('home.Reservation completed') }}<br />
+                {{ $t('home.A representative will contact you at the e-mail address you provided to confirm your application') }}<br />
+                {{ $t('home.Please wait a moment') }}<br />
+                {{ $t('home.(This window will close automatically after 10 seconds)') }}
               </p>
             </div>
             <div class="reservation-form__button">
               <Button
                 class="p-ripple"
                 v-if="reservationFormStatus === 'entry'"
-                label="予約確認へ"
+                :label="$t('home.Confirm reservation')"
                 :disabled="!isValidScheduleInfo"
                 @click="confirmForm"
               ></Button>
               <Button
                 class="p-ripple"
                 v-if="reservationFormStatus === 'confirm'"
-                label="内容を修正する"
+                :label="$t('home.Modify')"
                 severity="secondary"
                 @click="reservationFormStatus = 'entry'"
               ></Button>
@@ -346,7 +339,7 @@
                 class="p-ripple"
                 v-if="reservationFormStatus === 'confirm'"
                 icon="pi pi-send"
-                label="予約する"
+                :label="$t('home.reserve')"
                 :loading="reservationLoading"
                 @click="submitForm"
               ></Button>
@@ -358,7 +351,7 @@
         <section class="section__products">
           <div class="section__products--title">
             <h1>VEHICLE LIST</h1>
-            <h3>車両一覧</h3>
+            <h3>{{ $t('home.Car list') }}</h3>
           </div>
           <div class="section__products--lists">
             <ProductCard :product="vehicle_list[0]"></ProductCard>
@@ -370,7 +363,7 @@
       </div>
       <section class="section__features">
         <div class="section__features--title">
-          <h3>特徴</h3>
+          <h3>{{ $t('home.feature') }}</h3>
           <h1>FEATURE</h1>
         </div>
         <div class="section__features--contents">
@@ -379,17 +372,16 @@
               <div class="ellipseDiv">
                 <div class="ellipseInside-number">01</div>
                 <h1 class="ellipseInside-text">
-                  <p class="p">難しい手続きなしで</p>
-                  <p class="p">すぐご出発</p>
+                  <p class="p">{{ $t('home.with no complicated procedures') }}</p>
+                  <p class="p">{{ $t('home.depart immediately') }}</p>
                 </h1>
               </div>
             </div>
             <div class="subtext">
               <h1>
                 <p class="p">
-                  必要書類はメールにて送信。<br
-                    class="sp"
-                  />かんたんに手続きが済みます。
+                  {{ $t('home.required documents are sent by e-mail') }} </p>
+                <p class="p">{{ $t('home.The procedure is easy to complete') }}
                 </p>
               </h1>
             </div>
@@ -399,24 +391,22 @@
               <div class="ellipseDiv">
                 <div class="ellipseInside-number">02</div>
                 <h1 class="ellipseInside-text">
-                  <p class="p">混みにくい高速道路の</p>
-                  <p class="p">近くだからスイスイ</p>
+                  <p class="p">{{ $t('home.located close to the highway') }}</p>
+                  <p class="p">{{ $t('home.The procedure is easy to complete') }}</p>
                 </h1>
               </div>
             </div>
             <div class="subtext">
               <h1>
                 <p class="p">
-                  混みにくいインターチェンジへ<br
-                    class="sp"
-                  />最短アクセスが可能です。
+                  {{ $t('home.to uncrowded interchanges') }}</p>
+                  <p class="p">{{ $t('home.shortest possible access') }}
                 </p>
               </h1>
               <h3>
                 <p class="p">
-                  ※空港近辺では使用インターが重なり、<br
-                    class="sp"
-                  />度々渋滞になります。
+                  {{ $t('home.The interchanges used in the vicinity of the airport overlap,') }}</p>
+                  <p class="p">{{ $t('home.resulting in frequent traffic jams') }}
                 </p>
               </h3>
             </div>
@@ -426,16 +416,16 @@
               <div class="ellipseDiv">
                 <div class="ellipseInside-number">03</div>
                 <h1 class="ellipseInside-text singleLine">
-                  <p class="p">支払いもスマートに</p>
+                  <p class="p">{{ $t('home.pay smartly!') }}</p>
                 </h1>
               </div>
             </div>
             <div class="subtext">
               <h1>
                 <p class="p">
-                  免責補償込みで予約可能。<br
-                    class="sp"
-                  />余計なオプションも、<br class="sp" />追加保険料も必要なし。
+                  {{ $t('home.indemnity coverage included') }}</p>
+                  <p class="p">{{ $t('home.with no extra options,') }}</p>
+                  <p class="p">{{ $t('home.with no redundant coverages') }}
                 </p>
               </h1>
             </div>
@@ -543,7 +533,6 @@ export default {
       ],
       isSearched: false,
       availableCar: [],
-      comingSoonHeight: null,
       formEntryStart: false,
       reservationFormStatus: null,
       scheduleInfo: {
@@ -594,11 +583,6 @@ export default {
     this.minDate.setMinutes(0);
   },
   computed: {
-    cssVars() {
-      return {
-        "--comingSoon-height": this.comingSoonHeight,
-      };
-    },
     backendDomain() {
       return process.env.VUE_APP_BACKEND_DOMAIN;
     },
@@ -1162,6 +1146,10 @@ section {
     &--submit {
       text-align: center;
     }
+
+    #searchAvailability {
+      width: 12rem;
+    }
   }
 
   &__products {
@@ -1291,97 +1279,16 @@ section {
     color: var(--color-steelblue);
   }
 }
-.comingSoon {
-  position: relative;
-  &:before {
-    content: "";
-    position: absolute;
-    left: 0;
-    width: 100%;
-    height: var(--comingSoon-height);
-    background-color: rgba(0, 0, 0, 0.4);
-    z-index: 1;
-    @media screen and (max-width: 390px) {
-      height: 2902px;
-    }
-  }
-  &__notice {
-    position: absolute;
-  }
-  .custom-modal {
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    .modal-content {
-      background-color: #fefefe;
-      margin: 15% auto;
-      padding: 20px;
-      width: 25rem;
-      border-radius: 3.49px;
-      border: none;
-      text-align: center;
-      font-size: 1rem;
-      .button {
-        display: inline-block;
-      }
-    }
-  }
-
-  .bigText {
-    font-size: 4rem;
-    font-weight: bolder;
-    color: var(--color-white);
-    width: 100%;
-    text-align: center;
-    z-index: 2;
-    &-content {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      width: 20rem;
-      &:nth-child(1) {
-        margin: 1% auto;
-        @media screen and (max-width: 390px) {
-          margin: 15% auto;
-        }
-      }
-      &:nth-child(2) {
-        margin: 1% auto;
-        @media screen and (max-width: 390px) {
-          margin: 15% auto;
-        }
-      }
-    }
-    span {
-      line-height: 4rem;
-      &:nth-child(1) {
-        margin: 0 auto auto 0;
-      }
-      &:nth-child(2) {
-        margin: auto 0 0 auto;
-      }
-    }
-  }
-  #comingSoon1 {
-    margin: 28% 0%;
-    @media screen and (max-width: 390px) {
-      margin: 80% 0%;
-    }
-  }
-  #comingSoon2 {
-    margin: 50% 0%;
-    @media screen and (max-width: 390px) {
-      margin: 197% 0%;
-    }
-  }
-}
 .sp {
   display: none;
   @media screen and (max-width: 390px) {
     display: initial;
+  }
+}
+.cmn_hant {
+  .datetimepicker-selector {
+    font-size: .95rem;
+    width: 22.5rem;
   }
 }
 </style>

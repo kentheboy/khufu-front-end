@@ -3,15 +3,15 @@
     <div class="footer__content">
       <div class="sites">
         <div class="logo-container">
-          <img alt="" src="/images/class-logo3-1@2x.png" :onClick="onCLASSLogo31Click" />
+          <img alt="" src="/images/class-logo3-1@2x.png" />
         </div>
-        <a href="/company">会社概要</a>
-        <a href="/terms">貸渡約款</a>
-        <a href="/files/privacy_policy.pdf" target="_blank">プライバシーポリシー</a>
-        <a href="https://column.class-rental-car.com/" target="_blank">コラムサイト <i class="pi pi-external-link"></i></a>
+        <a href="/company">{{ $t('home.Company info') }}</a>
+        <a href="/terms">{{ $t('home.Terms and Conditions of Lease') }}</a>
+        <a href="/files/privacy_policy.pdf" target="_blank">{{ $t('home.Privacy Policy') }}</a>
+        <a href="https://column.class-rental-car.com/" target="_blank">{{ $t('home.Articles') }} <i class="pi pi-external-link"></i></a>
       </div>
       <div class="footer__content--postal-code">
-        〒901-0203　沖縄県豊見城市長堂67
+        {{ $t('home.67 Nagado, Toyomigusuku City, Okinawa 901-0203, Japan') }}
       </div>
       <div class="footer__content--contact">
         <div class="sns-links">
@@ -23,7 +23,7 @@
           </a>
         </div>
         <div class="hours">
-          営業時間　{{ businessHours.open }}:00-{{
+          {{ $t('home.Business hours') }} {{ businessHours.open }}:00-{{
             businessHours.close
           }}:00
         </div>

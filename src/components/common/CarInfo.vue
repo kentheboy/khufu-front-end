@@ -8,7 +8,7 @@
                     <img class="vectorIcon2" alt="" src="/images/vector1.svg" />
                     <img class="vectorIcon3" alt="" src="/images/vector2.svg" />
                     <img class="vectorIcon4" alt="" src="/images/vector3.svg" />
-                    <div class="passenger-number">{{ information.maxmumPassenger }}人</div>
+                    <div class="passenger-number">{{ information.maxmumPassenger }}</div>
                 </div>
                 <div class="mode">
                     <div class="at">AT</div>
