@@ -57,7 +57,7 @@
     "Rental at Akamine Sta": "Rental at Akamine Sta.",
     "Rental at Hotel(Hotels in Naha City)": "Rental at Hotel(Hotels in Naha City)",
     "Additional fee ¥1,100": "Additional fee ¥1,100",
-    "Return Options": "Return Options",
+    "Return option": "Return Options",
     "Return at Akamine Sta": "Return at Akamine Sta.",
     "Return at Hotel(Hotels in Naha City)": "Return at Hotel(Hotels in Naha City)",
     "Number of baby seats (0~2 year old and under)": "Number of baby seats (0~2 year old and under)",
@@ -66,7 +66,8 @@
     "Additional fee per seat ¥1,100 (flat rate)": "Additional fee per seat ¥1,100 (flat rate)",
     "Coupon Codes": "Coupon Codes",
     "If the coupon is not correct, you will not proceed to the confirmation screen": "If the coupon is not correct, you will not proceed to the confirmation screen.",
-    "Please check the information again when entering your information": "Please check the information again when entering your information.",
+    "Please double check the code again when entering": "Please double check the code again when entering.",
+    "Booking Information": "Booking Information",
     "Vehicle Info": "Vehicle Info",
     "(Example)": "(Example.)",
     "Lending schedule": "Lending schedule",
@@ -87,7 +88,8 @@
     "Please wait a moment": "Please wait a moment.",
     "(This window will close automatically after 10 seconds)": "(This window will close automatically after 10 seconds.)",
     "Confirm reservation": "Confirm reservation",
-    "Modify": "Modify"
+    "Modify": "Modify",
+    "reserve": "reserve"
   },
   "guide": {
     "Reservation": "Reservation",

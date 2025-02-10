@@ -65,9 +65,9 @@
             v-if="availableCar.length <= 0 && isSearched"
             class="no-available-car"
           >
-            {{$t('home.We are very sorry.')}}<br />
-            {{$t('home.There are currently no vehicles available at the time you have specified.')}}<br />
-            {{$t('home.Please try searching again at a different time or contact the store staff.')}}
+            {{$t('home.We are very sorry')}}<br />
+            {{$t('home.There are currently no vehicles available at the time you have specified')}}<br />
+            {{$t('home.Please try searching again at a different time or contact the store staff')}}
           </p>
           <Products
             v-else
@@ -213,41 +213,41 @@
                     ]"
                     v-model="scheduleInfo.deliveryOption"
                   ></Input>
-                  <span class="input-description">追加料 ¥{{addCommas(deriveryReturnFee)}}</span>
+                  <span class="input-description">{{ $t('home.Additional fee ¥1,100') }}</span>
                 </div>
                 <div class="section__form--content-input-area">
                   <Input
                     type="selectbox"
-                    label="返却オプション"
+                    :label="$t('home.Return option')"
                     name="return-option"
                     :options="[
-                      { name: 'none', label: '特になし', value: 0 },
+                      { name: 'none', label: $t('home.none'), value: 0 },
                       {
                         name: 'akamineStaReturn',
-                        label: '赤嶺駅返却',
+                        label: $t('home.Return at Akamine Sta'),
                         value: 1,
                       },
                       {
                         name: 'nahaHotelReturn',
-                        label: '那覇市内ホテル返却',
+                        label: $t('home.Return at Hotel(Hotels in Naha City)'),
                         value: 2,
                       },
                     ]"
                     v-model="scheduleInfo.returnOption"
                   ></Input>
-                  <span class="input-description">追加料 ¥{{addCommas(deriveryReturnFee)}}</span>
+                  <span class="input-description">{{ $t('home.Additional fee ¥1,100') }}</span>
                 </div>
                 <div class="section__form--content-input-area">
                   <Input
                     type="selectbox"
-                    label="ベビーシート数(0~1歳以下)"
+                    :label="$t('home.Number of baby seats (0~2 year old and under)')"
                     name="use-of-baby-sheet"
                     classes="display-block"
                     :options="[
-                      { name: 'useOfBabySheet', label: '希望しない', value: 0 },
-                      { name: 'useOfBabySheet', label: '1台', value: 1 },
-                      { name: 'useOfBabySheet', label: '2台', value: 2 },
-                      { name: 'useOfBabySheet', label: '3台', value: 3 },
+                      { name: 'useOfBabySheet', label: $t('home.none'), value: 0 },
+                      { name: 'useOfBabySheet', label: '1', value: 1 },
+                      { name: 'useOfBabySheet', label: '2', value: 2 },
+                      { name: 'useOfBabySheet', label: '3', value: 3 },
                     ]"
                     v-model="scheduleInfo.useOfBabySheet"
                   ></Input>
@@ -255,18 +255,14 @@
                 <div class="section__form--content-input-area">
                   <Input
                     type="selectbox"
-                    label="チャイルドシート(0~4歳以下)"
+                    :label="$t('home.Number of child seats (0~5 year old and under)')"
                     name="use-of-child-sheet"
                     classes="display-block"
                     :options="[
-                      {
-                        name: 'useOfChildSheet',
-                        label: '希望しない',
-                        value: 0,
-                      },
-                      { name: 'useOfChildSheet', label: '1台', value: 1 },
-                      { name: 'useOfChildSheet', label: '2台', value: 2 },
-                      { name: 'useOfChildSheet', label: '3台', value: 3 },
+                      { name: 'useOfChildSheet',label: $t('home.none'), value: 0 },
+                      { name: 'useOfChildSheet', label: '1', value: 1 },
+                      { name: 'useOfChildSheet', label: '2', value: 2 },
+                      { name: 'useOfChildSheet', label: '3', value: 3 },
                     ]"
                     v-model="scheduleInfo.useOfChildSheet"
                   ></Input>
@@ -274,35 +270,31 @@
                 <div class="section__form--content-input-area">
                   <Input
                     type="selectbox"
-                    label="ジュニアシート数(4歳以上~10歳以下)"
+                    :label="$t('home.Number of Junior seats (5~10 year old and under)')"
                     name="use-of-junior-sheet"
                     classes="display-block"
                     :options="[
-                      {
-                        name: 'useOfJuniorSheet',
-                        label: '希望しない',
-                        value: 0,
-                      },
-                      { name: 'useOfJuniorSheet', label: '1台', value: 1 },
-                      { name: 'useOfJuniorSheet', label: '2台', value: 2 },
-                      { name: 'useOfBabySheet', label: '3台', value: 3 },
+                      { name: 'useOfJuniorSheet',label: $t('home.none'), value: 0 },
+                      { name: 'useOfJuniorSheet', label: '1', value: 1 },
+                      { name: 'useOfJuniorSheet', label: '2', value: 2 },
+                      { name: 'useOfBabySheet', label: '3', value: 3 },
                     ]"
                     v-model="scheduleInfo.useOfJuniorSheet"
                   ></Input>
-                  <span class="input-description"
-                    >各種シート1台あたり追加料 ¥{{addCommas(generalChildSheetFee)}}（一律）</span
+                  <span class="input-description">{{ $t('home.Additional fee per seat ¥1,100 (flat rate)') }}</span
                   >
                 </div>
                 <div class="section__form--content-input-area">
                   <Input
                     type="text"
-                    label="クーポンコード"
+                    :label="$t('home.Coupon Codes')"
                     name="name"
                     v-model="scheduleInfo.couponCode"
                   ></Input>
-                  <span class="input-description"
-                    >クーポンが正しくない場合は確認画面へ進みません。<br>ご入力の際は今一度ご確認ください。</span
-                  >
+                  <span class="input-description">
+                    {{$t('home.If the coupon is not correct, you will not proceed to the confirmation screen')}}<br>
+                    {{ $t('home.Please double check the code again when entering') }}
+                  </span>
                 </div>
 
               </div>
@@ -321,24 +313,24 @@
                 src="/images/icons/mail.png"
               />
               <p>
-                予約が完了しました。<br />
-                ご入力いただいたメールアドレス宛に担当者から確認の連絡を差し上げます。<br />
-                今しばらくお待ちください。<br />
-                （このウィンドウは10秒後に自動で閉じられます。）
+                {{ $t('home.Reservation completed') }}<br />
+                {{ $t('home.A representative will contact you at the e-mail address you provided to confirm your application') }}<br />
+                {{ $t('home.Please wait a moment') }}<br />
+                {{ $t('home.(This window will close automatically after 10 seconds)') }}
               </p>
             </div>
             <div class="reservation-form__button">
               <Button
                 class="p-ripple"
                 v-if="reservationFormStatus === 'entry'"
-                label="予約確認へ"
+                :label="$t('home.Confirm reservation')"
                 :disabled="!isValidScheduleInfo"
                 @click="confirmForm"
               ></Button>
               <Button
                 class="p-ripple"
                 v-if="reservationFormStatus === 'confirm'"
-                label="内容を修正する"
+                :label="$t('home.Modify')"
                 severity="secondary"
                 @click="reservationFormStatus = 'entry'"
               ></Button>
@@ -346,7 +338,7 @@
                 class="p-ripple"
                 v-if="reservationFormStatus === 'confirm'"
                 icon="pi pi-send"
-                label="予約する"
+                :label="$t('home.reserve')"
                 :loading="reservationLoading"
                 @click="submitForm"
               ></Button>
@@ -358,7 +350,7 @@
         <section class="section__products">
           <div class="section__products--title">
             <h1>VEHICLE LIST</h1>
-            <h3>車両一覧</h3>
+            <h3>{{ $t('home.Car list') }}</h3>
           </div>
           <div class="section__products--lists">
             <ProductCard :product="vehicle_list[0]"></ProductCard>
@@ -370,7 +362,7 @@
       </div>
       <section class="section__features">
         <div class="section__features--title">
-          <h3>特徴</h3>
+          <h3>{{ $t('home.feature') }}</h3>
           <h1>FEATURE</h1>
         </div>
         <div class="section__features--contents">
@@ -379,17 +371,16 @@
               <div class="ellipseDiv">
                 <div class="ellipseInside-number">01</div>
                 <h1 class="ellipseInside-text">
-                  <p class="p">難しい手続きなしで</p>
-                  <p class="p">すぐご出発</p>
+                  <p class="p">{{ $t('home.with no complicated procedures') }}</p>
+                  <p class="p">{{ $t('home.depart immediately') }}</p>
                 </h1>
               </div>
             </div>
             <div class="subtext">
               <h1>
                 <p class="p">
-                  必要書類はメールにて送信。<br
-                    class="sp"
-                  />かんたんに手続きが済みます。
+                  {{ $t('home.required documents are sent by e-mail') }} </p>
+                <p class="p">{{ $t('home.The procedure is easy to complete') }}
                 </p>
               </h1>
             </div>
@@ -399,24 +390,22 @@
               <div class="ellipseDiv">
                 <div class="ellipseInside-number">02</div>
                 <h1 class="ellipseInside-text">
-                  <p class="p">混みにくい高速道路の</p>
-                  <p class="p">近くだからスイスイ</p>
+                  <p class="p">{{ $t('home.located close to the highway') }}</p>
+                  <p class="p">{{ $t('home.The procedure is easy to complete') }}</p>
                 </h1>
               </div>
             </div>
             <div class="subtext">
               <h1>
                 <p class="p">
-                  混みにくいインターチェンジへ<br
-                    class="sp"
-                  />最短アクセスが可能です。
+                  {{ $t('home.to uncrowded interchanges') }}</p>
+                  <p class="p">{{ $t('home.shortest possible access') }}
                 </p>
               </h1>
               <h3>
                 <p class="p">
-                  ※空港近辺では使用インターが重なり、<br
-                    class="sp"
-                  />度々渋滞になります。
+                  {{ $t('home.The interchanges used in the vicinity of the airport overlap,') }}</p>
+                  <p class="p">{{ $t('home.resulting in frequent traffic jams') }}
                 </p>
               </h3>
             </div>
@@ -426,16 +415,16 @@
               <div class="ellipseDiv">
                 <div class="ellipseInside-number">03</div>
                 <h1 class="ellipseInside-text singleLine">
-                  <p class="p">支払いもスマートに</p>
+                  <p class="p">{{ $t('home.pay smartly!') }}</p>
                 </h1>
               </div>
             </div>
             <div class="subtext">
               <h1>
                 <p class="p">
-                  免責補償込みで予約可能。<br
-                    class="sp"
-                  />余計なオプションも、<br class="sp" />追加保険料も必要なし。
+                  {{ $t('home.indemnity coverage included') }}</p>
+                  <p class="p">{{ $t('home.with no extra options,') }}</p>
+                  <p class="p">{{ $t('home.with no redundant coverages') }}
                 </p>
               </h1>
             </div>

@@ -19,7 +19,7 @@
     "feature": "特徴",
     "depart immediately": "すぐご出発",
     "with no complicated procedures": "難しい手続きなしで",
-    "required documents are sent by e-mail": "必要書類はメールにて送信",
+    "required documents are sent by e-mail": "必要書類はメールにて送信。",
     "The procedure is easy to complete": "かんたんに手続きが済みます。",
     "located close to the highway": "混みにくい高速道路の",
     "which is less crowded, so it's easy to get around": "近くだからスイスイ",
@@ -57,7 +57,7 @@
     "Rental at Akamine Sta": "赤嶺駅貸出",
     "Rental at Hotel(Hotels in Naha City)": "那覇市内ホテル貸出",
     "Additional fee ¥1,100": "追加料 ¥1,100",
-    "Return Options": "返却オプション",
+    "Return option": "返却オプション",
     "Return at Akamine Sta": "赤嶺駅返却",
     "Return at Hotel(Hotels in Naha City)": "那覇市内ホテル返却",
     "Number of baby seats (0~2 year old and under)": "ベビーシート台数(0~2歳未満)",
@@ -66,7 +66,8 @@
     "Additional fee per seat ¥1,100 (flat rate)": "各種シート1台あたり追加料 ¥1,100（一律）",
     "Coupon Codes": "クーポンコード",
     "If the coupon is not correct, you will not proceed to the confirmation screen": "クーポンが正しくない場合、確認画面に進むことができません。",
-    "Please check the information again when entering your information": "情報入力時には、再度情報をご確認ください。",
+    "Please double check the code again when entering": "クーポン入力時には、再度情報をご確認ください。",
+    "Booking Information": "ご予約内容",
     "Vehicle Info": "車両情報",
     "(Example)": "（例）",
     "Lending schedule": "貸出日程",
@@ -87,7 +88,8 @@
     "Please wait a moment": "今しばらくお待ちください。",
     "(This window will close automatically after 10 seconds)": "（10秒後にこのウィンドウは自動で閉じます。）",
     "Confirm reservation": "予約確認へ",
-    "Modify": "修正"
+    "Modify": "修正",
+    "reserve": "予約する"
   },
   "guide": {
     "Reservation": "ご予約",

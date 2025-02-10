@@ -2,16 +2,16 @@
   <section :class="['section__information', isValiosaPage ? 'valiosa' : '']">
     <div class="section__information--title">
       <h1>BOOKING INFORMATION</h1>
-      <h3>ご予約内容</h3>
+      <h3>{{ $t('home.Booking Information') }}</h3>
     </div>
     <div class="section__information--car-info">
-      <h4>■車両情報 <span v-if="isExample">（例）</span></h4>
+      <h4>■{{ $t('home.Vehicle Info') }} <span v-if="isExample">{{ $t('home.(Example)') }}</span></h4>
       <h5>{{ reservationInfo.title }}</h5>
       <h6>{{ reservationInfo.subInfo }}</h6>
       <CarInfo :information="reservationInfo.carInfos"></CarInfo>
       <div class="info-detail-area">
         <div class="row-content">
-          <div class="title">■貸出日程</div>
+          <div class="title">■{{ $t('home.Lending schedule') }}</div>
           <div class="detail">
             <p class="total-hours">
               {{ reservationInfo.start_at.replace(/-/g, "/") }} ~
@@ -20,7 +20,7 @@
           </div>
         </div>
         <div class="row-content">
-          <div class="title">■料金</div>
+          <div class="title">■{{ $t('home.Total Fee') }}</div>
           <div class="detail">
             <p class="total-price">
               ¥{{ addCommas(reservationInfo.totalFee) }}
@@ -28,14 +28,14 @@
             <hr />
             <dl class="price-detail">
               <dt class="basic-price-title">
-                基本料金<br class="sp" />(1日あたり)
+                {{ $t('home.basic Fee') }}<br class="sp" />{{ $t('home.(per day)') }}
               </dt>
               <dd class="basic-price">
                 ¥{{ addCommas(reservationInfo.carInfos.basicFee) }}
               </dd>
               <dt class="additional-note">
                 <i class="pi pi-info-circle"></i>
-                <span>補償制度の含まれた金額です</span>
+                <span>{{ $t('home.compensation fee included') }}</span>
               </dt>
               <dt
                 v-if="
@@ -44,7 +44,7 @@
                 "
                 class="options-price-title"
               >
-                赤嶺駅貸出料
+                {{ $t('home.Rental at Akamine Sta') }}
               </dt>
               <dd
                 v-if="
@@ -62,7 +62,7 @@
                 "
                 class="options-price-title"
               >
-                那覇市内ホテル貸出
+                {{ $t('home.Rental at Hotel(Hotels in Naha City)') }}
               </dt>
               <dd
                 v-if="
@@ -80,7 +80,7 @@
                 "
                 class="options-price-title"
               >
-                赤嶺駅返却
+                {{ $t('home.Return at Akamine Sta') }}
               </dt>
               <dd
                 v-if="
@@ -98,7 +98,7 @@
                 "
                 class="options-price-title"
               >
-                那覇市内ホテル返却
+                {{ $t('home.Return at Hotel(Hotels in Naha City)') }}
               </dt>
               <dd
                 v-if="
@@ -116,7 +116,7 @@
                 "
                 class="options-price-title"
               >
-                ベビーシート代
+                {{ $t('home.baby seat') }}
               </dt>
               <dd
                 v-if="
@@ -136,7 +136,7 @@
                 "
                 class="options-price-title"
               >
-                チャイルドシート代
+                {{ $t('home.child seat') }}
               </dt>
               <dd
                 v-if="
@@ -156,7 +156,7 @@
                 "
                 class="options-price-title"
               >
-                ジュニアシート代
+                {{ $t('home.junior seat') }}
               </dt>
               <dd
                 v-if="
@@ -175,7 +175,7 @@
                 "
                 class="options-price-title"
               >
-                クーポン割引({{ reservationInfo.discount.percentage }}%off)
+                {{ $t('home.Coupon Discounts') }}({{ reservationInfo.discount.percentage }}%off)
               </dt>
               <dd
                 v-if="
@@ -193,35 +193,35 @@
       </div>
       <div class="info-detail-area">
         <div class="row-content">
-          <div class="title">■お客様情報</div>
+          <div class="title">■{{ $t('home.Customer Info') }}</div>
         </div>
         <div class="row-content">
           <div class="customer-info">
             <dl>
-              <dt>お名前</dt>
+              <dt>{{ $t('home.Name') }}</dt>
               <dd>{{ reservationInfo.customerName }}　様</dd>
-              <dt>生年月日</dt>
+              <dt>{{ $t('home.Date of birth') }}</dt>
               <dd>{{ reservationInfo.dob.replace(/-/g, "/") }}</dd>
-              <dt>メールアドレス</dt>
+              <dt>{{ $t('home.Email') }}</dt>
               <dd>{{ reservationInfo.customerEmail }}</dd>
-              <dt>電話番号</dt>
+              <dt>{{ $t('home.Phone number') }}</dt>
               <dd>{{ reservationInfo.customerPhoneNumber }}</dd>
-              <dt>免許証番号</dt>
+              <dt>{{ $t('home.License number') }}</dt>
               <dd>{{ reservationInfo.licenseNumber }}</dd>
-              <dt>空港お出迎え</dt>
+              <dt>{{ $t('home.Airport Pickup') }}</dt>
               <dd>
                 {{
                   reservationInfo.airportPickup
                     ? reservationInfo.airportPickup
-                    : "なし"
+                    : $t('home.not needed')
                 }}
               </dd>
-              <dt>空港お見送り</dt>
+              <dt>{{ $t('home.Airport Dropoff') }}</dt>
               <dd>
                 {{
                   reservationInfo.airportDropoff
                     ? reservationInfo.airportDropoff
-                    : "なし"
+                    : $t('home.not needed')
                 }}
               </dd>
             </dl>
@@ -229,8 +229,8 @@
         </div>
       </div>
       <p v-if="isExample">
-        ※こちらは予約例です<br />
-        ※10時間を超えない延長は1時間あたり2,000円、超える場合は1日あたりの基本料金が加算されます
+        {{ $t('home.example of a reservation') }}<br />
+        ※{{ $t('home.2,000 yen per hour for extensions not exceeding 10 hours; if extensions exceed 10 hours, a daily basic fee will be added') }}
       </p>
     </div>
   </section>

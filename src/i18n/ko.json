@@ -19,7 +19,7 @@
     "feature": "특징",
     "depart immediately": "바로 출발",
     "with no complicated procedures": "까다로운 절차 없이",
-    "required documents are sent by e-mail": "필요 서류는 이메일로 발송",
+    "required documents are sent by e-mail": "필요 서류는 이메일로 발송.",
     "The procedure is easy to complete": "간편하게 수속을 할 수 있습니다.",
     "located close to the highway": "혼잡하지 않은 고속도로의",
     "which is less crowded, so it's easy to get around.": "가까워서 편하다",
@@ -57,7 +57,7 @@
     "Rental at Akamine Sta": "赤嶺駅貸出(적령역 대여)",
     "Rental at Hotel(Hotels in Naha City)": "나하 시내 호텔 대여",
     "Additional fee ¥1,100": "추가 요금 ¥1,100",
-    "Return Options": "반납 옵션",
+    "Return option": "반납 옵션",
     "Return at Akamine Sta": "赤嶺駅返却(적령역 반납)",
     "Return at Hotel(Hotels in Naha City)": "나하 시내 호텔 반납",
     "Number of baby seats (0~2 year old and under)": "유아용 카시트 대수(0~2세 미만)",
@@ -66,7 +66,8 @@
     "Additional fee per seat ¥1,100 (flat rate)": "각종 시트 1대당 추가 요금 1,100엔(일률)",
     "Coupon Codes": "쿠폰 코드",
     "If the coupon is not correct, you will not proceed to the confirmation screen": "쿠폰이 올바르지 않으면 확인 화면으로 넘어갈 수 없습니다.",
-    "Please check the information again when entering your information": "정보 입력 시 다시 한 번 정보를 확인하시기 바랍니다.",
+    "Please double check the code again when entering": "쿠폰 입력 시 다시 한 번 정보를 확인해 주세요.",
+    "Booking Information": "예약 내용",
     "Vehicle Info": "차량 정보",
     "(Example)": "(예시)",
     "Lending schedule": "대출일정",
@@ -87,7 +88,8 @@
     "Please wait a moment": "잠시만 기다려주세요.",
     "(This window will close automatically after 10 seconds)": "(이 창은 10초 후에 자동으로 닫힙니다.)",
     "Confirm reservation": "예약 확인",
-    "Modify": "수정"
+    "Modify": "수정",
+    "reserve": "예약하기"
   },
   "guide": {
     "Reservation": "예약하기",
