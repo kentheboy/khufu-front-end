@@ -533,7 +533,6 @@ export default {
       ],
       isSearched: false,
       availableCar: [],
-      comingSoonHeight: null,
       formEntryStart: false,
       reservationFormStatus: null,
       scheduleInfo: {
@@ -584,11 +583,6 @@ export default {
     this.minDate.setMinutes(0);
   },
   computed: {
-    cssVars() {
-      return {
-        "--comingSoon-height": this.comingSoonHeight,
-      };
-    },
     backendDomain() {
       return process.env.VUE_APP_BACKEND_DOMAIN;
     },
@@ -1285,100 +1279,12 @@ section {
     color: var(--color-steelblue);
   }
 }
-.comingSoon {
-  position: relative;
-  &:before {
-    content: "";
-    position: absolute;
-    left: 0;
-    width: 100%;
-    height: var(--comingSoon-height);
-    background-color: rgba(0, 0, 0, 0.4);
-    z-index: 1;
-    @media screen and (max-width: 390px) {
-      height: 2902px;
-    }
-  }
-  &__notice {
-    position: absolute;
-  }
-  .custom-modal {
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    .modal-content {
-      background-color: #fefefe;
-      margin: 15% auto;
-      padding: 20px;
-      width: 25rem;
-      border-radius: 3.49px;
-      border: none;
-      text-align: center;
-      font-size: 1rem;
-      .button {
-        display: inline-block;
-      }
-    }
-  }
-
-  .bigText {
-    font-size: 4rem;
-    font-weight: bolder;
-    color: var(--color-white);
-    width: 100%;
-    text-align: center;
-    z-index: 2;
-    &-content {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      width: 20rem;
-      &:nth-child(1) {
-        margin: 1% auto;
-        @media screen and (max-width: 390px) {
-          margin: 15% auto;
-        }
-      }
-      &:nth-child(2) {
-        margin: 1% auto;
-        @media screen and (max-width: 390px) {
-          margin: 15% auto;
-        }
-      }
-    }
-    span {
-      line-height: 4rem;
-      &:nth-child(1) {
-        margin: 0 auto auto 0;
-      }
-      &:nth-child(2) {
-        margin: auto 0 0 auto;
-      }
-    }
-  }
-  #comingSoon1 {
-    margin: 28% 0%;
-    @media screen and (max-width: 390px) {
-      margin: 80% 0%;
-    }
-  }
-  #comingSoon2 {
-    margin: 50% 0%;
-    @media screen and (max-width: 390px) {
-      margin: 197% 0%;
-    }
-  }
-}
 .sp {
   display: none;
   @media screen and (max-width: 390px) {
     display: initial;
   }
 }
-
 .cmn_hant {
   .datetimepicker-selector {
     font-size: .95rem;
