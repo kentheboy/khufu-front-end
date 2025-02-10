@@ -5,14 +5,14 @@
             <section class="section__guide">
                 <div class="section__guide--title">
                   <h1>GUIDE</h1>
-                  <h3>ご利用ガイド</h3>
+                  <h3>{{ $t('guide.GUIDE') }}</h3>
                 </div>
                 <div class="section__guide--content">
                     <div class="steps__diagram">
                         <div class="steps__diagram--card">
                             <div class="step-number">01</div>
                             <hr>
-                            <p class="step-title">ご予約</p>
+                            <p class="step-title">{{ $t('guide.Reservation') }}</p>
                         </div>
                         <div class="steps__diagram--arrow">
                             <i class="pi pi-angle-right"></i>
@@ -20,7 +20,7 @@
                         <div class="steps__diagram--card">
                             <div class="step-number">02</div>
                             <hr>
-                            <p class="step-title">ご来店</p>
+                            <p class="step-title">{{ $t('guide.Meet At Store') }}</p>
                         </div>
                         <div class="steps__diagram--arrow">
                             <i class="pi pi-angle-right"></i>
@@ -28,7 +28,7 @@
                         <div class="steps__diagram--card">
                             <div class="step-number">03</div>
                             <hr>
-                            <p class="step-title">ご出発</p>
+                            <p class="step-title">{{ $t('guide.Departure') }}</p>
                         </div>
                         <div class="steps__diagram--arrow">
                             <i class="pi pi-angle-right"></i>
@@ -36,7 +36,7 @@
                         <div class="steps__diagram--card">
                             <div class="step-number">04</div>
                             <hr>
-                            <p class="step-title">ご返却</p>
+                            <p class="step-title">{{ $t('guide.Return') }}</p>
                         </div>
                     </div>
                     <div class="steps__descriptions">
@@ -45,13 +45,9 @@
                                 01
                             </div>
                             <div class="step__description--text">
-                                <h3 class="step-title">ご予約</h3>
+                                <h3 class="step-title">{{ $t('guide.Reservation') }}</h3>
                                 <p class="step-description">
-                                    予約後に、予約完了通知メールとご案内
-                                    （LINE公式アカウントまたはカカオトークのQRコード）を送付いたしますので、
-                                    空港送迎時間やホテル送迎時間等を
-                                    LINE公式アカウントまたはカカオトークにてお知らせくださいませ。
-                                    ※メールでのお問い合わせは行なっておりません。
+                                    {{ $t('guide.After making a reservation, we will send you a reservation completion notification e-mail and information (official LINE account or KakaoTalk QR code), so please let us know the airport pick-up time, hotel pick-up time, etc via the official LINE account or KakaoTalk Please let us know the airport pick-up and drop-off times, hotel pick-up and drop-off times, etc via our official LINE account or KakaoTalk') }}
                                 </p>
                             </div>
                         </div>
@@ -60,15 +56,14 @@
                                 02
                             </div>
                             <div class="step__description--text">
-                                <h3 class="step-title">ご来店</h3>
+                                <h3 class="step-title">{{ $t('guide.Meet At Store') }}</h3>
                                 <p class="step-description">
-                                    ご予約いただいた店舗にご来店いただき、
-                                    下記必要なものをご掲示頂いた後、『貸渡契約書』にサイン頂きます。<br>
+                                    {{ $t('guide.Please come to the store where you made your reservation, After showing the following items, you will be asked to sign a “Rental Agreement”') }}
                                 </p>
                                 <p class="step-description">
-                                    必要なもの<br>
-                                    ・運転免許証<br>
-                                    ・免許証以外の現住所が確認できるもの（クレジットカード決済の場合は不要）<br>
+                                    {{ $t('guide.What you need') }}<br>
+                                    ・{{ $t("guide.Drivers license") }}<br>
+                                    ・{{ $t('guide.Proof of current address other than drivers license (not required for credit card payment)') }}<br>
                                 </p>
                             </div>
                         </div>
@@ -77,10 +72,9 @@
                                 03
                             </div>
                             <div class="step__description--text">
-                                <h3 class="step-title">ご出発</h3>
+                                <h3 class="step-title">{{ $t('guide.Departure') }}</h3>
                                 <p class="step-description">
-                                    ご出発前に、店舗スタッフからの『注意事項、事故補償説明』をお受けください。
-                                    車両操作の説明並びに車体チェック終了後、ご出発いただきます。
+                                    {{ $t('guide.Before departure, please receive “precautions and accident compensation explanation” from the store staff After the explanation of vehicle operation and vehicle check, please depart') }} }}
                                 </p>
                             </div>
                         </div>
@@ -89,10 +83,9 @@
                                 04
                             </div>
                             <div class="step__description--text">
-                                <h3 class="step-title">ご返却</h3>
+                                <h3 class="step-title">{{ $t('guide.Return') }}</h3>
                                 <p class="step-description">
-                                    ご契約の時間までにご返却ください。
-                                    ご返却店舗付近のガソリンスタンドで燃料を満タンにした上、ご返却ください。
+                                    {{ $t('guide.Please return the car before the contracted time after filling up the fuel tank at a gas station near the return store') }}
                                 </p>
                             </div>
                         </div>

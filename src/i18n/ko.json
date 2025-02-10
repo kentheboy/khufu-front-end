@@ -93,6 +93,7 @@
     "67 Nagado, Toyomigusuku City, Okinawa 901-0203, Japan": "901-0203 오키나와현 토요미조시 쇼도 67"
   },
   "guide": {
+    "GUIDE": "이용안내",
     "Reservation": "예약하기",
     "Meet At Store": "방문하기",
     "Departure": "출발",
@@ -100,8 +101,8 @@
     "After making a reservation, we will send you a reservation completion notification e-mail and information (official LINE account or KakaoTalk QR code), so please let us know the airport pick-up time, hotel pick-up time, etc via the official LINE account or KakaoTalk Please let us know the airport pick-up and drop-off times, hotel pick-up and drop-off times, etc via our official LINE account or KakaoTalk": "예약 후 예약 완료 알림 메일과 안내 LINE 공식 계정 또는 카카오톡 QR코드)를 보내드리니, 공항 픽업 시간, 호텔 픽업 시간 등을 LINE 공식 계정 또는 카카오톡으로 알려주시기 바랍니다. 이메일 문의는 받지 않습니다.",
     "Please come to the store where you made your reservation, After showing the following items, you will be asked to sign a “Rental Agreement”": "예약하신 매장에 방문하셔서 아래 필요한 사항을 제시하신 후 '대여 계약서'에 서명해 주시면 됩니다.",
     "What you need": "필요한 것들",
-    "Driver's license": "운전면허증",
-    "Proof of current address other than driver's license (not required for credit card payment)": "면허증 이외의 현 주소를 확인할 수 있는 서류 (신용카드 결제 시 불필요)",
+    "Drivers license": "운전면허증",
+    "Proof of current address other than drivers license (not required for credit card payment)": "면허증 이외의 현 주소를 확인할 수 있는 서류 (신용카드 결제 시 불필요)",
     "Before departure, please receive “precautions and accident compensation explanation” from the store staff After the explanation of vehicle operation and vehicle check, please depart": "출발 전 매장 직원으로부터 '주의 사항, 사고 보상 설명'을 받으시고 출발해 주시기 바랍니다. 차량 조작 설명 및 차체 점검이 끝나면 출발합니다.",
     "Please return the car before the contracted time after filling up the fuel tank at a gas station near the return store": "계약 시간까지 반납해 주시기 바랍니다반납점 근처의 주유소에서 연료를 가득 채운 후 반납해 주시기 바랍니다."
   }

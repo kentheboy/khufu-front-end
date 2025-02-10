@@ -93,6 +93,7 @@
     "67 Nagado, Toyomigusuku City, Okinawa 901-0203, Japan": "〒901-2301 沖縄県豊見城市長堂67"
   },
   "guide": {
+    "GUIDE": "ご利用ガイド",
     "Reservation": "ご予約",
     "Meet At Store": "ご来店",
     "Departure": "ご出発",
@@ -100,8 +101,8 @@
     "After making a reservation, we will send you a reservation completion notification e-mail and information (official LINE account or KakaoTalk QR code), so please let us know the airport pick-up time, hotel pick-up time, etc via the official LINE account or KakaoTalk Please let us know the airport pick-up and drop-off times, hotel pick-up and drop-off times, etc via our official LINE account or KakaoTalk": "予約後に、予約完了通知メールとご案内LINE公式アカウントまたはカカオトークのQRコード）を送付いたしますので、空港送迎時間やホテル送迎時間等をLINE公式アカウントまたはカカオトークにてお知らせくださいませ。※メールでのお問い合わせは行なっておりません。",
     "Please come to the store where you made your reservation, After showing the following items, you will be asked to sign a “Rental Agreement”": "ご予約いただいた店舗にご来店いただき、 下記必要なものをご掲示頂いた後、『貸渡契約書』にサイン頂きます。",
     "What you need": "必要なもの",
-    "Driver's license": "運転免許証",
-    "Proof of current address other than driver's license (not required for credit card payment)": "免許証以外の現住所が確認できるもの（クレジットカード決済の場合は不要）",
+    "Drivers license": "運転免許証",
+    "Proof of current address other than drivers license (not required for credit card payment)": "免許証以外の現住所が確認できるもの（クレジットカード決済の場合は不要）",
     "Before departure, please receive “precautions and accident compensation explanation” from the store staff After the explanation of vehicle operation and vehicle check, please depart": "ご出発前に、店舗スタッフからの『注意事項、事故補償説明』をお受けください。車両操作の説明並びに車体チェック終了後、ご出発いただきます。",
     "Please return the car before the contracted time after filling up the fuel tank at a gas station near the return store": "ご契約の時間までにご返却くださいご返却店舗付近のガソリンスタンドで燃料を満タンにした上、ご返却ください。"
   }
