@@ -7,7 +7,7 @@
       <div class="toReservation">
         <Button :label="$t('home.reserve a car')" @click="scrollToEearchAndReservation" />
       </div>
-      <div class="laguageMenu">
+      <div class="laguageMenu" v-if="!isValiosaPage">
         <Button class="language" icon="pi pi-globe" severity="info" text raised rounded aria-label="language" @click="toggleLaguageMenu" />
         <Menu ref="openLaguageMenu" id="overlay_menu" :model="languages" :popup="true" />
       </div>
@@ -167,7 +167,7 @@ export default {
           command: () => {
             this.$i18n.locale = 'ja';
             localStorage.setItem('lang', 'ja');
-            window.location.reload();
+            this.switchMenuLanguage();
           }
         },
         {
@@ -175,15 +175,15 @@ export default {
           command: () => {
             this.$i18n.locale = 'ko';
             localStorage.setItem('lang', 'ko');
-            window.location.reload();
+            this.switchMenuLanguage();
           }
         },
         {
           label: '中文繁體（廣東話）',
           command: () => {
-            this.$i18n.locale = 'cmn-hant';
+            this.$i18n.locale = 'cmn_hant';
             localStorage.setItem('lang', 'cmn_hant');
-            window.location.reload();
+            this.switchMenuLanguage();
           }
         },
         // {
@@ -193,10 +193,11 @@ export default {
     }
   },
   async created() {
-    const lang = localStorage.getItem('lang') || 'ja';
-    if (lang !== 'ja') {
-      this.$i18n.locale = lang;
+    var lang = 'ja';
+    if (!this.$router.currentRoute.value.path.includes("valiosa")) {
+      lang = localStorage.getItem('lang') || 'ja';
     }
+    this.$i18n.locale = lang;
   },
   methods: {
     scrollToEearchAndReservation() {
@@ -220,6 +221,15 @@ export default {
     toggleLaguageMenu(event) {
       this.$refs.openLaguageMenu.toggle(event);
     },
+    switchMenuLanguage() {
+      this.items[1].label = this.$t('home.reservation');
+      this.items[2].label = this.$t('home.Fees');
+      this.items[3].label = this.$t('home.Guid');
+      this.items[4].label = this.$t('home.Company info');
+      this.items[5].label = this.$t('home.Terms and Conditions of Lease');
+      this.items[6].label = this.$t('home.Privacy Policy');
+      this.items[7].label = this.$t('home.Articles');
+    }
   },
   computed: {
     isValiosaPage() {
