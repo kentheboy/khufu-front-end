@@ -11,7 +11,7 @@
     "Search by dates": "Search by dates",
     "Depature": "Depature",
     "Returning": "Returning",
-    "Sales hour notice": "Sales hour notice",
+    "Business hours notice": "Business hours notice",
     "Search availability": "Search availability",
     "Car list": "Car list",
     "Maximu capacity": "Maximu capacity",
@@ -31,7 +31,7 @@
     "indemnity coverage included": "indemnity coverage included.",
     "with no extra options,": "with no extra options,",
     "with no redundant coverages": "with no redundant coverages.",
-    "Sales hour": "Sales hour",
+    "Business hours": "Business hours",
     "We are very sorry": "We are very sorry.",
     "There are currently no vehicles available at the time you have specified": "There are currently no vehicles available at the time you have specified.",
     "Please try searching again at a different time or contact the store staff": "Please try searching again at a different time or contact the store staff.",
@@ -89,7 +89,8 @@
     "(This window will close automatically after 10 seconds)": "(This window will close automatically after 10 seconds.)",
     "Confirm reservation": "Confirm reservation",
     "Modify": "Modify",
-    "reserve": "reserve"
+    "reserve": "reserve",
+    "67 Nagado, Toyomigusuku City, Okinawa 901-0203, Japan": "67 Nagado, Toyomigusuku City, Okinawa 901-0203, Japan"
   },
   "guide": {
     "Reservation": "Reservation",

@@ -11,7 +11,7 @@
     "Search by dates": "여행 일정으로 찾기",
     "Depature": "출발일시",
     "Returning": "반납일시",
-    "Sales hour notice": "영업시간(예약 가능 시간)은 09:00 - 18:00입니다.",
+    "Business hours notice": "영업시간(예약 가능 시간)은 09:00 - 18:00입니다.",
     "Search availability": "예약 가능 여부 검색",
     "Car list": "차량 목록",
     "Maximu capacity": "승차 정원",
@@ -31,7 +31,7 @@
     "indemnity coverage included": "면책보상 포함 예약 가능.",
     "with no extra options,": "추가 옵션도 있다,",
     "with no redundant coverages": "추가 보험료도 필요 없다.",
-    "Sales hour": "영업시간",
+    "Business hours": "영업시간",
     "We are very sorry": "죄송합니다.",
     "There are currently no vehicles available at the time you have specified": "현재 지정된 시간에 이용할 수 있는 차량이 없습니다.",
     "Please try searching again at a different time or contact the store staff": "번거로우시겠지만, 다른 시간대에 다시 검색을 하시거나 매장 직원에게 문의해 주시기 바랍니다.",
@@ -89,7 +89,8 @@
     "(This window will close automatically after 10 seconds)": "(이 창은 10초 후에 자동으로 닫힙니다.)",
     "Confirm reservation": "예약 확인",
     "Modify": "수정",
-    "reserve": "예약하기"
+    "reserve": "예약하기",
+    "67 Nagado, Toyomigusuku City, Okinawa 901-0203, Japan": "901-0203 오키나와현 토요미조시 쇼도 67"
   },
   "guide": {
     "Reservation": "예약하기",

@@ -50,7 +50,7 @@
             </div>
             <div class="datetimepicker-rule">
               <span
-                >※{{$t('home.Sales hour notice')}}</span
+                >※{{$t('home.Business hours notice')}}</span
               >
             </div>
           </div>
