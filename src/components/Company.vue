@@ -92,7 +92,7 @@ section {
         dl {
             width: 50rem;
             margin: auto;
-            @media screen and (max-width: 390px) {
+            @media screen and (max-width: 430px) {
                 width: inherit;
             }
         }
@@ -108,7 +108,7 @@ section {
         }
     }
 }
-@media screen and (max-width: 390px) {
+@media screen and (max-width: 430px) {
     .section {
         &__company {
 

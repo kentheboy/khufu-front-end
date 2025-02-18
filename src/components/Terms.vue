@@ -754,7 +754,7 @@ section {
     }
 }
 
-@media screen and (max-width: 390px) {
+@media screen and (max-width: 430px) {
     .section {
 
         &--title {
