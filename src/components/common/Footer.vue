@@ -77,7 +77,7 @@ export default {
     margin: 0 7rem;
     font-size: 0.9rem;
 
-    @media screen and (max-width: 390px) {
+    @media screen and (max-width: 430px) {
       margin: 0 3rem;
     }
 
@@ -98,7 +98,7 @@ export default {
       }
     }
 
-    @media screen and (max-width: 390px) {
+    @media screen and (max-width: 430px) {
       .sites {
         .logo-container {
           flex-basis: 100%;
@@ -121,14 +121,14 @@ export default {
     &--contact {
       margin-bottom: 1.8rem;
 
-      @media screen and (max-width: 390px) {
+      @media screen and (max-width: 430px) {
         flex-direction: column;
       }
 
       .phone-number {
         margin-left: 2rem;
 
-        @media screen and (max-width: 390px) {
+        @media screen and (max-width: 430px) {
           margin-left: initial;
         }
       }

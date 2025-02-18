@@ -260,7 +260,7 @@ export default {
       box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
     }
 
-    @media screen and (max-width: 390px) {
+    @media screen and (max-width: 430px) {
       display: none;
     }
   }

@@ -90,7 +90,7 @@ export default {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    @media screen and (max-width: 390px) {
+    @media screen and (max-width: 430px) {
         flex-direction: column;
     }
 

@@ -363,7 +363,7 @@ export default {
     margin-right: auto;
     width: 34.97rem;
     text-align: left;
-    @media screen and (max-width: 390px) {
+    @media screen and (max-width: 430px) {
       width: 20.97rem;
     }
   }
@@ -383,13 +383,13 @@ export default {
       letter-spacing: 0.15em;
       .title {
         width: 11rem;
-        @media screen and (max-width: 390px) {
+        @media screen and (max-width: 430px) {
           width: 6rem;
         }
       }
       .detail {
         width: 19rem;
-        @media screen and (max-width: 390px) {
+        @media screen and (max-width: 430px) {
           width: 14rem;
         }
         .total-price {
@@ -431,7 +431,7 @@ export default {
             left: 12rem;
             height: 0.7rem;
             font-size: 0.6rem;
-            @media screen and (max-width: 390px) {
+            @media screen and (max-width: 430px) {
               top: 2.7rem;
               left: 0rem;
             }
@@ -452,7 +452,7 @@ export default {
           dd {
             width: 40%;
             margin-top: 0.1rem;
-            @media screen and (max-width: 390px) {
+            @media screen and (max-width: 430px) {
               width: 42%;
             }
           }
@@ -477,7 +477,7 @@ export default {
 }
 .sp {
   display: none;
-  @media screen and (max-width: 390px) {
+  @media screen and (max-width: 430px) {
     display: block;
   }
 }
