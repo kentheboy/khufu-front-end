@@ -75,7 +75,7 @@ export default {
             width: 16.16rem;
             display: flex;
             flex-direction: column;
-            @media screen and (max-width: 390px) {
+            @media screen and (max-width: 430px) {
                 width: 10.16rem;
             }
 
@@ -184,7 +184,7 @@ export default {
             flex-wrap: wrap;
             width: 17rem;
             justify-content: space-between;
-            @media screen and (max-width: 390px) {
+            @media screen and (max-width: 430px) {
                 width: 9.16rem;
             }
 
@@ -192,7 +192,7 @@ export default {
                 width: 7.58rem;
                 height: 6.86rem;
                 object-fit: contain;
-                @media screen and (max-width: 390px) {
+                @media screen and (max-width: 430px) {
                     width: 4.28rem;
                     height: auto;
                 }

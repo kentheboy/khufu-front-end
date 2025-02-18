@@ -209,7 +209,7 @@ export default {
     width: 24.4rem;
     text-align: start;
     margin-bottom: 2rem;
-    @media screen and (max-width: 390px) {
+    @media screen and (max-width: 430px) {
         width: 100%;
     }
 
@@ -245,7 +245,7 @@ export default {
             width: 16.6rem;
             margin-left: .5rem;
             display: inline-block;
-            @media screen and (max-width: 390px) {
+            @media screen and (max-width: 430px) {
                 margin-left: 0;
                 margin-top: 0.3rem;
             }

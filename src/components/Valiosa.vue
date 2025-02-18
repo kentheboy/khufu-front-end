@@ -1010,7 +1010,7 @@ section {
       position: relative;
       margin: 4rem;
 
-      @media screen and (max-width: 390px) {
+      @media screen and (max-width: 430px) {
         margin: 4rem 0.5rem;
       }
 
@@ -1024,7 +1024,7 @@ section {
           width: 27.48rem;
           height: 27.48rem;
 
-          @media screen and (max-width: 390px) {
+          @media screen and (max-width: 430px) {
             height: 82vw;
           }
 
@@ -1038,7 +1038,7 @@ section {
               text-align: left;
               text-shadow: 4.46875px 8.9375px 8.94px rgba(0, 0, 0, 0.5);
 
-              @media screen and (max-width: 390px) {
+              @media screen and (max-width: 430px) {
                 bottom: -1.9rem;
               }
             }
@@ -1050,7 +1050,7 @@ section {
               font-weight: 700;
               font-family: inherit;
 
-              @media screen and (max-width: 390px) {
+              @media screen and (max-width: 430px) {
                 font-size: 1.6rem;
                 top: 8.4rem;
                 margin: 9rem 0;
@@ -1059,7 +1059,7 @@ section {
               &.singleLine {
                 margin-top: 12rem;
 
-                @media screen and (max-width: 390px) {
+                @media screen and (max-width: 430px) {
                   margin-top: 10rem;
                 }
               }
@@ -1071,7 +1071,7 @@ section {
       .subtext {
         margin: 4rem;
 
-        @media screen and (max-width: 390px) {
+        @media screen and (max-width: 430px) {
           margin: 4rem 0;
         }
 
@@ -1082,7 +1082,7 @@ section {
           font-family: inherit;
           color: var(--color-black);
 
-          @media screen and (max-width: 390px) {
+          @media screen and (max-width: 430px) {
             font-size: 1rem;
           }
           &.title {
@@ -1098,7 +1098,7 @@ section {
           font-family: inherit;
           color: var(--color-black);
 
-          @media screen and (max-width: 390px) {
+          @media screen and (max-width: 430px) {
             font-size: 1rem;
           }
         }
@@ -1250,7 +1250,7 @@ section {
       }
     }
 
-    @media screen and (max-width: 390px) {
+    @media screen and (max-width: 430px) {
       &--title {
         h3 {
           font-size: 0.8rem;
@@ -1305,7 +1305,7 @@ section {
         margin: unset;
         margin-bottom: 0.8rem;
 
-        @media screen and (max-width: 390px) {
+        @media screen and (max-width: 430px) {
           font-size: 0.8rem;
         }
       }
@@ -1317,7 +1317,7 @@ section {
       width: fit-content;
       text-align: left;
 
-      @media screen and (max-width: 390px) {
+      @media screen and (max-width: 430px) {
         width: 100%;
       }
 
@@ -1378,7 +1378,7 @@ section {
         margin: unset;
         margin-bottom: 0.8rem;
 
-        @media screen and (max-width: 390px) {
+        @media screen and (max-width: 430px) {
           font-size: 0.8rem;
         }
       }
@@ -1389,7 +1389,7 @@ section {
       justify-content: center;
       flex-wrap: wrap;
 
-      @media screen and (max-width: 390px) {
+      @media screen and (max-width: 430px) {
         flex-direction: column;
       }
     }
@@ -1487,7 +1487,7 @@ section {
 .sp {
   display: none;
 
-  @media screen and (max-width: 390px) {
+  @media screen and (max-width: 430px) {
     display: initial;
   }
 }
