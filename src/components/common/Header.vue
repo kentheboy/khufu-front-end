@@ -78,7 +78,7 @@ export default {
         {
           label: this.$t('home.Fees'),
           icon: 'pi pi-dollar',
-          url: "/files/prices.pdf",
+          url: "/files/" + this.$i18n.locale + "/prices.pdf",
           target: "_blank"
         },
         {
@@ -99,7 +99,7 @@ export default {
         {
           label: this.$t('home.Privacy Policy'),
           icon: 'pi pi-link',
-          url: "/files/privacy_policy.pdf",
+          url: "/files/" + this.$i18n.locale + "/privacy_policy.pdf",
           target: "_blank"
         },
         {
@@ -198,6 +198,7 @@ export default {
       lang = localStorage.getItem('lang') || 'ja';
     }
     this.$i18n.locale = lang;
+    this.switchMenuLanguage();
   },
   methods: {
     scrollToEearchAndReservation() {
@@ -224,10 +225,12 @@ export default {
     switchMenuLanguage() {
       this.items[1].label = this.$t('home.reservation');
       this.items[2].label = this.$t('home.Fees');
+      this.items[2].url = "/files/" + this.$i18n.locale + "/prices.pdf";
       this.items[3].label = this.$t('home.Guid');
       this.items[4].label = this.$t('home.Company info');
       this.items[5].label = this.$t('home.Terms and Conditions of Lease');
       this.items[6].label = this.$t('home.Privacy Policy');
+      this.items[6].url = "/files/" + this.$i18n.locale + "/privacy_policy.pdf";
       this.items[7].label = this.$t('home.Articles');
     }
   },
