@@ -811,10 +811,6 @@ section {
       position: relative;
       margin: 4rem;
 
-      // @media screen and (max-width: 430px) {
-      //   margin: 4rem 0.5rem;
-      // }
-
       .ellipse-parent {
         display: flex;
         justify-content: space-around;
