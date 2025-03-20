@@ -831,10 +831,6 @@ section {
             height: 61vw;
           }
 
-          // @media screen and (max-width: 430px) {
-          //   height: 82vw;
-          // }
-
           .ellipseInside {
             &-number {
               position: absolute;
