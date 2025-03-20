@@ -127,6 +127,7 @@ export default {
           flex-basis: 100%;
           margin-bottom: 1rem;
         }
+
         a {
           margin-left: initial;
           border-left: initial;
