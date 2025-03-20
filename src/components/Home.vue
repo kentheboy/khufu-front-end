@@ -1028,6 +1028,10 @@ section {
       justify-content: center;
       flex-wrap: wrap;
 
+      @media screen and (max-width: 720px) {
+        flex-direction: column;
+      }
+
       @media screen and (max-width: 430px) {
         flex-direction: column;
       }

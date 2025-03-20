@@ -40,6 +40,7 @@ export default {
     img {
         width: 18.15rem;
         height: 14.06rem;
+        border-top-left-radius: 3.49px;
 
         &.product__card--description-icon {
             width: 1rem;
@@ -60,6 +61,7 @@ export default {
         color: white;
         box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.25);
     }
+
     &--description {
         position: relative;
         font-weight: bold;
