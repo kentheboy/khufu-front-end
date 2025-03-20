@@ -811,9 +811,9 @@ section {
       position: relative;
       margin: 4rem;
 
-      @media screen and (max-width: 430px) {
-        margin: 4rem 0.5rem;
-      }
+      // @media screen and (max-width: 430px) {
+      //   margin: 4rem 0.5rem;
+      // }
 
       .ellipse-parent {
         display: flex;
@@ -826,14 +826,14 @@ section {
           width: 27.48rem;
           height: 27.48rem;
 
-          @media screen and (max-width: 630px) {
-            width: 21.48rem;
-            height: 21.48rem;
+          @media screen and (max-width: 720px) {
+            width: 61vw;
+            height: 61vw;
           }
 
-          @media screen and (max-width: 430px) {
-            height: 82vw;
-          }
+          // @media screen and (max-width: 430px) {
+          //   height: 82vw;
+          // }
 
           .ellipseInside {
             &-number {
@@ -845,7 +845,8 @@ section {
               text-align: left;
               text-shadow: 4.46875px 8.9375px 8.94px rgba(0, 0, 0, 0.5);
 
-              @media screen and (max-width: 430px) {
+              @media screen and (max-width: 720px) {
+                font-size: 22vw;
                 bottom: -1.9rem;
               }
             }
@@ -857,17 +858,17 @@ section {
               font-weight: 700;
               font-family: inherit;
 
-              @media screen and (max-width: 430px) {
-                font-size: 1.6rem;
+              @media screen and (max-width: 720px) {
+                font-size: 4.5vw;
                 top: 8.4rem;
-                margin: 9rem 0;
+                margin-top: 25vw;
               }
 
               &.singleLine {
                 margin-top: 12rem;
 
-                @media screen and (max-width: 430px) {
-                  margin-top: 10rem;
+                @media screen and (max-width: 720px) {
+                  margin-top: 27vw;
                 }
               }
             }
@@ -876,11 +877,7 @@ section {
       }
 
       .subtext {
-        margin: 4rem;
-
-        @media screen and (max-width: 430px) {
-          margin: 4rem 0;
-        }
+        margin: 4rem 0;
 
         h1 {
           font-size: inherit;
@@ -889,8 +886,8 @@ section {
           font-family: inherit;
           color: var(--color-steelblue);
 
-          @media screen and (max-width: 430px) {
-            font-size: 1.3rem;
+          @media screen and (max-width: 720px) {
+            font-size: 3vw;
           }
         }
 
@@ -901,8 +898,8 @@ section {
           font-family: inherit;
           color: var(--color-steelblue);
 
-          @media screen and (max-width: 430px) {
-            font-size: 1rem;
+          @media screen and (max-width: 720px) {
+            font-size: 2.5vw;
           }
         }
       }
