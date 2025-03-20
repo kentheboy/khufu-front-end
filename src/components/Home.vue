@@ -825,6 +825,11 @@ section {
           @media screen and (max-width: 720px) {
             width: 61vw;
             height: 61vw;
+
+            @media screen and (max-width: 380px) {
+              width: 55vw;
+              height: 55vw;
+            }
           }
 
           .ellipseInside {
@@ -840,6 +845,11 @@ section {
               @media screen and (max-width: 720px) {
                 font-size: 22vw;
                 bottom: -1.9rem;
+
+                @media screen and (max-width: 720px) {
+                  font-size: 20vw;
+                  bottom: -2rem;
+                }
               }
             }
 
@@ -854,6 +864,10 @@ section {
                 font-size: 4.5vw;
                 top: 8.4rem;
                 margin-top: 25vw;
+
+                @media screen and (max-width: 720px) {
+                  margin-top: 22vw;
+                }
               }
 
               &.singleLine {
@@ -861,6 +875,10 @@ section {
 
                 @media screen and (max-width: 720px) {
                   margin-top: 27vw;
+
+                  @media screen and (max-width: 720px) {
+                    margin-top: 24vw;
+                  }
                 }
               }
             }

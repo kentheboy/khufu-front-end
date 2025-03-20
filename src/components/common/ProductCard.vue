@@ -34,7 +34,7 @@ export default {
     width: 18.15rem;
     height: 20.39rem;
     display: inline-block;
-    margin: 1rem 2rem;
+    margin: 1rem auto;
     position: relative;
 
     img {
