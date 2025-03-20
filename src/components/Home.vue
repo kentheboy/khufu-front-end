@@ -9,310 +9,150 @@
         <section class="section__form" id="searchAndReservation">
           <div class="section__form--title">
             <h1>SCHEDULE</h1>
-            <h3>{{$t('home.Search by dates')}}</h3>
+            <h3>{{ $t('home.Search by dates') }}</h3>
           </div>
           <div class="datetimepicker">
             <div class="datetimepicker-selector">
-              <label>{{$t('home.Depature')}}</label>
-              <Calendar
-                type="date"
-                name="startDate"
-                showIcon
-                showTime
-                hourFormat="12"
-                :stepMinute="30"
-                iconDisplay="input"
-                dateFormat="yy/mm/dd"
-                v-model="search.departDate.rawValue"
-                @update:modelValue="isValidSearch('departDate')"
-                :minDate="minDate"
-              />
+              <label>{{ $t('home.Depature') }}</label>
+              <Calendar type="date" name="startDate" showIcon showTime hourFormat="12" :stepMinute="30" iconDisplay="input" dateFormat="yy/mm/dd" v-model="search.departDate.rawValue" @update:modelValue="isValidSearch('departDate')" :minDate="minDate" />
             </div>
             <div class="datetimepicker-selector">
-              <label>{{$t('home.Returning')}}</label>
-              <Calendar
-                type="date"
-                name="endDate"
-                showIcon
-                showTime
-                hourFormat="12"
-                :stepMinute="30"
-                iconDisplay="input"
-                dateFormat="yy/mm/dd"
-                v-model="search.returnDate.rawValue"
-                @update:modelValue="isValidSearch('returnDate')"
-                :minDate="
-                  search.departDate.rawValue
-                    ? search.departDate.rawValue
-                    : minDate
-                "
-              />
+              <label>{{ $t('home.Returning') }}</label>
+              <Calendar type="date" name="endDate" showIcon showTime hourFormat="12" :stepMinute="30" iconDisplay="input" dateFormat="yy/mm/dd" v-model="search.returnDate.rawValue" @update:modelValue="isValidSearch('returnDate')" :minDate="search.departDate.rawValue
+                ? search.departDate.rawValue
+                : minDate
+                " />
             </div>
             <div class="datetimepicker-rule">
-              <span
-                >※{{$t('home.Business hours notice', { open: businessHours.open, close: businessHours.close })}}</span
-              >
+              <span>※{{ $t('home.Business hours notice', { open: businessHours.open, close: businessHours.close }) }}</span>
             </div>
           </div>
-          <Button
-            icon="pi pi-search"
-            class="p-ripple"
-            id="searchAvailability"
-            :label="$t('home.Search availability')"
-            :disabled="!isReadyToSearch"
-            @click="searchAvailability"
-          ></Button>
-          <p
-            v-if="availableCar.length <= 0 && isSearched"
-            class="no-available-car"
-          >
-            {{$t('home.We are very sorry')}}<br />
-            {{$t('home.There are currently no vehicles available at the time you have specified')}}<br />
-            {{$t('home.Please try searching again at a different time or contact the store staff')}}
+          <Button icon="pi pi-search" class="p-ripple" id="searchAvailability" :label="$t('home.Search availability')" :disabled="!isReadyToSearch" @click="searchAvailability"></Button>
+          <p v-if="availableCar.length <= 0 && isSearched" class="no-available-car">
+            {{ $t('home.We are very sorry') }}<br />
+            {{ $t('home.There are currently no vehicles available at the time you have specified') }}<br />
+            {{ $t('home.Please try searching again at a different time or contact the store staff') }}
           </p>
-          <Products
-            v-else
-            :products="availableCar"
-            @selected="opneReservationForm"
-          >
+          <Products v-else :products="availableCar" @selected="opneReservationForm">
           </Products>
-          <Dialog
-            v-model:visible="openReservationForm"
-            maximizable
-            header=""
-            class="reservation-form"
-            :modal="true"
-            @after-hide="closeReservationForm"
-          >
+          <Dialog v-model:visible="openReservationForm" maximizable header="" class="reservation-form" :modal="true" @after-hide="closeReservationForm">
             <div class="reservation-form__statuses">
-              <div
-                :class="`reservation-form__status ${
-                  reservationFormStatus === 'entry' ? 'active' : ''
-                }`"
-              >
+              <div :class="`reservation-form__status ${reservationFormStatus === 'entry' ? 'active' : ''
+                }`">
                 {{ $t('home.Entry') }}
               </div>
-              <div
-                :class="`reservation-form__status ${
-                  reservationFormStatus === 'confirm' ? 'active' : ''
-                }`"
-              >
-              {{ $t('home.Confirm') }}
+              <div :class="`reservation-form__status ${reservationFormStatus === 'confirm' ? 'active' : ''
+                }`">
+                {{ $t('home.Confirm') }}
               </div>
-              <div
-                :class="`reservation-form__status ${
-                  reservationFormStatus === 'done' ? 'active' : ''
-                }`"
-              >
-              {{ $t('home.Complete') }}
+              <div :class="`reservation-form__status ${reservationFormStatus === 'done' ? 'active' : ''
+                }`">
+                {{ $t('home.Complete') }}
               </div>
             </div>
-            <section
-              class="section__form"
-              style="margin-bottom: 0"
-              v-if="reservationFormStatus === 'entry'"
-            >
+            <section class="section__form" style="margin-bottom: 0" v-if="reservationFormStatus === 'entry'">
               <div class="section__form--title">
                 <h1>YOUR INFORMATION</h1>
                 <h3>{{ $t('home.Your Information') }}</h3>
               </div>
               <div class="section__form--content">
                 <div class="section__form--content-input-area">
-                  <Input
-                    type="text"
-                    :label="$t('home.Name')"
-                    name="name"
-                    :placeholder="$t('home.Taro Yamada')"
-                    required
-                    v-model="scheduleInfo.customerName"
-                  ></Input>
+                  <Input type="text" :label="$t('home.Name')" name="name" :placeholder="$t('home.Taro Yamada')" required v-model="scheduleInfo.customerName"></Input>
                 </div>
                 <div class="section__form--content-input-area">
-                  <Input
-                    type="email"
-                    :label="$t('home.Email')"
-                    name="email"
-                    placeholder="example@class.okinawa"
-                    required
-                    v-model="scheduleInfo.customerEmail"
-                  ></Input>
+                  <Input type="email" :label="$t('home.Email')" name="email" placeholder="example@class.okinawa" required v-model="scheduleInfo.customerEmail"></Input>
                 </div>
                 <div class="section__form--content-input-area">
-                  <Input
-                    type="tel"
-                    :label="$t('home.Phone number')"
-                    name="phonenumber"
-                    placeholder="08000000000"
-                    required
-                    v-model="scheduleInfo.customerPhoneNumber"
-                  ></Input>
+                  <Input type="tel" :label="$t('home.Phone number')" name="phonenumber" placeholder="08000000000" required v-model="scheduleInfo.customerPhoneNumber"></Input>
                 </div>
                 <div class="section__form--content-input-area">
-                  <Input
-                    type="number"
-                    :label="$t('home.Amt of passanger')"
-                    name="passenger"
-                    placeholder="1"
-                    required
-                    v-model="scheduleInfo.passenger"
-                  ></Input>
+                  <Input type="number" :label="$t('home.Amt of passanger')" name="passenger" placeholder="1" required v-model="scheduleInfo.passenger"></Input>
                 </div>
                 <div class="section__form--content-input-area">
-                  <Input
-                    type="number"
-                    :label="$t('home.License number')"
-                    name="license-number"
-                    placeholder="1234567890"
-                    v-model="scheduleInfo.licenseNumber"
-                  ></Input>
+                  <Input type="number" :label="$t('home.License number')" name="license-number" placeholder="1234567890" v-model="scheduleInfo.licenseNumber"></Input>
                 </div>
                 <div class="section__form--content-input-area">
-                  <Input
-                    type="date"
-                    :label="$t('home.Date of birth')"
-                    name="dob"
-                    v-model="scheduleInfo.dob"
-                  ></Input>
+                  <Input type="date" :label="$t('home.Date of birth')" name="dob" v-model="scheduleInfo.dob"></Input>
                 </div>
                 <div class="section__form--content-input-area">
-                  <Input
-                    type="airport-timpicker"
-                    :label="$t('home.Airport Pickup')"
-                    name="airport-pickup"
-                    v-model="scheduleInfo.airportPickup"
-                  ></Input>
+                  <Input type="airport-timpicker" :label="$t('home.Airport Pickup')" name="airport-pickup" v-model="scheduleInfo.airportPickup"></Input>
                 </div>
                 <div class="section__form--content-input-area">
-                  <Input
-                    type="airport-timpicker"
-                    :label="$t('home.Airport Dropoff')"
-                    name="airport-dropoff"
-                    v-model="scheduleInfo.airportDropoff"
-                  ></Input>
+                  <Input type="airport-timpicker" :label="$t('home.Airport Dropoff')" name="airport-dropoff" v-model="scheduleInfo.airportDropoff"></Input>
                   <span class="input-description">
                     {{ $t('home.Airport pick-up hours notation') }}
-                  </span
-                  >
+                  </span>
                 </div>
                 <div class="section__form--content-input-area">
-                  <Input
-                    type="selectbox"
-                    :label="$t('home.Lending option')"
-                    name="return-option"
-                    :options="[
-                      { name: 'none', label: $t('home.none'), value: 0 },
-                      {
-                        name: 'akamineStaDelivery',
-                        label: $t('home.Rental at Akamine Sta'),
-                        value: 1,
-                      },
-                      {
-                        name: 'nahaHotelDelivery',
-                        label: $t('home.Rental at Hotel(Hotels in Naha City)'),
-                        value: 2,
-                      },
-                    ]"
-                    v-model="scheduleInfo.deliveryOption"
-                  ></Input>
+                  <Input type="selectbox" :label="$t('home.Lending option')" name="return-option" :options="[
+                    { name: 'none', label: $t('home.none'), value: 0 },
+                    {
+                      name: 'akamineStaDelivery',
+                      label: $t('home.Rental at Akamine Sta'),
+                      value: 1,
+                    },
+                    {
+                      name: 'nahaHotelDelivery',
+                      label: $t('home.Rental at Hotel(Hotels in Naha City)'),
+                      value: 2,
+                    },
+                  ]" v-model="scheduleInfo.deliveryOption"></Input>
                   <span class="input-description">{{ $t('home.Additional fee ¥1,100') }}</span>
                 </div>
                 <div class="section__form--content-input-area">
-                  <Input
-                    type="selectbox"
-                    :label="$t('home.Return option')"
-                    name="return-option"
-                    :options="[
-                      { name: 'none', label: $t('home.none'), value: 0 },
-                      {
-                        name: 'akamineStaReturn',
-                        label: $t('home.Return at Akamine Sta'),
-                        value: 1,
-                      },
-                      {
-                        name: 'nahaHotelReturn',
-                        label: $t('home.Return at Hotel(Hotels in Naha City)'),
-                        value: 2,
-                      },
-                    ]"
-                    v-model="scheduleInfo.returnOption"
-                  ></Input>
+                  <Input type="selectbox" :label="$t('home.Return option')" name="return-option" :options="[
+                    { name: 'none', label: $t('home.none'), value: 0 },
+                    {
+                      name: 'akamineStaReturn',
+                      label: $t('home.Return at Akamine Sta'),
+                      value: 1,
+                    },
+                    {
+                      name: 'nahaHotelReturn',
+                      label: $t('home.Return at Hotel(Hotels in Naha City)'),
+                      value: 2,
+                    },
+                  ]" v-model="scheduleInfo.returnOption"></Input>
                   <span class="input-description">{{ $t('home.Additional fee ¥1,100') }}</span>
                 </div>
                 <div class="section__form--content-input-area">
-                  <Input
-                    type="selectbox"
-                    :label="$t('home.Number of baby seats (0~2 year old and under)')"
-                    name="use-of-baby-sheet"
-                    classes="display-block"
-                    :options="[
-                      { name: 'useOfBabySheet', label: $t('home.none'), value: 0 },
-                      { name: 'useOfBabySheet', label: '1', value: 1 },
-                      { name: 'useOfBabySheet', label: '2', value: 2 },
-                      { name: 'useOfBabySheet', label: '3', value: 3 },
-                    ]"
-                    v-model="scheduleInfo.useOfBabySheet"
-                  ></Input>
+                  <Input type="selectbox" :label="$t('home.Number of baby seats (0~2 year old and under)')" name="use-of-baby-sheet" classes="display-block" :options="[
+                    { name: 'useOfBabySheet', label: $t('home.none'), value: 0 },
+                    { name: 'useOfBabySheet', label: '1', value: 1 },
+                    { name: 'useOfBabySheet', label: '2', value: 2 },
+                    { name: 'useOfBabySheet', label: '3', value: 3 },
+                  ]" v-model="scheduleInfo.useOfBabySheet"></Input>
                 </div>
                 <div class="section__form--content-input-area">
-                  <Input
-                    type="selectbox"
-                    :label="$t('home.Number of child seats (0~5 year old and under)')"
-                    name="use-of-child-sheet"
-                    classes="display-block"
-                    :options="[
-                      { name: 'useOfChildSheet',label: $t('home.none'), value: 0 },
-                      { name: 'useOfChildSheet', label: '1', value: 1 },
-                      { name: 'useOfChildSheet', label: '2', value: 2 },
-                      { name: 'useOfChildSheet', label: '3', value: 3 },
-                    ]"
-                    v-model="scheduleInfo.useOfChildSheet"
-                  ></Input>
+                  <Input type="selectbox" :label="$t('home.Number of child seats (0~5 year old and under)')" name="use-of-child-sheet" classes="display-block" :options="[
+                    { name: 'useOfChildSheet', label: $t('home.none'), value: 0 },
+                    { name: 'useOfChildSheet', label: '1', value: 1 },
+                    { name: 'useOfChildSheet', label: '2', value: 2 },
+                    { name: 'useOfChildSheet', label: '3', value: 3 },
+                  ]" v-model="scheduleInfo.useOfChildSheet"></Input>
                 </div>
                 <div class="section__form--content-input-area">
-                  <Input
-                    type="selectbox"
-                    :label="$t('home.Number of Junior seats (5~10 year old and under)')"
-                    name="use-of-junior-sheet"
-                    classes="display-block"
-                    :options="[
-                      { name: 'useOfJuniorSheet',label: $t('home.none'), value: 0 },
-                      { name: 'useOfJuniorSheet', label: '1', value: 1 },
-                      { name: 'useOfJuniorSheet', label: '2', value: 2 },
-                      { name: 'useOfBabySheet', label: '3', value: 3 },
-                    ]"
-                    v-model="scheduleInfo.useOfJuniorSheet"
-                  ></Input>
-                  <span class="input-description">{{ $t('home.Additional fee per seat ¥1,100 (flat rate)') }}</span
-                  >
+                  <Input type="selectbox" :label="$t('home.Number of Junior seats (5~10 year old and under)')" name="use-of-junior-sheet" classes="display-block" :options="[
+                    { name: 'useOfJuniorSheet', label: $t('home.none'), value: 0 },
+                    { name: 'useOfJuniorSheet', label: '1', value: 1 },
+                    { name: 'useOfJuniorSheet', label: '2', value: 2 },
+                    { name: 'useOfBabySheet', label: '3', value: 3 },
+                  ]" v-model="scheduleInfo.useOfJuniorSheet"></Input>
+                  <span class="input-description">{{ $t('home.Additional fee per seat ¥1,100 (flat rate)') }}</span>
                 </div>
                 <div class="section__form--content-input-area">
-                  <Input
-                    type="text"
-                    :label="$t('home.Coupon Codes')"
-                    name="name"
-                    v-model="scheduleInfo.couponCode"
-                  ></Input>
+                  <Input type="text" :label="$t('home.Coupon Codes')" name="name" v-model="scheduleInfo.couponCode"></Input>
                   <span class="input-description">
-                    {{$t('home.If the coupon is not correct, you will not proceed to the confirmation screen')}}<br>
+                    {{ $t('home.If the coupon is not correct, you will not proceed to the confirmation screen') }}<br>
                     {{ $t('home.Please double check the code again when entering') }}
                   </span>
                 </div>
 
               </div>
             </section>
-            <Information
-              v-if="reservationFormStatus === 'confirm'"
-              :isExample="false"
-              :reservationInfo="confirmationInfo"
-            ></Information>
-            <div
-              v-if="reservationFormStatus === 'done'"
-              class="reservation-form__completed"
-            >
-              <img
-                class="reservation-form__completed-img"
-                src="/images/icons/mail.png"
-              />
+            <Information v-if="reservationFormStatus === 'confirm'" :isExample="false" :reservationInfo="confirmationInfo"></Information>
+            <div v-if="reservationFormStatus === 'done'" class="reservation-form__completed">
+              <img class="reservation-form__completed-img" src="/images/icons/mail.png" />
               <p>
                 {{ $t('home.Reservation completed') }}<br />
                 {{ $t('home.A representative will contact you at the e-mail address you provided to confirm your application') }}<br />
@@ -321,28 +161,9 @@
               </p>
             </div>
             <div class="reservation-form__button">
-              <Button
-                class="p-ripple"
-                v-if="reservationFormStatus === 'entry'"
-                :label="$t('home.Confirm reservation')"
-                :disabled="!isValidScheduleInfo"
-                @click="confirmForm"
-              ></Button>
-              <Button
-                class="p-ripple"
-                v-if="reservationFormStatus === 'confirm'"
-                :label="$t('home.Modify')"
-                severity="secondary"
-                @click="reservationFormStatus = 'entry'"
-              ></Button>
-              <Button
-                class="p-ripple"
-                v-if="reservationFormStatus === 'confirm'"
-                icon="pi pi-send"
-                :label="$t('home.reserve')"
-                :loading="reservationLoading"
-                @click="submitForm"
-              ></Button>
+              <Button class="p-ripple" v-if="reservationFormStatus === 'entry'" :label="$t('home.Confirm reservation')" :disabled="!isValidScheduleInfo" @click="confirmForm"></Button>
+              <Button class="p-ripple" v-if="reservationFormStatus === 'confirm'" :label="$t('home.Modify')" severity="secondary" @click="reservationFormStatus = 'entry'"></Button>
+              <Button class="p-ripple" v-if="reservationFormStatus === 'confirm'" icon="pi pi-send" :label="$t('home.reserve')" :loading="reservationLoading" @click="submitForm"></Button>
             </div>
           </Dialog>
         </section>
@@ -400,13 +221,13 @@
               <h1>
                 <p class="p">
                   {{ $t('home.to uncrowded interchanges') }}</p>
-                  <p class="p">{{ $t('home.shortest possible access') }}
+                <p class="p">{{ $t('home.shortest possible access') }}
                 </p>
               </h1>
               <h3>
                 <p class="p">
                   {{ $t('home.The interchanges used in the vicinity of the airport overlap,') }}</p>
-                  <p class="p">{{ $t('home.resulting in frequent traffic jams') }}
+                <p class="p">{{ $t('home.resulting in frequent traffic jams') }}
                 </p>
               </h3>
             </div>
@@ -424,8 +245,8 @@
               <h1>
                 <p class="p">
                   {{ $t('home.indemnity coverage included') }}</p>
-                  <p class="p">{{ $t('home.with no extra options,') }}</p>
-                  <p class="p">{{ $t('home.with no redundant coverages') }}
+                <p class="p">{{ $t('home.with no extra options,') }}</p>
+                <p class="p">{{ $t('home.with no redundant coverages') }}
                 </p>
               </h1>
             </div>
@@ -563,7 +384,7 @@ export default {
       availableCouponCodes: {
         "CLASSFB10": {
           discountPercentage: 10
-        }, 
+        },
         "CLASSIG10": {
           discountPercentage: 10
         }
@@ -612,19 +433,16 @@ export default {
       ) {
         if (this.scheduleInfo.airportPickup) {
           var pickupTime = new Date(
-            `${this.search.departDate.value.slice(0, 10)} ${
-              this.scheduleInfo.airportPickup
+            `${this.search.departDate.value.slice(0, 10)} ${this.scheduleInfo.airportPickup
             }`
           );
           // console.log(pickupTime);
           var minPickupTime = new Date(
-            `${this.search.departDate.value.slice(0, 10)} ${
-              this.businessHours.open + 1
+            `${this.search.departDate.value.slice(0, 10)} ${this.businessHours.open + 1
             }:00`
           );
           var maxPickupTime = new Date(
-            `${this.search.departDate.value.slice(0, 10)} ${
-              this.businessHours.close - 1
+            `${this.search.departDate.value.slice(0, 10)} ${this.businessHours.close - 1
             }:00`
           );
           if (pickupTime <= minPickupTime || pickupTime >= maxPickupTime) {
@@ -633,19 +451,16 @@ export default {
         }
         if (this.scheduleInfo.airportDropoff) {
           var dropoffTime = new Date(
-            `${this.search.returnDate.value.slice(0, 10)} ${
-              this.scheduleInfo.airportDropoff
+            `${this.search.returnDate.value.slice(0, 10)} ${this.scheduleInfo.airportDropoff
             }`
           );
           // console.log(dropoffTime);
           var minDropoffTime = new Date(
-            `${this.search.returnDate.value.slice(0, 10)} ${
-              this.businessHours.open + 1
+            `${this.search.returnDate.value.slice(0, 10)} ${this.businessHours.open + 1
             }:00`
           );
           var maxDropoffTime = new Date(
-            `${this.search.returnDate.value.slice(0, 10)} ${
-              this.businessHours.close - 1
+            `${this.search.returnDate.value.slice(0, 10)} ${this.businessHours.close - 1
             }:00`
           );
           if (dropoffTime <= minDropoffTime || dropoffTime >= maxDropoffTime) {
@@ -733,7 +548,7 @@ export default {
 
       let memos = "";
       if (this.scheduleInfo.couponCode) {
-        memos += `クーポン適応中: ${this.scheduleInfo.couponCode}\n`; 
+        memos += `クーポン適応中: ${this.scheduleInfo.couponCode}\n`;
       }
 
       const customfields = JSON.stringify({
@@ -951,9 +766,11 @@ export default {
   font-optical-sizing: var(--font-default-optical-sizing);
   font-style: var(--font-default-style);
 }
+
 section {
   margin: 8rem 2.4rem;
 }
+
 .section {
   &__heroImageArea {
     margin: 0 0 1.2rem 0;
@@ -1009,6 +826,11 @@ section {
           width: 27.48rem;
           height: 27.48rem;
 
+          @media screen and (max-width: 630px) {
+            width: 21.48rem;
+            height: 21.48rem;
+          }
+
           @media screen and (max-width: 430px) {
             height: 82vw;
           }
@@ -1043,6 +865,7 @@ section {
 
               &.singleLine {
                 margin-top: 12rem;
+
                 @media screen and (max-width: 430px) {
                   margin-top: 10rem;
                 }
@@ -1054,6 +877,7 @@ section {
 
       .subtext {
         margin: 4rem;
+
         @media screen and (max-width: 430px) {
           margin: 4rem 0;
         }
@@ -1113,6 +937,7 @@ section {
         font-style: var(--font-default-style);
         margin: unset;
         margin-bottom: 0.8rem;
+
         @media screen and (max-width: 430px) {
           font-size: 0.8rem;
         }
@@ -1124,17 +949,22 @@ section {
       margin-right: auto;
       width: fit-content;
       text-align: left;
+
       @media screen and (max-width: 430px) {
         width: 100%;
       }
+
       &-input-area {
         margin-bottom: 2rem;
+
         &::v-deep .input-area {
           margin-bottom: initial;
+
           &.display-block {
             display: block;
           }
         }
+
         .input-description {
           display: block;
           font-size: 0.8rem;
@@ -1179,6 +1009,7 @@ section {
         font-style: var(--font-default-style);
         margin: unset;
         margin-bottom: 0.8rem;
+
         @media screen and (max-width: 430px) {
           font-size: 0.8rem;
         }
@@ -1189,12 +1020,14 @@ section {
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
+
       @media screen and (max-width: 430px) {
         flex-direction: column;
       }
     }
   }
 }
+
 .reservation-form {
   section {
     margin: 0rem 2.4rem;
@@ -1213,6 +1046,7 @@ section {
     color: gray;
     height: 4rem;
     padding: 1rem;
+
     &.active {
       font-weight: bold;
       color: #428eb8;
@@ -1226,6 +1060,7 @@ section {
     min-height: 30rem;
     padding: inherit;
     text-align: center;
+
     &-img {
       width: 5rem;
     }
@@ -1236,6 +1071,7 @@ section {
     display: flex;
   }
 }
+
 .datetimepicker {
   display: flex;
   flex-direction: column;
@@ -1279,12 +1115,15 @@ section {
     color: var(--color-steelblue);
   }
 }
+
 .sp {
   display: none;
+
   @media screen and (max-width: 430px) {
     display: initial;
   }
 }
+
 .cmn_hant {
   .datetimepicker-selector {
     font-size: .95rem;
