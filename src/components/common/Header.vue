@@ -261,9 +261,13 @@ export default {
       background-color: white;
       color: var(--color-steelblue);
       box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
+
+      @media screen and (max-width: 630px) {
+        width: 8rem;
+      }
     }
 
-    @media screen and (max-width: 430px) {
+    @media screen and (max-width: 545px) {
       display: none;
     }
   }
