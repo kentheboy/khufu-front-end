@@ -213,7 +213,7 @@
                 <div class="ellipseInside-number">02</div>
                 <h1 class="ellipseInside-text">
                   <p class="p">{{ $t('home.located close to the highway') }}</p>
-                  <p class="p">{{ $t('home.The procedure is easy to complete') }}</p>
+                  <p class="p">{{ $t('home.which is less crowded, so its easy to get around') }}</p>
                 </h1>
               </div>
             </div>
