@@ -843,13 +843,8 @@ section {
               text-shadow: 4.46875px 8.9375px 8.94px rgba(0, 0, 0, 0.5);
 
               @media screen and (max-width: 720px) {
-                font-size: 22vw;
-                bottom: -1.9rem;
-
-                @media screen and (max-width: 720px) {
-                  font-size: 20vw;
-                  bottom: -2rem;
-                }
+                font-size: 16vw;
+                // bottom: -1.9rem;
               }
             }
 
@@ -861,24 +856,15 @@ section {
               font-family: inherit;
 
               @media screen and (max-width: 720px) {
-                font-size: 4.5vw;
-                top: 8.4rem;
-                margin-top: 25vw;
-
-                @media screen and (max-width: 720px) {
-                  margin-top: 22vw;
-                }
+                font-size: 4.49vw;
+                margin-top: 24.39vw;
               }
 
               &.singleLine {
                 margin-top: 12rem;
 
                 @media screen and (max-width: 720px) {
-                  margin-top: 27vw;
-
-                  @media screen and (max-width: 720px) {
-                    margin-top: 24vw;
-                  }
+                  margin-top: 26.66vw;
                 }
               }
             }
@@ -897,7 +883,7 @@ section {
           color: var(--color-steelblue);
 
           @media screen and (max-width: 720px) {
-            font-size: 3vw;
+            font-size: 3.55vw;
           }
         }
 
@@ -909,7 +895,7 @@ section {
           color: var(--color-steelblue);
 
           @media screen and (max-width: 720px) {
-            font-size: 2.5vw;
+            font-size: 2.67vw;
           }
         }
       }
