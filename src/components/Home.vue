@@ -899,9 +899,22 @@ export default {
       this.reservationLoading = false;
     },
     calculateTotalFeeByRentalSpan(startDateTime, endDateTime, pricePerDay) {
-      let dateDifference = endDateTime.slice(8, 10) - startDateTime.slice(8, 10) + 1;
+      // Calculate the difference in days and add 1 to include both start and end dates
+      let diffInDays =
+        (new Date(endDateTime) - new Date(startDateTime)) /
+        (1000 * 60 * 60 * 24);
 
-      return dateDifference * pricePerDay;
+      if (diffInDays < 1) {
+        // if less than one full-day
+        diffInDays = 1;
+      } else if (diffInDays % 1 == 0) {
+        // if exactly one(or multiple) full-day (=returned on the next day the same time)
+        diffInDays = diffInDays + 1;
+      } else {
+        diffInDays = Math.ceil(diffInDays);
+      }
+
+      return diffInDays * pricePerDay;
     },
     scrollToEearchAndReservation() {
       window.scrollTo({
