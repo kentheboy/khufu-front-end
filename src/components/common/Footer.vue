@@ -5,10 +5,12 @@
         <div class="logo-container">
           <img alt="" src="/images/class-logo3-1@2x.png" />
         </div>
-        <a href="/company">{{ $t('home.Company info') }}</a>
-        <a href="/terms">{{ $t('home.Terms and Conditions of Lease') }}</a>
-        <a href="/files/privacy_policy.pdf" target="_blank">{{ $t('home.Privacy Policy') }}</a>
-        <a href="https://column.class-rental-car.com/" target="_blank">{{ $t('home.Articles') }} <i class="pi pi-external-link"></i></a>
+        <div>
+          <a href="/company">{{ $t('home.Company info') }}</a>
+          <a href="/terms">{{ $t('home.Terms and Conditions of Lease') }}</a>
+          <a href="/files/privacy_policy.pdf" target="_blank">{{ $t('home.Privacy Policy') }} <i class="pi pi-external-link"></i></a>
+          <a href="https://column.class-rental-car.com/" target="_blank">{{ $t('home.Articles') }} <i class="pi pi-external-link"></i></a>
+        </div>
       </div>
       <div class="footer__content--postal-code">
         {{ $t('home.67 Nagado, Toyomigusuku City, Okinawa 901-0203, Japan') }}
@@ -83,17 +85,38 @@ export default {
 
     .sites {
       display: flex;
-      margin-bottom: 1.8rem;
-      align-items: center;
+      align-content: flex-start;
+      margin-bottom: 1rem;
+      align-items: flex-start;
       flex-wrap: wrap;
 
+      @media screen and (max-width: 980px) {
+        flex-direction: column;
+      }
+
+      div {
+        width: 50%;
+        margin-bottom: 0.8rem;
+
+        @media screen and (max-width: 980px) {
+          width: 100%;
+        }
+
+        &.logo-container {
+          position: relative;
+          right: 7px;
+        }
+      }
+
       a {
-        margin-left: 2rem;
-        border-left: 0.18rem solid var(--color-white);
-        padding-left: 2rem;
-        height: fit-content;
+        display: block;
+        flex-direction: column;
+        align-content: flex-start;
+        margin-bottom: .1rem;
+
         i {
           font-size: .8rem;
+          display: inline;
         }
       }
     }
@@ -104,6 +127,7 @@ export default {
           flex-basis: 100%;
           margin-bottom: 1rem;
         }
+
         a {
           margin-left: initial;
           border-left: initial;
