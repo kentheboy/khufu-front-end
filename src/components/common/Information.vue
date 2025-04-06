@@ -216,6 +216,8 @@
                     : $t('home.not needed')
                 }}
               </dd>
+              <dt>{{ $t( 'home.Arrival flight number' ) }}</dt>
+              <dd>{{ reservationInfo.arrivalFlightNumber }}</dd>
               <dt>{{ $t('home.Airport Dropoff') }}</dt>
               <dd>
                 {{
@@ -224,6 +226,8 @@
                     : $t('home.not needed')
                 }}
               </dd>
+              <dt>{{ $t( 'home.Departure flight number' ) }}</dt>
+              <dd>{{ reservationInfo.departureFlightNumber }}</dd>
             </dl>
           </div>
         </div>

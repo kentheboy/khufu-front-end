@@ -75,13 +75,22 @@
                   <Input type="date" :label="$t('home.Date of birth')" name="dob" v-model="scheduleInfo.dob"></Input>
                 </div>
                 <div class="section__form--content-input-area">
-                  <Input type="airport-timpicker" :label="$t('home.Airport Pickup')" name="airport-pickup" v-model="scheduleInfo.airportPickup"></Input>
+                  <Input type="radio" :label="$t('home.Airport Pickup')" name="airport-pickup" v-model="scheduleInfo.airportPickup" :options="[
+                    { name: 'airport-pickup needed', label: $t('home.needed'), value: true },
+                    { name: 'airport-pickup not needed', label: $t('home.not needed'), value: false },
+                  ]" ></Input>
+                  <Input v-if="scheduleInfo.airportPickup" type="time" :label="$t('home.Airport Pickup time')" name="airport-pickup-time" v-model="scheduleInfo.airportPickupTime"></Input>
+                  <span v-if="scheduleInfo.airportPickup" class="input-description">{{ $t('home.Airport pick-up hours notation') }}</span>
+                  <Input type="text" :label="$t('home.Arrival flight number')" name="arrival-flight-number" v-model="scheduleInfo.arrivalFlightNumber"></Input>
                 </div>
                 <div class="section__form--content-input-area">
-                  <Input type="airport-timpicker" :label="$t('home.Airport Dropoff')" name="airport-dropoff" v-model="scheduleInfo.airportDropoff"></Input>
-                  <span class="input-description">
-                    {{ $t('home.Airport pick-up hours notation') }}
-                  </span>
+                  <Input type="radio" :label="$t('home.Airport Dropoff')" name="airport-dropoff" v-model="scheduleInfo.airportDropoff" :options="[
+                    { name: 'airport-dropoff needed', label: $t('home.needed'), value: true },
+                    { name: 'airport-dropoff not needed', label: $t('home.not needed'), value: false },
+                  ]" ></Input>
+                  <Input v-if="scheduleInfo.airportDropoff" type="time" :label="$t('home.Airport Dropoff time')" name="airport-dropoff-time" v-model="scheduleInfo.airportDropoffTime"></Input>
+                  <span v-if="scheduleInfo.airportDropoff" class="input-description">{{ $t('home.Airport pick-up hours notation') }}</span>
+                  <Input type="text" :label="$t('home.Departure flight number')" name="departure-flight-number" v-model="scheduleInfo.departureFlightNumber"></Input>
                 </div>
                 <div class="section__form--content-input-area">
                   <Input type="selectbox" :label="$t('home.Lending option')" name="return-option" :options="[
@@ -367,7 +376,11 @@ export default {
         licenseNumber: "",
         dob: "",
         airportPickup: false,
+        airportPickupTime: "",
+        arrivalFlightNumber: "",
         airportDropoff: false,
+        airportDropoffTime: "",
+        departureFlightNumber: "",
         useOfBabySheet: 0,
         useOfChildSheet: 0,
         useOfJuniorSheet: 0,
@@ -433,16 +446,17 @@ export default {
       ) {
         if (this.scheduleInfo.airportPickup) {
           var pickupTime = new Date(
-            `${this.search.departDate.value.slice(0, 10)} ${this.scheduleInfo.airportPickup
+            `${this.search.departDate.value.slice(0, 10)} ${this.scheduleInfo.airportPickupTime
             }`
           );
-          // console.log(pickupTime);
+          console.log(pickupTime);
           var minPickupTime = new Date(
-            `${this.search.departDate.value.slice(0, 10)} ${this.businessHours.open + 1
+            `${this.search.departDate.value.slice(0, 10)} ${parseInt(this.businessHours.open) + 1
             }:00`
           );
+          console.log(minPickupTime);
           var maxPickupTime = new Date(
-            `${this.search.departDate.value.slice(0, 10)} ${this.businessHours.close - 1
+            `${this.search.departDate.value.slice(0, 10)} ${parseInt(this.businessHours.close) - 1
             }:00`
           );
           if (pickupTime <= minPickupTime || pickupTime >= maxPickupTime) {
@@ -451,16 +465,16 @@ export default {
         }
         if (this.scheduleInfo.airportDropoff) {
           var dropoffTime = new Date(
-            `${this.search.returnDate.value.slice(0, 10)} ${this.scheduleInfo.airportDropoff
+            `${this.search.returnDate.value.slice(0, 10)} ${this.scheduleInfo.airportDropoffTime
             }`
           );
           // console.log(dropoffTime);
           var minDropoffTime = new Date(
-            `${this.search.returnDate.value.slice(0, 10)} ${this.businessHours.open + 1
+            `${this.search.returnDate.value.slice(0, 10)} ${parseInt(this.businessHours.open) + 1
             }:00`
           );
           var maxDropoffTime = new Date(
-            `${this.search.returnDate.value.slice(0, 10)} ${this.businessHours.close - 1
+            `${this.search.returnDate.value.slice(0, 10)} ${parseInt(this.businessHours.close) - 1
             }:00`
           );
           if (dropoffTime <= minDropoffTime || dropoffTime >= maxDropoffTime) {
@@ -555,8 +569,10 @@ export default {
         passengerNumber: this.scheduleInfo.passenger,
         licenseNumber: this.scheduleInfo.licenseNumber,
         dob: this.scheduleInfo.dob,
-        airportPickup: this.scheduleInfo.airportPickup,
-        airportDropoff: this.scheduleInfo.airportDropoff,
+        airportPickup: this.scheduleInfo.airportPickupTime,
+        arrivalFlightNumber: this.scheduleInfo.arrivalFlightNumber,
+        airportDropoff: this.scheduleInfo.airportDropoffTime,
+        departureFlightNumber: this.scheduleInfo.departureFlightNumber,
         deliveryOption: this.scheduleInfo.deliveryOption,
         returnOption: this.scheduleInfo.returnOption,
         useOfBabySheet: this.scheduleInfo.useOfBabySheet,
@@ -653,8 +669,10 @@ export default {
         customerPhoneNumber: this.scheduleInfo.customerPhoneNumber,
         licenseNumber: this.scheduleInfo.licenseNumber,
         dob: this.scheduleInfo.dob,
-        airportPickup: this.scheduleInfo.airportPickup,
-        airportDropoff: this.scheduleInfo.airportDropoff,
+        airportPickup: this.scheduleInfo.airportPickupTime,
+        arrivalFlightNumber: this.scheduleInfo.arrivalFlightNumber,
+        airportDropoff: this.scheduleInfo.airportDropoffTime,
+        departureFlightNumber: this.scheduleInfo.departureFlightNumber,
         carInfos: {
           main_image: selectedCarInfo.main_image,
           images: selectedCarInfo.images,
@@ -949,6 +967,7 @@ section {
           display: block;
           font-size: 0.8rem;
           font-weight: bold;
+          margin-bottom: 0.3rem
         }
       }
     }
