@@ -221,6 +221,48 @@
                   <p class="step-title">禁煙</p>
                 </div>
               </div>
+              <div class="section__products--detail--datatable">
+                <table border="0" cellspacing="0" cellpadding="0">
+                  <tbody>
+                    <tr>
+                      <th>メーカー</th>
+                      <td>トヨタ</td>
+                    </tr>
+                    <tr>
+                      <th>車名</th>
+                      <td>アルファードSCパッケージ</td>
+                    </tr>
+                    <tr>
+                      <th>車体色</th>
+                      <td>ブラック、ホワイト</td>
+                    </tr>
+                    <tr>
+                      <th>定員（人）</th>
+                      <td>７〜８人</td>
+                    </tr>
+                    <tr>
+                      <th>燃料種別</th>
+                      <td>ガソリン</td>
+                    </tr>
+                    <tr>
+                      <th>全長×全幅×全高</th>
+                      <td>4,950mm × 1,850mm × 1,935~1,950mm</td>
+                    </tr>
+                    <tr>
+                      <th>ETC/ナビ</th>
+                      <td>搭載</td>
+                    </tr>
+                    <tr>
+                      <th>排気量</th>
+                      <td>2490cc</td>
+                    </tr>
+                    <tr>
+                      <th>禁煙/喫煙</th>
+                      <td>禁煙</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </section>
           </Dialog>
         </section>
@@ -1092,6 +1134,28 @@ section {
 
           @media screen and (max-width: 720px) {
             width: 48%;
+          }
+        }
+      }
+      &--datatable {
+        table {
+          margin: 0 auto 50px;
+          width: 80%;
+
+          @media screen and (max-width: 720px) {
+            width: 90%;
+          }
+
+          tr {
+            width: 50%;
+            padding: 15px 15px 15px 20%;
+            line-height: 2.5rem;
+            &:nth-child(2n-1) {
+              background-color: var(--color-lightblue);
+            }
+            th, td {
+              width: 50%;
+            }
           }
         }
       }
