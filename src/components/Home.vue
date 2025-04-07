@@ -263,6 +263,10 @@
                   </tbody>
                 </table>
               </div>
+              <div class="section__products--detail--description">
+                <p class="attention">※他サイトへの兼ね合いもあり、ご予約いただいた時点で同車種がご用意できない場合がございます。あらかじめご了承ください。</p>
+                <p class="attention">※7人乗りと8人乗りはシート等内装が違います。ご注意ください。</p>
+              </div>
             </section>
           </Dialog>
         </section>
@@ -1157,6 +1161,11 @@ section {
               width: 50%;
             }
           }
+        }
+      }
+      &--description {
+        .attention {
+          color: #F47A00
         }
       }
     }
