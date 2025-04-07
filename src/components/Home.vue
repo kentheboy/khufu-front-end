@@ -193,6 +193,9 @@
             <section class="section__products--detail">
               <div class="section__products--title">
                 <h1>VEHICLE DETAIL</h1>
+              </div>
+              <ImageSlider :mainLogo="false" :images="heroImages"></ImageSlider>
+              <div class="section__products--title">
                 <h3>装備一覧</h3>
               </div>
               <div class="section__products--detail--features">
@@ -351,6 +354,7 @@
 <script>
 import Header from "/src/components/common/Header";
 import ImageSlider from "/src/components/common/ImageSlider";
+import Galleria from 'primevue/galleria';
 import Input from "/src/components/common/form/Input";
 import Calendar from "primevue/calendar";
 import Products from "/src/components/common/Products";
@@ -366,6 +370,7 @@ export default {
   components: {
     Header,
     ImageSlider,
+    Galleria,
     Input,
     Calendar,
     Products,
@@ -421,6 +426,33 @@ export default {
           main_image: "/images/car-images/ALPHARD-1.jpg",
           passenger: 7,
           stock: 7,
+          detail: {
+            images: [
+              "/images/car-images/ALPHARD/#1.jpg",
+              "/images/car-images/ALPHARD/#2.jpg",
+              "/images/car-images/ALPHARD/#3.jpg",
+              "/images/car-images/ALPHARD/#4.jpg",
+              "/images/car-images/ALPHARD/#5.jpg",
+            ],
+            features: [
+              "ETC", "カーナビ", "バックカメラ", "BlueTooth", "両側スライドドア", "サンルーフ", "後席モニタ", "禁煙"
+            ],
+            datatable: [
+              { title: "メーカー", value: "トヨタ" },
+              { title: "車名", value: "アルファードSCパッケージ" },
+              { title: "車体色", value: "ブラック、ホワイト" },
+              { title: "定員（人）", value: "７〜８人" },
+              { title: "燃料種別", value: "ガソリン" },
+              { title: "全長×全幅×全高", value: "4,950mm × 1,850mm × 1,935~1,950mm" },
+              { title: "ETC/ナビ", value: "搭載" },
+              { title: "排気量", value: "2490cc" },
+              { title: "禁煙/喫煙", value: "禁煙" }
+            ],
+            attention: [
+              "※他サイトへの兼ね合いもあり、ご予約いただいた時点で同車種がご用意できない場合がございます。あらかじめご了承ください。",
+              "※7人乗りと8人乗りはシート等内装が違います。ご注意ください。"
+            ],
+          },
         },
         {
           title: "ALPHARD",
