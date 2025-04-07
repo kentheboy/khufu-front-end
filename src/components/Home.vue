@@ -78,7 +78,7 @@
                   <Input type="radio" :label="$t('home.Airport Pickup')" name="airport-pickup" v-model="scheduleInfo.airportPickup" :options="[
                     { name: 'airport-pickup needed', label: $t('home.needed'), value: true },
                     { name: 'airport-pickup not needed', label: $t('home.not needed'), value: false },
-                  ]" ></Input>
+                  ]"></Input>
                   <Input v-if="scheduleInfo.airportPickup" type="time" :label="$t('home.Airport Pickup time')" name="airport-pickup-time" v-model="scheduleInfo.airportPickupTime"></Input>
                   <span v-if="scheduleInfo.airportPickup" class="input-description">{{ $t('home.Airport pick-up hours notation') }}</span>
                   <Input type="text" :label="$t('home.Arrival flight number')" name="arrival-flight-number" v-model="scheduleInfo.arrivalFlightNumber"></Input>
@@ -87,7 +87,7 @@
                   <Input type="radio" :label="$t('home.Airport Dropoff')" name="airport-dropoff" v-model="scheduleInfo.airportDropoff" :options="[
                     { name: 'airport-dropoff needed', label: $t('home.needed'), value: true },
                     { name: 'airport-dropoff not needed', label: $t('home.not needed'), value: false },
-                  ]" ></Input>
+                  ]"></Input>
                   <Input v-if="scheduleInfo.airportDropoff" type="time" :label="$t('home.Airport Dropoff time')" name="airport-dropoff-time" v-model="scheduleInfo.airportDropoffTime"></Input>
                   <span v-if="scheduleInfo.airportDropoff" class="input-description">{{ $t('home.Airport pick-up hours notation') }}</span>
                   <Input type="text" :label="$t('home.Departure flight number')" name="departure-flight-number" v-model="scheduleInfo.departureFlightNumber"></Input>
@@ -184,11 +184,45 @@
             <h3>{{ $t('home.Car list') }}</h3>
           </div>
           <div class="section__products--lists">
-            <ProductCard :product="vehicle_list[0]"></ProductCard>
-            <ProductCard :product="vehicle_list[1]"></ProductCard>
-            <ProductCard :product="vehicle_list[2]"></ProductCard>
-            <ProductCard :product="vehicle_list[3]"></ProductCard>
+            <ProductCard :product="vehicle_list[0]" @click="carDetailOpener(0)"></ProductCard>
+            <ProductCard :product="vehicle_list[1]" @click="carDetailOpener(1)"></ProductCard>
+            <ProductCard :product="vehicle_list[2]" @click="carDetailOpener(2)"></ProductCard>
+            <ProductCard :product="vehicle_list[3]" @click="carDetailOpener(3)"></ProductCard>
           </div>
+          <Dialog v-model:visible="openCarDetail" maximizable :modal="true" @after-hide="closeCarDetail">
+            <section class="section__products--detail">
+              <div class="section__products--title">
+                <h1>VEHICLE DETAIL</h1>
+                <h3>装備一覧</h3>
+              </div>
+              <div class="section__products--detail--features">
+                <div class="features__item">
+                  <p class="step-title">ETC</p>
+                </div>
+                <div class="features__item">
+                  <p class="step-title">カーナビ</p>
+                </div>
+                <div class="features__item">
+                  <p class="step-title">バックカメラ</p>
+                </div>
+                <div class="features__item">
+                  <p class="step-title">BlueTooth</p>
+                </div>
+                <div class="features__item">
+                  <p class="step-title">両側スライドドア</p>
+                </div>
+                <div class="features__item">
+                  <p class="step-title">サンルーフ</p>
+                </div>
+                <div class="features__item">
+                  <p class="step-title">後席モニタ</p>
+                </div>
+                <div class="features__item">
+                  <p class="step-title">禁煙</p>
+                </div>
+              </div>
+            </section>
+          </Dialog>
         </section>
       </div>
       <section class="section__features">
@@ -404,6 +438,7 @@ export default {
       },
       deriveryReturnFee: 1100,
       generalChildSheetFee: 1100,
+      openCarDetail: true,
     };
   },
   async created() {
@@ -759,6 +794,10 @@ export default {
       }
       return result.split("").reverse().join("");
     },
+    carDetailOpener(carId) {
+      console.log(carId);
+      this.openCarDetail = true;
+    },
   },
 };
 </script>
@@ -1026,6 +1065,35 @@ section {
 
       @media screen and (max-width: 430px) {
         flex-direction: column;
+      }
+    }
+
+    &--detail {
+      &--features {
+        display: flex;
+        justify-content: space-between;
+        margin: 3rem auto;
+        flex-wrap: wrap;
+
+        .features__item {
+          width: 24%;
+          padding: 20px 10px;
+          box-sizing: border-box;
+          line-height: 1.2;
+          margin-bottom: 10px;
+          text-align: center;
+          background-color: var(--color-skyblue);
+          color: var(--color-white);
+          font-family: var(--font-noto-sans);
+          font-optical-sizing: var(--font-default-optical-sizing);
+          font-style: var(--font-default-style);
+          border-radius: 1rem;
+          font-weight: bold;
+
+          @media screen and (max-width: 720px) {
+            width: 48%;
+          }
+        }
       }
     }
   }
