@@ -192,10 +192,20 @@
           <Dialog v-model:visible="openCarDetail" maximizable :modal="true" @after-hide="closeCarDetail">
             <section class="section__products--detail">
               <div class="section__products--title">
-                <h1>VEHICLE DETAIL</h1>
+                <h1>{{ vehicle_list[0].title }}</h1>
               </div>
-              <ImageSlider :mainLogo="false" :images="heroImages"></ImageSlider>
+              <div class="section__products--detail--images">  
+                <Galleria :value="vehicle_list[carDetailIndex].detail.images" :responsiveOptions="responsiveOptions" :numVisible="5" containerStyle="max-width: 640px">
+                  <template #item="slotProps">
+                    <img :src="slotProps.item.itemImageSrc" :alt="slotProps.item.alt" style="width: 100%" />
+                  </template>
+                  <template #thumbnail="slotProps">
+                    <img :src="slotProps.item.thumbnailImageSrc" :alt="slotProps.item.alt" />
+                  </template>
+                </Galleria>
+              </div>
               <div class="section__products--title">
+                <h1>VEHICLE DETAIL</h1>
                 <h3>装備一覧</h3>
               </div>
               <div class="section__products--detail--features">
@@ -428,11 +438,11 @@ export default {
           stock: 7,
           detail: {
             images: [
-              "/images/car-images/ALPHARD/#1.jpg",
-              "/images/car-images/ALPHARD/#2.jpg",
-              "/images/car-images/ALPHARD/#3.jpg",
-              "/images/car-images/ALPHARD/#4.jpg",
-              "/images/car-images/ALPHARD/#5.jpg",
+              { itemImageSrc: "/images/car-images/ALPHARD/1.png", thumbnailImageSrc: "/images/car-images/ALPHARD/1.png" },
+              { itemImageSrc: "/images/car-images/ALPHARD/2.jpeg", thumbnailImageSrc: "/images/car-images/ALPHARD/2.jpeg" },
+              { itemImageSrc: "/images/car-images/ALPHARD/3.jpeg", thumbnailImageSrc: "/images/car-images/ALPHARD/3.jpeg" },
+              { itemImageSrc: "/images/car-images/ALPHARD/4.jpeg", thumbnailImageSrc: "/images/car-images/ALPHARD/4.jpeg" },
+              { itemImageSrc: "/images/car-images/ALPHARD/5.jpeg", thumbnailImageSrc: "/images/car-images/ALPHARD/5.jpeg" },
             ],
             features: [
               "ETC", "カーナビ", "バックカメラ", "BlueTooth", "両側スライドドア", "サンルーフ", "後席モニタ", "禁煙"
@@ -459,18 +469,99 @@ export default {
           main_image: "/images/car-images/ALPHARD-2.jpg",
           passenger: 8,
           stock: 2,
+          detail: {
+            images: [
+              { itemImageSrc: "/images/car-images/ALPHARD/1.png", thumbnailImageSrc: "/images/car-images/ALPHARD/1.png" },
+              { itemImageSrc: "/images/car-images/ALPHARD/2.jpeg", thumbnailImageSrc: "/images/car-images/ALPHARD/2.jpeg" },
+              { itemImageSrc: "/images/car-images/ALPHARD/3.jpeg", thumbnailImageSrc: "/images/car-images/ALPHARD/3.jpeg" },
+              { itemImageSrc: "/images/car-images/ALPHARD/4.jpeg", thumbnailImageSrc: "/images/car-images/ALPHARD/4.jpeg" },
+              { itemImageSrc: "/images/car-images/ALPHARD/5.jpeg", thumbnailImageSrc: "/images/car-images/ALPHARD/5.jpeg" },
+            ],
+            features: [
+              "ETC", "カーナビ", "バックカメラ", "BlueTooth", "両側スライドドア", "サンルーフ", "後席モニタ", "禁煙"
+            ],
+            datatable: [
+              { title: "メーカー", value: "トヨタ" },
+              { title: "車名", value: "アルファードSCパッケージ" },
+              { title: "車体色", value: "ブラック、ホワイト" },
+              { title: "定員（人）", value: "７〜８人" },
+              { title: "燃料種別", value: "ガソリン" },
+              { title: "全長×全幅×全高", value: "4,950mm × 1,850mm × 1,935~1,950mm" },
+              { title: "ETC/ナビ", value: "搭載" },
+              { title: "排気量", value: "2490cc" },
+              { title: "禁煙/喫煙", value: "禁煙" }
+            ],
+            attention: [
+              "※他サイトへの兼ね合いもあり、ご予約いただいた時点で同車種がご用意できない場合がございます。あらかじめご了承ください。",
+              "※7人乗りと8人乗りはシート等内装が違います。ご注意ください。"
+            ],
+          },
         },
         {
           title: "VELLFIRE",
           main_image: "/images/car-images/VELLFIRE.jpg",
           passenger: 8,
           stock: 1,
+          detail: {
+            images: [
+              { itemImageSrc: "/images/car-images/ALPHARD/1.png", thumbnailImageSrc: "/images/car-images/ALPHARD/1.png" },
+              { itemImageSrc: "/images/car-images/ALPHARD/2.jpeg", thumbnailImageSrc: "/images/car-images/ALPHARD/2.jpeg" },
+              { itemImageSrc: "/images/car-images/ALPHARD/3.jpeg", thumbnailImageSrc: "/images/car-images/ALPHARD/3.jpeg" },
+              { itemImageSrc: "/images/car-images/ALPHARD/4.jpeg", thumbnailImageSrc: "/images/car-images/ALPHARD/4.jpeg" },
+              { itemImageSrc: "/images/car-images/ALPHARD/5.jpeg", thumbnailImageSrc: "/images/car-images/ALPHARD/5.jpeg" },
+            ],
+            features: [
+              "ETC", "カーナビ", "バックカメラ", "BlueTooth", "両側スライドドア", "サンルーフ", "後席モニタ", "禁煙"
+            ],
+            datatable: [
+              { title: "メーカー", value: "トヨタ" },
+              { title: "車名", value: "アルファードSCパッケージ" },
+              { title: "車体色", value: "ブラック、ホワイト" },
+              { title: "定員（人）", value: "７〜８人" },
+              { title: "燃料種別", value: "ガソリン" },
+              { title: "全長×全幅×全高", value: "4,950mm × 1,850mm × 1,935~1,950mm" },
+              { title: "ETC/ナビ", value: "搭載" },
+              { title: "排気量", value: "2490cc" },
+              { title: "禁煙/喫煙", value: "禁煙" }
+            ],
+            attention: [
+              "※他サイトへの兼ね合いもあり、ご予約いただいた時点で同車種がご用意できない場合がございます。あらかじめご了承ください。",
+              "※7人乗りと8人乗りはシート等内装が違います。ご注意ください。"
+            ],
+          },
         },
         {
           title: "HIACE",
           main_image: "/images/car-images/HIACE.jpg",
           passenger: 10,
           stock: 2,
+          detail: {
+            images: [
+              { itemImageSrc: "/images/car-images/ALPHARD/1.png", thumbnailImageSrc: "/images/car-images/ALPHARD/1.png" },
+              { itemImageSrc: "/images/car-images/ALPHARD/2.jpeg", thumbnailImageSrc: "/images/car-images/ALPHARD/2.jpeg" },
+              { itemImageSrc: "/images/car-images/ALPHARD/3.jpeg", thumbnailImageSrc: "/images/car-images/ALPHARD/3.jpeg" },
+              { itemImageSrc: "/images/car-images/ALPHARD/4.jpeg", thumbnailImageSrc: "/images/car-images/ALPHARD/4.jpeg" },
+              { itemImageSrc: "/images/car-images/ALPHARD/5.jpeg", thumbnailImageSrc: "/images/car-images/ALPHARD/5.jpeg" },
+            ],
+            features: [
+              "ETC", "カーナビ", "バックカメラ", "BlueTooth", "両側スライドドア", "サンルーフ", "後席モニタ", "禁煙"
+            ],
+            datatable: [
+              { title: "メーカー", value: "トヨタ" },
+              { title: "車名", value: "アルファードSCパッケージ" },
+              { title: "車体色", value: "ブラック、ホワイト" },
+              { title: "定員（人）", value: "７〜８人" },
+              { title: "燃料種別", value: "ガソリン" },
+              { title: "全長×全幅×全高", value: "4,950mm × 1,850mm × 1,935~1,950mm" },
+              { title: "ETC/ナビ", value: "搭載" },
+              { title: "排気量", value: "2490cc" },
+              { title: "禁煙/喫煙", value: "禁煙" }
+            ],
+            attention: [
+              "※他サイトへの兼ね合いもあり、ご予約いただいた時点で同車種がご用意できない場合がございます。あらかじめご了承ください。",
+              "※7人乗りと8人乗りはシート等内装が違います。ご注意ください。"
+            ],
+          },
         },
       ],
       isSearched: false,
@@ -517,6 +608,17 @@ export default {
       deriveryReturnFee: 1100,
       generalChildSheetFee: 1100,
       openCarDetail: true,
+      carDetailIndex: 0,
+      responsiveOptions: [
+        {
+          breakpoint: '1300px',
+          numVisible: 4
+        },
+        {
+          breakpoint: '575px',
+          numVisible: 1
+        }
+      ]
     };
   },
   async created() {
@@ -1147,6 +1249,11 @@ section {
     }
 
     &--detail {
+      &--images {
+        display: flex;
+        justify-content: center;
+      }
+
       &--features {
         display: flex;
         justify-content: space-between;
@@ -1173,6 +1280,7 @@ section {
           }
         }
       }
+
       &--datatable {
         table {
           margin: 0 auto 50px;
@@ -1186,15 +1294,19 @@ section {
             width: 50%;
             padding: 15px 15px 15px 20%;
             line-height: 2.5rem;
+
             &:nth-child(2n-1) {
               background-color: var(--color-lightblue);
             }
-            th, td {
+
+            th,
+            td {
               width: 50%;
             }
           }
         }
       }
+
       &--description {
         .attention {
           color: #F47A00
