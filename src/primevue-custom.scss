@@ -129,7 +129,7 @@ a.button {
 // Galleria
 .p-galleria{
     &-thumbnail-item-content img {
-        width: 7.58rem;
+        width: 80%;
         @media screen and (max-width: 770px) {
             max-width: 60%;
         }

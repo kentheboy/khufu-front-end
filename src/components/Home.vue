@@ -406,139 +406,7 @@ export default {
           isValid: false,
         },
       },
-      vehicle_list: [
-        {
-          title: "ALPHARD",
-          main_image: "/images/car-images/ALPHARD-1.jpg",
-          passenger: 7,
-          stock: 7,
-          detail: {
-            images: [
-              { itemImageSrc: "/images/car-images/ALPHARD/1.png", thumbnailImageSrc: "/images/car-images/ALPHARD/1.png" },
-              { itemImageSrc: "/images/car-images/ALPHARD/2.jpeg", thumbnailImageSrc: "/images/car-images/ALPHARD/2.jpeg" },
-              { itemImageSrc: "/images/car-images/ALPHARD/3.jpeg", thumbnailImageSrc: "/images/car-images/ALPHARD/3.jpeg" },
-              { itemImageSrc: "/images/car-images/ALPHARD/4.jpeg", thumbnailImageSrc: "/images/car-images/ALPHARD/4.jpeg" },
-              { itemImageSrc: "/images/car-images/ALPHARD/5.jpeg", thumbnailImageSrc: "/images/car-images/ALPHARD/5.jpeg" },
-            ],
-            features: [
-              "ETC", "カーナビ", "バックカメラ", "BlueTooth", "両側スライドドア", "サンルーフ", "後席モニタ", "禁煙"
-            ],
-            datatable: [
-              { title: "メーカー", value: "トヨタ" },
-              { title: "車名", value: "アルファードSCパッケージ" },
-              { title: "車体色", value: "ブラック、ホワイト" },
-              { title: "定員（人）", value: "７〜８人" },
-              { title: "燃料種別", value: "ガソリン" },
-              { title: "全長×全幅×全高", value: "4,950mm × 1,850mm × 1,935~1,950mm" },
-              { title: "ETC/ナビ", value: "搭載" },
-              { title: "排気量", value: "2490cc" },
-              { title: "禁煙/喫煙", value: "禁煙" }
-            ],
-            attention: [
-              "※他サイトへの兼ね合いもあり、ご予約いただいた時点で同車種がご用意できない場合がございます。あらかじめご了承ください。",
-              "※7人乗りと8人乗りはシート等内装が違います。ご注意ください。"
-            ],
-          },
-        },
-        {
-          title: "ALPHARD",
-          main_image: "/images/car-images/ALPHARD-2.jpg",
-          passenger: 8,
-          stock: 2,
-          detail: {
-            images: [
-              { itemImageSrc: "/images/car-images/ALPHARD/1.png", thumbnailImageSrc: "/images/car-images/ALPHARD/1.png" },
-              { itemImageSrc: "/images/car-images/ALPHARD/2.jpeg", thumbnailImageSrc: "/images/car-images/ALPHARD/2.jpeg" },
-              { itemImageSrc: "/images/car-images/ALPHARD/3.jpeg", thumbnailImageSrc: "/images/car-images/ALPHARD/3.jpeg" },
-              { itemImageSrc: "/images/car-images/ALPHARD/4.jpeg", thumbnailImageSrc: "/images/car-images/ALPHARD/4.jpeg" },
-              { itemImageSrc: "/images/car-images/ALPHARD/5.jpeg", thumbnailImageSrc: "/images/car-images/ALPHARD/5.jpeg" },
-            ],
-            features: [
-              "ETC", "カーナビ", "バックカメラ", "BlueTooth", "両側スライドドア", "サンルーフ", "後席モニタ", "禁煙"
-            ],
-            datatable: [
-              { title: "メーカー", value: "トヨタ" },
-              { title: "車名", value: "アルファードSCパッケージ" },
-              { title: "車体色", value: "ブラック、ホワイト" },
-              { title: "定員（人）", value: "７〜８人" },
-              { title: "燃料種別", value: "ガソリン" },
-              { title: "全長×全幅×全高", value: "4,950mm × 1,850mm × 1,935~1,950mm" },
-              { title: "ETC/ナビ", value: "搭載" },
-              { title: "排気量", value: "2490cc" },
-              { title: "禁煙/喫煙", value: "禁煙" }
-            ],
-            attention: [
-              "※他サイトへの兼ね合いもあり、ご予約いただいた時点で同車種がご用意できない場合がございます。あらかじめご了承ください。",
-              "※7人乗りと8人乗りはシート等内装が違います。ご注意ください。"
-            ],
-          },
-        },
-        {
-          title: "VELLFIRE",
-          main_image: "/images/car-images/VELLFIRE.jpg",
-          passenger: 8,
-          stock: 1,
-          detail: {
-            images: [
-              { itemImageSrc: "/images/car-images/ALPHARD/1.png", thumbnailImageSrc: "/images/car-images/ALPHARD/1.png" },
-              { itemImageSrc: "/images/car-images/ALPHARD/2.jpeg", thumbnailImageSrc: "/images/car-images/ALPHARD/2.jpeg" },
-              { itemImageSrc: "/images/car-images/ALPHARD/3.jpeg", thumbnailImageSrc: "/images/car-images/ALPHARD/3.jpeg" },
-              { itemImageSrc: "/images/car-images/ALPHARD/4.jpeg", thumbnailImageSrc: "/images/car-images/ALPHARD/4.jpeg" },
-              { itemImageSrc: "/images/car-images/ALPHARD/5.jpeg", thumbnailImageSrc: "/images/car-images/ALPHARD/5.jpeg" },
-            ],
-            features: [
-              "ETC", "カーナビ", "バックカメラ", "BlueTooth", "両側スライドドア", "サンルーフ", "後席モニタ", "禁煙"
-            ],
-            datatable: [
-              { title: "メーカー", value: "トヨタ" },
-              { title: "車名", value: "ヴェルファイア" },
-              { title: "車体色", value: "ホワイト" },
-              { title: "定員（人）", value: "８人" },
-              { title: "燃料種別", value: "ガソリン" },
-              { title: "全長×全幅×全高", value: "4,935mm × 1,850mm × 1,935(1950)mm" },
-              { title: "ETC/ナビ", value: "搭載" },
-              { title: "ドライブレコーダー", value: "搭載" },
-              { title: "排気量", value: "2490cc" },
-              { title: "禁煙/喫煙", value: "禁煙" }
-            ],
-            attention: [
-              "※他サイトへの兼ね合いもあり、ご予約いただいた時点で同車種がご用意できない場合がございます。あらかじめご了承ください。",
-              "※7人乗りと8人乗りはシート等内装が違います。ご注意ください。"
-            ],
-          },
-        },
-        {
-          title: "HIACE",
-          main_image: "/images/car-images/HIACE.jpg",
-          passenger: 10,
-          stock: 2,
-          detail: {
-            images: [
-              { itemImageSrc: "/images/car-images/ALPHARD/1.png", thumbnailImageSrc: "/images/car-images/ALPHARD/1.png" },
-              { itemImageSrc: "/images/car-images/ALPHARD/2.jpeg", thumbnailImageSrc: "/images/car-images/ALPHARD/2.jpeg" },
-              { itemImageSrc: "/images/car-images/ALPHARD/3.jpeg", thumbnailImageSrc: "/images/car-images/ALPHARD/3.jpeg" },
-              { itemImageSrc: "/images/car-images/ALPHARD/4.jpeg", thumbnailImageSrc: "/images/car-images/ALPHARD/4.jpeg" },
-              { itemImageSrc: "/images/car-images/ALPHARD/5.jpeg", thumbnailImageSrc: "/images/car-images/ALPHARD/5.jpeg" },
-            ],
-            features: [
-              "ETC", "カーナビ", "バックカメラ", "BlueTooth", "AT", "禁煙"
-            ],
-            datatable: [
-              { title: "メーカー", value: "トヨタ" },
-              { title: "車名", value: "ハイエース" },
-              { title: "車体色", value: "ブラック、ホワイト" },
-              { title: "定員（人）", value: "10人" },
-              { title: "燃料種別", value: "ガソリン" },
-              { title: "全長×全幅×全高", value: "5,380mm × 1,880mm × 2,285mm" },
-              { title: "ETC/ナビ", value: "搭載" },
-              { title: "禁煙/喫煙", value: "禁煙" }
-            ],
-            attention: [
-              "※他サイトへの兼ね合いもあり、ご予約いただいた時点で同車種がご用意できない場合がございます。あらかじめご了承ください。",
-            ],
-          },
-        },
-      ],
+      vehicle_list: [],
       isSearched: false,
       availableCar: [],
       formEntryStart: false,
@@ -597,6 +465,16 @@ export default {
     };
   },
   async created() {
+
+    fetch('/files/car_info/data.json')
+      .then((response) => response.json())
+      .then((data) => {
+        this.vehicle_list = data;
+      })
+      .catch((error) => {
+        console.error('Error loading JSON:', error);
+      });
+
     this.minDate = new Date();
     if (this.minDate.getHours() > 17) {
       this.minDate.setDate(this.minDate.getDate() + 2);
@@ -1202,6 +1080,7 @@ section {
     }
 
     &--detail {
+      margin: 3rem 2.4rem 8rem;
       &--images {
         display: flex;
         justify-content: center;
@@ -1209,7 +1088,7 @@ section {
 
       &--features {
         display: flex;
-        justify-content: space-between;
+        justify-content: space-around;
         margin: 3rem auto;
         flex-wrap: wrap;
 
