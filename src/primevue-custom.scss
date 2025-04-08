@@ -130,9 +130,19 @@ a.button {
 .p-galleria{
     &-thumbnail-item-content img {
         width: 7.58rem;
+        @media screen and (max-width: 770px) {
+            max-width: 60%;
+        }
     }
     &-item img {
         max-height: 480px;
+        @media screen and (max-width: 770px) {
+            max-height: 40vw;
+            max-width: 65%;
+        }
+    }
+    &-thumbnail-item-content {
+        text-align: center;
     }
     &-thumbnail-container{
         background-color: rgb(255 255 255);
