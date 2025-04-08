@@ -192,7 +192,7 @@
           <Dialog v-model:visible="openCarDetail" maximizable :modal="true" @after-hide="closeCarDetail">
             <section class="section__products--detail">
               <div class="section__products--title">
-                <h1>{{ vehicle_list[0].title }}</h1>
+                <h1>{{ vehicle_list[carDetailIndex].title }}</h1>
               </div>
               <div class="section__products--detail--images">  
                 <Galleria
@@ -226,76 +226,35 @@
                 <h3>装備一覧</h3>
               </div>
               <div class="section__products--detail--features">
-                <div class="features__item">
-                  <p class="step-title">ETC</p>
-                </div>
-                <div class="features__item">
-                  <p class="step-title">カーナビ</p>
-                </div>
-                <div class="features__item">
-                  <p class="step-title">バックカメラ</p>
-                </div>
-                <div class="features__item">
-                  <p class="step-title">BlueTooth</p>
-                </div>
-                <div class="features__item">
-                  <p class="step-title">両側スライドドア</p>
-                </div>
-                <div class="features__item">
-                  <p class="step-title">サンルーフ</p>
-                </div>
-                <div class="features__item">
-                  <p class="step-title">後席モニタ</p>
-                </div>
-                <div class="features__item">
-                  <p class="step-title">禁煙</p>
+                <div 
+                  v-for="(feature, index) in vehicle_list[carDetailIndex].detail.features" 
+                  :key="index"
+                  class="features__item"
+                >
+                  <p class="step-title">{{ feature }}</p>
                 </div>
               </div>
               <div class="section__products--detail--datatable">
                 <table border="0" cellspacing="0" cellpadding="0">
                   <tbody>
-                    <tr>
-                      <th>メーカー</th>
-                      <td>トヨタ</td>
-                    </tr>
-                    <tr>
-                      <th>車名</th>
-                      <td>アルファードSCパッケージ</td>
-                    </tr>
-                    <tr>
-                      <th>車体色</th>
-                      <td>ブラック、ホワイト</td>
-                    </tr>
-                    <tr>
-                      <th>定員（人）</th>
-                      <td>７〜８人</td>
-                    </tr>
-                    <tr>
-                      <th>燃料種別</th>
-                      <td>ガソリン</td>
-                    </tr>
-                    <tr>
-                      <th>全長×全幅×全高</th>
-                      <td>4,950mm × 1,850mm × 1,935~1,950mm</td>
-                    </tr>
-                    <tr>
-                      <th>ETC/ナビ</th>
-                      <td>搭載</td>
-                    </tr>
-                    <tr>
-                      <th>排気量</th>
-                      <td>2490cc</td>
-                    </tr>
-                    <tr>
-                      <th>禁煙/喫煙</th>
-                      <td>禁煙</td>
+                    <tr 
+                      v-for="(data, index) in vehicle_list[carDetailIndex].detail.datatable" 
+                      :key="index"
+                    >
+                      <th>{{ data.title }}</th>
+                      <td>{{ data.value }}</td>
                     </tr>
                   </tbody>
                 </table>
               </div>
               <div class="section__products--detail--description">
-                <p class="attention">※他サイトへの兼ね合いもあり、ご予約いただいた時点で同車種がご用意できない場合がございます。あらかじめご了承ください。</p>
-                <p class="attention">※7人乗りと8人乗りはシート等内装が違います。ご注意ください。</p>
+                <p 
+                  v-for="(attention, index) in vehicle_list[carDetailIndex].detail.attention"
+                  :key="index"
+                  class="attention"
+                >
+                  {{ attention }}
+                </p>
               </div>
             </section>
           </Dialog>
@@ -532,12 +491,13 @@ export default {
             ],
             datatable: [
               { title: "メーカー", value: "トヨタ" },
-              { title: "車名", value: "アルファードSCパッケージ" },
-              { title: "車体色", value: "ブラック、ホワイト" },
-              { title: "定員（人）", value: "７〜８人" },
+              { title: "車名", value: "ヴェルファイア" },
+              { title: "車体色", value: "ホワイト" },
+              { title: "定員（人）", value: "８人" },
               { title: "燃料種別", value: "ガソリン" },
-              { title: "全長×全幅×全高", value: "4,950mm × 1,850mm × 1,935~1,950mm" },
+              { title: "全長×全幅×全高", value: "4,935mm × 1,850mm × 1,935(1950)mm" },
               { title: "ETC/ナビ", value: "搭載" },
+              { title: "ドライブレコーダー", value: "搭載" },
               { title: "排気量", value: "2490cc" },
               { title: "禁煙/喫煙", value: "禁煙" }
             ],
@@ -561,22 +521,20 @@ export default {
               { itemImageSrc: "/images/car-images/ALPHARD/5.jpeg", thumbnailImageSrc: "/images/car-images/ALPHARD/5.jpeg" },
             ],
             features: [
-              "ETC", "カーナビ", "バックカメラ", "BlueTooth", "両側スライドドア", "サンルーフ", "後席モニタ", "禁煙"
+              "ETC", "カーナビ", "バックカメラ", "BlueTooth", "AT", "禁煙"
             ],
             datatable: [
               { title: "メーカー", value: "トヨタ" },
-              { title: "車名", value: "アルファードSCパッケージ" },
+              { title: "車名", value: "ハイエース" },
               { title: "車体色", value: "ブラック、ホワイト" },
-              { title: "定員（人）", value: "７〜８人" },
+              { title: "定員（人）", value: "10人" },
               { title: "燃料種別", value: "ガソリン" },
-              { title: "全長×全幅×全高", value: "4,950mm × 1,850mm × 1,935~1,950mm" },
+              { title: "全長×全幅×全高", value: "5,380mm × 1,880mm × 2,285mm" },
               { title: "ETC/ナビ", value: "搭載" },
-              { title: "排気量", value: "2490cc" },
               { title: "禁煙/喫煙", value: "禁煙" }
             ],
             attention: [
               "※他サイトへの兼ね合いもあり、ご予約いただいた時点で同車種がご用意できない場合がございます。あらかじめご了承ください。",
-              "※7人乗りと8人乗りはシート等内装が違います。ご注意ください。"
             ],
           },
         },
@@ -624,7 +582,7 @@ export default {
       },
       deriveryReturnFee: 1100,
       generalChildSheetFee: 1100,
-      openCarDetail: true,
+      openCarDetail: false,
       carDetailIndex: 0,
       responsiveOptions: [
         {
@@ -968,31 +926,9 @@ export default {
 
       return dateDifference * pricePerDay;
     },
-    scrollToEearchAndReservation() {
-      window.scrollTo({
-        top: document.getElementById("searchAndReservation").offsetTop,
-        behavior: "smooth",
-      });
-    },
-    addCommas(num) {
-      let str = num.toString();
-      let result = "";
-      let insertComma = false;
-
-      for (let i = str.length - 1; i >= 0; i--) {
-        if (insertComma) {
-          result += ",";
-          insertComma = false;
-        }
-        result += str[i];
-        if ((str.length - i) % 3 === 0 && i > 0) {
-          insertComma = true;
-        }
-      }
-      return result.split("").reverse().join("");
-    },
     carDetailOpener(carId) {
       console.log(carId);
+      this.carDetailIndex = carId;
       this.openCarDetail = true;
     },
   },
