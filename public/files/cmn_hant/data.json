@@ -1,0 +1,133 @@
+[
+    {
+      "title": "ALPHARD",
+      "main_image": "/images/car-images/ALPHARD-1.jpg",
+      "passenger": 7,
+      "stock": 7,
+      "detail": {
+        "images": [
+          { "itemImageSrc": "/images/car-images/ALPHARD/1.png", "thumbnailImageSrc": "/images/car-images/ALPHARD/1.png" },
+          { "itemImageSrc": "/images/car-images/ALPHARD/2.jpeg", "thumbnailImageSrc": "/images/car-images/ALPHARD/2.jpeg" },
+          { "itemImageSrc": "/images/car-images/ALPHARD/3.jpeg", "thumbnailImageSrc": "/images/car-images/ALPHARD/3.jpeg" },
+          { "itemImageSrc": "/images/car-images/ALPHARD/4.jpeg", "thumbnailImageSrc": "/images/car-images/ALPHARD/4.jpeg" },
+          { "itemImageSrc": "/images/car-images/ALPHARD/5.jpeg", "thumbnailImageSrc": "/images/car-images/ALPHARD/5.jpeg" }
+        ],
+        "features": [
+          "ETC", "導航系統", "倒車影像", "BlueTooth", "雙滑門", "天窗", "後座監視器", "非吸煙"
+        ],
+        "datatable": [
+          { "title": "製造商", "value": "豐田" },
+          { "title": "名称", "value": "Alphard SC 套件" },
+          { "title": "車身顏色", "value": "黑色，白色" },
+          { "title": "容量（人）", "value": "７〜８人" },
+          { "title": "燃料類型", "value": "汽油" },
+          { "title": "全長×全幅×全高", "value": "4,950mm × 1,850mm × 1,935~1,950mm" },
+          { "title": "ETC/導航系統", "value": "配備" },
+          { "title": "(引擎）排量", "value": "2490cc" },
+          { "title": "非吸煙/吸煙", "value": "非吸煙" }
+        ],
+        "attention": [
+          "※由於與其他網站有衝突，預訂時可能無法提供相同車種。 請事先瞭解。",
+          "※7 座和 8 座車輛的內裝（包括座椅）不同。 請注意"
+        ]
+      }
+    },
+    {
+      "title": "ALPHARD",
+      "main_image": "/images/car-images/ALPHARD-2.jpg",
+      "passenger": 8,
+      "stock": 2,
+      "detail": {
+        "images": [
+          { "itemImageSrc": "/images/car-images/ALPHARD/1.png", "thumbnailImageSrc": "/images/car-images/ALPHARD/1.png" },
+          { "itemImageSrc": "/images/car-images/ALPHARD/2.jpeg", "thumbnailImageSrc": "/images/car-images/ALPHARD/2.jpeg" },
+          { "itemImageSrc": "/images/car-images/ALPHARD/3.jpeg", "thumbnailImageSrc": "/images/car-images/ALPHARD/3.jpeg" },
+          { "itemImageSrc": "/images/car-images/ALPHARD/4.jpeg", "thumbnailImageSrc": "/images/car-images/ALPHARD/4.jpeg" },
+          { "itemImageSrc": "/images/car-images/ALPHARD/5.jpeg", "thumbnailImageSrc": "/images/car-images/ALPHARD/5.jpeg" }
+        ],
+        "features": [
+          "ETC", "導航系統", "倒車影像", "BlueTooth", "雙滑門", "天窗", "後座監視器", "非吸煙"
+        ],
+        "datatable": [
+          { "title": "製造商", "value": "豐田" },
+          { "title": "名称", "value": "Alphard SC 套件" },
+          { "title": "車身顏色", "value": "黑色，白色" },
+          { "title": "容量（人）", "value": "７〜８人" },
+          { "title": "燃料類型", "value": "汽油" },
+          { "title": "全長×全幅×全高", "value": "4,950mm × 1,850mm × 1,935~1,950mm" },
+          { "title": "ETC/導航系統", "value": "配備" },
+          { "title": "(引擎）排量", "value": "2490cc" },
+          { "title": "非吸煙/吸煙", "value": "非吸煙" }
+        ],
+        "attention": [
+          "※由於與其他網站有衝突，預訂時可能無法提供相同車種。 請事先瞭解。",
+          "※7 座和 8 座車輛的內裝（包括座椅）不同。 請注意"
+        ]
+      }
+    },
+    {
+      "title": "VELLFIRE",
+      "main_image": "/images/car-images/VELLFIRE.jpg",
+      "passenger": 8,
+      "stock": 1,
+      "detail": {
+        "images": [
+          { "itemImageSrc": "/images/car-images/ALPHARD/1.png", "thumbnailImageSrc": "/images/car-images/ALPHARD/1.png" },
+          { "itemImageSrc": "/images/car-images/ALPHARD/2.jpeg", "thumbnailImageSrc": "/images/car-images/ALPHARD/2.jpeg" },
+          { "itemImageSrc": "/images/car-images/ALPHARD/3.jpeg", "thumbnailImageSrc": "/images/car-images/ALPHARD/3.jpeg" },
+          { "itemImageSrc": "/images/car-images/ALPHARD/4.jpeg", "thumbnailImageSrc": "/images/car-images/ALPHARD/4.jpeg" },
+          { "itemImageSrc": "/images/car-images/ALPHARD/5.jpeg", "thumbnailImageSrc": "/images/car-images/ALPHARD/5.jpeg" }
+        ],
+        "features": [
+          "ETC", "導航系統", "倒車影像", "BlueTooth", "雙滑門", "天窗", "後座監視器", "非吸煙"
+        ],
+        "datatable": [
+          { "title": "製造商", "value": "豐田" },
+          { "title": "名称", "value": "Vellfire" },
+          { "title": "車身顏色", "value": "白色" },
+          { "title": "容量（人）", "value": "８人" },
+          { "title": "燃料類型", "value": "汽油" },
+          { "title": "全長×全幅×全高", "value": "4,935mm × 1,850mm × 1,935(1950)mm" },
+          { "title": "ETC/導航系統", "value": "配備" },
+          { "title": "驅動記錄器", "value": "配備" },
+          { "title": "(引擎）排量", "value": "2490cc" },
+          { "title": "非吸煙/吸煙", "value": "非吸煙" }
+        ],
+        "attention": [
+          "※由於與其他網站有衝突，預訂時可能無法提供相同車種。 請事先瞭解。",
+          "※7 座和 8 座車輛的內裝（包括座椅）不同。 請注意"
+        ]
+      }
+    },
+    {
+      "title": "HIACE",
+      "main_image": "/images/car-images/HIACE.jpg",
+      "passenger": 10,
+      "stock": 2,
+      "detail": {
+        "images": [
+          { "itemImageSrc": "/images/car-images/ALPHARD/1.png", "thumbnailImageSrc": "/images/car-images/ALPHARD/1.png" },
+          { "itemImageSrc": "/images/car-images/ALPHARD/2.jpeg", "thumbnailImageSrc": "/images/car-images/ALPHARD/2.jpeg" },
+          { "itemImageSrc": "/images/car-images/ALPHARD/3.jpeg", "thumbnailImageSrc": "/images/car-images/ALPHARD/3.jpeg" },
+          { "itemImageSrc": "/images/car-images/ALPHARD/4.jpeg", "thumbnailImageSrc": "/images/car-images/ALPHARD/4.jpeg" },
+          { "itemImageSrc": "/images/car-images/ALPHARD/5.jpeg", "thumbnailImageSrc": "/images/car-images/ALPHARD/5.jpeg" }
+        ],
+        "features": [
+          "ETC", "汽車導航系統", "倒車影像", "BlueTooth", "自動波箱汽車", "非吸煙"
+        ],
+        "datatable": [
+          { "title": "製造商", "value": "豐田" },
+          { "title": "名称", "value": "Hiace" },
+          { "title": "車身顏色", "value": "黑色，白色" },
+          { "title": "容量（人）", "value": "10人" },
+          { "title": "燃料類型", "value": "汽油" },
+          { "title": "全長×全幅×全高", "value": "5,380mm × 1,880mm × 2,285mm" },
+          { "title": "ETC/導航系統", "value": "配備" },
+          { "title": "非吸煙/吸煙", "value": "非吸煙" }
+        ],
+        "attention": [
+          "※由於與其他網站有衝突，預訂時可能無法提供相同車種。 請事先瞭解。"
+        ]
+      }
+    }
+  ]

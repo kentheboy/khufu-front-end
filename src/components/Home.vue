@@ -466,7 +466,9 @@ export default {
   },
   async created() {
     // load vehicle list from json file
-    fetch('/files/car_info/data.json')
+    var lang = 'ja';
+    lang = localStorage.getItem('lang') || 'ja';
+    fetch(`/files/${lang}/data.json`)
       .then((response) => response.json())
       .then((data) => {
         this.vehicle_list = data;
@@ -555,6 +557,19 @@ export default {
         return false;
       }
     },
+  },
+  watch: {
+    '$i18n.locale'(newLocale) {
+      // switch vehicle file data when the language changes
+      fetch(`/files/${newLocale}/data.json`)
+      .then((response) => response.json())
+      .then((data) => {
+        this.vehicle_list = data;
+      })
+      .catch((error) => {
+        console.error('Error loading JSON:', error);
+      });
+    }
   },
   methods: {
     isValidSearch(inputName) {
@@ -806,7 +821,6 @@ export default {
       return dateDifference * pricePerDay;
     },
     carDetailOpener(carId) {
-      console.log(carId);
       this.carDetailIndex = carId;
       this.openCarDetail = true;
     },
