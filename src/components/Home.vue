@@ -465,7 +465,7 @@ export default {
     };
   },
   async created() {
-
+    // load vehicle list from json file
     fetch('/files/car_info/data.json')
       .then((response) => response.json())
       .then((data) => {
@@ -475,6 +475,7 @@ export default {
         console.error('Error loading JSON:', error);
       });
 
+    // load business hours from store
     this.minDate = new Date();
     if (this.minDate.getHours() > 17) {
       this.minDate.setDate(this.minDate.getDate() + 2);
