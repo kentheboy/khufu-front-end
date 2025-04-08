@@ -195,9 +195,26 @@
                 <h1>{{ vehicle_list[0].title }}</h1>
               </div>
               <div class="section__products--detail--images">  
-                <Galleria :value="vehicle_list[carDetailIndex].detail.images" :responsiveOptions="responsiveOptions" :numVisible="5" containerStyle="max-width: 640px">
+                <Galleria
+                  :value="vehicle_list[carDetailIndex].detail.images" 
+                  :responsiveOptions="responsiveOptions" 
+                  :numVisible="5" 
+                  containerStyle="max-width: 640px" 
+                  :circular="true" 
+                  :autoPlay="true" 
+                  :transitionInterval="3000"
+                  :showThumbnails="true"
+                >
                   <template #item="slotProps">
-                    <img :src="slotProps.item.itemImageSrc" :alt="slotProps.item.alt" style="width: 100%" />
+                    <transition name="fade">
+                      <img
+                        :key="slotProps.item.itemImageSrc"
+                        :src="slotProps.item.itemImageSrc"
+                        :alt="slotProps.item.alt"
+                        style="width: 100%" 
+                        class="galleria-image"
+                      />
+                  </transition>
                   </template>
                   <template #thumbnail="slotProps">
                     <img :src="slotProps.item.thumbnailImageSrc" :alt="slotProps.item.alt" />
