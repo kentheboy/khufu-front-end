@@ -98,12 +98,19 @@ export default {
         border-radius: 3.49px;
         background-color: var(--color-lightblue);
         box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.25);
+        transition: all 0.4s linear 0s;
         width: 18.15rem;
         height: 24.39rem;
         display: inline-block;
         margin: 1rem 2rem;
 
+        &:hover {
+            box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
+            transition: all 0.4s linear 0s;
+        }
+
         img {
+            border-radius: 3.49px;
             width: 18.15rem;
             height: 14.06rem;
             &.product__card--description-icon {

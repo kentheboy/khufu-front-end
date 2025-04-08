@@ -126,6 +126,53 @@ a.button {
     color: var(--color-aliceblue);
 }
 
+// Galleria
+.p-galleria{
+    &-thumbnail-item-content img {
+        width: 80%;
+        @media screen and (max-width: 770px) {
+            max-width: 60%;
+        }
+    }
+    &-item img {
+        max-height: 480px;
+        @media screen and (max-width: 770px) {
+            max-height: 60vw;
+            max-width: 100%;
+        }
+        @media screen and (max-width: 620px) {
+            max-height: 54vw;
+            max-width: 93%;
+        }
+    }
+    &-thumbnail-item-content {
+        text-align: center;
+    }
+    &-thumbnail-container{
+        background-color: rgb(255 255 255);
+        button.p-link {
+            color: var(--color-steelblue);
+        }
+    }
+
+    /* Fade animation */
+    .fade-enter-active, .fade-leave-active {
+        transition: opacity .5s ease;
+        visibility: hidden;
+        opacity: 0;
+    }
+    .fade-enter-from, .fade-leave-to {
+        transition: opacity .5s ease;
+        visibility: hidden;
+        opacity: 0;
+    }
+    .galleria-image {
+        transition: opacity .5s ease;
+        width: 100%;
+        display: block;
+    }
+}
+
 // Valiosa
 .valiosa {
     .p-button {
