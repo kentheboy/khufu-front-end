@@ -189,7 +189,7 @@
             <ProductCard :product="vehicle_list[2]" @click="carDetailOpener(2)"></ProductCard>
             <ProductCard :product="vehicle_list[3]" @click="carDetailOpener(3)"></ProductCard>
           </div>
-          <Dialog v-model:visible="openCarDetail" maximizable :modal="true" @after-hide="closeCarDetail">
+          <Dialog v-model:visible="openCarDetail" maximizable :modal="true">
             <section class="section__products--detail">
               <div class="section__products--title">
                 <h1>{{ vehicle_list[carDetailIndex].title }}</h1>
@@ -223,7 +223,7 @@
               </div>
               <div class="section__products--title">
                 <h1>VEHICLE DETAIL</h1>
-                <h3>装備一覧</h3>
+                <h3>{{ $t('home.Equipment List') }}</h3>
               </div>
               <div class="section__products--detail--features">
                 <div 
