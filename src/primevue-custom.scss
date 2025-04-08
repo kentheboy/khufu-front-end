@@ -137,8 +137,12 @@ a.button {
     &-item img {
         max-height: 480px;
         @media screen and (max-width: 770px) {
-            max-height: 40vw;
-            max-width: 65%;
+            max-height: 60vw;
+            max-width: 100%;
+        }
+        @media screen and (max-width: 620px) {
+            max-height: 54vw;
+            max-width: 93%;
         }
     }
     &-thumbnail-item-content {
