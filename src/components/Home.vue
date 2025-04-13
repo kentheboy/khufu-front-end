@@ -221,10 +221,6 @@
                   </template>
                 </Galleria>
               </div>
-              <div class="section__products--title">
-                <h1>VEHICLE DETAIL</h1>
-                <h3>{{ $t('home.Equipment List') }}</h3>
-              </div>
               <div class="section__products--detail--features">
                 <div 
                   v-for="(feature, index) in vehicle_list[carDetailIndex].detail.features" 
