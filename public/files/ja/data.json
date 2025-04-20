@@ -1,16 +1,17 @@
 [
     {
       "title": "ALPHARD",
-      "main_image": "/images/car-images/ALPHARD-1.jpg",
+      "main_image": "/images/car-images/ALPHARD7/1.jpg",
       "passenger": 7,
       "stock": 7,
       "detail": {
         "images": [
-          { "itemImageSrc": "/images/car-images/ALPHARD/1.png", "thumbnailImageSrc": "/images/car-images/ALPHARD/1.png" },
-          { "itemImageSrc": "/images/car-images/ALPHARD/2.jpeg", "thumbnailImageSrc": "/images/car-images/ALPHARD/2.jpeg" },
-          { "itemImageSrc": "/images/car-images/ALPHARD/3.jpeg", "thumbnailImageSrc": "/images/car-images/ALPHARD/3.jpeg" },
-          { "itemImageSrc": "/images/car-images/ALPHARD/4.jpeg", "thumbnailImageSrc": "/images/car-images/ALPHARD/4.jpeg" },
-          { "itemImageSrc": "/images/car-images/ALPHARD/5.jpeg", "thumbnailImageSrc": "/images/car-images/ALPHARD/5.jpeg" }
+          { "itemImageSrc": "/images/car-images/ALPHARD7/1.jpg", "thumbnailImageSrc": "/images/car-images/ALPHARD7/1.jpg" },
+          { "itemImageSrc": "/images/car-images/ALPHARD7/2.png", "thumbnailImageSrc": "/images/car-images/ALPHARD7/2.png" },
+          { "itemImageSrc": "/images/car-images/ALPHARD7/3.png", "thumbnailImageSrc": "/images/car-images/ALPHARD7/3.png" },
+          { "itemImageSrc": "/images/car-images/ALPHARD7/4.png", "thumbnailImageSrc": "/images/car-images/ALPHARD7/4.png" },
+          { "itemImageSrc": "/images/car-images/ALPHARD7/5.png", "thumbnailImageSrc": "/images/car-images/ALPHARD7/5.png" },
+          { "itemImageSrc": "/images/car-images/ALPHARD7/6.png", "thumbnailImageSrc": "/images/car-images/ALPHARD7/6.png" }
         ],
         "features": [
           "ETC", "カーナビ", "バックカメラ", "BlueTooth", "両側スライドドア", "サンルーフ", "後席モニタ", "禁煙"
@@ -34,16 +35,16 @@
     },
     {
       "title": "ALPHARD",
-      "main_image": "/images/car-images/ALPHARD-2.jpg",
+      "main_image": "/images/car-images/ALPHARD8/1.png",
       "passenger": 8,
       "stock": 2,
       "detail": {
         "images": [
-          { "itemImageSrc": "/images/car-images/ALPHARD/1.png", "thumbnailImageSrc": "/images/car-images/ALPHARD/1.png" },
-          { "itemImageSrc": "/images/car-images/ALPHARD/2.jpeg", "thumbnailImageSrc": "/images/car-images/ALPHARD/2.jpeg" },
-          { "itemImageSrc": "/images/car-images/ALPHARD/3.jpeg", "thumbnailImageSrc": "/images/car-images/ALPHARD/3.jpeg" },
-          { "itemImageSrc": "/images/car-images/ALPHARD/4.jpeg", "thumbnailImageSrc": "/images/car-images/ALPHARD/4.jpeg" },
-          { "itemImageSrc": "/images/car-images/ALPHARD/5.jpeg", "thumbnailImageSrc": "/images/car-images/ALPHARD/5.jpeg" }
+          { "itemImageSrc": "/images/car-images/ALPHARD8/1.png", "thumbnailImageSrc": "/images/car-images/ALPHARD8/1.png" },
+          { "itemImageSrc": "/images/car-images/ALPHARD8/2.png", "thumbnailImageSrc": "/images/car-images/ALPHARD8/2.png" },
+          { "itemImageSrc": "/images/car-images/ALPHARD8/3.png", "thumbnailImageSrc": "/images/car-images/ALPHARD8/3.png" },
+          { "itemImageSrc": "/images/car-images/ALPHARD8/4.png", "thumbnailImageSrc": "/images/car-images/ALPHARD8/4.png" },
+          { "itemImageSrc": "/images/car-images/ALPHARD8/5.png", "thumbnailImageSrc": "/images/car-images/ALPHARD8/5.png" }
         ],
         "features": [
           "ETC", "カーナビ", "バックカメラ", "BlueTooth", "両側スライドドア", "サンルーフ", "後席モニタ", "禁煙"
@@ -72,11 +73,11 @@
       "stock": 1,
       "detail": {
         "images": [
-          { "itemImageSrc": "/images/car-images/ALPHARD/1.png", "thumbnailImageSrc": "/images/car-images/ALPHARD/1.png" },
-          { "itemImageSrc": "/images/car-images/ALPHARD/2.jpeg", "thumbnailImageSrc": "/images/car-images/ALPHARD/2.jpeg" },
-          { "itemImageSrc": "/images/car-images/ALPHARD/3.jpeg", "thumbnailImageSrc": "/images/car-images/ALPHARD/3.jpeg" },
-          { "itemImageSrc": "/images/car-images/ALPHARD/4.jpeg", "thumbnailImageSrc": "/images/car-images/ALPHARD/4.jpeg" },
-          { "itemImageSrc": "/images/car-images/ALPHARD/5.jpeg", "thumbnailImageSrc": "/images/car-images/ALPHARD/5.jpeg" }
+          { "itemImageSrc": "/images/car-images/sample/1.png", "thumbnailImageSrc": "/images/car-images/sample/1.png" },
+          { "itemImageSrc": "/images/car-images/sample/2.jpeg", "thumbnailImageSrc": "/images/car-images/sample/2.jpeg" },
+          { "itemImageSrc": "/images/car-images/sample/3.jpeg", "thumbnailImageSrc": "/images/car-images/sample/3.jpeg" },
+          { "itemImageSrc": "/images/car-images/sample/4.jpeg", "thumbnailImageSrc": "/images/car-images/sample/4.jpeg" },
+          { "itemImageSrc": "/images/car-images/sample/5.jpeg", "thumbnailImageSrc": "/images/car-images/sample/5.jpeg" }
         ],
         "features": [
           "ETC", "カーナビ", "バックカメラ", "BlueTooth", "両側スライドドア", "サンルーフ", "後席モニタ", "禁煙"
@@ -101,16 +102,16 @@
     },
     {
       "title": "HIACE",
-      "main_image": "/images/car-images/HIACE.jpg",
+      "main_image": "/images/car-images/HIACE/1.png",
       "passenger": 10,
       "stock": 2,
       "detail": {
         "images": [
-          { "itemImageSrc": "/images/car-images/ALPHARD/1.png", "thumbnailImageSrc": "/images/car-images/ALPHARD/1.png" },
-          { "itemImageSrc": "/images/car-images/ALPHARD/2.jpeg", "thumbnailImageSrc": "/images/car-images/ALPHARD/2.jpeg" },
-          { "itemImageSrc": "/images/car-images/ALPHARD/3.jpeg", "thumbnailImageSrc": "/images/car-images/ALPHARD/3.jpeg" },
-          { "itemImageSrc": "/images/car-images/ALPHARD/4.jpeg", "thumbnailImageSrc": "/images/car-images/ALPHARD/4.jpeg" },
-          { "itemImageSrc": "/images/car-images/ALPHARD/5.jpeg", "thumbnailImageSrc": "/images/car-images/ALPHARD/5.jpeg" }
+          { "itemImageSrc": "/images/car-images/HIACE/1.png", "thumbnailImageSrc": "/images/car-images/HIACE/1.png" },
+          { "itemImageSrc": "/images/car-images/HIACE/2.png", "thumbnailImageSrc": "/images/car-images/HIACE/2.png" },
+          { "itemImageSrc": "/images/car-images/HIACE/3.png", "thumbnailImageSrc": "/images/car-images/HIACE/3.png" },
+          { "itemImageSrc": "/images/car-images/HIACE/4.png", "thumbnailImageSrc": "/images/car-images/HIACE/4.png" },
+          { "itemImageSrc": "/images/car-images/HIACE/5.jpg", "thumbnailImageSrc": "/images/car-images/HIACE/5.jpg" }
         ],
         "features": [
           "ETC", "カーナビ", "バックカメラ", "BlueTooth", "AT", "禁煙"
