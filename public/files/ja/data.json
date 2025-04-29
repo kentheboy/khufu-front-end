@@ -73,11 +73,11 @@
       "stock": 1,
       "detail": {
         "images": [
-          { "itemImageSrc": "/images/car-images/sample/1.png", "thumbnailImageSrc": "/images/car-images/sample/1.png" },
-          { "itemImageSrc": "/images/car-images/sample/2.jpeg", "thumbnailImageSrc": "/images/car-images/sample/2.jpeg" },
-          { "itemImageSrc": "/images/car-images/sample/3.jpeg", "thumbnailImageSrc": "/images/car-images/sample/3.jpeg" },
-          { "itemImageSrc": "/images/car-images/sample/4.jpeg", "thumbnailImageSrc": "/images/car-images/sample/4.jpeg" },
-          { "itemImageSrc": "/images/car-images/sample/5.jpeg", "thumbnailImageSrc": "/images/car-images/sample/5.jpeg" }
+          { "itemImageSrc": "/images/car-images/VELLFIRE/1.jpg", "thumbnailImageSrc": "/images/car-images/VELLFIRE/1.jpg" },
+          { "itemImageSrc": "/images/car-images/VELLFIRE/2.png", "thumbnailImageSrc": "/images/car-images/VELLFIRE/2.png" },
+          { "itemImageSrc": "/images/car-images/VELLFIRE/3.png", "thumbnailImageSrc": "/images/car-images/VELLFIRE/3.png" },
+          { "itemImageSrc": "/images/car-images/VELLFIRE/4.png", "thumbnailImageSrc": "/images/car-images/VELLFIRE/4.png" },
+          { "itemImageSrc": "/images/car-images/VELLFIRE/5.png", "thumbnailImageSrc": "/images/car-images/VELLFIRE/5.png" }
         ],
         "features": [
           "ETC", "カーナビ", "バックカメラ", "BlueTooth", "両側スライドドア", "サンルーフ", "後席モニタ", "禁煙"
