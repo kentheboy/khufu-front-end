@@ -53,7 +53,7 @@
                 "
                 class="options-price"
               >
-                ¥3,300
+                ¥2,200
               </dd>
               <dt
                 v-if="
@@ -71,7 +71,7 @@
                 "
                 class="options-price"
               >
-                ¥3,300
+                ¥2,200
               </dd>
               <dt
                 v-if="
@@ -89,7 +89,7 @@
                 "
                 class="options-price"
               >
-                ¥3,300
+                ¥2,200
               </dd>
               <dt
                 v-if="
@@ -107,7 +107,25 @@
                 "
                 class="options-price"
               >
-                ¥3,300
+                ¥2,200
+              </dd>
+              <dt
+                v-if="
+                  reservationInfo.additionalService &&
+                  reservationInfo.additionalService.returnWithoutRefueling == 1
+                "
+                class="options-price-title"
+              >
+                {{ $t('home.Return-without-refueled-option') }}
+              </dt>
+              <dd
+                v-if="
+                  reservationInfo.additionalService &&
+                  reservationInfo.additionalService.returnWithoutRefueling == 1
+                "
+                class="options-price"
+              >
+                ¥6,600
               </dd>
               <dt
                 v-if="
