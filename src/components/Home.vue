@@ -125,15 +125,15 @@
                   <span class="input-description">{{ $t('home.Additional fee ¥1,100') }}</span>
                 </div>
                 <div class="section__form--content-input-area">
-                  <Input type="selectbox" label="ガソリン返却オプション" name="return-without-refueling" :options="[
-                    { name: 'return-with-refueled', label: '満タン返却をする', value: 0 },
+                  <Input type="selectbox" :label="$t('home.Return without refueling option')" name="return-without-refueling" :options="[
+                    { name: 'return-with-refueled', label: $t('home.Return with refueled'), value: 0 },
                     {
                       name: 'return-without-refueled',
-                      label: '満タン返却をしない',
+                      label: $t('home.Return without refueled'),
                       value: 1,
                     },
                   ]" v-model="scheduleInfo.returnWithoutRefueling"></Input>
-                  <span class="input-description">{{ "ガソリン満タン返却を行わない際は￥6,600頂戴しております。" }}</span>
+                  <span class="input-description">{{ $t('home.Return without refueling option cost extra ￥6,600') }}</span>
                 </div>
                 <div class="section__form--content-input-area">
                   <Input type="selectbox" :label="$t('home.Number of baby seats (0~2 year old and under)')" name="use-of-baby-sheet" classes="display-block" :options="[

@@ -116,7 +116,7 @@
                 "
                 class="options-price-title"
               >
-                {{ "満タン返却不要オプション" }}
+                {{ $t('home.Return-without-refueled-option') }}
               </dt>
               <dd
                 v-if="
