@@ -125,6 +125,17 @@
                   <span class="input-description">{{ $t('home.Additional fee ¥1,100') }}</span>
                 </div>
                 <div class="section__form--content-input-area">
+                  <Input type="selectbox" label="ガソリン返却オプション" name="return-without-refueling" :options="[
+                    { name: 'return-with-refueled', label: '満タン返却をする', value: 0 },
+                    {
+                      name: 'return-without-refueled',
+                      label: '満タン返却をしない',
+                      value: 1,
+                    },
+                  ]" v-model="scheduleInfo.returnWithoutRefueling"></Input>
+                  <span class="input-description">{{ "ガソリン満タン返却を行わない際は￥6,600頂戴しております。" }}</span>
+                </div>
+                <div class="section__form--content-input-area">
                   <Input type="selectbox" :label="$t('home.Number of baby seats (0~2 year old and under)')" name="use-of-baby-sheet" classes="display-block" :options="[
                     { name: 'useOfBabySheet', label: $t('home.none'), value: 0 },
                     { name: 'useOfBabySheet', label: '1', value: 1 },
@@ -427,6 +438,7 @@ export default {
         useOfChildSheet: 0,
         useOfJuniorSheet: 0,
         deliveryOption: 0,
+        returnWithoutRefueling: 0,
         returnOption: 0,
         passenger: 1,
         couponCode: null
@@ -444,8 +456,9 @@ export default {
           discountPercentage: 10
         }
       },
-      deriveryReturnFee: 1100,
+      deriveryReturnFee: 2200,
       generalChildSheetFee: 1100,
+      returnWithoutRefuelingFee: 6600,
       openCarDetail: false,
       carDetailIndex: 0,
       responsiveOptions: [
@@ -658,6 +671,7 @@ export default {
         useOfBabySheet: this.scheduleInfo.useOfBabySheet,
         useOfChildSheet: this.scheduleInfo.useOfChildSheet,
         useOfJuniorSheet: this.scheduleInfo.useOfJuniorSheet,
+        returnWithoutRefueling: this.scheduleInfo.returnWithoutRefueling,
         memos: memos
       });
       const data = {
@@ -725,6 +739,9 @@ export default {
         this.totalFeeHolder +=
           this.scheduleInfo.useOfJuniorSheet * this.generalChildSheetFee;
       }
+      if (this.scheduleInfo.returnWithoutRefueling) {
+        this.totalFeeHolder += this.returnWithoutRefuelingFee;
+      }
 
       let discount = null;
       if (this.scheduleInfo.couponCode) {
@@ -769,6 +786,7 @@ export default {
             this.scheduleInfo.useOfChildSheet * this.generalChildSheetFee,
           useOfJuniorSheet:
             this.scheduleInfo.useOfJuniorSheet * this.generalChildSheetFee,
+          returnWithoutRefueling: this.scheduleInfo.returnWithoutRefueling,
         },
         discount: discount
       };
@@ -804,6 +822,7 @@ export default {
         useOfChildSheet: 0,
         useOfJuniorSheet: 0,
         deliveryOption: 0,
+        returnWithoutRefueling: 0,
         returnOption: 0,
         couponCode: null
       };
