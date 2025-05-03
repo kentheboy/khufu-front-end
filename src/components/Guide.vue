@@ -74,7 +74,7 @@
                             <div class="step__description--text">
                                 <h3 class="step-title">{{ $t('guide.Departure') }}</h3>
                                 <p class="step-description">
-                                    {{ $t('guide.Before departure, please receive “precautions and accident compensation explanation” from the store staff After the explanation of vehicle operation and vehicle check, please depart') }} }}
+                                    {{ $t('guide.Before departure, please receive “precautions and accident compensation explanation” from the store staff After the explanation of vehicle operation and vehicle check, please depart') }} 
                                 </p>
                             </div>
                         </div>
