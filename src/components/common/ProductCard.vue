@@ -31,11 +31,17 @@ export default {
     border-radius: 3.49px;
     background-color: var(--color-lightblue);
     box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.25);
+    transition: all 0.4s linear 0s;
     width: 18.15rem;
     height: 20.39rem;
     display: inline-block;
     margin: 1rem auto;
     position: relative;
+
+    &:hover {
+        box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
+        transition: all 0.4s linear 0s;
+    }
 
     img {
         width: 18.15rem;

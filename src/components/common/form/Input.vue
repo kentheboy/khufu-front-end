@@ -13,25 +13,12 @@
             name="addressline"
         >
     </div>
-    <div v-else-if="type==='airport-timpicker'" class="input-area airport-timpicker">
-        <div class="airport-timpicker__headline">
-            <label v-if="label">
-                {{ label }}
-                <span v-if="required" class="required-notice">※{{$t('home.required')}}</span>
-            </label>
-            <div class="airport-timpicker__headline--pickup">
-                <label>
-                    <input type="radio" :name="name" value="true" @input="handleAirportTimpicker">
-                    <span>{{ $t('home.needed') }}</span>
-                </label>
-                <label>
-                    <input type="radio" :name="name" value="false" @input="handleAirportTimpicker">
-                    <span>{{ $t('home.not needed') }}</span>
-                </label>
-            </div>
-        </div>
+    <div v-else-if="type==='time'" class="input-area">
+        <label v-if="label">
+            {{ label }}
+            <span v-if="required" class="required-notice">※{{$t('home.required')}}</span>
+        </label>
         <input 
-            v-if="isAirportPickUpRequired"
             type="time" 
             :name="name" 
             :placeholder="placeholder" 
@@ -168,15 +155,6 @@ export default {
         handleInput($event) {
             this.$emit('update:modelValue', $event.target.value)
         },
-        handleAirportTimpicker($event){
-            let value = $event.target.value;
-            if (value === "true") {
-                this.isAirportPickUpRequired = true;
-            } else {
-                this.isAirportPickUpRequired = false;
-                this.$emit('update:modelValue', false)
-            }
-        },
         openImageSelector() {
             let fileInput = this.$refs.fileInput;
             fileInput.click();
@@ -254,6 +232,10 @@ export default {
         &[type=file] {
             display: none;
         }
+
+        &[type=time] {
+            width: 10.8rem;
+        }
     }
 
     select {
@@ -299,9 +281,6 @@ export default {
                 height: 0.9rem;
             }
         }
-    }
-    input[type=time] {
-        width: 10.8rem;
     }
 }
 .file-input {

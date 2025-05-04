@@ -75,13 +75,22 @@
                   <Input type="date" :label="$t('home.Date of birth')" name="dob" v-model="scheduleInfo.dob"></Input>
                 </div>
                 <div class="section__form--content-input-area">
-                  <Input type="airport-timpicker" :label="$t('home.Airport Pickup')" name="airport-pickup" v-model="scheduleInfo.airportPickup"></Input>
+                  <Input type="radio" :label="$t('home.Airport Pickup')" name="airport-pickup" v-model="scheduleInfo.airportPickup" :options="[
+                    { name: 'airport-pickup needed', label: $t('home.needed'), value: true },
+                    { name: 'airport-pickup not needed', label: $t('home.not needed'), value: false },
+                  ]"></Input>
+                  <Input v-if="scheduleInfo.airportPickup" type="time" :label="$t('home.Airport Pickup time')" name="airport-pickup-time" v-model="scheduleInfo.airportPickupTime"></Input>
+                  <span v-if="scheduleInfo.airportPickup" class="input-description">{{ $t('home.Airport pick-up hours notation') }}</span>
+                  <Input type="text" :label="$t('home.Arrival flight number')" name="arrival-flight-number" v-model="scheduleInfo.arrivalFlightNumber"></Input>
                 </div>
                 <div class="section__form--content-input-area">
-                  <Input type="airport-timpicker" :label="$t('home.Airport Dropoff')" name="airport-dropoff" v-model="scheduleInfo.airportDropoff"></Input>
-                  <span class="input-description">
-                    {{ $t('home.Airport pick-up hours notation') }}
-                  </span>
+                  <Input type="radio" :label="$t('home.Airport Dropoff')" name="airport-dropoff" v-model="scheduleInfo.airportDropoff" :options="[
+                    { name: 'airport-dropoff needed', label: $t('home.needed'), value: true },
+                    { name: 'airport-dropoff not needed', label: $t('home.not needed'), value: false },
+                  ]"></Input>
+                  <Input v-if="scheduleInfo.airportDropoff" type="time" :label="$t('home.Airport Dropoff time')" name="airport-dropoff-time" v-model="scheduleInfo.airportDropoffTime"></Input>
+                  <span v-if="scheduleInfo.airportDropoff" class="input-description">{{ $t('home.Airport pick-up hours notation') }}</span>
+                  <Input type="text" :label="$t('home.Departure flight number')" name="departure-flight-number" v-model="scheduleInfo.departureFlightNumber"></Input>
                 </div>
                 <div class="section__form--content-input-area">
                   <Input type="selectbox" :label="$t('home.Lending option')" name="return-option" :options="[
@@ -114,6 +123,17 @@
                     },
                   ]" v-model="scheduleInfo.returnOption"></Input>
                   <span class="input-description">{{ $t('home.Additional fee ¥1,100') }}</span>
+                </div>
+                <div class="section__form--content-input-area">
+                  <Input type="selectbox" :label="$t('home.Return without refueling option')" name="return-without-refueling" :options="[
+                    { name: 'return-with-refueled', label: $t('home.Return with refueled'), value: 0 },
+                    {
+                      name: 'return-without-refueled',
+                      label: $t('home.Return without refueled'),
+                      value: 1,
+                    },
+                  ]" v-model="scheduleInfo.returnWithoutRefueling"></Input>
+                  <span class="input-description">{{ $t('home.Return without refueling option cost extra ￥6,600') }}</span>
                 </div>
                 <div class="section__form--content-input-area">
                   <Input type="selectbox" :label="$t('home.Number of baby seats (0~2 year old and under)')" name="use-of-baby-sheet" classes="display-block" :options="[
@@ -175,11 +195,76 @@
             <h3>{{ $t('home.Car list') }}</h3>
           </div>
           <div class="section__products--lists">
-            <ProductCard :product="vehicle_list[0]"></ProductCard>
-            <ProductCard :product="vehicle_list[1]"></ProductCard>
-            <ProductCard :product="vehicle_list[2]"></ProductCard>
-            <ProductCard :product="vehicle_list[3]"></ProductCard>
+            <ProductCard :product="vehicle_list[0]" @click="carDetailOpener(0)"></ProductCard>
+            <ProductCard :product="vehicle_list[1]" @click="carDetailOpener(1)"></ProductCard>
+            <ProductCard :product="vehicle_list[2]" @click="carDetailOpener(2)"></ProductCard>
+            <ProductCard :product="vehicle_list[3]" @click="carDetailOpener(3)"></ProductCard>
           </div>
+          <Dialog v-model:visible="openCarDetail" maximizable :modal="true">
+            <section class="section__products--detail">
+              <div class="section__products--title">
+                <h1>{{ vehicle_list[carDetailIndex].title }}</h1>
+              </div>
+              <div class="section__products--detail--images">  
+                <Galleria
+                  :value="vehicle_list[carDetailIndex].detail.images" 
+                  :responsiveOptions="responsiveOptions" 
+                  :numVisible="5" 
+                  containerStyle="max-width: 640px" 
+                  :circular="true" 
+                  :autoPlay="true" 
+                  :transitionInterval="3000"
+                  :showThumbnails="true"
+                >
+                  <template #item="slotProps">
+                    <transition name="fade">
+                      <img
+                        :key="slotProps.item.itemImageSrc"
+                        :src="slotProps.item.itemImageSrc"
+                        :alt="slotProps.item.alt"
+                        style="width: 100%" 
+                        class="galleria-image"
+                      />
+                  </transition>
+                  </template>
+                  <template #thumbnail="slotProps">
+                    <img :src="slotProps.item.thumbnailImageSrc" :alt="slotProps.item.alt" />
+                  </template>
+                </Galleria>
+              </div>
+              <div class="section__products--detail--features">
+                <div 
+                  v-for="(feature, index) in vehicle_list[carDetailIndex].detail.features" 
+                  :key="index"
+                  class="features__item"
+                >
+                  <p class="step-title">{{ feature }}</p>
+                </div>
+              </div>
+              <div class="section__products--detail--datatable">
+                <table border="0" cellspacing="0" cellpadding="0">
+                  <tbody>
+                    <tr 
+                      v-for="(data, index) in vehicle_list[carDetailIndex].detail.datatable" 
+                      :key="index"
+                    >
+                      <th>{{ data.title }}</th>
+                      <td>{{ data.value }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="section__products--detail--description">
+                <p 
+                  v-for="(attention, index) in vehicle_list[carDetailIndex].detail.attention"
+                  :key="index"
+                  class="attention"
+                >
+                  {{ attention }}
+                </p>
+              </div>
+            </section>
+          </Dialog>
         </section>
       </div>
       <section class="section__features">
@@ -262,6 +347,7 @@
 <script>
 import Header from "/src/components/common/Header";
 import ImageSlider from "/src/components/common/ImageSlider";
+import Galleria from 'primevue/galleria';
 import Input from "/src/components/common/form/Input";
 import Calendar from "primevue/calendar";
 import Products from "/src/components/common/Products";
@@ -277,6 +363,7 @@ export default {
   components: {
     Header,
     ImageSlider,
+    Galleria,
     Input,
     Calendar,
     Products,
@@ -326,32 +413,7 @@ export default {
           isValid: false,
         },
       },
-      vehicle_list: [
-        {
-          title: "ALPHARD",
-          main_image: "/images/car-images/ALPHARD-1.jpg",
-          passenger: 7,
-          stock: 7,
-        },
-        {
-          title: "ALPHARD",
-          main_image: "/images/car-images/ALPHARD-2.jpg",
-          passenger: 8,
-          stock: 2,
-        },
-        {
-          title: "VELLFIRE",
-          main_image: "/images/car-images/VELLFIRE.jpg",
-          passenger: 8,
-          stock: 1,
-        },
-        {
-          title: "HIACE",
-          main_image: "/images/car-images/HIACE.jpg",
-          passenger: 10,
-          stock: 2,
-        },
-      ],
+      vehicle_list: [],
       isSearched: false,
       availableCar: [],
       formEntryStart: false,
@@ -367,11 +429,16 @@ export default {
         licenseNumber: "",
         dob: "",
         airportPickup: false,
+        airportPickupTime: "",
+        arrivalFlightNumber: "",
         airportDropoff: false,
+        airportDropoffTime: "",
+        departureFlightNumber: "",
         useOfBabySheet: 0,
         useOfChildSheet: 0,
         useOfJuniorSheet: 0,
         deliveryOption: 0,
+        returnWithoutRefueling: 0,
         returnOption: 0,
         passenger: 1,
         couponCode: null
@@ -389,11 +456,37 @@ export default {
           discountPercentage: 10
         }
       },
-      deriveryReturnFee: 1100,
+      deriveryReturnFee: 2200,
       generalChildSheetFee: 1100,
+      returnWithoutRefuelingFee: 6600,
+      openCarDetail: false,
+      carDetailIndex: 0,
+      responsiveOptions: [
+        {
+          breakpoint: '1300px',
+          numVisible: 4
+        },
+        {
+          breakpoint: '575px',
+          numVisible: 1
+        }
+      ]
     };
   },
   async created() {
+    // load vehicle list from json file
+    var lang = 'ja';
+    lang = localStorage.getItem('lang') || 'ja';
+    fetch(`/files/${lang}/data.json`)
+      .then((response) => response.json())
+      .then((data) => {
+        this.vehicle_list = data;
+      })
+      .catch((error) => {
+        console.error('Error loading JSON:', error);
+      });
+
+    // load business hours from store
     this.minDate = new Date();
     if (this.minDate.getHours() > 17) {
       this.minDate.setDate(this.minDate.getDate() + 2);
@@ -433,16 +526,17 @@ export default {
       ) {
         if (this.scheduleInfo.airportPickup) {
           var pickupTime = new Date(
-            `${this.search.departDate.value.slice(0, 10)} ${this.scheduleInfo.airportPickup
+            `${this.search.departDate.value.slice(0, 10)} ${this.scheduleInfo.airportPickupTime
             }`
           );
-          // console.log(pickupTime);
+          console.log(pickupTime);
           var minPickupTime = new Date(
-            `${this.search.departDate.value.slice(0, 10)} ${this.businessHours.open + 1
+            `${this.search.departDate.value.slice(0, 10)} ${parseInt(this.businessHours.open) + 1
             }:00`
           );
+          console.log(minPickupTime);
           var maxPickupTime = new Date(
-            `${this.search.departDate.value.slice(0, 10)} ${this.businessHours.close - 1
+            `${this.search.departDate.value.slice(0, 10)} ${parseInt(this.businessHours.close) - 1
             }:00`
           );
           if (pickupTime <= minPickupTime || pickupTime >= maxPickupTime) {
@@ -451,16 +545,16 @@ export default {
         }
         if (this.scheduleInfo.airportDropoff) {
           var dropoffTime = new Date(
-            `${this.search.returnDate.value.slice(0, 10)} ${this.scheduleInfo.airportDropoff
+            `${this.search.returnDate.value.slice(0, 10)} ${this.scheduleInfo.airportDropoffTime
             }`
           );
           // console.log(dropoffTime);
           var minDropoffTime = new Date(
-            `${this.search.returnDate.value.slice(0, 10)} ${this.businessHours.open + 1
+            `${this.search.returnDate.value.slice(0, 10)} ${parseInt(this.businessHours.open) + 1
             }:00`
           );
           var maxDropoffTime = new Date(
-            `${this.search.returnDate.value.slice(0, 10)} ${this.businessHours.close - 1
+            `${this.search.returnDate.value.slice(0, 10)} ${parseInt(this.businessHours.close) - 1
             }:00`
           );
           if (dropoffTime <= minDropoffTime || dropoffTime >= maxDropoffTime) {
@@ -472,6 +566,19 @@ export default {
         return false;
       }
     },
+  },
+  watch: {
+    '$i18n.locale'(newLocale) {
+      // switch vehicle file data when the language changes
+      fetch(`/files/${newLocale}/data.json`)
+      .then((response) => response.json())
+      .then((data) => {
+        this.vehicle_list = data;
+      })
+      .catch((error) => {
+        console.error('Error loading JSON:', error);
+      });
+    }
   },
   methods: {
     isValidSearch(inputName) {
@@ -555,13 +662,16 @@ export default {
         passengerNumber: this.scheduleInfo.passenger,
         licenseNumber: this.scheduleInfo.licenseNumber,
         dob: this.scheduleInfo.dob,
-        airportPickup: this.scheduleInfo.airportPickup,
-        airportDropoff: this.scheduleInfo.airportDropoff,
+        airportPickup: this.scheduleInfo.airportPickupTime,
+        arrivalFlightNumber: this.scheduleInfo.arrivalFlightNumber,
+        airportDropoff: this.scheduleInfo.airportDropoffTime,
+        departureFlightNumber: this.scheduleInfo.departureFlightNumber,
         deliveryOption: this.scheduleInfo.deliveryOption,
         returnOption: this.scheduleInfo.returnOption,
         useOfBabySheet: this.scheduleInfo.useOfBabySheet,
         useOfChildSheet: this.scheduleInfo.useOfChildSheet,
         useOfJuniorSheet: this.scheduleInfo.useOfJuniorSheet,
+        returnWithoutRefueling: this.scheduleInfo.returnWithoutRefueling,
         memos: memos
       });
       const data = {
@@ -629,6 +739,9 @@ export default {
         this.totalFeeHolder +=
           this.scheduleInfo.useOfJuniorSheet * this.generalChildSheetFee;
       }
+      if (this.scheduleInfo.returnWithoutRefueling) {
+        this.totalFeeHolder += this.returnWithoutRefuelingFee;
+      }
 
       let discount = null;
       if (this.scheduleInfo.couponCode) {
@@ -653,8 +766,10 @@ export default {
         customerPhoneNumber: this.scheduleInfo.customerPhoneNumber,
         licenseNumber: this.scheduleInfo.licenseNumber,
         dob: this.scheduleInfo.dob,
-        airportPickup: this.scheduleInfo.airportPickup,
-        airportDropoff: this.scheduleInfo.airportDropoff,
+        airportPickup: this.scheduleInfo.airportPickupTime,
+        arrivalFlightNumber: this.scheduleInfo.arrivalFlightNumber,
+        airportDropoff: this.scheduleInfo.airportDropoffTime,
+        departureFlightNumber: this.scheduleInfo.departureFlightNumber,
         carInfos: {
           main_image: selectedCarInfo.main_image,
           images: selectedCarInfo.images,
@@ -671,6 +786,7 @@ export default {
             this.scheduleInfo.useOfChildSheet * this.generalChildSheetFee,
           useOfJuniorSheet:
             this.scheduleInfo.useOfJuniorSheet * this.generalChildSheetFee,
+          returnWithoutRefueling: this.scheduleInfo.returnWithoutRefueling,
         },
         discount: discount
       };
@@ -706,6 +822,7 @@ export default {
         useOfChildSheet: 0,
         useOfJuniorSheet: 0,
         deliveryOption: 0,
+        returnWithoutRefueling: 0,
         returnOption: 0,
         couponCode: null
       };
@@ -718,28 +835,9 @@ export default {
 
       return dateDifference * pricePerDay;
     },
-    scrollToEearchAndReservation() {
-      window.scrollTo({
-        top: document.getElementById("searchAndReservation").offsetTop,
-        behavior: "smooth",
-      });
-    },
-    addCommas(num) {
-      let str = num.toString();
-      let result = "";
-      let insertComma = false;
-
-      for (let i = str.length - 1; i >= 0; i--) {
-        if (insertComma) {
-          result += ",";
-          insertComma = false;
-        }
-        result += str[i];
-        if ((str.length - i) % 3 === 0 && i > 0) {
-          insertComma = true;
-        }
-      }
-      return result.split("").reverse().join("");
+    carDetailOpener(carId) {
+      this.carDetailIndex = carId;
+      this.openCarDetail = true;
     },
   },
 };
@@ -949,6 +1047,7 @@ section {
           display: block;
           font-size: 0.8rem;
           font-weight: bold;
+          margin-bottom: 0.3rem
         }
       }
     }
@@ -1007,6 +1106,73 @@ section {
 
       @media screen and (max-width: 430px) {
         flex-direction: column;
+      }
+    }
+
+    &--detail {
+      margin: 3rem 2.4rem 8rem;
+      &--images {
+        display: flex;
+        justify-content: center;
+      }
+
+      &--features {
+        display: flex;
+        justify-content: space-around;
+        margin: 3rem auto;
+        flex-wrap: wrap;
+
+        .features__item {
+          width: 24%;
+          padding: 20px 10px;
+          box-sizing: border-box;
+          line-height: 1.2;
+          margin-bottom: 10px;
+          text-align: center;
+          background-color: var(--color-skyblue);
+          color: var(--color-white);
+          font-family: var(--font-noto-sans);
+          font-optical-sizing: var(--font-default-optical-sizing);
+          font-style: var(--font-default-style);
+          border-radius: 1rem;
+          font-weight: bold;
+
+          @media screen and (max-width: 720px) {
+            width: 48%;
+          }
+        }
+      }
+
+      &--datatable {
+        table {
+          margin: 0 auto 50px;
+          width: 80%;
+
+          @media screen and (max-width: 720px) {
+            width: 90%;
+          }
+
+          tr {
+            width: 50%;
+            padding: 15px 15px 15px 20%;
+            line-height: 2.5rem;
+
+            &:nth-child(2n-1) {
+              background-color: var(--color-lightblue);
+            }
+
+            th,
+            td {
+              width: 50%;
+            }
+          }
+        }
+      }
+
+      &--description {
+        .attention {
+          color: #F47A00
+        }
       }
     }
   }
