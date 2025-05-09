@@ -125,7 +125,7 @@
                 "
                 class="options-price"
               >
-                ¥6,600
+                ¥8,800
               </dd>
               <dt
                 v-if="
