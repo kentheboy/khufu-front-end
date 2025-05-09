@@ -458,7 +458,7 @@ export default {
       },
       deriveryReturnFee: 2200,
       generalChildSheetFee: 1100,
-      returnWithoutRefuelingFee: 6600,
+      returnWithoutRefuelingFee: 8800,
       openCarDetail: false,
       carDetailIndex: 0,
       responsiveOptions: [
