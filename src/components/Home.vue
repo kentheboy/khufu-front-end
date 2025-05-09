@@ -133,7 +133,7 @@
                       value: 1,
                     },
                   ]" v-model="scheduleInfo.returnWithoutRefueling"></Input>
-                  <span class="input-description">{{ $t('home.Return without refueling option cost extra ￥6,600') }}</span>
+                  <span class="input-description">{{ $t('home.Return without refueling option cost extra ￥8,800') }}</span>
                 </div>
                 <div class="section__form--content-input-area">
                   <Input type="selectbox" :label="$t('home.Number of baby seats (0~2 year old and under)')" name="use-of-baby-sheet" classes="display-block" :options="[
