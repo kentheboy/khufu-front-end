@@ -831,9 +831,14 @@ export default {
       this.reservationLoading = false;
     },
     calculateTotalFeeByRentalSpan(startDateTime, endDateTime, pricePerDay) {
-      let dateDifference = endDateTime.slice(8, 10) - startDateTime.slice(8, 10) + 1;
+      // Normalize to just the date part
+      var start = new Date(startDateTime.split(" ")[0]);
+      var end = new Date(endDateTime.split(" ")[0]);
 
-      return dateDifference * pricePerDay;
+      // Calculate difference in milliseconds and convert to days
+      var diffDays = Math.floor((end - start) / (1000 * 60 * 60 * 24)) + 1;
+
+      return diffDays * pricePerDay;
     },
     carDetailOpener(carId) {
       this.carDetailIndex = carId;
