@@ -106,7 +106,7 @@
                       value: 2,
                     },
                   ]" v-model="scheduleInfo.deliveryOption"></Input>
-                  <span class="input-description">{{ $t('home.Additional fee ¥1,100') }}</span>
+                  <span class="input-description">{{ $t('home.Additional fee ¥2,200') }}</span>
                 </div>
                 <div class="section__form--content-input-area">
                   <Input type="selectbox" :label="$t('home.Return option')" name="return-option" :options="[
@@ -122,7 +122,7 @@
                       value: 2,
                     },
                   ]" v-model="scheduleInfo.returnOption"></Input>
-                  <span class="input-description">{{ $t('home.Additional fee ¥1,100') }}</span>
+                  <span class="input-description">{{ $t('home.Additional fee ¥2,200') }}</span>
                 </div>
                 <div class="section__form--content-input-area">
                   <Input type="selectbox" :label="$t('home.Return without refueling option')" name="return-without-refueling" :options="[
