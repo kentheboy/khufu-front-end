@@ -28,7 +28,7 @@ jobs:
         run: |
           aws s3 sync . s3://class-rental-car-dev --delete --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
       - name: Slack-Notification
-        uses: abinoda/slack-action@master
+        uses: slackapi/slack-github-action@v1.24.0
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
         with:
