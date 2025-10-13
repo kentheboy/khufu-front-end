@@ -48,7 +48,7 @@ jobs:
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": "*Pusher:* ${{ github.event.pusher.name }}\n*Commit Message:* ${{ github.event.head_commit.message }}\n*Environment:* ステージング環境"
+                    "text": "*Pusher:* ${{ github.event.pusher.name }}\n*Commit Message:* ${{ github.event.head_commit.message }}\n*Environment:* <http://class-rental-car-dev.s3-website-ap-northeast-1.amazonaws.com/|ステージング環境>"
                   }
                 },
                 {
@@ -104,7 +104,7 @@ jobs:
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": "*Pusher:* ${{ github.event.pusher.name }}\n*Commit Message:* ${{ github.event.head_commit.message }}\n*Environment:* 本番環境"
+                    "text": "*Pusher:* ${{ github.event.pusher.name }}\n*Commit Message:* ${{ github.event.head_commit.message }}\n*Environment:* <https://class-rental-car.com/|本番環境>"
                   }
                 },
                 {
