@@ -383,16 +383,13 @@ export default {
   data() {
     return {
       heroImages: [
-        "/images/hero-images/image1.png",
+        "/images/hero-images/image1.jpg",
         "/images/hero-images/image2.jpg",
         "/images/hero-images/image3.jpg",
         "/images/hero-images/image4.jpg",
         "/images/hero-images/image5.jpg",
         "/images/hero-images/image6.jpg",
         "/images/hero-images/image7.jpg",
-        "/images/hero-images/image8.png",
-        "/images/hero-images/image9.jpg",
-        "/images/hero-images/image10.jpg",
       ],
       additionalDriverRadio: [
         { name: "additional-driver-radio", value: "yes", label: "あり" },
