@@ -501,6 +501,20 @@ export default {
     }
     this.minDate.setHours(this.$store.state.businessHours.open);
     this.minDate.setMinutes(0);
+
+    var isSmartPhone = function() {
+      const ua = navigator.userAgent || navigator.vendor || window.opera;
+
+      // Check common smartphone indicators in the user agent string
+      const isMobileUA = /android|iphone|ipod|blackberry|windows phone|opera mini|mobile/i.test(ua);
+
+      // Check if screen width is within typical smartphone range
+      const isSmallScreen = window.innerWidth <= 768;
+
+      // Return true only if both indicators suggest a smartphone
+      return isMobileUA || isSmallScreen;
+    }
+    console.log(isSmartPhone());
   },
   computed: {
     backendDomain() {
