@@ -389,7 +389,14 @@ export default {
         "/images/hero-images/image4.jpg",
         "/images/hero-images/image5.png",
         "/images/hero-images/image6.jpg",
-        "/images/hero-images/image7.jpg",
+      ],
+      heroImagesSp: [
+        "/images/hero-images/sp/image1.jpg",
+        "/images/hero-images/sp/image2.jpg",
+        "/images/hero-images/sp/image3.jpg",
+        "/images/hero-images/sp/image4.jpg",
+        "/images/hero-images/sp/image5.png",
+        "/images/hero-images/sp/image6.jpg",
       ],
       additionalDriverRadio: [
         { name: "additional-driver-radio", value: "yes", label: "あり" },
