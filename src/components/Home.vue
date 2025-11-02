@@ -387,7 +387,7 @@ export default {
         "/images/hero-images/image2.jpg",
         "/images/hero-images/image3.jpg",
         "/images/hero-images/image4.jpg",
-        "/images/hero-images/image5.jpg",
+        "/images/hero-images/image5.png",
         "/images/hero-images/image6.jpg",
         "/images/hero-images/image7.jpg",
       ],
