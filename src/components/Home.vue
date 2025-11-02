@@ -3,7 +3,7 @@
     <Header></Header>
     <main :class="['main', $i18n.locale]">
       <section class="section__heroImageArea">
-        <ImageSlider :images="heroImages"></ImageSlider>
+        <ImageSlider :images="isSmartPhone() ? heroImagesSp : heroImages"></ImageSlider>
       </section>
       <div>
         <section class="section__form" id="searchAndReservation">
@@ -395,8 +395,8 @@ export default {
         "/images/hero-images/sp/image2.jpg",
         "/images/hero-images/sp/image3.jpg",
         "/images/hero-images/sp/image4.jpg",
-        "/images/hero-images/sp/image5.png",
-        "/images/hero-images/sp/image6.jpg",
+        "/images/hero-images/sp/image5.jpg",
+        "/images/hero-images/sp/image6.png",
       ],
       additionalDriverRadio: [
         { name: "additional-driver-radio", value: "yes", label: "あり" },
@@ -502,19 +502,6 @@ export default {
     this.minDate.setHours(this.$store.state.businessHours.open);
     this.minDate.setMinutes(0);
 
-    var isSmartPhone = function() {
-      const ua = navigator.userAgent || navigator.vendor || window.opera;
-
-      // Check common smartphone indicators in the user agent string
-      const isMobileUA = /android|iphone|ipod|blackberry|windows phone|opera mini|mobile/i.test(ua);
-
-      // Check if screen width is within typical smartphone range
-      const isSmallScreen = window.innerWidth <= 768;
-
-      // Return true only if both indicators suggest a smartphone
-      return isMobileUA || isSmallScreen;
-    }
-    console.log(isSmartPhone());
   },
   computed: {
     backendDomain() {
@@ -585,7 +572,7 @@ export default {
       } else {
         return false;
       }
-    },
+    }
   },
   watch: {
     '$i18n.locale'(newLocale) {
@@ -601,6 +588,18 @@ export default {
     }
   },
   methods: {
+    isSmartPhone() {
+      const ua = navigator.userAgent || navigator.vendor || window.opera;
+
+      // Check common smartphone indicators in the user agent string
+      const isMobileUA = /android|iphone|ipod|blackberry|windows phone|opera mini|mobile/i.test(ua);
+
+      // Check if screen width is within typical smartphone range
+      const isSmallScreen = window.innerWidth <= 768;
+
+      // Return true only if both indicators suggest a smartphone
+      return isMobileUA || isSmallScreen;
+    },
     isValidSearch(inputName) {
       let salesStartTime = `${this.businessHours.open}:00`; //9:00 AM
       let salesEndTime = `${this.businessHours.close}:00`; //6:00 PM
