@@ -73,6 +73,7 @@
         </label>
         <textarea
             :value="modelValue"
+            :placeholder="placeholder"
             @input="handleInput"
         ></textarea>
     </div>

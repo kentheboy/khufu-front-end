@@ -100,7 +100,10 @@
     "Confirm reservation": "予約確認へ",
     "Modify": "修正",
     "reserve": "予約する",
-    "67 Nagado, Toyomigusuku City, Okinawa 901-0203, Japan": "〒901-2301 沖縄県豊見城市長堂67"
+    "67 Nagado, Toyomigusuku City, Okinawa 901-0203, Japan": "〒901-2301 沖縄県豊見城市長堂67",
+    "arrival fright number": "到着便番号",
+    "other": "その他",
+    "baby seat x 1, special requests: hotel pickup": "ベビーシート x1, ジュニアシート x1, ホテル送迎希望(〇〇ホテル)"
   },
   "guide": {
     "GUIDE": "ご利用ガイド",

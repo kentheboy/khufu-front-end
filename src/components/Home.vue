@@ -66,99 +66,7 @@
                   <Input type="tel" :label="$t('home.Phone number')" name="phonenumber" placeholder="08000000000" required v-model="scheduleInfo.customerPhoneNumber"></Input>
                 </div>
                 <div class="section__form--content-input-area">
-                  <Input type="number" :label="$t('home.Amt of passanger')" name="passenger" placeholder="1" required v-model="scheduleInfo.passenger"></Input>
-                </div>
-                <div class="section__form--content-input-area">
-                  <Input type="number" :label="$t('home.License number')" name="license-number" placeholder="1234567890" v-model="scheduleInfo.licenseNumber"></Input>
-                </div>
-                <div class="section__form--content-input-area">
-                  <Input type="date" :label="$t('home.Date of birth')" name="dob" v-model="scheduleInfo.dob"></Input>
-                </div>
-                <div class="section__form--content-input-area">
-                  <Input type="radio" :label="$t('home.Airport Pickup')" name="airport-pickup" v-model="scheduleInfo.airportPickup" :options="[
-                    { name: 'airport-pickup needed', label: $t('home.needed'), value: true },
-                    { name: 'airport-pickup not needed', label: $t('home.not needed'), value: false },
-                  ]"></Input>
-                  <Input v-if="scheduleInfo.airportPickup" type="time" :label="$t('home.Airport Pickup time')" name="airport-pickup-time" v-model="scheduleInfo.airportPickupTime"></Input>
-                  <span v-if="scheduleInfo.airportPickup" class="input-description">{{ $t('home.Airport pick-up hours notation') }}</span>
-                  <Input type="text" :label="$t('home.Arrival flight number')" name="arrival-flight-number" v-model="scheduleInfo.arrivalFlightNumber"></Input>
-                </div>
-                <div class="section__form--content-input-area">
-                  <Input type="radio" :label="$t('home.Airport Dropoff')" name="airport-dropoff" v-model="scheduleInfo.airportDropoff" :options="[
-                    { name: 'airport-dropoff needed', label: $t('home.needed'), value: true },
-                    { name: 'airport-dropoff not needed', label: $t('home.not needed'), value: false },
-                  ]"></Input>
-                  <Input v-if="scheduleInfo.airportDropoff" type="time" :label="$t('home.Airport Dropoff time')" name="airport-dropoff-time" v-model="scheduleInfo.airportDropoffTime"></Input>
-                  <span v-if="scheduleInfo.airportDropoff" class="input-description">{{ $t('home.Airport pick-up hours notation') }}</span>
-                  <Input type="text" :label="$t('home.Departure flight number')" name="departure-flight-number" v-model="scheduleInfo.departureFlightNumber"></Input>
-                </div>
-                <div class="section__form--content-input-area">
-                  <Input type="selectbox" :label="$t('home.Lending option')" name="return-option" :options="[
-                    { name: 'none', label: $t('home.none'), value: 0 },
-                    {
-                      name: 'akamineStaDelivery',
-                      label: $t('home.Rental at Akamine Sta'),
-                      value: 1,
-                    },
-                    {
-                      name: 'nahaHotelDelivery',
-                      label: $t('home.Rental at Hotel(Hotels in Naha City)'),
-                      value: 2,
-                    },
-                  ]" v-model="scheduleInfo.deliveryOption"></Input>
-                  <span class="input-description">{{ $t('home.Additional fee ¥2,200') }}</span>
-                </div>
-                <div class="section__form--content-input-area">
-                  <Input type="selectbox" :label="$t('home.Return option')" name="return-option" :options="[
-                    { name: 'none', label: $t('home.none'), value: 0 },
-                    {
-                      name: 'akamineStaReturn',
-                      label: $t('home.Return at Akamine Sta'),
-                      value: 1,
-                    },
-                    {
-                      name: 'nahaHotelReturn',
-                      label: $t('home.Return at Hotel(Hotels in Naha City)'),
-                      value: 2,
-                    },
-                  ]" v-model="scheduleInfo.returnOption"></Input>
-                  <span class="input-description">{{ $t('home.Additional fee ¥2,200') }}</span>
-                </div>
-                <div class="section__form--content-input-area">
-                  <Input type="selectbox" :label="$t('home.Return without refueling option')" name="return-without-refueling" :options="[
-                    { name: 'return-with-refueled', label: $t('home.Return with refueled'), value: 0 },
-                    {
-                      name: 'return-without-refueled',
-                      label: $t('home.Return without refueled'),
-                      value: 1,
-                    },
-                  ]" v-model="scheduleInfo.returnWithoutRefueling"></Input>
-                  <span class="input-description">{{ $t('home.Return without refueling option cost extra ￥8,800') }}</span>
-                </div>
-                <div class="section__form--content-input-area">
-                  <Input type="selectbox" :label="$t('home.Number of baby seats (0~2 year old and under)')" name="use-of-baby-sheet" classes="display-block" :options="[
-                    { name: 'useOfBabySheet', label: $t('home.none'), value: 0 },
-                    { name: 'useOfBabySheet', label: '1', value: 1 },
-                    { name: 'useOfBabySheet', label: '2', value: 2 },
-                    { name: 'useOfBabySheet', label: '3', value: 3 },
-                  ]" v-model="scheduleInfo.useOfBabySheet"></Input>
-                </div>
-                <div class="section__form--content-input-area">
-                  <Input type="selectbox" :label="$t('home.Number of child seats (0~5 year old and under)')" name="use-of-child-sheet" classes="display-block" :options="[
-                    { name: 'useOfChildSheet', label: $t('home.none'), value: 0 },
-                    { name: 'useOfChildSheet', label: '1', value: 1 },
-                    { name: 'useOfChildSheet', label: '2', value: 2 },
-                    { name: 'useOfChildSheet', label: '3', value: 3 },
-                  ]" v-model="scheduleInfo.useOfChildSheet"></Input>
-                </div>
-                <div class="section__form--content-input-area">
-                  <Input type="selectbox" :label="$t('home.Number of Junior seats (5~10 year old and under)')" name="use-of-junior-sheet" classes="display-block" :options="[
-                    { name: 'useOfJuniorSheet', label: $t('home.none'), value: 0 },
-                    { name: 'useOfJuniorSheet', label: '1', value: 1 },
-                    { name: 'useOfJuniorSheet', label: '2', value: 2 },
-                    { name: 'useOfBabySheet', label: '3', value: 3 },
-                  ]" v-model="scheduleInfo.useOfJuniorSheet"></Input>
-                  <span class="input-description">{{ $t('home.Additional fee per seat ¥1,100 (flat rate)') }}</span>
+                  <Input type="number" :label="$t('home.arrival fright number')" name="fright-number" placeholder="CLS5050" v-model="scheduleInfo.frightNumber"></Input>
                 </div>
                 <div class="section__form--content-input-area">
                   <Input type="text" :label="$t('home.Coupon Codes')" name="name" v-model="scheduleInfo.couponCode"></Input>
@@ -167,7 +75,9 @@
                     {{ $t('home.Please double check the code again when entering') }}
                   </span>
                 </div>
-
+                <div class="section__form--content-input-area">
+                  <Input type="textarea" :label="$t('home.other')" name="other" :placeholder="$t('home.baby seat x 1, special requests: hotel pickup')" v-model="scheduleInfo.other"></Input>
+                </div>
               </div>
             </section>
             <Information v-if="reservationFormStatus === 'confirm'" :isExample="false" :reservationInfo="confirmationInfo"></Information>
