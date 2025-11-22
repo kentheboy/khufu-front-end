@@ -33,7 +33,7 @@ jobs:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
         with:
           channel-id: ${{ secrets.SLACK_CHANNEL_ID }}
-          slack-message: "${{ format('Repository pushed to {0} by {1}', Commit Message:* ${{ github.event.head_commit.message }}\n*Environment:* <http://class-rental-car-dev.s3-website-ap-northeast-1.amazonaws.com/|ステージング環境>\ng<${{ github.event.repository.html_url }}|View Repository>) }}"
+          slack-message: "${{ format('Repository pushed to {0} by {1}', Commit Message:* github.event.head_commit.message }}) }}"
         if: success()
 
   Production-Deploy:
@@ -63,5 +63,5 @@ jobs:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
         with:
           channel-id: ${{ secrets.SLACK_CHANNEL_ID }}
-          slack-message: "${{ format('Production release: Repository pushed to {0} by {1}', github.event.head_commit.message \n*Environment:* <http://class-rental-car.com/|本番環境>) }}"
+          slack-message: "${{ format('Production release: Repository pushed to {0} by {1}', github.event.head_commit.message) }}"
         if: success()
