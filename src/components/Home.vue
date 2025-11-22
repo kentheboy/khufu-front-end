@@ -66,7 +66,7 @@
                   <Input type="tel" :label="$t('home.Phone number')" name="phonenumber" placeholder="08000000000" required v-model="scheduleInfo.customerPhoneNumber"></Input>
                 </div>
                 <div class="section__form--content-input-area">
-                  <Input type="number" :label="$t('home.arrival fright number')" name="fright-number" placeholder="CLS5050" v-model="scheduleInfo.frightNumber"></Input>
+                  <Input type="text" :label="$t('home.arrival flight number')" name="flight-number" placeholder="CLS5050" v-model="scheduleInfo.flightNumber"></Input>
                 </div>
                 <div class="section__form--content-input-area">
                   <Input type="text" :label="$t('home.Coupon Codes')" name="name" v-model="scheduleInfo.couponCode"></Input>
@@ -342,21 +342,8 @@ export default {
         customerName: "",
         customerEmail: "",
         customerPhoneNumber: "",
-        licenseNumber: "",
-        dob: "",
-        airportPickup: false,
-        airportPickupTime: "",
-        arrivalFlightNumber: "",
-        airportDropoff: false,
-        airportDropoffTime: "",
-        departureFlightNumber: "",
-        useOfBabySheet: 0,
-        useOfChildSheet: 0,
-        useOfJuniorSheet: 0,
-        deliveryOption: 0,
-        returnWithoutRefueling: 0,
-        returnOption: 0,
-        passenger: 1,
+        flightNumber: "",
+        other: "",
         couponCode: null
       },
       totalFeeHolder: null,
@@ -429,55 +416,15 @@ export default {
     },
     isValidScheduleInfo() {
       if (this.scheduleInfo.couponCode) {
-        if (!Object.prototype.hasOwnProperty.call(this.availableCouponCodes, this.scheduleInfo.couponCode)) {
-          return false;
-        }
+        return Object.prototype.hasOwnProperty.call(this.availableCouponCodes, this.scheduleInfo.couponCode);
       }
       const emailRegex = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
       const phoneRegex = /^[+-]?[0-9]{7,13}$/;
       if (
         this.scheduleInfo.customerName.length > 0 &&
         emailRegex.test(this.scheduleInfo.customerEmail) &&
-        phoneRegex.test(this.scheduleInfo.customerPhoneNumber) &&
-        this.scheduleInfo.passenger
+        phoneRegex.test(this.scheduleInfo.customerPhoneNumber)
       ) {
-        if (this.scheduleInfo.airportPickup) {
-          var pickupTime = new Date(
-            `${this.search.departDate.value.slice(0, 10)} ${this.scheduleInfo.airportPickupTime
-            }`
-          );
-          console.log(pickupTime);
-          var minPickupTime = new Date(
-            `${this.search.departDate.value.slice(0, 10)} ${parseInt(this.businessHours.open) + 1
-            }:00`
-          );
-          console.log(minPickupTime);
-          var maxPickupTime = new Date(
-            `${this.search.departDate.value.slice(0, 10)} ${parseInt(this.businessHours.close) - 1
-            }:00`
-          );
-          if (pickupTime <= minPickupTime || pickupTime >= maxPickupTime) {
-            return false;
-          }
-        }
-        if (this.scheduleInfo.airportDropoff) {
-          var dropoffTime = new Date(
-            `${this.search.returnDate.value.slice(0, 10)} ${this.scheduleInfo.airportDropoffTime
-            }`
-          );
-          // console.log(dropoffTime);
-          var minDropoffTime = new Date(
-            `${this.search.returnDate.value.slice(0, 10)} ${parseInt(this.businessHours.open) + 1
-            }:00`
-          );
-          var maxDropoffTime = new Date(
-            `${this.search.returnDate.value.slice(0, 10)} ${parseInt(this.businessHours.close) - 1
-            }:00`
-          );
-          if (dropoffTime <= minDropoffTime || dropoffTime >= maxDropoffTime) {
-            return false;
-          }
-        }
         return true;
       } else {
         return false;
@@ -588,19 +535,8 @@ export default {
       }
 
       const customfields = JSON.stringify({
-        passengerNumber: this.scheduleInfo.passenger,
-        licenseNumber: this.scheduleInfo.licenseNumber,
-        dob: this.scheduleInfo.dob,
-        airportPickup: this.scheduleInfo.airportPickupTime,
-        arrivalFlightNumber: this.scheduleInfo.arrivalFlightNumber,
-        airportDropoff: this.scheduleInfo.airportDropoffTime,
-        departureFlightNumber: this.scheduleInfo.departureFlightNumber,
-        deliveryOption: this.scheduleInfo.deliveryOption,
-        returnOption: this.scheduleInfo.returnOption,
-        useOfBabySheet: this.scheduleInfo.useOfBabySheet,
-        useOfChildSheet: this.scheduleInfo.useOfChildSheet,
-        useOfJuniorSheet: this.scheduleInfo.useOfJuniorSheet,
-        returnWithoutRefueling: this.scheduleInfo.returnWithoutRefueling,
+        licenseNumber: this.scheduleInfo.flightNumber,
+        otherRequests: this.scheduleInfo.other,
         memos: memos
       });
       const data = {
@@ -648,29 +584,6 @@ export default {
 
       // add basic totalFee inside temporal variable holder
       this.totalFeeHolder = this.scheduleInfo.totalFee;
-      // if any delivery/return area is requested, charge extra 3000yen
-      if (this.scheduleInfo.deliveryOption) {
-        this.totalFeeHolder += this.deriveryReturnFee;
-      }
-      if (this.scheduleInfo.returnOption) {
-        this.totalFeeHolder += this.deriveryReturnFee;
-      }
-      // if any childSheet requested, charge extra fee depending on the sheet type
-      if (this.scheduleInfo.useOfBabySheet) {
-        this.totalFeeHolder +=
-          this.scheduleInfo.useOfBabySheet * this.generalChildSheetFee;
-      }
-      if (this.scheduleInfo.useOfChildSheet) {
-        this.totalFeeHolder +=
-          this.scheduleInfo.useOfChildSheet * this.generalChildSheetFee;
-      }
-      if (this.scheduleInfo.useOfJuniorSheet) {
-        this.totalFeeHolder +=
-          this.scheduleInfo.useOfJuniorSheet * this.generalChildSheetFee;
-      }
-      if (this.scheduleInfo.returnWithoutRefueling) {
-        this.totalFeeHolder += this.returnWithoutRefuelingFee;
-      }
 
       let discount = null;
       if (this.scheduleInfo.couponCode) {
@@ -693,29 +606,14 @@ export default {
         customerName: this.scheduleInfo.customerName,
         customerEmail: this.scheduleInfo.customerEmail,
         customerPhoneNumber: this.scheduleInfo.customerPhoneNumber,
-        licenseNumber: this.scheduleInfo.licenseNumber,
-        dob: this.scheduleInfo.dob,
-        airportPickup: this.scheduleInfo.airportPickupTime,
-        arrivalFlightNumber: this.scheduleInfo.arrivalFlightNumber,
-        airportDropoff: this.scheduleInfo.airportDropoffTime,
-        departureFlightNumber: this.scheduleInfo.departureFlightNumber,
+        flightNumber: this.scheduleInfo.flightNumber,
+        other: this.scheduleInfo.other,
         carInfos: {
           main_image: selectedCarInfo.main_image,
           images: selectedCarInfo.images,
           maxmumPassenger: selectedCarInfo.passenger,
           isSmokingAllowed: selectedCarInfo.isSmokingAllowed,
           basicFee: selectedCarInfo.price,
-        },
-        additionalService: {
-          deliveryOption: this.scheduleInfo.deliveryOption,
-          returnOption: this.scheduleInfo.returnOption,
-          useOfBabySheet:
-            this.scheduleInfo.useOfBabySheet * this.generalChildSheetFee,
-          useOfChildSheet:
-            this.scheduleInfo.useOfChildSheet * this.generalChildSheetFee,
-          useOfJuniorSheet:
-            this.scheduleInfo.useOfJuniorSheet * this.generalChildSheetFee,
-          returnWithoutRefueling: this.scheduleInfo.returnWithoutRefueling,
         },
         discount: discount
       };
@@ -743,16 +641,8 @@ export default {
         customerName: "",
         customerEmail: "",
         customerPhoneNumber: "",
-        licenseNumber: "",
-        dob: "",
-        airportPickup: false,
-        airportDropoff: false,
-        useOfBabySheet: 0,
-        useOfChildSheet: 0,
-        useOfJuniorSheet: 0,
-        deliveryOption: 0,
-        returnWithoutRefueling: 0,
-        returnOption: 0,
+        flightNumber: "",
+        other: "",
         couponCode: null
       };
       this.totalFeeHolder = null;
