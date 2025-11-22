@@ -535,7 +535,7 @@ export default {
       }
 
       const customfields = JSON.stringify({
-        licenseNumber: this.scheduleInfo.flightNumber,
+        flightNumber: this.scheduleInfo.flightNumber,
         otherRequests: this.scheduleInfo.other,
         memos: memos
       });
