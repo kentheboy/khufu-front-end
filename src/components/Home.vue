@@ -83,12 +83,11 @@
             <Information v-if="reservationFormStatus === 'confirm'" :isExample="false" :reservationInfo="confirmationInfo"></Information>
             <div v-if="reservationFormStatus === 'done'" class="reservation-form__completed">
               <img class="reservation-form__completed-img" src="/images/icons/mail.png" />
-              <p>
+              <p class="preserve completed-text">
                 {{ $t('home.Reservation completed') }}<br />
-                {{ $t('home.A representative will contact you at the e-mail address you provided to confirm your application') }}<br />
-                {{ $t('home.Please wait a moment') }}<br />
-                {{ $t('home.(This window will close automatically after 10 seconds)') }}
+                {{ $t('home.We will send a confirmation email to the address you provided within the next business day') }}<br />
               </p>
+              <p class="completed-text-min">{{ $t('home.(This window will close automatically after 10 seconds)') }}</p>
             </div>
             <div class="reservation-form__button">
               <Button class="p-ripple" v-if="reservationFormStatus === 'entry'" :label="$t('home.Confirm reservation')" :disabled="!isValidScheduleInfo" @click="confirmForm"></Button>
@@ -1037,6 +1036,19 @@ section {
 
     &-img {
       width: 5rem;
+    }
+    p {
+      &.preserve {
+        white-space: pre-line;
+      }
+      &.completed-text {
+        font-weight: 500;
+      }
+      &.completed-text-min {
+        font-size: 0.8rem;
+        color: gray;
+        margin-top: 1rem;
+      }
     }
   }
 
