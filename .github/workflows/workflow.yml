@@ -33,33 +33,7 @@ jobs:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
         with:
           channel-id: ${{ secrets.SLACK_CHANNEL_ID }}
-          payload: |
-            {
-              "text": "Repository pushed to ${{ github.event.repository.name }} by ${{ github.event.pusher.name }}",
-              "blocks": [
-                {
-                  "type": "section",
-                  "text": {
-                    "type": "mrkdwn",
-                    "text": "*Repository pushed to:* ${{ github.event.repository.name }}"
-                  }
-                },
-                {
-                  "type": "section",
-                  "text": {
-                    "type": "mrkdwn",
-                    "text": "*Pusher:* ${{ github.event.pusher.name }}\n*Commit Message:* ${{ github.event.head_commit.message }}\n*Environment:* <http://class-rental-car-dev.s3-website-ap-northeast-1.amazonaws.com/|ステージング環境>"
-                  }
-                },
-                {
-                  "type": "section",
-                  "text": {
-                    "type": "mrkdwn",
-                    "text": "<${{ github.event.repository.html_url }}|View Repository>"
-                  }
-                }
-              ]
-            }
+          slack-message: "${{ format('Repository pushed to {0} by {1}', Commit Message:* ${{ github.event.head_commit.message }}\n*Environment:* <http://class-rental-car-dev.s3-website-ap-northeast-1.amazonaws.com/|ステージング環境>\ng<${{ github.event.repository.html_url }}|View Repository>) }}"
         if: success()
 
   Production-Deploy:
@@ -89,31 +63,5 @@ jobs:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
         with:
           channel-id: ${{ secrets.SLACK_CHANNEL_ID }}
-          payload: |
-            {
-              "text": "Repository pushed to ${{ github.event.repository.name }} by ${{ github.event.pusher.name }}",
-              "blocks": [
-                {
-                  "type": "section",
-                  "text": {
-                    "type": "mrkdwn",
-                    "text": "<!channel>*本番リリース* \n*Repository pushed to:* ${{ github.event.repository.name }}"
-                  }
-                },
-                {
-                  "type": "section",
-                  "text": {
-                    "type": "mrkdwn",
-                    "text": "*Pusher:* ${{ github.event.pusher.name }}\n*Commit Message:* ${{ github.event.head_commit.message }}\n*Environment:* <https://class-rental-car.com/|本番環境>"
-                  }
-                },
-                {
-                  "type": "section",
-                  "text": {
-                    "type": "mrkdwn",
-                    "text": "<${{ github.event.repository.html_url }}|View Repository>"
-                  }
-                }
-              ]
-            }
+          slack-message: "${{ format('Production release: Repository pushed to {0} by {1}', github.event.head_commit.message \n*Environment:* <http://class-rental-car.com/|本番環境>) }}"
         if: success()
