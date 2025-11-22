@@ -94,13 +94,15 @@
       "2,000 yen per hour for extensions not exceeding 10 hours; if extensions exceed 10 hours, a daily basic fee will be added": "延長時間不超過 10 小時的，按每小時 2,000 日元收費；延長時間超過 10 小時的，加收每日基本費用。",
       "TOYOTA Alphard": "Toyota Alphard",
       "Reservation completed": "預訂完成。",
-      "A representative will contact you at the e-mail address you provided to confirm your application": "我們的業務代表將透過您輸入的電子郵件地址與您聯繫以進行確認。",
-      "Please wait a moment": "現在請稍候。",
+    "We will send a confirmation email to the address you provided within the next business day": "代表會喺下個工作天內, \n將確認電郵寄到你提供嘅地址。",
       "(This window will close automatically after 10 seconds)": "(此視窗會在 10 秒後自動關閉）。",
       "Confirm reservation": "確認預約",
       "Modify": "修改",
       "reserve": "預訂",
-      "67 Nagado, Toyomigusuku City, Okinawa 901-0203, Japan": "901-0203 日本沖繩豐見城市長門 67 號"
+      "67 Nagado, Toyomigusuku City, Okinawa 901-0203, Japan": "901-0203 日本沖繩豐見城市長門 67 號",
+      "arrival flight number": "抵達航班編號",
+      "other": "其他",
+      "baby seat x 1, special requests: hotel pickup": "兒童安全座椅 x 1,特別要求:酒店接送"
     },
     "guide": {
       "GUIDE": "使用指南",

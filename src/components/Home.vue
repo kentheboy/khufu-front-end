@@ -66,99 +66,7 @@
                   <Input type="tel" :label="$t('home.Phone number')" name="phonenumber" placeholder="08000000000" required v-model="scheduleInfo.customerPhoneNumber"></Input>
                 </div>
                 <div class="section__form--content-input-area">
-                  <Input type="number" :label="$t('home.Amt of passanger')" name="passenger" placeholder="1" required v-model="scheduleInfo.passenger"></Input>
-                </div>
-                <div class="section__form--content-input-area">
-                  <Input type="number" :label="$t('home.License number')" name="license-number" placeholder="1234567890" v-model="scheduleInfo.licenseNumber"></Input>
-                </div>
-                <div class="section__form--content-input-area">
-                  <Input type="date" :label="$t('home.Date of birth')" name="dob" v-model="scheduleInfo.dob"></Input>
-                </div>
-                <div class="section__form--content-input-area">
-                  <Input type="radio" :label="$t('home.Airport Pickup')" name="airport-pickup" v-model="scheduleInfo.airportPickup" :options="[
-                    { name: 'airport-pickup needed', label: $t('home.needed'), value: true },
-                    { name: 'airport-pickup not needed', label: $t('home.not needed'), value: false },
-                  ]"></Input>
-                  <Input v-if="scheduleInfo.airportPickup" type="time" :label="$t('home.Airport Pickup time')" name="airport-pickup-time" v-model="scheduleInfo.airportPickupTime"></Input>
-                  <span v-if="scheduleInfo.airportPickup" class="input-description">{{ $t('home.Airport pick-up hours notation') }}</span>
-                  <Input type="text" :label="$t('home.Arrival flight number')" name="arrival-flight-number" v-model="scheduleInfo.arrivalFlightNumber"></Input>
-                </div>
-                <div class="section__form--content-input-area">
-                  <Input type="radio" :label="$t('home.Airport Dropoff')" name="airport-dropoff" v-model="scheduleInfo.airportDropoff" :options="[
-                    { name: 'airport-dropoff needed', label: $t('home.needed'), value: true },
-                    { name: 'airport-dropoff not needed', label: $t('home.not needed'), value: false },
-                  ]"></Input>
-                  <Input v-if="scheduleInfo.airportDropoff" type="time" :label="$t('home.Airport Dropoff time')" name="airport-dropoff-time" v-model="scheduleInfo.airportDropoffTime"></Input>
-                  <span v-if="scheduleInfo.airportDropoff" class="input-description">{{ $t('home.Airport pick-up hours notation') }}</span>
-                  <Input type="text" :label="$t('home.Departure flight number')" name="departure-flight-number" v-model="scheduleInfo.departureFlightNumber"></Input>
-                </div>
-                <div class="section__form--content-input-area">
-                  <Input type="selectbox" :label="$t('home.Lending option')" name="return-option" :options="[
-                    { name: 'none', label: $t('home.none'), value: 0 },
-                    {
-                      name: 'akamineStaDelivery',
-                      label: $t('home.Rental at Akamine Sta'),
-                      value: 1,
-                    },
-                    {
-                      name: 'nahaHotelDelivery',
-                      label: $t('home.Rental at Hotel(Hotels in Naha City)'),
-                      value: 2,
-                    },
-                  ]" v-model="scheduleInfo.deliveryOption"></Input>
-                  <span class="input-description">{{ $t('home.Additional fee ¥2,200') }}</span>
-                </div>
-                <div class="section__form--content-input-area">
-                  <Input type="selectbox" :label="$t('home.Return option')" name="return-option" :options="[
-                    { name: 'none', label: $t('home.none'), value: 0 },
-                    {
-                      name: 'akamineStaReturn',
-                      label: $t('home.Return at Akamine Sta'),
-                      value: 1,
-                    },
-                    {
-                      name: 'nahaHotelReturn',
-                      label: $t('home.Return at Hotel(Hotels in Naha City)'),
-                      value: 2,
-                    },
-                  ]" v-model="scheduleInfo.returnOption"></Input>
-                  <span class="input-description">{{ $t('home.Additional fee ¥2,200') }}</span>
-                </div>
-                <div class="section__form--content-input-area">
-                  <Input type="selectbox" :label="$t('home.Return without refueling option')" name="return-without-refueling" :options="[
-                    { name: 'return-with-refueled', label: $t('home.Return with refueled'), value: 0 },
-                    {
-                      name: 'return-without-refueled',
-                      label: $t('home.Return without refueled'),
-                      value: 1,
-                    },
-                  ]" v-model="scheduleInfo.returnWithoutRefueling"></Input>
-                  <span class="input-description">{{ $t('home.Return without refueling option cost extra ￥8,800') }}</span>
-                </div>
-                <div class="section__form--content-input-area">
-                  <Input type="selectbox" :label="$t('home.Number of baby seats (0~2 year old and under)')" name="use-of-baby-sheet" classes="display-block" :options="[
-                    { name: 'useOfBabySheet', label: $t('home.none'), value: 0 },
-                    { name: 'useOfBabySheet', label: '1', value: 1 },
-                    { name: 'useOfBabySheet', label: '2', value: 2 },
-                    { name: 'useOfBabySheet', label: '3', value: 3 },
-                  ]" v-model="scheduleInfo.useOfBabySheet"></Input>
-                </div>
-                <div class="section__form--content-input-area">
-                  <Input type="selectbox" :label="$t('home.Number of child seats (0~5 year old and under)')" name="use-of-child-sheet" classes="display-block" :options="[
-                    { name: 'useOfChildSheet', label: $t('home.none'), value: 0 },
-                    { name: 'useOfChildSheet', label: '1', value: 1 },
-                    { name: 'useOfChildSheet', label: '2', value: 2 },
-                    { name: 'useOfChildSheet', label: '3', value: 3 },
-                  ]" v-model="scheduleInfo.useOfChildSheet"></Input>
-                </div>
-                <div class="section__form--content-input-area">
-                  <Input type="selectbox" :label="$t('home.Number of Junior seats (5~10 year old and under)')" name="use-of-junior-sheet" classes="display-block" :options="[
-                    { name: 'useOfJuniorSheet', label: $t('home.none'), value: 0 },
-                    { name: 'useOfJuniorSheet', label: '1', value: 1 },
-                    { name: 'useOfJuniorSheet', label: '2', value: 2 },
-                    { name: 'useOfBabySheet', label: '3', value: 3 },
-                  ]" v-model="scheduleInfo.useOfJuniorSheet"></Input>
-                  <span class="input-description">{{ $t('home.Additional fee per seat ¥1,100 (flat rate)') }}</span>
+                  <Input type="text" :label="$t('home.arrival flight number')" name="flight-number" placeholder="CLS5050" v-model="scheduleInfo.flightNumber"></Input>
                 </div>
                 <div class="section__form--content-input-area">
                   <Input type="text" :label="$t('home.Coupon Codes')" name="name" v-model="scheduleInfo.couponCode"></Input>
@@ -167,18 +75,19 @@
                     {{ $t('home.Please double check the code again when entering') }}
                   </span>
                 </div>
-
+                <div class="section__form--content-input-area">
+                  <Input type="textarea" :label="$t('home.other')" name="other" :placeholder="$t('home.baby seat x 1, special requests: hotel pickup')" v-model="scheduleInfo.other"></Input>
+                </div>
               </div>
             </section>
             <Information v-if="reservationFormStatus === 'confirm'" :isExample="false" :reservationInfo="confirmationInfo"></Information>
             <div v-if="reservationFormStatus === 'done'" class="reservation-form__completed">
               <img class="reservation-form__completed-img" src="/images/icons/mail.png" />
-              <p>
+              <p class="preserve completed-text">
                 {{ $t('home.Reservation completed') }}<br />
-                {{ $t('home.A representative will contact you at the e-mail address you provided to confirm your application') }}<br />
-                {{ $t('home.Please wait a moment') }}<br />
-                {{ $t('home.(This window will close automatically after 10 seconds)') }}
+                {{ $t('home.We will send a confirmation email to the address you provided within the next business day') }}<br />
               </p>
+              <p class="completed-text-min">{{ $t('home.(This window will close automatically after 10 seconds)') }}</p>
             </div>
             <div class="reservation-form__button">
               <Button class="p-ripple" v-if="reservationFormStatus === 'entry'" :label="$t('home.Confirm reservation')" :disabled="!isValidScheduleInfo" @click="confirmForm"></Button>
@@ -432,21 +341,8 @@ export default {
         customerName: "",
         customerEmail: "",
         customerPhoneNumber: "",
-        licenseNumber: "",
-        dob: "",
-        airportPickup: false,
-        airportPickupTime: "",
-        arrivalFlightNumber: "",
-        airportDropoff: false,
-        airportDropoffTime: "",
-        departureFlightNumber: "",
-        useOfBabySheet: 0,
-        useOfChildSheet: 0,
-        useOfJuniorSheet: 0,
-        deliveryOption: 0,
-        returnWithoutRefueling: 0,
-        returnOption: 0,
-        passenger: 1,
+        flightNumber: "",
+        other: "",
         couponCode: null
       },
       totalFeeHolder: null,
@@ -519,55 +415,15 @@ export default {
     },
     isValidScheduleInfo() {
       if (this.scheduleInfo.couponCode) {
-        if (!Object.prototype.hasOwnProperty.call(this.availableCouponCodes, this.scheduleInfo.couponCode)) {
-          return false;
-        }
+        return Object.prototype.hasOwnProperty.call(this.availableCouponCodes, this.scheduleInfo.couponCode);
       }
       const emailRegex = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
       const phoneRegex = /^[+-]?[0-9]{7,13}$/;
       if (
         this.scheduleInfo.customerName.length > 0 &&
         emailRegex.test(this.scheduleInfo.customerEmail) &&
-        phoneRegex.test(this.scheduleInfo.customerPhoneNumber) &&
-        this.scheduleInfo.passenger
+        phoneRegex.test(this.scheduleInfo.customerPhoneNumber)
       ) {
-        if (this.scheduleInfo.airportPickup) {
-          var pickupTime = new Date(
-            `${this.search.departDate.value.slice(0, 10)} ${this.scheduleInfo.airportPickupTime
-            }`
-          );
-          console.log(pickupTime);
-          var minPickupTime = new Date(
-            `${this.search.departDate.value.slice(0, 10)} ${parseInt(this.businessHours.open) + 1
-            }:00`
-          );
-          console.log(minPickupTime);
-          var maxPickupTime = new Date(
-            `${this.search.departDate.value.slice(0, 10)} ${parseInt(this.businessHours.close) - 1
-            }:00`
-          );
-          if (pickupTime <= minPickupTime || pickupTime >= maxPickupTime) {
-            return false;
-          }
-        }
-        if (this.scheduleInfo.airportDropoff) {
-          var dropoffTime = new Date(
-            `${this.search.returnDate.value.slice(0, 10)} ${this.scheduleInfo.airportDropoffTime
-            }`
-          );
-          // console.log(dropoffTime);
-          var minDropoffTime = new Date(
-            `${this.search.returnDate.value.slice(0, 10)} ${parseInt(this.businessHours.open) + 1
-            }:00`
-          );
-          var maxDropoffTime = new Date(
-            `${this.search.returnDate.value.slice(0, 10)} ${parseInt(this.businessHours.close) - 1
-            }:00`
-          );
-          if (dropoffTime <= minDropoffTime || dropoffTime >= maxDropoffTime) {
-            return false;
-          }
-        }
         return true;
       } else {
         return false;
@@ -678,19 +534,8 @@ export default {
       }
 
       const customfields = JSON.stringify({
-        passengerNumber: this.scheduleInfo.passenger,
-        licenseNumber: this.scheduleInfo.licenseNumber,
-        dob: this.scheduleInfo.dob,
-        airportPickup: this.scheduleInfo.airportPickupTime,
-        arrivalFlightNumber: this.scheduleInfo.arrivalFlightNumber,
-        airportDropoff: this.scheduleInfo.airportDropoffTime,
-        departureFlightNumber: this.scheduleInfo.departureFlightNumber,
-        deliveryOption: this.scheduleInfo.deliveryOption,
-        returnOption: this.scheduleInfo.returnOption,
-        useOfBabySheet: this.scheduleInfo.useOfBabySheet,
-        useOfChildSheet: this.scheduleInfo.useOfChildSheet,
-        useOfJuniorSheet: this.scheduleInfo.useOfJuniorSheet,
-        returnWithoutRefueling: this.scheduleInfo.returnWithoutRefueling,
+        flightNumber: this.scheduleInfo.flightNumber,
+        otherRequests: this.scheduleInfo.other,
         memos: memos
       });
       const data = {
@@ -738,29 +583,6 @@ export default {
 
       // add basic totalFee inside temporal variable holder
       this.totalFeeHolder = this.scheduleInfo.totalFee;
-      // if any delivery/return area is requested, charge extra 3000yen
-      if (this.scheduleInfo.deliveryOption) {
-        this.totalFeeHolder += this.deriveryReturnFee;
-      }
-      if (this.scheduleInfo.returnOption) {
-        this.totalFeeHolder += this.deriveryReturnFee;
-      }
-      // if any childSheet requested, charge extra fee depending on the sheet type
-      if (this.scheduleInfo.useOfBabySheet) {
-        this.totalFeeHolder +=
-          this.scheduleInfo.useOfBabySheet * this.generalChildSheetFee;
-      }
-      if (this.scheduleInfo.useOfChildSheet) {
-        this.totalFeeHolder +=
-          this.scheduleInfo.useOfChildSheet * this.generalChildSheetFee;
-      }
-      if (this.scheduleInfo.useOfJuniorSheet) {
-        this.totalFeeHolder +=
-          this.scheduleInfo.useOfJuniorSheet * this.generalChildSheetFee;
-      }
-      if (this.scheduleInfo.returnWithoutRefueling) {
-        this.totalFeeHolder += this.returnWithoutRefuelingFee;
-      }
 
       let discount = null;
       if (this.scheduleInfo.couponCode) {
@@ -783,29 +605,14 @@ export default {
         customerName: this.scheduleInfo.customerName,
         customerEmail: this.scheduleInfo.customerEmail,
         customerPhoneNumber: this.scheduleInfo.customerPhoneNumber,
-        licenseNumber: this.scheduleInfo.licenseNumber,
-        dob: this.scheduleInfo.dob,
-        airportPickup: this.scheduleInfo.airportPickupTime,
-        arrivalFlightNumber: this.scheduleInfo.arrivalFlightNumber,
-        airportDropoff: this.scheduleInfo.airportDropoffTime,
-        departureFlightNumber: this.scheduleInfo.departureFlightNumber,
+        flightNumber: this.scheduleInfo.flightNumber,
+        other: this.scheduleInfo.other,
         carInfos: {
           main_image: selectedCarInfo.main_image,
           images: selectedCarInfo.images,
           maxmumPassenger: selectedCarInfo.passenger,
           isSmokingAllowed: selectedCarInfo.isSmokingAllowed,
           basicFee: selectedCarInfo.price,
-        },
-        additionalService: {
-          deliveryOption: this.scheduleInfo.deliveryOption,
-          returnOption: this.scheduleInfo.returnOption,
-          useOfBabySheet:
-            this.scheduleInfo.useOfBabySheet * this.generalChildSheetFee,
-          useOfChildSheet:
-            this.scheduleInfo.useOfChildSheet * this.generalChildSheetFee,
-          useOfJuniorSheet:
-            this.scheduleInfo.useOfJuniorSheet * this.generalChildSheetFee,
-          returnWithoutRefueling: this.scheduleInfo.returnWithoutRefueling,
         },
         discount: discount
       };
@@ -833,16 +640,8 @@ export default {
         customerName: "",
         customerEmail: "",
         customerPhoneNumber: "",
-        licenseNumber: "",
-        dob: "",
-        airportPickup: false,
-        airportDropoff: false,
-        useOfBabySheet: 0,
-        useOfChildSheet: 0,
-        useOfJuniorSheet: 0,
-        deliveryOption: 0,
-        returnWithoutRefueling: 0,
-        returnOption: 0,
+        flightNumber: "",
+        other: "",
         couponCode: null
       };
       this.totalFeeHolder = null;
@@ -1237,6 +1036,19 @@ section {
 
     &-img {
       width: 5rem;
+    }
+    p {
+      &.preserve {
+        white-space: pre-line;
+      }
+      &.completed-text {
+        font-weight: 500;
+      }
+      &.completed-text-min {
+        font-size: 0.8rem;
+        color: gray;
+        margin-top: 1rem;
+      }
     }
   }
 
