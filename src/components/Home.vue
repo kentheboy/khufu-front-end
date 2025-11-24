@@ -66,7 +66,7 @@
                   <Input type="tel" :label="$t('home.Phone number')" name="phonenumber" placeholder="08000000000" required v-model="scheduleInfo.customerPhoneNumber"></Input>
                 </div>
                 <div class="section__form--content-input-area">
-                  <Input type="text" :label="$t('home.arrival flight number')" name="flight-number" placeholder="CLS5050" v-model="scheduleInfo.flightNumber"></Input>
+                  <Input type="text" :label="$t('home.arrival flight number')" name="flight-number" placeholder="JAL909" v-model="scheduleInfo.flightNumber"></Input>
                 </div>
                 <div class="section__form--content-input-area">
                   <Input type="text" :label="$t('home.Coupon Codes')" name="name" v-model="scheduleInfo.couponCode"></Input>
@@ -74,6 +74,12 @@
                     {{ $t('home.If the coupon is not correct, you will not proceed to the confirmation screen') }}<br>
                     {{ $t('home.Please double check the code again when entering') }}
                   </span>
+                </div>
+                <div class="section__form--content-input-area">
+                  <Input type="selectbox-min" :label="$t('home.baby seat')" name="baby-seats" v-model="scheduleInfo.babySeats" :options="[0,1,2,3]"></Input>
+                  <Input type="selectbox-min" :label="$t('home.child seat')" name="baby-seats" v-model="scheduleInfo.childSeats" :options="[0,1,2,3]"></Input>
+                  <Input type="selectbox-min" :label="$t('home.junior seat')" name="baby-seats" v-model="scheduleInfo.juniorSeats" :options="[0,1,2,3]"></Input>
+                  <Input type="selectbox-min" :label="$t('home.baby cart')" name="baby-seats" v-model="scheduleInfo.babyCart" :options="[0,1,2]"></Input>
                 </div>
                 <div class="section__form--content-input-area">
                   <Input type="textarea" :label="$t('home.other')" name="other" :placeholder="$t('home.baby seat x 1, special requests: hotel pickup')" v-model="scheduleInfo.other"></Input>
@@ -343,7 +349,11 @@ export default {
         customerPhoneNumber: "",
         flightNumber: "",
         other: "",
-        couponCode: null
+        couponCode: null,
+        babySeats: 0,
+        childSeats: 0,
+        juniorSeats: 0,
+        babyCart: 0
       },
       totalFeeHolder: null,
       openReservationForm: false,

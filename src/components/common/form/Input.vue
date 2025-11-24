@@ -66,6 +66,15 @@
             <option v-for="option in options" :key="option" :value=option.value>{{ option.label }}</option>
         </select>
     </div>
+    <div v-else-if="type==='selectbox-min'" :class="`input-area ${classes} selectbox-min` ">
+        <label v-if="label">
+            {{ label }}
+            <span v-if="required" class="required-notice">※{{$t('home.required')}}</span>
+        </label>
+        <select v-model="selectedValue">
+            <option v-for="option in options" :key="option" :value=option>{{ option }}</option>
+        </select>
+    </div>
     <div v-else-if="type==='textarea'" :class="`input-area ${classes}`">
         <label v-if="label">
             {{ label }}
@@ -266,6 +275,15 @@ export default {
         height: 168px;
         border: none;
         padding: 1.25rem;
+    }
+
+    &.selectbox-min {
+        display: flex;
+        label {
+            width: 100%;
+            margin: 0;
+            padding: 8px 0;
+        }
     }
 }
 .airport-timpicker {
