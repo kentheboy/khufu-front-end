@@ -370,6 +370,7 @@ export default {
       },
       deriveryReturnFee: 2200,
       generalChildSheetFee: 1100,
+      babyCartFee: 3300,
       returnWithoutRefuelingFee: 8800,
       openCarDetail: false,
       carDetailIndex: 0,
@@ -594,6 +595,31 @@ export default {
       // add basic totalFee inside temporal variable holder
       this.totalFeeHolder = this.scheduleInfo.totalFee;
 
+      let additionalFees = [];
+      // if any sheat options requested, charge extra fee depending on the sheet type
+      if (this.scheduleInfo.babySeats) {
+        this.totalFeeHolder +=
+          this.scheduleInfo.babySeats * this.generalChildSheetFee;
+        additionalFees.push({title: 'baby seat', quantity: this.scheduleInfo.babySeats, unitFee: this.generalChildSheetFee});
+      }
+      if (this.scheduleInfo.childSeats) {
+        this.totalFeeHolder +=
+          this.scheduleInfo.childSeats * this.generalChildSheetFee;
+        additionalFees.push({title: 'child seat', quantity: this.scheduleInfo.childSeats, unitFee: this.generalChildSheetFee});
+      }
+      if (this.scheduleInfo.juniorSeats) {
+        this.totalFeeHolder +=
+          this.scheduleInfo.juniorSeats * this.generalChildSheetFee;
+        additionalFees.push({title: 'junior seat', quantity: this.scheduleInfo.juniorSeats, unitFee: this.generalChildSheetFee});
+      }
+      if (this.scheduleInfo.babyCart) {
+        this.totalFeeHolder +=
+          this.scheduleInfo.babyCart * this.babyCartFee;
+        additionalFees.push({title: 'baby cart', quantity: this.scheduleInfo.babyCart, unitFee: this.babyCartFee});
+      }
+
+
+
       let discount = null;
       if (this.scheduleInfo.couponCode) {
         // console.log(this.scheduleInfo.couponCode)
@@ -617,6 +643,7 @@ export default {
         customerPhoneNumber: this.scheduleInfo.customerPhoneNumber,
         flightNumber: this.scheduleInfo.flightNumber,
         other: this.scheduleInfo.other,
+        additionalFees: additionalFees,
         carInfos: {
           main_image: selectedCarInfo.main_image,
           images: selectedCarInfo.images,
