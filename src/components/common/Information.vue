@@ -33,6 +33,14 @@
               <dd class="basic-price">
                 ¥{{ addCommas(reservationInfo.carInfos.basicFee) }}
               </dd>
+              <div v-for="option in reservationInfo.additionalFees" :key="option.title" class="additional-price">
+                <dt class="options-price-title">
+                  {{ $t(`home.${option.title}`) }}
+                </dt>
+                <dd class="options-price">
+                  ¥{{ addCommas(option.unitFee) }} x {{ option.quantity }}
+                </dd>
+              </div>
               <dt
                 v-if="
                   reservationInfo.discount
@@ -104,6 +112,7 @@ export default {
         customerPhoneNumber: "080-0000-0000",
         flightNumber: "CLS5050",
         other: "baby seat x 1, special requests: hotel pickup",
+        additionalFees: [],
         carInfos: {
           main_image: "/images/car-images/main4.png",
           images: [
@@ -283,6 +292,19 @@ export default {
             }
             .options-price-help-icon {
               height: 0.9rem;
+            }
+          }
+          .additional-price {
+            display: inline-flex;
+            margin: 0;
+            width: 100%;
+            dt {
+              margin: 0;
+              width: 60%;
+            }
+            dd {
+              width: 40%;
+              padding: initial;
             }
           }
         }

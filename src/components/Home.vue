@@ -66,7 +66,7 @@
                   <Input type="tel" :label="$t('home.Phone number')" name="phonenumber" placeholder="08000000000" required v-model="scheduleInfo.customerPhoneNumber"></Input>
                 </div>
                 <div class="section__form--content-input-area">
-                  <Input type="text" :label="$t('home.arrival flight number')" name="flight-number" placeholder="CLS5050" v-model="scheduleInfo.flightNumber"></Input>
+                  <Input type="text" :label="$t('home.arrival flight number')" name="flight-number" placeholder="JAL909" v-model="scheduleInfo.flightNumber"></Input>
                 </div>
                 <div class="section__form--content-input-area">
                   <Input type="text" :label="$t('home.Coupon Codes')" name="name" v-model="scheduleInfo.couponCode"></Input>
@@ -74,6 +74,12 @@
                     {{ $t('home.If the coupon is not correct, you will not proceed to the confirmation screen') }}<br>
                     {{ $t('home.Please double check the code again when entering') }}
                   </span>
+                </div>
+                <div class="section__form--content-input-area">
+                  <Input type="selectbox-min" :label="$t('home.baby seat')" name="baby-seats" v-model="scheduleInfo.babySeats" :options="[0,1,2,3]"></Input>
+                  <Input type="selectbox-min" :label="$t('home.child seat')" name="baby-seats" v-model="scheduleInfo.childSeats" :options="[0,1,2,3]"></Input>
+                  <Input type="selectbox-min" :label="$t('home.junior seat')" name="baby-seats" v-model="scheduleInfo.juniorSeats" :options="[0,1,2,3]"></Input>
+                  <Input type="selectbox-min" :label="$t('home.baby cart')" name="baby-seats" v-model="scheduleInfo.babyCart" :options="[0,1,2]"></Input>
                 </div>
                 <div class="section__form--content-input-area">
                   <Input type="textarea" :label="$t('home.other')" name="other" :placeholder="$t('home.baby seat x 1, special requests: hotel pickup')" v-model="scheduleInfo.other"></Input>
@@ -343,7 +349,11 @@ export default {
         customerPhoneNumber: "",
         flightNumber: "",
         other: "",
-        couponCode: null
+        couponCode: null,
+        babySeats: 0,
+        childSeats: 0,
+        juniorSeats: 0,
+        babyCart: 0
       },
       totalFeeHolder: null,
       openReservationForm: false,
@@ -360,6 +370,7 @@ export default {
       },
       deriveryReturnFee: 2200,
       generalChildSheetFee: 1100,
+      babyCartFee: 3300,
       returnWithoutRefuelingFee: 8800,
       openCarDetail: false,
       carDetailIndex: 0,
@@ -535,6 +546,12 @@ export default {
 
       const customfields = JSON.stringify({
         flightNumber: this.scheduleInfo.flightNumber,
+        addtionalOptions: {
+          babySeats: this.scheduleInfo.babySeats,
+          childSeats: this.scheduleInfo.childSeats,
+          juniorSeats: this.scheduleInfo.juniorSeats,
+          babyCart: this.scheduleInfo.babyCart
+        },
         otherRequests: this.scheduleInfo.other,
         memos: memos
       });
@@ -584,6 +601,31 @@ export default {
       // add basic totalFee inside temporal variable holder
       this.totalFeeHolder = this.scheduleInfo.totalFee;
 
+      let additionalFees = [];
+      // if any sheat options requested, charge extra fee depending on the sheet type
+      if (this.scheduleInfo.babySeats) {
+        this.totalFeeHolder +=
+          this.scheduleInfo.babySeats * this.generalChildSheetFee;
+        additionalFees.push({title: 'baby seat', quantity: this.scheduleInfo.babySeats, unitFee: this.generalChildSheetFee});
+      }
+      if (this.scheduleInfo.childSeats) {
+        this.totalFeeHolder +=
+          this.scheduleInfo.childSeats * this.generalChildSheetFee;
+        additionalFees.push({title: 'child seat', quantity: this.scheduleInfo.childSeats, unitFee: this.generalChildSheetFee});
+      }
+      if (this.scheduleInfo.juniorSeats) {
+        this.totalFeeHolder +=
+          this.scheduleInfo.juniorSeats * this.generalChildSheetFee;
+        additionalFees.push({title: 'junior seat', quantity: this.scheduleInfo.juniorSeats, unitFee: this.generalChildSheetFee});
+      }
+      if (this.scheduleInfo.babyCart) {
+        this.totalFeeHolder +=
+          this.scheduleInfo.babyCart * this.babyCartFee;
+        additionalFees.push({title: 'baby cart', quantity: this.scheduleInfo.babyCart, unitFee: this.babyCartFee});
+      }
+
+
+
       let discount = null;
       if (this.scheduleInfo.couponCode) {
         // console.log(this.scheduleInfo.couponCode)
@@ -607,6 +649,7 @@ export default {
         customerPhoneNumber: this.scheduleInfo.customerPhoneNumber,
         flightNumber: this.scheduleInfo.flightNumber,
         other: this.scheduleInfo.other,
+        additionalFees: additionalFees,
         carInfos: {
           main_image: selectedCarInfo.main_image,
           images: selectedCarInfo.images,
