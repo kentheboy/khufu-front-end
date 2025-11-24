@@ -84,6 +84,7 @@
             :value="modelValue"
             :placeholder="placeholder"
             @input="handleInput"
+            style="resize: none;"
         ></textarea>
     </div>
     <div v-else :class="`input-area ${classes}`">
