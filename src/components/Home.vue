@@ -546,6 +546,12 @@ export default {
 
       const customfields = JSON.stringify({
         flightNumber: this.scheduleInfo.flightNumber,
+        addtionalOptions: {
+          babySeats: this.scheduleInfo.babySeats,
+          childSeats: this.scheduleInfo.childSeats,
+          juniorSeats: this.scheduleInfo.juniorSeats,
+          babyCart: this.scheduleInfo.babyCart
+        },
         otherRequests: this.scheduleInfo.other,
         memos: memos
       });
