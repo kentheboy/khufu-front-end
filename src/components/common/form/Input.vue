@@ -285,6 +285,9 @@ export default {
             margin: 0;
             padding: 8px 0;
         }
+        select {
+            width: 50%;
+        }
     }
 }
 .airport-timpicker {
