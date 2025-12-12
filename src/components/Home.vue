@@ -14,11 +14,11 @@
           <div class="datetimepicker">
             <div class="datetimepicker-selector">
               <label>{{ $t('home.Depature') }}</label>
-              <Calendar type="date" name="startDate" showIcon showTime hourFormat="12" :stepMinute="30" iconDisplay="input" dateFormat="yy/mm/dd" v-model="search.departDate.rawValue" @update:modelValue="isValidSearch('departDate')" :minDate="minDate" />
+              <Calendar type="date" name="startDate" touchUI showIcon showTime hourFormat="12" :stepMinute="30" iconDisplay="input" dateFormat="yy/mm/dd" v-model="search.departDate.rawValue" @update:modelValue="isValidSearch('departDate')" :minDate="minDate" />
             </div>
             <div class="datetimepicker-selector">
               <label>{{ $t('home.Returning') }}</label>
-              <Calendar type="date" name="endDate" showIcon showTime hourFormat="12" :stepMinute="30" iconDisplay="input" dateFormat="yy/mm/dd" v-model="search.returnDate.rawValue" @update:modelValue="isValidSearch('returnDate')" :minDate="search.departDate.rawValue
+              <Calendar type="date" name="endDate" touchUI showIcon showTime hourFormat="12" :stepMinute="30" iconDisplay="input" dateFormat="yy/mm/dd" v-model="search.returnDate.rawValue" @update:modelValue="isValidSearch('returnDate')" :minDate="search.departDate.rawValue
                 ? search.departDate.rawValue
                 : minDate
                 " />
