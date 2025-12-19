@@ -28,38 +28,19 @@ jobs:
         run: |
           aws s3 sync . s3://class-rental-car-dev --delete --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
       - name: Slack-Notification
-        uses: slackapi/slack-github-action@v1.24.0
+        uses: slackapi/slack-github-action@v2.1.1
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
         with:
           channel-id: ${{ secrets.SLACK_CHANNEL_ID }}
+          swebhook-type: incoming-webhook
           payload: |
-            {
-              "text": "Repository pushed to ${{ github.event.repository.name }} by ${{ github.event.pusher.name }}",
-              "blocks": [
-                {
-                  "type": "section",
-                  "text": {
-                    "type": "mrkdwn",
-                    "text": "*Repository pushed to:* ${{ github.event.repository.name }}"
-                  }
-                },
-                {
-                  "type": "section",
-                  "text": {
-                    "type": "mrkdwn",
-                    "text": "*Pusher:* ${{ github.event.pusher.name }}\n*Commit Message:* ${{ github.event.head_commit.message }}\n*Environment:* <http://class-rental-car-dev.s3-website-ap-northeast-1.amazonaws.com/|ステージング環境>"
-                  }
-                },
-                {
-                  "type": "section",
-                  "text": {
-                    "type": "mrkdwn",
-                    "text": "<${{ github.event.repository.html_url }}|View Repository>"
-                  }
-                }
-              ]
-            }
+            text: ステージング環境にデプロイされました *Commit Message:* {{ github.event.head_commit.message || 'No commit message' }}*
+            blocks:
+              - type: "section"
+                text:
+                  type: "mrkdwn"
+                  text: "<http://class-rental-car-dev.s3-website-ap-northeast-1.amazonaws.com/|Staging ENV> from repository *{{ github.event.repository.name }}* by *{{ github.event.pusher.name }}*"
         if: success()
 
   Production-Deploy:
@@ -84,36 +65,17 @@ jobs:
         run: |
           aws s3 sync . s3://class-rental-car.com --delete --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
       - name: Slack-Notification
-        uses: slackapi/slack-github-action@v1.24.0
+        uses: slackapi/slack-github-action@v2.1.1
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
         with:
           channel-id: ${{ secrets.SLACK_CHANNEL_ID }}
+          swebhook-type: incoming-webhook
           payload: |
-            {
-              "text": "Repository pushed to ${{ github.event.repository.name }} by ${{ github.event.pusher.name }}",
-              "blocks": [
-                {
-                  "type": "section",
-                  "text": {
-                    "type": "mrkdwn",
-                    "text": "<!channel>*本番リリース* \n*Repository pushed to:* ${{ github.event.repository.name }}"
-                  }
-                },
-                {
-                  "type": "section",
-                  "text": {
-                    "type": "mrkdwn",
-                    "text": "*Pusher:* ${{ github.event.pusher.name }}\n*Commit Message:* ${{ github.event.head_commit.message }}\n*Environment:* <https://class-rental-car.com/|本番環境>"
-                  }
-                },
-                {
-                  "type": "section",
-                  "text": {
-                    "type": "mrkdwn",
-                    "text": "<${{ github.event.repository.html_url }}|View Repository>"
-                  }
-                }
-              ]
-            }
+            text: 本番環境にデプロイされました *Commit Message:* {{ github.event.head_commit.message || 'No commit message' }}*
+            blocks:
+              - type: "section"
+                text:
+                  type: "mrkdwn"
+                  text: "<http://class-rental-car-dev.com/|Production ENV> from repository *{{ github.event.repository.name }}* by *{{ github.event.pusher.name }}*"
         if: success()

@@ -33,160 +33,14 @@
               <dd class="basic-price">
                 ¥{{ addCommas(reservationInfo.carInfos.basicFee) }}
               </dd>
-              <dt class="additional-note">
-                <i class="pi pi-info-circle"></i>
-                <span>{{ $t('home.compensation fee included') }}</span>
-              </dt>
-              <dt
-                v-if="
-                  reservationInfo.additionalService &&
-                  reservationInfo.additionalService.deliveryOption == 1
-                "
-                class="options-price-title"
-              >
-                {{ $t('home.Rental at Akamine Sta') }}
-              </dt>
-              <dd
-                v-if="
-                  reservationInfo.additionalService &&
-                  reservationInfo.additionalService.deliveryOption == 1
-                "
-                class="options-price"
-              >
-                ¥2,200
-              </dd>
-              <dt
-                v-if="
-                  reservationInfo.additionalService &&
-                  reservationInfo.additionalService.deliveryOption == 2
-                "
-                class="options-price-title"
-              >
-                {{ $t('home.Rental at Hotel(Hotels in Naha City)') }}
-              </dt>
-              <dd
-                v-if="
-                  reservationInfo.additionalService &&
-                  reservationInfo.additionalService.deliveryOption == 2
-                "
-                class="options-price"
-              >
-                ¥2,200
-              </dd>
-              <dt
-                v-if="
-                  reservationInfo.additionalService &&
-                  reservationInfo.additionalService.returnOption == 1
-                "
-                class="options-price-title"
-              >
-                {{ $t('home.Return at Akamine Sta') }}
-              </dt>
-              <dd
-                v-if="
-                  reservationInfo.additionalService &&
-                  reservationInfo.additionalService.returnOption == 1
-                "
-                class="options-price"
-              >
-                ¥2,200
-              </dd>
-              <dt
-                v-if="
-                  reservationInfo.additionalService &&
-                  reservationInfo.additionalService.returnOption == 2
-                "
-                class="options-price-title"
-              >
-                {{ $t('home.Return at Hotel(Hotels in Naha City)') }}
-              </dt>
-              <dd
-                v-if="
-                  reservationInfo.additionalService &&
-                  reservationInfo.additionalService.returnOption == 2
-                "
-                class="options-price"
-              >
-                ¥2,200
-              </dd>
-              <dt
-                v-if="
-                  reservationInfo.additionalService &&
-                  reservationInfo.additionalService.returnWithoutRefueling == 1
-                "
-                class="options-price-title"
-              >
-                {{ $t('home.Return-without-refueled-option') }}
-              </dt>
-              <dd
-                v-if="
-                  reservationInfo.additionalService &&
-                  reservationInfo.additionalService.returnWithoutRefueling == 1
-                "
-                class="options-price"
-              >
-                ¥8,800
-              </dd>
-              <dt
-                v-if="
-                  reservationInfo.additionalService &&
-                  reservationInfo.additionalService.useOfBabySheet > 0
-                "
-                class="options-price-title"
-              >
-                {{ $t('home.baby seat') }}
-              </dt>
-              <dd
-                v-if="
-                  reservationInfo.additionalService &&
-                  reservationInfo.additionalService.useOfBabySheet > 0
-                "
-                class="options-price"
-              >
-                ¥{{
-                  addCommas(reservationInfo.additionalService.useOfBabySheet)
-                }}
-              </dd>
-              <dt
-                v-if="
-                  reservationInfo.additionalService &&
-                  reservationInfo.additionalService.useOfChildSheet > 0
-                "
-                class="options-price-title"
-              >
-                {{ $t('home.child seat') }}
-              </dt>
-              <dd
-                v-if="
-                  reservationInfo.additionalService &&
-                  reservationInfo.additionalService.useOfChildSheet > 0
-                "
-                class="options-price"
-              >
-                ¥{{
-                  addCommas(reservationInfo.additionalService.useOfChildSheet)
-                }}
-              </dd>
-              <dt
-                v-if="
-                  reservationInfo.additionalService &&
-                  reservationInfo.additionalService.useOfJuniorSheet > 0
-                "
-                class="options-price-title"
-              >
-                {{ $t('home.junior seat') }}
-              </dt>
-              <dd
-                v-if="
-                  reservationInfo.additionalService &&
-                  reservationInfo.additionalService.useOfJuniorSheet > 0
-                "
-                class="options-price"
-              >
-                ¥{{
-                  addCommas(reservationInfo.additionalService.useOfJuniorSheet)
-                }}
-              </dd>
+              <div v-for="option in reservationInfo.additionalFees" :key="option.title" class="additional-price">
+                <dt class="options-price-title">
+                  {{ $t(`home.${option.title}`) }}
+                </dt>
+                <dd class="options-price">
+                  ¥{{ addCommas(option.unitFee) }} x {{ option.quantity }}
+                </dd>
+              </div>
               <dt
                 v-if="
                   reservationInfo.discount
@@ -218,34 +72,14 @@
             <dl>
               <dt>{{ $t('home.Name') }}</dt>
               <dd>{{ reservationInfo.customerName }}　様</dd>
-              <dt>{{ $t('home.Date of birth') }}</dt>
-              <dd>{{ reservationInfo.dob.replace(/-/g, "/") }}</dd>
               <dt>{{ $t('home.Email') }}</dt>
               <dd>{{ reservationInfo.customerEmail }}</dd>
               <dt>{{ $t('home.Phone number') }}</dt>
               <dd>{{ reservationInfo.customerPhoneNumber }}</dd>
-              <dt>{{ $t('home.License number') }}</dt>
-              <dd>{{ reservationInfo.licenseNumber }}</dd>
-              <dt>{{ $t('home.Airport Pickup') }}</dt>
-              <dd>
-                {{
-                  reservationInfo.airportPickup
-                    ? reservationInfo.airportPickup
-                    : $t('home.not needed')
-                }}
-              </dd>
-              <dt>{{ $t( 'home.Arrival flight number' ) }}</dt>
-              <dd>{{ reservationInfo.arrivalFlightNumber }}</dd>
-              <dt>{{ $t('home.Airport Dropoff') }}</dt>
-              <dd>
-                {{
-                  reservationInfo.airportDropoff
-                    ? reservationInfo.airportDropoff
-                    : $t('home.not needed')
-                }}
-              </dd>
-              <dt>{{ $t( 'home.Departure flight number' ) }}</dt>
-              <dd>{{ reservationInfo.departureFlightNumber }}</dd>
+              <dt>{{ $t('home.arrival flight number') }}</dt>
+              <dd>{{ reservationInfo.flightNumber }}</dd>
+              <dt>{{ $t( 'home.other' ) }}</dt>
+              <dd>{{ reservationInfo.other }}</dd>
             </dl>
           </div>
         </div>
@@ -276,10 +110,9 @@ export default {
         customerName: "山田太郎",
         customerEmail: "example@class.okinawa",
         customerPhoneNumber: "080-0000-0000",
-        licenseNumber: "1234567890",
-        dob: "2023/1/1",
-        airportPickup: false,
-        airportDropoff: "18:00",
+        flightNumber: "CLS5050",
+        other: "baby seat x 1, special requests: hotel pickup",
+        additionalFees: [],
         carInfos: {
           main_image: "/images/car-images/main4.png",
           images: [
@@ -459,6 +292,19 @@ export default {
             }
             .options-price-help-icon {
               height: 0.9rem;
+            }
+          }
+          .additional-price {
+            display: inline-flex;
+            margin: 0;
+            width: 100%;
+            dt {
+              margin: 0;
+              width: 60%;
+            }
+            dd {
+              width: 40%;
+              padding: initial;
             }
           }
         }
