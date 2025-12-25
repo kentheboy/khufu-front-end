@@ -6,11 +6,12 @@
       "stock": 7,
       "detail": {
         "images": [
-          { "itemImageSrc": "/images/car-images/ALPHARD/1.png", "thumbnailImageSrc": "/images/car-images/ALPHARD/1.png" },
-          { "itemImageSrc": "/images/car-images/ALPHARD/2.jpeg", "thumbnailImageSrc": "/images/car-images/ALPHARD/2.jpeg" },
-          { "itemImageSrc": "/images/car-images/ALPHARD/3.jpeg", "thumbnailImageSrc": "/images/car-images/ALPHARD/3.jpeg" },
-          { "itemImageSrc": "/images/car-images/ALPHARD/4.jpeg", "thumbnailImageSrc": "/images/car-images/ALPHARD/4.jpeg" },
-          { "itemImageSrc": "/images/car-images/ALPHARD/5.jpeg", "thumbnailImageSrc": "/images/car-images/ALPHARD/5.jpeg" }
+          { "itemImageSrc": "/images/car-images/ALPHARD7/1.jpg", "thumbnailImageSrc": "/images/car-images/ALPHARD7/1.jpg" },
+          { "itemImageSrc": "/images/car-images/ALPHARD7/2.png", "thumbnailImageSrc": "/images/car-images/ALPHARD7/2.png" },
+          { "itemImageSrc": "/images/car-images/ALPHARD7/3.png", "thumbnailImageSrc": "/images/car-images/ALPHARD7/3.png" },
+          { "itemImageSrc": "/images/car-images/ALPHARD7/4.png", "thumbnailImageSrc": "/images/car-images/ALPHARD7/4.png" },
+          { "itemImageSrc": "/images/car-images/ALPHARD7/5.png", "thumbnailImageSrc": "/images/car-images/ALPHARD7/5.png" },
+          { "itemImageSrc": "/images/car-images/ALPHARD7/6.png", "thumbnailImageSrc": "/images/car-images/ALPHARD7/6.png" }
         ],
         "features": [
           "ETC", "내비게이션", "후방카메라", "BlueTooth", "양측 슬라이딩 도어", "썬루프", "뒷좌석 모니터", "금연"
