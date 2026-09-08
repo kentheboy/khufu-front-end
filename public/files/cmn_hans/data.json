@@ -1,0 +1,133 @@
+[
+    {
+      "title": "ALPHARD",
+      "main_image": "/images/car-images/ALPHARD-1.jpg",
+      "passenger": 7,
+      "stock": 7,
+      "detail": {
+        "images": [
+          { "itemImageSrc": "/images/car-images/ALPHARD/1.png", "thumbnailImageSrc": "/images/car-images/ALPHARD/1.png" },
+          { "itemImageSrc": "/images/car-images/ALPHARD/2.jpeg", "thumbnailImageSrc": "/images/car-images/ALPHARD/2.jpeg" },
+          { "itemImageSrc": "/images/car-images/ALPHARD/3.jpeg", "thumbnailImageSrc": "/images/car-images/ALPHARD/3.jpeg" },
+          { "itemImageSrc": "/images/car-images/ALPHARD/4.jpeg", "thumbnailImageSrc": "/images/car-images/ALPHARD/4.jpeg" },
+          { "itemImageSrc": "/images/car-images/ALPHARD/5.jpeg", "thumbnailImageSrc": "/images/car-images/ALPHARD/5.jpeg" }
+        ],
+        "features": [
+          "ETC", "导航系统", "倒车影像", "BlueTooth", "双侧滑门", "天窗", "后座监视器", "禁烟"
+        ],
+        "datatable": [
+          { "title": "制造商", "value": "丰田" },
+          { "title": "名称", "value": "Alphard SC套件" },
+          { "title": "车身颜色", "value": "黑色、白色" },
+          { "title": "容量（人数）", "value": "7～8人" },
+          { "title": "燃料类型", "value": "汽油" },
+          { "title": "车身尺寸（长×宽×高）", "value": "4,950mm × 1,850mm × 1,935~1,950mm" },
+          { "title": "ETC/导航系统", "value": "配备" },
+          { "title": "发动机排量", "value": "2490cc" },
+          { "title": "是否禁烟", "value": "禁烟" }
+        ],
+        "attention": [
+          "※由于与其他网站的库存共享，预订时可能无法提供相同车型，敬请提前了解。",
+          "※7座与8座车型的内饰（含座椅）有所不同，敬请留意。"
+        ]
+      }
+    },
+    {
+      "title": "ALPHARD",
+      "main_image": "/images/car-images/ALPHARD-2.jpg",
+      "passenger": 8,
+      "stock": 2,
+      "detail": {
+        "images": [
+          { "itemImageSrc": "/images/car-images/ALPHARD/1.png", "thumbnailImageSrc": "/images/car-images/ALPHARD/1.png" },
+          { "itemImageSrc": "/images/car-images/ALPHARD/2.jpeg", "thumbnailImageSrc": "/images/car-images/ALPHARD/2.jpeg" },
+          { "itemImageSrc": "/images/car-images/ALPHARD/3.jpeg", "thumbnailImageSrc": "/images/car-images/ALPHARD/3.jpeg" },
+          { "itemImageSrc": "/images/car-images/ALPHARD/4.jpeg", "thumbnailImageSrc": "/images/car-images/ALPHARD/4.jpeg" },
+          { "itemImageSrc": "/images/car-images/ALPHARD/5.jpeg", "thumbnailImageSrc": "/images/car-images/ALPHARD/5.jpeg" }
+        ],
+        "features": [
+          "ETC", "导航系统", "倒车影像", "BlueTooth", "双侧滑门", "天窗", "后座监视器", "禁烟"
+        ],
+        "datatable": [
+          { "title": "制造商", "value": "丰田" },
+          { "title": "名称", "value": "Alphard SC套件" },
+          { "title": "车身颜色", "value": "黑色、白色" },
+          { "title": "容量（人数）", "value": "7～8人" },
+          { "title": "燃料类型", "value": "汽油" },
+          { "title": "车身尺寸（长×宽×高）", "value": "4,950mm × 1,850mm × 1,935~1,950mm" },
+          { "title": "ETC/导航系统", "value": "配备" },
+          { "title": "发动机排量", "value": "2490cc" },
+          { "title": "是否禁烟", "value": "禁烟" }
+        ],
+        "attention": [
+          "※由于与其他网站的库存共享，预订时可能无法提供相同车型，敬请提前了解。",
+          "※7座与8座车型的内饰（含座椅）有所不同，敬请留意。"
+        ]
+      }
+    },
+    {
+      "title": "VELLFIRE",
+      "main_image": "/images/car-images/VELLFIRE.jpg",
+      "passenger": 8,
+      "stock": 1,
+      "detail": {
+        "images": [
+          { "itemImageSrc": "/images/car-images/ALPHARD/1.png", "thumbnailImageSrc": "/images/car-images/ALPHARD/1.png" },
+          { "itemImageSrc": "/images/car-images/ALPHARD/2.jpeg", "thumbnailImageSrc": "/images/car-images/ALPHARD/2.jpeg" },
+          { "itemImageSrc": "/images/car-images/ALPHARD/3.jpeg", "thumbnailImageSrc": "/images/car-images/ALPHARD/3.jpeg" },
+          { "itemImageSrc": "/images/car-images/ALPHARD/4.jpeg", "thumbnailImageSrc": "/images/car-images/ALPHARD/4.jpeg" },
+          { "itemImageSrc": "/images/car-images/ALPHARD/5.jpeg", "thumbnailImageSrc": "/images/car-images/ALPHARD/5.jpeg" }
+        ],
+        "features": [
+          "ETC", "导航系统", "倒车影像", "BlueTooth", "双侧滑门", "天窗", "后座监视器", "禁烟"
+        ],
+        "datatable": [
+          { "title": "制造商", "value": "丰田" },
+          { "title": "名称", "value": "Vellfire" },
+          { "title": "车身颜色", "value": "白色" },
+          { "title": "容量（人数）", "value": "8人" },
+          { "title": "燃料类型", "value": "汽油" },
+          { "title": "车身尺寸（长×宽×高）", "value": "4,935mm × 1,850mm × 1,935(1950)mm" },
+          { "title": "ETC/导航系统", "value": "配备" },
+          { "title": "行车记录仪", "value": "配备" },
+          { "title": "发动机排量", "value": "2490cc" },
+          { "title": "是否禁烟", "value": "禁烟" }
+        ],
+        "attention": [
+          "※由于与其他网站的库存共享，预订时可能无法提供相同车型，敬请提前了解。",
+          "※7座与8座车型的内饰（含座椅）有所不同，敬请留意。"
+        ]
+      }
+    },
+    {
+      "title": "HIACE",
+      "main_image": "/images/car-images/HIACE.jpg",
+      "passenger": 10,
+      "stock": 2,
+      "detail": {
+        "images": [
+          { "itemImageSrc": "/images/car-images/ALPHARD/1.png", "thumbnailImageSrc": "/images/car-images/ALPHARD/1.png" },
+          { "itemImageSrc": "/images/car-images/ALPHARD/2.jpeg", "thumbnailImageSrc": "/images/car-images/ALPHARD/2.jpeg" },
+          { "itemImageSrc": "/images/car-images/ALPHARD/3.jpeg", "thumbnailImageSrc": "/images/car-images/ALPHARD/3.jpeg" },
+          { "itemImageSrc": "/images/car-images/ALPHARD/4.jpeg", "thumbnailImageSrc": "/images/car-images/ALPHARD/4.jpeg" },
+          { "itemImageSrc": "/images/car-images/ALPHARD/5.jpeg", "thumbnailImageSrc": "/images/car-images/ALPHARD/5.jpeg" }
+        ],
+        "features": [
+          "ETC", "车载导航系统", "倒车影像", "BlueTooth", "自动挡", "禁烟"
+        ],
+        "datatable": [
+          { "title": "制造商", "value": "丰田" },
+          { "title": "名称", "value": "Hiace" },
+          { "title": "车身颜色", "value": "黑色、白色" },
+          { "title": "容量（人数）", "value": "10人" },
+          { "title": "燃料类型", "value": "汽油" },
+          { "title": "车身尺寸（长×宽×高）", "value": "5,380mm × 1,880mm × 2,285mm" },
+          { "title": "ETC/导航系统", "value": "配备" },
+          { "title": "是否禁烟", "value": "禁烟" }
+        ],
+        "attention": [
+          "※由于与其他网站的库存共享，预订时可能无法提供相同车型，敬请提前了解。"
+        ]
+      }
+    }
+  ]

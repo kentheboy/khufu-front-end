@@ -174,6 +174,14 @@ export default {
             this.switchMenuLanguage();
           }
         },
+        {
+          label: '简体中文',
+          command: () => {
+            this.$i18n.locale = 'cmn_hans';
+            localStorage.setItem('lang', 'cmn_hans');
+            this.switchMenuLanguage();
+          }
+        },
         // {
         //   label: 'English(Coming...)',
         // }
