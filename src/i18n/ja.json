@@ -13,6 +13,8 @@
     "Returning": "返却日時",
     "Business hours notice": "営業時間(予約可能時間)は{open}:00 - {close}:00となっております。",
     "Search availability": "空き状況を検索",
+    "Reserve on LINE lead text": "空き状況のご確認・ご予約はLINE公式アカウントから承っております。トーク画面から簡単にご予約いただけます。",
+    "Reserve via LINE": "LINEで予約する",
     "Car list": "車両一覧",
     "Equipment List": "装備一覧",
     "Maximu capacity": "乗車定員",

@@ -6,101 +6,24 @@
         <ImageSlider :images="isSmartPhone() ? heroImagesSp : heroImages"></ImageSlider>
       </section>
       <div>
-        <section class="section__form" id="searchAndReservation">
+        <section class="section__form section__form--line" id="searchAndReservation">
           <div class="section__form--title">
             <h1>SCHEDULE</h1>
             <h3>{{ $t('home.Search by dates') }}</h3>
           </div>
-          <div class="datetimepicker">
-            <div class="datetimepicker-selector">
-              <label>{{ $t('home.Depature') }}</label>
-              <Calendar type="date" name="startDate" touchUI showIcon showTime hourFormat="12" :stepMinute="30" iconDisplay="input" dateFormat="yy/mm/dd" v-model="search.departDate.rawValue" @update:modelValue="isValidSearch('departDate')" :minDate="minDate" />
-            </div>
-            <div class="datetimepicker-selector">
-              <label>{{ $t('home.Returning') }}</label>
-              <Calendar type="date" name="endDate" touchUI showIcon showTime hourFormat="12" :stepMinute="30" iconDisplay="input" dateFormat="yy/mm/dd" v-model="search.returnDate.rawValue" @update:modelValue="isValidSearch('returnDate')" :minDate="search.departDate.rawValue
-                ? search.departDate.rawValue
-                : minDate
-                " />
-            </div>
-            <div class="datetimepicker-rule">
-              <span>※{{ $t('home.Business hours notice', { open: businessHours.open, close: businessHours.close }) }}</span>
-            </div>
+          <div class="line-reservation">
+            <img class="line-reservation__icon" src="/images/icons/line.png" alt="LINE" />
+            <p class="line-reservation__text">{{ $t('home.Reserve on LINE lead text') }}</p>
+            <a
+              class="line-reservation__button"
+              :href="lineUrl"
+              target="_blank"
+              rel="noopener"
+            >
+              <i class="pi pi-comment"></i>
+              <span>{{ $t('home.Reserve via LINE') }}</span>
+            </a>
           </div>
-          <Button icon="pi pi-search" class="p-ripple" id="searchAvailability" :label="$t('home.Search availability')" :disabled="!isReadyToSearch" @click="searchAvailability"></Button>
-          <p v-if="availableCar.length <= 0 && isSearched" class="no-available-car">
-            {{ $t('home.We are very sorry') }}<br />
-            {{ $t('home.There are currently no vehicles available at the time you have specified') }}<br />
-            {{ $t('home.Please try searching again at a different time or contact the store staff') }}
-          </p>
-          <Products v-else :products="availableCar" @selected="opneReservationForm">
-          </Products>
-          <Dialog v-model:visible="openReservationForm" maximizable header="" class="reservation-form" :modal="true" @after-hide="closeReservationForm">
-            <div class="reservation-form__statuses">
-              <div :class="`reservation-form__status ${reservationFormStatus === 'entry' ? 'active' : ''
-                }`">
-                {{ $t('home.Entry') }}
-              </div>
-              <div :class="`reservation-form__status ${reservationFormStatus === 'confirm' ? 'active' : ''
-                }`">
-                {{ $t('home.Confirm') }}
-              </div>
-              <div :class="`reservation-form__status ${reservationFormStatus === 'done' ? 'active' : ''
-                }`">
-                {{ $t('home.Complete') }}
-              </div>
-            </div>
-            <section class="section__form" style="margin-bottom: 0" v-if="reservationFormStatus === 'entry'">
-              <div class="section__form--title">
-                <h1>YOUR INFORMATION</h1>
-                <h3>{{ $t('home.Your Information') }}</h3>
-              </div>
-              <div class="section__form--content">
-                <div class="section__form--content-input-area">
-                  <Input type="text" :label="$t('home.Name')" name="name" :placeholder="$t('home.Taro Yamada')" required v-model="scheduleInfo.customerName"></Input>
-                </div>
-                <div class="section__form--content-input-area">
-                  <Input type="email" :label="$t('home.Email')" name="email" placeholder="example@class.okinawa" required v-model="scheduleInfo.customerEmail"></Input>
-                </div>
-                <div class="section__form--content-input-area">
-                  <Input type="tel" :label="$t('home.Phone number')" name="phonenumber" placeholder="08000000000" required v-model="scheduleInfo.customerPhoneNumber"></Input>
-                </div>
-                <div class="section__form--content-input-area">
-                  <Input type="text" :label="$t('home.arrival flight number')" name="flight-number" placeholder="JAL909" v-model="scheduleInfo.flightNumber"></Input>
-                </div>
-                <div class="section__form--content-input-area">
-                  <Input type="text" :label="$t('home.Coupon Codes')" name="name" v-model="scheduleInfo.couponCode"></Input>
-                  <span class="input-description">
-                    {{ $t('home.If the coupon is not correct, you will not proceed to the confirmation screen') }}<br>
-                    {{ $t('home.Please double check the code again when entering') }}
-                  </span>
-                </div>
-                <div class="section__form--content-input-area">
-                  <Input type="selectbox-min" :label="$t('home.baby seat')" name="baby-seats" v-model="scheduleInfo.babySeats" :options="[0,1,2,3]"></Input>
-                  <Input type="selectbox-min" :label="$t('home.child seat')" name="baby-seats" v-model="scheduleInfo.childSeats" :options="[0,1,2,3]"></Input>
-                  <Input type="selectbox-min" :label="$t('home.junior seat')" name="baby-seats" v-model="scheduleInfo.juniorSeats" :options="[0,1,2,3]"></Input>
-                  <Input type="selectbox-min" :label="$t('home.baby cart')" name="baby-seats" v-model="scheduleInfo.babyCart" :options="[0,1,2]"></Input>
-                </div>
-                <div class="section__form--content-input-area">
-                  <Input type="textarea" :label="$t('home.other')" name="other" :placeholder="$t('home.baby seat x 1, special requests: hotel pickup')" v-model="scheduleInfo.other"></Input>
-                </div>
-              </div>
-            </section>
-            <Information v-if="reservationFormStatus === 'confirm'" :isExample="false" :reservationInfo="confirmationInfo"></Information>
-            <div v-if="reservationFormStatus === 'done'" class="reservation-form__completed">
-              <img class="reservation-form__completed-img" src="/images/icons/mail.png" />
-              <p class="preserve completed-text">
-                {{ $t('home.Reservation completed') }}<br />
-                {{ $t('home.We will send a confirmation email to the address you provided within the next business day') }}<br />
-              </p>
-              <p class="completed-text-min">{{ $t('home.(This window will close automatically after 10 seconds)') }}</p>
-            </div>
-            <div class="reservation-form__button">
-              <Button class="p-ripple" v-if="reservationFormStatus === 'entry'" :label="$t('home.Confirm reservation')" :disabled="!isValidScheduleInfo" @click="confirmForm"></Button>
-              <Button class="p-ripple" v-if="reservationFormStatus === 'confirm'" :label="$t('home.Modify')" severity="secondary" @click="reservationFormStatus = 'entry'"></Button>
-              <Button class="p-ripple" v-if="reservationFormStatus === 'confirm'" icon="pi pi-send" :label="$t('home.reserve')" :loading="reservationLoading" @click="submitForm"></Button>
-            </div>
-          </Dialog>
         </section>
       </div>
       <div>
@@ -263,29 +186,18 @@
 import Header from "/src/components/common/Header";
 import ImageSlider from "/src/components/common/ImageSlider";
 import Galleria from 'primevue/galleria';
-import Input from "/src/components/common/form/Input";
-import Calendar from "primevue/calendar";
-import Products from "/src/components/common/Products";
 import ProductCard from "/src/components/common/ProductCard";
-import Information from "/src/components/common/Information";
 import Footer from "/src/components/common/Footer";
-import Button from "primevue/button";
 import Dialog from "primevue/dialog";
 import ScrollTop from "primevue/scrolltop";
-import axios from "axios";
 export default {
   name: "Home",
   components: {
     Header,
     ImageSlider,
     Galleria,
-    Input,
-    Calendar,
-    Products,
     ProductCard,
-    Information,
     Footer,
-    Button,
     Dialog,
     ScrollTop,
   },
@@ -321,57 +233,8 @@ export default {
         { name: "sign-up", value: "yes", label: "希望する" },
         { name: "sign-up", value: "no", label: "希望しない" },
       ],
-      minDate: null,
-      search: {
-        departDate: {
-          rawValue: null,
-          value: null,
-          isValid: false,
-        },
-        returnDate: {
-          rawValue: null,
-          value: null,
-          isValid: false,
-        },
-      },
       vehicle_list: [],
-      isSearched: false,
-      availableCar: [],
-      formEntryStart: false,
-      reservationFormStatus: null,
-      scheduleInfo: {
-        reservationCarId: null,
-        start_at: null,
-        end_at: null,
-        totalFee: null,
-        customerName: "",
-        customerEmail: "",
-        customerPhoneNumber: "",
-        flightNumber: "",
-        other: "",
-        couponCode: null,
-        babySeats: 0,
-        childSeats: 0,
-        juniorSeats: 0,
-        babyCart: 0
-      },
-      totalFeeHolder: null,
-      openReservationForm: false,
-      confirmationInfo: null,
-      reservationLoading: false,
-      // Fee consts
-      availableCouponCodes: {
-        "CLASSFB10": {
-          discountPercentage: 10
-        },
-        "CLASSIG10": {
-          discountPercentage: 10
-        }
-      },
-      deriveryReturnFee: 2200,
-      generalChildSheetFee: 1100,
-      babyCartFee: 3300,
-      returnWithoutRefuelingFee: 8800,
+      lineUrl: 'https://lin.ee/w5vv7ng',
       openCarDetail: false,
       carDetailIndex: 0,
       responsiveOptions: [
@@ -398,48 +261,6 @@ export default {
       .catch((error) => {
         console.error('Error loading JSON:', error);
       });
-
-    // load business hours from store
-    this.minDate = new Date();
-    if (this.minDate.getHours() > 17) {
-      this.minDate.setDate(this.minDate.getDate() + 2);
-    } else {
-      this.minDate.setDate(this.minDate.getDate() + 1);
-    }
-    this.minDate.setHours(this.$store.state.businessHours.open);
-    this.minDate.setMinutes(0);
-
-  },
-  computed: {
-    backendDomain() {
-      return process.env.VUE_APP_BACKEND_DOMAIN;
-    },
-    businessHours() {
-      return this.$store.state.businessHours;
-    },
-    isReadyToSearch() {
-      if (this.search.departDate.isValid && this.search.returnDate.isValid) {
-        return true;
-      } else {
-        return false;
-      }
-    },
-    isValidScheduleInfo() {
-      if (this.scheduleInfo.couponCode) {
-        return Object.prototype.hasOwnProperty.call(this.availableCouponCodes, this.scheduleInfo.couponCode);
-      }
-      const emailRegex = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
-      const phoneRegex = /^[+-]?[0-9]{7,13}$/;
-      if (
-        this.scheduleInfo.customerName.length > 0 &&
-        emailRegex.test(this.scheduleInfo.customerEmail) &&
-        phoneRegex.test(this.scheduleInfo.customerPhoneNumber)
-      ) {
-        return true;
-      } else {
-        return false;
-      }
-    }
   },
   watch: {
     '$i18n.locale'(newLocale) {
@@ -466,240 +287,6 @@ export default {
 
       // Return true only if both indicators suggest a smartphone
       return isMobileUA || isSmallScreen;
-    },
-    isValidSearch(inputName) {
-      let salesStartTime = `${this.businessHours.open}:00`; //9:00 AM
-      let salesEndTime = `${this.businessHours.close}:00`; //6:00 PM
-      switch (inputName) {
-        case "departDate":
-          if (this.search.departDate.rawValue) {
-            let departTime = new Date(this.search.departDate.rawValue);
-            let departTimeStr = departTime.toString().slice(16, 21);
-            if (
-              departTimeStr >= salesStartTime &&
-              departTimeStr <= salesEndTime
-            ) {
-              this.search.departDate.isValid = true;
-              this.search.departDate.value =
-                departTime.toISOString().slice(0, 10) + " " + departTimeStr;
-            } else {
-              this.search.departDate.isValid = false;
-            }
-          } else {
-            this.search.departDate.isValid = false;
-          }
-          break;
-        case "returnDate":
-          if (this.search.returnDate.rawValue) {
-            let returnTime = new Date(this.search.returnDate.rawValue);
-            let returnTimeStr = returnTime.toString().slice(16, 21);
-            if (
-              returnTimeStr >= salesStartTime &&
-              returnTimeStr <= salesEndTime
-            ) {
-              this.search.returnDate.isValid = true;
-              this.search.returnDate.value =
-                returnTime.toISOString().slice(0, 10) + " " + returnTimeStr;
-            } else {
-              this.search.returnDate.isValid = false;
-            }
-          } else {
-            this.search.returnDate.isValid = false;
-          }
-          break;
-      }
-    },
-    async searchAvailability() {
-      const param = {
-        params: {
-          start_at: `${this.search.departDate.value}`,
-          end_at: `${this.search.returnDate.value}`,
-        },
-      };
-
-      await axios
-        .get(`${this.backendDomain}/api/schedule/search`, param)
-        .then((response) => {
-          let tmpProducts = response.data.data;
-          for (let i in tmpProducts) {
-            tmpProducts[i].main_image = tmpProducts[i].images[0];
-            let customfields = JSON.parse(tmpProducts[i].customfields);
-            tmpProducts[i].isSmokingAllowed = customfields.isSmokingAllowed;
-            tmpProducts[i].passenger = customfields.passenger;
-            tmpProducts[i].subInfo = customfields.licenseNumber;
-            delete tmpProducts[i].customfields;
-          }
-          this.availableCar = tmpProducts;
-          this.isSearched = true;
-        });
-    },
-    async submitForm() {
-      this.reservationLoading = true;
-      await setTimeout(() => {
-        // this timeOut add loading effect for minimum 3 sec
-      }, 3000);
-
-      let memos = "";
-      if (this.scheduleInfo.couponCode) {
-        memos += `クーポン適応中: ${this.scheduleInfo.couponCode}\n`;
-      }
-
-      const customfields = JSON.stringify({
-        flightNumber: this.scheduleInfo.flightNumber,
-        addtionalOptions: {
-          babySeats: this.scheduleInfo.babySeats,
-          childSeats: this.scheduleInfo.childSeats,
-          juniorSeats: this.scheduleInfo.juniorSeats,
-          babyCart: this.scheduleInfo.babyCart
-        },
-        otherRequests: this.scheduleInfo.other,
-        memos: memos
-      });
-      const data = {
-        product_id: this.scheduleInfo.reservationCarId,
-        name: this.scheduleInfo.customerName,
-        email: this.scheduleInfo.customerEmail,
-        tel: this.scheduleInfo.customerPhoneNumber,
-        start_at: this.scheduleInfo.start_at,
-        end_at: this.scheduleInfo.end_at,
-        total_fee: this.totalFeeHolder,
-        customfields: customfields,
-      };
-      await axios
-        .post(`${this.backendDomain}/api/schedule/create`, data)
-        .then((response) => {
-          this.reservationFormStatus = "done";
-          console.log(response);
-          setTimeout(() => {
-            this.reservationLoading = false;
-            this.closeReservationForm();
-          }, 10000);
-        });
-    },
-    opneReservationForm(carId) {
-      this.scheduleInfo.reservationCarId = carId;
-
-      // calculate basic totalFee (fees without options)
-      this.scheduleInfo.totalFee = this.calculateTotalFeeByRentalSpan(
-        `${this.search.departDate.value}`,
-        `${this.search.returnDate.value}`,
-        this.availableCar.find(
-          (car) => car.id === this.scheduleInfo.reservationCarId
-        ).price
-      );
-
-      this.scheduleInfo.start_at = `${this.search.departDate.value}`;
-      this.scheduleInfo.end_at = `${this.search.returnDate.value}`;
-      this.openReservationForm = true;
-      this.reservationFormStatus = "entry";
-    },
-    confirmForm() {
-      let selectedCarInfo = this.availableCar.find(
-        (car) => car.id === this.scheduleInfo.reservationCarId
-      );
-
-      // add basic totalFee inside temporal variable holder
-      this.totalFeeHolder = this.scheduleInfo.totalFee;
-
-      let additionalFees = [];
-      // if any sheat options requested, charge extra fee depending on the sheet type
-      if (this.scheduleInfo.babySeats) {
-        this.totalFeeHolder +=
-          this.scheduleInfo.babySeats * this.generalChildSheetFee;
-        additionalFees.push({title: 'baby seat', quantity: this.scheduleInfo.babySeats, unitFee: this.generalChildSheetFee});
-      }
-      if (this.scheduleInfo.childSeats) {
-        this.totalFeeHolder +=
-          this.scheduleInfo.childSeats * this.generalChildSheetFee;
-        additionalFees.push({title: 'child seat', quantity: this.scheduleInfo.childSeats, unitFee: this.generalChildSheetFee});
-      }
-      if (this.scheduleInfo.juniorSeats) {
-        this.totalFeeHolder +=
-          this.scheduleInfo.juniorSeats * this.generalChildSheetFee;
-        additionalFees.push({title: 'junior seat', quantity: this.scheduleInfo.juniorSeats, unitFee: this.generalChildSheetFee});
-      }
-      if (this.scheduleInfo.babyCart) {
-        this.totalFeeHolder +=
-          this.scheduleInfo.babyCart * this.babyCartFee;
-        additionalFees.push({title: 'baby cart', quantity: this.scheduleInfo.babyCart, unitFee: this.babyCartFee});
-      }
-
-
-
-      let discount = null;
-      if (this.scheduleInfo.couponCode) {
-        // console.log(this.scheduleInfo.couponCode)
-        const discountPercentage = this.availableCouponCodes[this.scheduleInfo.couponCode].discountPercentage;
-        const discountPrice = this.totalFeeHolder * (discountPercentage * 0.01);
-        this.totalFeeHolder = this.totalFeeHolder - discountPrice;
-        discount = {
-          percentage: discountPercentage,
-          price: discountPrice
-        };
-      }
-
-      this.confirmationInfo = {
-        title: selectedCarInfo.title,
-        subInfo: selectedCarInfo.subInfo,
-        start_at: this.scheduleInfo.start_at,
-        end_at: this.scheduleInfo.end_at,
-        totalFee: this.totalFeeHolder,
-        customerName: this.scheduleInfo.customerName,
-        customerEmail: this.scheduleInfo.customerEmail,
-        customerPhoneNumber: this.scheduleInfo.customerPhoneNumber,
-        flightNumber: this.scheduleInfo.flightNumber,
-        other: this.scheduleInfo.other,
-        additionalFees: additionalFees,
-        carInfos: {
-          main_image: selectedCarInfo.main_image,
-          images: selectedCarInfo.images,
-          maxmumPassenger: selectedCarInfo.passenger,
-          isSmokingAllowed: selectedCarInfo.isSmokingAllowed,
-          basicFee: selectedCarInfo.price,
-        },
-        discount: discount
-      };
-      this.reservationFormStatus = "confirm";
-    },
-    dateDifference(startDate, endDate) {
-      let date1 = new Date(startDate);
-      let date2 = new Date(endDate);
-      let timeDiff = Math.abs(date2.getTime() - date1.getTime());
-      let diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
-      return diffDays;
-    },
-    closeReservationForm() {
-      this.openReservationForm = false;
-      this.resetForm();
-      // reset search result area by displaying latest available cars with pre-search conditions
-      this.searchAvailability();
-    },
-    resetForm() {
-      this.scheduleInfo = {
-        reservationCarId: null,
-        start_at: null,
-        end_at: null,
-        totalFee: null,
-        customerName: "",
-        customerEmail: "",
-        customerPhoneNumber: "",
-        flightNumber: "",
-        other: "",
-        couponCode: null
-      };
-      this.totalFeeHolder = null;
-      this.confirmationInfo = null;
-      this.reservationLoading = false;
-    },
-    calculateTotalFeeByRentalSpan(startDateTime, endDateTime, pricePerDay) {
-      // Normalize to just the date part
-      var start = new Date(startDateTime.split(" ")[0]);
-      var end = new Date(endDateTime.split(" ")[0]);
-
-      // Calculate difference in milliseconds and convert to days
-      var diffDays = Math.floor((end - start) / (1000 * 60 * 60 * 24)) + 1;
-
-      return diffDays * pricePerDay;
     },
     carDetailOpener(carId) {
       this.carDetailIndex = carId;
@@ -921,9 +508,59 @@ section {
     &--submit {
       text-align: center;
     }
+  }
 
-    #searchAvailability {
-      width: 12rem;
+  &__form--line {
+    .line-reservation {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 32rem;
+      margin: 0 auto;
+
+      &__icon {
+        width: 4rem;
+        height: 4rem;
+        margin-bottom: 1.2rem;
+      }
+
+      &__text {
+        margin: 0 0 1.6rem;
+        color: var(--color-black);
+        line-height: 1.7;
+      }
+
+      &__button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.6rem;
+        width: auto;
+        background-color: #06c755;
+        color: var(--color-white);
+        font-size: 1rem;
+        font-weight: bold;
+        letter-spacing: 0.05em;
+        padding: 0.9rem 2.4rem;
+        border-radius: 2rem;
+        white-space: nowrap;
+        text-decoration: none;
+        box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
+        cursor: pointer;
+
+        i {
+          font-size: 1.1rem;
+        }
+
+        &:hover {
+          background-color: #05b34c;
+        }
+
+        @media screen and (max-width: 430px) {
+          padding: 0.9rem 1.4rem;
+          font-size: 0.9rem;
+        }
+      }
     }
   }
 
@@ -1044,107 +681,6 @@ section {
   }
 }
 
-.reservation-form {
-  section {
-    margin: 0rem 2.4rem;
-  }
-
-  &__statuses {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 1.6rem;
-  }
-
-  &__status {
-    width: 8rem;
-    text-align: center;
-    font-size: 1.1rem;
-    color: gray;
-    height: 4rem;
-    padding: 1rem;
-
-    &.active {
-      font-weight: bold;
-      color: #428eb8;
-      border-bottom: 1px solid;
-    }
-  }
-
-  &__completed {
-    margin: 3rem auto 0;
-    max-width: 31rem;
-    min-height: 30rem;
-    padding: inherit;
-    text-align: center;
-
-    &-img {
-      width: 5rem;
-    }
-    p {
-      &.preserve {
-        white-space: pre-line;
-      }
-      &.completed-text {
-        font-weight: 500;
-      }
-      &.completed-text-min {
-        font-size: 0.8rem;
-        color: gray;
-        margin-top: 1rem;
-      }
-    }
-  }
-
-  &__button {
-    text-align: center;
-    display: flex;
-  }
-}
-
-.datetimepicker {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  &-selector {
-    font-size: 1rem;
-    letter-spacing: 0.05em;
-    display: inline-flex;
-    width: 21.5rem;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 0.6rem;
-    flex-direction: initial;
-
-    input[type="date"] {
-      border-radius: 24.94px;
-      background-color: var(--color-aliceblue);
-      box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
-      width: 9.73rem;
-      height: 2rem;
-      border: none;
-      padding: 0 0.7rem;
-      letter-spacing: 0.05em;
-    }
-
-    input[type="time"] {
-      border-radius: 24.94px;
-      background-color: var(--color-aliceblue);
-      box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
-      width: 7rem;
-      height: 2rem;
-      border: none;
-      padding: 0 0.7rem;
-    }
-  }
-
-  &-deselector {
-    display: flex;
-    align-items: flex-start;
-    color: var(--color-steelblue);
-  }
-}
-
 .sp {
   display: none;
 
@@ -1153,10 +689,4 @@ section {
   }
 }
 
-.cmn_hant {
-  .datetimepicker-selector {
-    font-size: .95rem;
-    width: 22.5rem;
-  }
-}
 </style>

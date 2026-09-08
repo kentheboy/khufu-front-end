@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "khufu-front-end",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["vue-cli-service", "serve"],
+      "port": 8080
+    }
+  ]
+}

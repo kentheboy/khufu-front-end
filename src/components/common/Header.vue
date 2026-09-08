@@ -5,7 +5,7 @@
         <img class="logo" alt="" src="/images/class-logo-main@2x.png" />
       </a>
       <div class="toReservation">
-        <Button :label="$t('home.reserve a car')" @click="scrollToEearchAndReservation" />
+        <Button as="a" :href="lineUrl" target="_blank" rel="noopener" class="line-button" icon="pi pi-comment" :label="$t('home.Reserve via LINE')" />
       </div>
       <div class="laguageMenu" v-if="!isValiosaPage">
         <Button class="language" icon="pi pi-globe" severity="info" text raised rounded aria-label="language" @click="toggleLaguageMenu" />
@@ -25,7 +25,7 @@
             </router-link>
             <a v-else :href="item.url" :target="item.target" v-bind="props.action">
               <span :class="item.icon" />
-              <span class="label">{{ item.label }}</span>
+              <span class="label" :class="item.labelClass">{{ item.label }}</span>
             </a>
           </template>
         </Menu>
@@ -47,6 +47,7 @@ export default {
   data() {
     return {
       openSideNav: false,
+      lineUrl: 'https://lin.ee/w5vv7ng',
       items: [
         {
           label: 'Top',
@@ -54,25 +55,12 @@ export default {
           route: '/'
         },
         {
-          label: this.$t('home.reservation'),
+          label: this.$t('home.reservation') + '(LINE)',
           icon: 'pi pi-pencil',
+          labelClass: 'label--line',
           command: () => {
-            if (this.$router.currentRoute.value.path !== "/") {
-              this.$router.push({ name: "Home" })
-              setTimeout(() => {
-                this.openSideNav = false;
-                window.scrollTo({
-                  top: document.getElementById('searchAndReservation').offsetTop,
-                  behavior: 'smooth'
-                });
-              }, 100);
-            } else {
-              this.openSideNav = false;
-              window.scrollTo({
-                top: document.getElementById('searchAndReservation').offsetTop,
-                behavior: 'smooth'
-              });
-            }
+            this.openSideNav = false;
+            window.open(this.lineUrl, '_blank', 'noopener');
           }
         },
         {
@@ -201,29 +189,11 @@ export default {
     this.switchMenuLanguage();
   },
   methods: {
-    scrollToEearchAndReservation() {
-      if (this.$router.currentRoute.value.path !== "/" && !this.isValiosaPage) {
-        this.$router.push({ name: "Home" })
-        setTimeout(() => {
-          this.openSideNav = false;
-          window.scrollTo({
-            top: document.getElementById('searchAndReservation').offsetTop,
-            behavior: 'smooth'
-          });
-        }, 100);
-      } else {
-        this.openSideNav = false;
-        window.scrollTo({
-          top: document.getElementById('searchAndReservation').offsetTop,
-          behavior: 'smooth'
-        });
-      }
-    },
     toggleLaguageMenu(event) {
       this.$refs.openLaguageMenu.toggle(event);
     },
     switchMenuLanguage() {
-      this.items[1].label = this.$t('home.reservation');
+      this.items[1].label = this.$t('home.reservation') + '(LINE)';
       this.items[2].label = this.$t('home.Fees');
       this.items[2].url = "/files/" + this.$i18n.locale + "/prices.pdf";
       this.items[3].label = this.$t('home.Guid');
@@ -255,15 +225,28 @@ export default {
 
     button.p-button {
       height: 2.2rem;
-      padding: unset;
+      padding: 0 1rem;
       font-size: .9rem;
       font-weight: bold;
-      background-color: white;
-      color: var(--color-steelblue);
+      background-color: #06c755;
+      border-color: #06c755;
+      color: var(--color-white);
       box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
+      white-space: nowrap;
+
+      &:hover {
+        background-color: #05b34c !important;
+        border-color: #05b34c !important;
+      }
+
+      &::v-deep .p-button-label {
+        white-space: nowrap;
+      }
 
       @media screen and (max-width: 630px) {
-        width: 8rem;
+        width: auto;
+        padding: 0 0.7rem;
+        font-size: .8rem;
       }
     }
 
@@ -343,5 +326,12 @@ export default {
     color: var(--color-skyblue);
     font-weight: bold;
   }
+}
+
+// The sidebar/menu content is teleported outside .header in the DOM,
+// so this rule stays unnested to still match it.
+.label--line {
+  color: #06c755 !important;
+  font-weight: bold;
 }
 </style>
