@@ -47,7 +47,7 @@ export default {
   data() {
     return {
       openSideNav: false,
-      lineUrl: 'https://lin.ee/w5vv7ng',
+      lineUrl: 'https://lin.ee/9ZxL4tx',
       items: [
         {
           label: 'Top',

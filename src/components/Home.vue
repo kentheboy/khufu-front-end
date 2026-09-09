@@ -234,7 +234,7 @@ export default {
         { name: "sign-up", value: "no", label: "希望しない" },
       ],
       vehicle_list: [],
-      lineUrl: 'https://lin.ee/w5vv7ng',
+      lineUrl: 'https://lin.ee/9ZxL4tx',
       openCarDetail: false,
       carDetailIndex: 0,
       responsiveOptions: [
