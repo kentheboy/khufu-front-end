@@ -25,7 +25,7 @@
             </router-link>
             <a v-else :href="item.url" :target="item.target" v-bind="props.action">
               <span :class="item.icon" />
-              <span class="label" :class="item.labelClass">{{ item.label }}</span>
+              <span class="label">{{ item.label }}</span>
             </a>
           </template>
         </Menu>
@@ -53,15 +53,6 @@ export default {
           label: 'Top',
           icon: 'pi pi-home',
           route: '/'
-        },
-        {
-          label: this.$t('home.reservation') + '(LINE)',
-          icon: 'pi pi-pencil',
-          labelClass: 'label--line',
-          command: () => {
-            this.openSideNav = false;
-            window.open(this.lineUrl, '_blank', 'noopener');
-          }
         },
         {
           label: this.$t('home.Fees'),
@@ -201,15 +192,14 @@ export default {
       this.$refs.openLaguageMenu.toggle(event);
     },
     switchMenuLanguage() {
-      this.items[1].label = this.$t('home.reservation') + '(LINE)';
-      this.items[2].label = this.$t('home.Fees');
-      this.items[2].url = "/files/" + this.$i18n.locale + "/prices.pdf";
-      this.items[3].label = this.$t('home.Guid');
-      this.items[4].label = this.$t('home.Company info');
-      this.items[5].label = this.$t('home.Terms and Conditions of Lease');
-      this.items[6].label = this.$t('home.Privacy Policy');
-      this.items[6].url = "/files/" + this.$i18n.locale + "/privacy_policy.pdf";
-      this.items[7].label = this.$t('home.Articles');
+      this.items[1].label = this.$t('home.Fees');
+      this.items[1].url = "/files/" + this.$i18n.locale + "/prices.pdf";
+      this.items[2].label = this.$t('home.Guid');
+      this.items[3].label = this.$t('home.Company info');
+      this.items[4].label = this.$t('home.Terms and Conditions of Lease');
+      this.items[5].label = this.$t('home.Privacy Policy');
+      this.items[5].url = "/files/" + this.$i18n.locale + "/privacy_policy.pdf";
+      this.items[6].label = this.$t('home.Articles');
     }
   },
   computed: {
@@ -334,12 +324,5 @@ export default {
     color: var(--color-skyblue);
     font-weight: bold;
   }
-}
-
-// The sidebar/menu content is teleported outside .header in the DOM,
-// so this rule stays unnested to still match it.
-.label--line {
-  color: #06c755 !important;
-  font-weight: bold;
 }
 </style>
