@@ -5,7 +5,10 @@
         <img class="logo" alt="" src="/images/class-logo-main@2x.png" />
       </a>
       <div class="toReservation">
-        <Button as="a" :href="lineUrl" target="_blank" rel="noopener" class="line-button" icon="pi pi-comment" :label="$t('home.Reserve via LINE')" />
+        <a class="line-button" :href="lineUrl" target="_blank" rel="noopener">
+          <i class="pi pi-comment"></i>
+          <span>{{ $t('home.Reserve via LINE') }}</span>
+        </a>
       </div>
       <div class="laguageMenu" v-if="!isValiosaPage">
         <Button class="language" icon="pi pi-globe" severity="info" text raised rounded aria-label="language" @click="toggleLaguageMenu" />
@@ -219,30 +222,34 @@ export default {
   .toReservation {
     position: absolute;
     right: 10rem;
-    top: 1.2rem;
+    top: 2.6rem;
 
-    button.p-button {
+    .line-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
       height: 2.2rem;
       padding: 0 1rem;
       font-size: .9rem;
       font-weight: bold;
       background-color: #06c755;
-      border-color: #06c755;
       color: var(--color-white);
+      border-radius: 2rem;
       box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
       white-space: nowrap;
+      text-decoration: none;
+      cursor: pointer;
 
-      &:hover {
-        background-color: #05b34c !important;
-        border-color: #05b34c !important;
+      i {
+        font-size: 1rem;
       }
 
-      &::v-deep .p-button-label {
-        white-space: nowrap;
+      &:hover {
+        background-color: #05b34c;
       }
 
       @media screen and (max-width: 630px) {
-        width: auto;
         padding: 0 0.7rem;
         font-size: .8rem;
       }
