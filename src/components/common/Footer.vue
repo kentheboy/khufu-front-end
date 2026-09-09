@@ -20,7 +20,7 @@
           <a class="instagram" href="https://www.instagram.com/class_rentalcar" target="_blank">
             <i class="pi pi-instagram"></i>
           </a>
-          <a class="line" href="https://lin.ee/w5vv7ng" target="_blank">
+          <a class="line" href="https://lin.ee/9ZxL4tx" target="_blank">
             <img src="/images/icons/line.png" alt="" />
           </a>
         </div>

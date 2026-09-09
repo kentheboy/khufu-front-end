@@ -5,7 +5,10 @@
         <img class="logo" alt="" src="/images/class-logo-main@2x.png" />
       </a>
       <div class="toReservation">
-        <Button :label="$t('home.reserve a car')" @click="scrollToEearchAndReservation" />
+        <a class="line-button" :href="lineUrl" target="_blank" rel="noopener">
+          <i class="pi pi-comment"></i>
+          <span>{{ $t('home.Reserve via LINE') }}</span>
+        </a>
       </div>
       <div class="laguageMenu" v-if="!isValiosaPage">
         <Button class="language" icon="pi pi-globe" severity="info" text raised rounded aria-label="language" @click="toggleLaguageMenu" />
@@ -47,33 +50,12 @@ export default {
   data() {
     return {
       openSideNav: false,
+      lineUrl: 'https://lin.ee/9ZxL4tx',
       items: [
         {
           label: 'Top',
           icon: 'pi pi-home',
           route: '/'
-        },
-        {
-          label: this.$t('home.reservation'),
-          icon: 'pi pi-pencil',
-          command: () => {
-            if (this.$router.currentRoute.value.path !== "/") {
-              this.$router.push({ name: "Home" })
-              setTimeout(() => {
-                this.openSideNav = false;
-                window.scrollTo({
-                  top: document.getElementById('searchAndReservation').offsetTop,
-                  behavior: 'smooth'
-                });
-              }, 100);
-            } else {
-              this.openSideNav = false;
-              window.scrollTo({
-                top: document.getElementById('searchAndReservation').offsetTop,
-                behavior: 'smooth'
-              });
-            }
-          }
         },
         {
           label: this.$t('home.Fees'),
@@ -186,6 +168,14 @@ export default {
             this.switchMenuLanguage();
           }
         },
+        {
+          label: '简体中文',
+          command: () => {
+            this.$i18n.locale = 'cmn_hans';
+            localStorage.setItem('lang', 'cmn_hans');
+            this.switchMenuLanguage();
+          }
+        },
         // {
         //   label: 'English(Coming...)',
         // }
@@ -201,37 +191,18 @@ export default {
     this.switchMenuLanguage();
   },
   methods: {
-    scrollToEearchAndReservation() {
-      if (this.$router.currentRoute.value.path !== "/" && !this.isValiosaPage) {
-        this.$router.push({ name: "Home" })
-        setTimeout(() => {
-          this.openSideNav = false;
-          window.scrollTo({
-            top: document.getElementById('searchAndReservation').offsetTop,
-            behavior: 'smooth'
-          });
-        }, 100);
-      } else {
-        this.openSideNav = false;
-        window.scrollTo({
-          top: document.getElementById('searchAndReservation').offsetTop,
-          behavior: 'smooth'
-        });
-      }
-    },
     toggleLaguageMenu(event) {
       this.$refs.openLaguageMenu.toggle(event);
     },
     switchMenuLanguage() {
-      this.items[1].label = this.$t('home.reservation');
-      this.items[2].label = this.$t('home.Fees');
-      this.items[2].url = "/files/" + this.$i18n.locale + "/prices.pdf";
-      this.items[3].label = this.$t('home.Guid');
-      this.items[4].label = this.$t('home.Company info');
-      this.items[5].label = this.$t('home.Terms and Conditions of Lease');
-      this.items[6].label = this.$t('home.Privacy Policy');
-      this.items[6].url = "/files/" + this.$i18n.locale + "/privacy_policy.pdf";
-      this.items[7].label = this.$t('home.Articles');
+      this.items[1].label = this.$t('home.Fees');
+      this.items[1].url = "/files/" + this.$i18n.locale + "/prices.pdf";
+      this.items[2].label = this.$t('home.Guid');
+      this.items[3].label = this.$t('home.Company info');
+      this.items[4].label = this.$t('home.Terms and Conditions of Lease');
+      this.items[5].label = this.$t('home.Privacy Policy');
+      this.items[5].url = "/files/" + this.$i18n.locale + "/privacy_policy.pdf";
+      this.items[6].label = this.$t('home.Articles');
     }
   },
   computed: {
@@ -251,19 +222,36 @@ export default {
   .toReservation {
     position: absolute;
     right: 10rem;
-    top: 1.2rem;
+    top: 2.6rem;
 
-    button.p-button {
+    .line-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
       height: 2.2rem;
-      padding: unset;
+      padding: 0 1rem;
       font-size: .9rem;
       font-weight: bold;
-      background-color: white;
-      color: var(--color-steelblue);
+      background-color: #06c755;
+      color: var(--color-white);
+      border-radius: 2rem;
       box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
+      white-space: nowrap;
+      text-decoration: none;
+      cursor: pointer;
+
+      i {
+        font-size: 1rem;
+      }
+
+      &:hover {
+        background-color: #05b34c;
+      }
 
       @media screen and (max-width: 630px) {
-        width: 8rem;
+        padding: 0 0.7rem;
+        font-size: .8rem;
       }
     }
 
