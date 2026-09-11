@@ -12,17 +12,32 @@
             <h3>{{ $t('home.Search by dates') }}</h3>
           </div>
           <div class="line-reservation">
-            <img class="line-reservation__icon" src="/images/icons/line.png" alt="LINE" />
+            <div class="line-reservation__icons">
+              <img class="line-reservation__icon" src="/images/icons/line.png" alt="LINE" />
+              <img v-if="$i18n.locale === 'ko'" class="line-reservation__icon" src="/images/icons/kakao.png" alt="KakaoTalk" />
+            </div>
             <p class="line-reservation__text">{{ $t('home.Reserve on LINE lead text') }}</p>
-            <a
-              class="line-reservation__button"
-              :href="lineUrl"
-              target="_blank"
-              rel="noopener"
-            >
-              <i class="pi pi-comment"></i>
-              <span>{{ $t('home.Reserve via LINE') }}</span>
-            </a>
+            <div class="line-reservation__buttons">
+              <a
+                class="line-reservation__button"
+                :href="lineUrl"
+                target="_blank"
+                rel="noopener"
+              >
+                <i class="pi pi-comment"></i>
+                <span>{{ $t('home.Reserve via LINE') }}</span>
+              </a>
+              <a
+                v-if="$i18n.locale === 'ko'"
+                class="line-reservation__button line-reservation__button--kakao"
+                :href="kakaoUrl"
+                target="_blank"
+                rel="noopener"
+              >
+                <i class="pi pi-comment"></i>
+                <span>{{ $t('home.Reserve via Kakao') }}</span>
+              </a>
+            </div>
           </div>
         </section>
       </div>
@@ -235,6 +250,7 @@ export default {
       ],
       vehicle_list: [],
       lineUrl: 'https://lin.ee/9ZxL4tx',
+      kakaoUrl: 'http://pf.kakao.com/_Ixmxcxjn/chat',
       openCarDetail: false,
       carDetailIndex: 0,
       responsiveOptions: [
@@ -518,16 +534,30 @@ section {
       max-width: 32rem;
       margin: 0 auto;
 
+      &__icons {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1.2rem;
+        margin-bottom: 1.2rem;
+      }
+
       &__icon {
         width: 4rem;
         height: 4rem;
-        margin-bottom: 1.2rem;
       }
 
       &__text {
         margin: 0 0 1.6rem;
         color: var(--color-black);
         line-height: 1.7;
+      }
+
+      &__buttons {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.8rem;
       }
 
       &__button {
@@ -554,6 +584,15 @@ section {
 
         &:hover {
           background-color: #05b34c;
+        }
+
+        &--kakao {
+          background-color: #fee500;
+          color: #3c1e1e;
+
+          &:hover {
+            background-color: #f5dc00;
+          }
         }
 
         @media screen and (max-width: 430px) {

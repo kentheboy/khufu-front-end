@@ -9,6 +9,10 @@
           <i class="pi pi-comment"></i>
           <span>{{ $t('home.Reserve via LINE') }}</span>
         </a>
+        <a v-if="$i18n.locale === 'ko'" class="line-button kakao-button" :href="kakaoUrl" target="_blank" rel="noopener">
+          <i class="pi pi-comment"></i>
+          <span>{{ $t('home.Reserve via Kakao') }}</span>
+        </a>
       </div>
       <div class="laguageMenu" v-if="!isValiosaPage">
         <Button class="language" icon="pi pi-globe" severity="info" text raised rounded aria-label="language" @click="toggleLaguageMenu" />
@@ -51,6 +55,7 @@ export default {
     return {
       openSideNav: false,
       lineUrl: 'https://lin.ee/9ZxL4tx',
+      kakaoUrl: 'http://pf.kakao.com/_Ixmxcxjn/chat',
       items: [
         {
           label: 'Top',
@@ -223,6 +228,9 @@ export default {
     position: absolute;
     right: 10rem;
     top: 2.6rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
 
     .line-button {
       display: inline-flex;
@@ -247,6 +255,15 @@ export default {
 
       &:hover {
         background-color: #05b34c;
+      }
+
+      &.kakao-button {
+        background-color: #fee500;
+        color: #3c1e1e;
+
+        &:hover {
+          background-color: #f5dc00;
+        }
       }
 
       @media screen and (max-width: 630px) {
