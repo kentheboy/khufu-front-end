@@ -20,8 +20,11 @@
           <a class="instagram" href="https://www.instagram.com/class_rentalcar" target="_blank">
             <i class="pi pi-instagram"></i>
           </a>
-          <a class="line" href="https://lin.ee/w5vv7ng" target="_blank">
+          <a class="line" href="https://lin.ee/9ZxL4tx" target="_blank">
             <img src="/images/icons/line.png" alt="" />
+          </a>
+          <a v-if="$i18n.locale === 'ko'" class="kakao" href="http://pf.kakao.com/_Ixmxcxjn/chat" target="_blank">
+            <img src="/images/icons/kakao.png" alt="" />
           </a>
         </div>
         <div class="hours">
@@ -67,7 +70,8 @@ export default {
         font-size: 2rem;
       }
 
-      &.line {
+      &.line,
+      &.kakao {
         img {
           height: 2rem;
         }

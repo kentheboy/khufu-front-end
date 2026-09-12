@@ -14,6 +14,7 @@ import { createI18n } from "vue-i18n";
 import ja from "./i18n/ja";
 import ko from "./i18n/ko";
 import cmn_hant from "./i18n/cmn_hant";
+import cmn_hans from "./i18n/cmn_hans";
 import en from "./i18n/en";
 const i18n = createI18n({
     legacy: false,
@@ -22,6 +23,7 @@ const i18n = createI18n({
       ja: ja,
       ko: ko,
       cmn_hant: cmn_hant,
+      cmn_hans: cmn_hans,
       en: en,
     },
   });
